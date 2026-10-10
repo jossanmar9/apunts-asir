@@ -567,7 +567,7 @@ Llig un CSV amb nom, cognom i grup, genera un login i una contrasenya aleatòria
 
     ```text title="alumnes.csv"
     nom,cognom,grup
-    Jose Vicente,Sanjuan Martínez,asir2
+    Maria Josep,Pons Ferrer,asir2
     Àngela,Bàñez,profes
     ```
 
@@ -586,7 +586,7 @@ Llig un CSV amb nom, cognom i grup, genera un login i una contrasenya aleatòria
         return unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
 
     def login(nom, cognom):
-        """Jose Vicente, Sanjuan → jvsanjuan"""
+        """Maria Josep, Pons Ferrer → mjpons"""
         inicials = "".join(paraula[0] for paraula in nom.split())
         return sense_accents(inicials + cognom.split()[0]).lower()
 
@@ -627,8 +627,8 @@ Llig un CSV amb nom, cognom i grup, genera un login i una contrasenya aleatòria
     ```console
     $ python3 alta_usuaris.py alumnes.csv
     SIMULA: groupadd -f asir2
-    SIMULA: useradd -m -s /bin/bash -g asir2 -c 'Jose Vicente Sanjuan Martínez' jvsanjuan
-    jvsanjuan    gxJ5TWasgjmb
+    SIMULA: useradd -m -s /bin/bash -g asir2 -c 'Maria Josep Pons Ferrer' mjpons
+    mjpons       gxJ5TWasgjmb
     ...
     ```
 

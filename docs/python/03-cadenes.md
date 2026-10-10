@@ -15,20 +15,20 @@ Seqüències d'escapament: `\n` (salt de línia), `\t` (tabulador), `\\` (barra)
 ## Índexs i slicing
 
 ```
- j  o  s  e  v  i
+ p  y  t  h  o  n
  0  1  2  3  4  5
 -6 -5 -4 -3 -2 -1
 ```
 
 ```python
-s = "josevi"
-s[0]       # 'j'
-s[-1]      # 'i'  (l'últim)
-s[0:4]     # 'jose'  (del 0 al 3: el final NO s'inclou)
-s[4:]      # 'vi'    (des del 4 fins al final)
-s[:4]      # 'jose'
-s[::2]     # 'jsv'   (de 2 en 2)
-s[::-1]    # 'ivesoj' (al revés)
+s = "python"
+s[0]       # 'p'
+s[-1]      # 'n'  (l'últim)
+s[0:4]     # 'pyth'  (del 0 al 3: el final NO s'inclou)
+s[4:]      # 'on'    (des del 4 fins al final)
+s[:4]      # 'pyth'
+s[::2]     # 'pto'   (de 2 en 2)
+s[::-1]    # 'nohtyp' (al revés)
 len(s)     # 6
 ```
 
@@ -49,7 +49,7 @@ for c in "hola":   # recórrer lletra a lletra
 | Mètode | Exemple | Resultat |
 | ------ | ------- | -------- |
 | `upper()` / `lower()` | `"Hola".upper()` | `'HOLA'` |
-| `capitalize()` / `title()` | `"jose vicente".title()` | `'Jose Vicente'` |
+| `capitalize()` / `title()` | `"maria josep".title()` | `'Maria Josep'` |
 | `strip()` | `"  hola\n".strip()` | `'hola'` |
 | `split(sep)` | `"a:b:c".split(":")` | `['a', 'b', 'c']` |
 | `split()` | `"a  b   c".split()` | `['a', 'b', 'c']` (qualsevol espai) |
@@ -68,7 +68,7 @@ Els mètodes no modifiquen la cadena, en tornen una de nova: `s = s.strip()`.
 ### Exemple: processar una línia de `/etc/passwd`
 
 ```python
-linia = "jose:x:1000:1000:Jose Vicente:/home/jose:/bin/bash"
+linia = "ana:x:1000:1000:Ana Puig:/home/ana:/bin/bash"
 camps = linia.split(":")
 usuari, uid, shell = camps[0], int(camps[2]), camps[-1]
 print(f"{usuari} ({uid}) usa {shell}")
@@ -93,7 +93,7 @@ f"{2 + 3 = }"                   # '2 + 3 = 5' → útil per a depurar
 Taula alineada:
 
 ```python
-for usuari, uid in [("root", 0), ("jose", 1000), ("www-data", 33)]:
+for usuari, uid in [("root", 0), ("ana", 1000), ("www-data", 33)]:
     print(f"{usuari:<12}{uid:>6}")
 ```
 

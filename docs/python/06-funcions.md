@@ -30,7 +30,7 @@ def connecta(host, port=22, usuari="root"):     # valors per defecte
 
 connecta("10.0.0.1")                     # port=22, usuari=root
 connecta("10.0.0.1", 2222)               # per posició
-connecta("10.0.0.1", usuari="jose")      # per nom
+connecta("10.0.0.1", usuari="ana")       # per nom
 ```
 
 Els paràmetres amb valor per defecte van sempre després dels obligatoris.

@@ -1,6 +1,5 @@
 site_name: Apunts ASIR
-site_description: Apunts i xuletes del CFGS ASIR — José Vicente Sanjuan
-site_author: José Vicente Sanjuan
+site_description: Apunts i xuletes de Bash i Python per al CFGS ASIR
 # El teu usuari de GitHub
 site_url: https://jossanmar9.github.io/apunts-asir/
 repo_url: https://github.com/jossanmar9/apunts-asir
@@ -114,9 +113,5 @@ nav:
       - PowerShell: xuletes/powershell.md
   - Bibliografia: bibliografia.md
 
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/jossanmar9
 
-copyright: Apunts personals de José Vicente Sanjuan · CFGS ASIR · IES El Caminàs
+copyright: Apunts ASIR

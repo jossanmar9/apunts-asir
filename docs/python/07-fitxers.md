@@ -54,7 +54,7 @@ with open("usuaris.csv", newline="", encoding="utf-8") as f:
 with open("eixida.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
     w.writerow(["nom", "uid"])
-    w.writerow(["jose", 1000])
+    w.writerow(["ana", 1000])
 ```
 
 Amb separador `;` (Excel en castellà/valencià): `csv.reader(f, delimiter=";")`.
@@ -90,7 +90,7 @@ p.exists()      # True/False
 p.is_file(), p.is_dir()
 p.stat().st_size       # mida en bytes
 
-Path.home()            # /home/jose
+Path.home()            # /home/ana
 Path.cwd()             # directori actual
 backup = Path.home() / "backup" / "2026"   # / uneix rutes
 backup.mkdir(parents=True, exist_ok=True)  # com mkdir -p

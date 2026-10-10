@@ -9,8 +9,8 @@ Problemes de dificultat creixent. Intenta'ls primer tu i obri la solució només
 Fes un script que reba per argument un nom de tres paraules (*nom cognom1 cognom2*) i el mostre com a *cognom1 cognom2, nom*.
 
 ```console
-$ ./nom.sh Jose Vicente Sanjuan
-Vicente Sanjuan, Jose
+$ ./nom.sh Laura Pons Ferrer
+Pons Ferrer, Laura
 ```
 
 ??? success "Solució"
@@ -180,7 +180,7 @@ A partir de `/etc/passwd` (o una còpia passada per argument), llista només els
 ```console
 $ ./usuaris.sh
 USUARI          UID  HOME                 SHELL
-jose           1000  /home/jose           /bin/bash
+ana            1000  /home/ana            /bin/bash
 pep            1001  /home/pep            /bin/zsh
 ```
 
@@ -212,7 +212,7 @@ Cada línia del fitxer té *Nom Cognom Ofici Salari*. L'script rep el fitxer i u
 
 ```text title="salaris.txt"
 Juan García mecànic 2000
-Jose Tomàs comercial 1800
+Toni Tomàs comercial 1800
 Fernando Martínez directiu 2200
 Dolores Fuertes secretària 1800
 Sara Goza directiu 2300

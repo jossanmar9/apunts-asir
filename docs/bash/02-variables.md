@@ -3,13 +3,13 @@
 ## Variables
 
 ```bash
-nom="Jose"            # guardar: SENSE espais al voltant de =
+nom="Ana"            # guardar: SENSE espais al voltant de =
 echo "$nom"           # llegir: amb $
 echo "Hola ${nom}s"   # claus quan va enganxada a altre text
 ```
 
 !!! danger "L'error número 1"
-    `nom = "Jose"` no és una assignació: Bash intenta executar una ordre anomenada `nom` amb els arguments `=` i `Jose`.
+    `nom = "Ana"` no és una assignació: Bash intenta executar una ordre anomenada `nom` amb els arguments `=` i `Ana`.
 
 - Els noms distingixen majúscules: `nom` i `NOM` són diferents.
 - Per convenció, **majúscules per a variables d'entorn** (`PATH`, `HOME`) i minúscules per a les teues.

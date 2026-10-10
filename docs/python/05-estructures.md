@@ -69,7 +69,7 @@ Com una llista però **no es pot modificar**. S'usen per a dades que van juntes:
 
 ```python
 punt = (3, 5)
-usuari = ("jose", 1000, "/bin/bash")
+usuari = ("ana", 1000, "/bin/bash")
 
 nom, uid, shell = usuari       # desempaquetar
 x, *resta = [1, 2, 3, 4]       # x=1, resta=[2, 3, 4]

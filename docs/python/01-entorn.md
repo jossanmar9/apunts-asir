@@ -15,9 +15,9 @@ sudo apt install python3-pip python3-venv    # pip i entorns virtuals
 $ python3
 >>> 2 + 3
 5
->>> nom = "Jose"
+>>> nom = "Ana"
 >>> nom.upper()
-'JOSE'
+'ANA'
 >>> help(str.split)     # ajuda de qualsevol cosa
 >>> exit()
 ```

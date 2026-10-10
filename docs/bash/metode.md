@@ -7,8 +7,8 @@ La majoria de vegades que un script no ix, el problema no és Bash: és que s'ha
 Abans de pensar en codi, escriu **com es cridarà l'script i què ha de respondre** quan estiga acabat:
 
 ```console
-$ ./nom.sh Jose Vicente Sanjuan
-Vicente Sanjuan, Jose
+$ ./nom.sh Laura Pons Ferrer
+Pons Ferrer, Laura
 ```
 
 Si no saps escriure este exemple, encara no has entés l'enunciat. Torna a llegir-lo. Pregunta't també:

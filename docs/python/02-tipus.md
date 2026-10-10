@@ -3,7 +3,7 @@
 ## Variables
 
 ```python
-nom = "Jose"        # str
+nom = "Ana"         # str
 edat = 30           # int
 alcada = 1.78       # float
 actiu = True        # bool

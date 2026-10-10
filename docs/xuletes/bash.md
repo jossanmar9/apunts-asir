@@ -38,7 +38,7 @@ bash script.sh         # executar-lo sense permís d'execució
 ## 📦 Variables
 
 ```bash
-nom="Jose"                 # guardar (sense espais!)
+nom="Ana"                 # guardar (sense espais!)
 echo "$nom"                # llegir (amb $)
 echo "Hola ${nom}!"        # amb claus quan va enganxada a altre text
 
@@ -278,7 +278,7 @@ saludar() {
     echo "Hola $1"            # $1 = primer argument DE LA FUNCIÓ
 }
 
-saludar "Jose"                # cridar-la (sense parèntesis!)
+saludar "Ana"                # cridar-la (sense parèntesis!)
 ```
 També es pot declarar com `function saludar() { ... }`.
 
@@ -324,13 +324,13 @@ for s in "${serveis[@]}"; do echo "$s"; done
 ## ✂️ Manipular text de variables
 
 ```bash
-ruta="/home/jose/datos/app1.log"
+ruta="/home/ana/datos/app1.log"
 
 echo "${#ruta}"          # longitud del text → 25
 echo "${ruta:0:5}"       # des de la posició 0, 5 caràcters → /home
 echo "${ruta##*/}"       # lleva tot fins a l'última /  → app1.log
-echo "${ruta%/*}"        # lleva des de l'última /      → /home/jose/datos
-echo "${ruta%.log}"      # lleva el sufix .log          → /home/jose/datos/app1
+echo "${ruta%/*}"        # lleva des de l'última /      → /home/ana/datos
+echo "${ruta%.log}"      # lleva el sufix .log          → /home/ana/datos/app1
 echo "${ruta/log/txt}"   # canvia la primera "log" per "txt"
 ```
 

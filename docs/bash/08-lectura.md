@@ -27,8 +27,8 @@ read -ra parts <<< "192 168 1 10"; echo "${parts[2]}"   # 1
 Si li dones diverses variables, reparteix les paraules i l'última es queda la resta:
 
 ```bash
-read -r nom cognoms <<< "Jose Vicente Sanjuan"
-echo "$cognoms"     # Vicente Sanjuan
+read -r nom cognoms <<< "Laura Pons Ferrer"
+echo "$cognoms"     # Pons Ferrer
 ```
 
 ## Argument o `read`?

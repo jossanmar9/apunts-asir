@@ -91,7 +91,7 @@ class Usuari:
     def es_sistema(self):
         return self.uid < 1000
 
-u = Usuari("jose", 1000)
+u = Usuari("ana", 1000)
 u.es_sistema        # False (es crida sense parèntesis)
 ```
 
