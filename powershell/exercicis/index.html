@@ -1,0 +1,3042 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apunts i xuletes de Bash, Python i PowerShell per al CFGS ASIR">
+      
+      
+      
+        <link rel="canonical" href="https://jossanmar9.github.io/apunts-asir/powershell/exercicis/">
+      
+      
+        <link rel="prev" href="../10-sysadmin/">
+      
+      
+        <link rel="next" href="../../xuletes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Exercicis resolts - Apunts ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exercicis-resolts" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Apunts ASIR" class="md-header__button md-logo" aria-label="Apunts ASIR" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Apunts ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercicis resolts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Mode fosc"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode fosc" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jossanmar9/apunts-asir" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    apunts-asir
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inici
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../bash/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Bash
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  PowerShell
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../xuletes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Xuletes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossari/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossari
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../bibliografia/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Bibliografia
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Apunts ASIR" class="md-nav__button md-logo" aria-label="Apunts ASIR" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    Apunts ASIR
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jossanmar9/apunts-asir" title="Ves al repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    apunts-asir
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inici
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../bash/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/01-primer-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Primer script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/02-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Variables i paràmetres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/03-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Aritmètica i comparacions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/04-condicionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Condicionals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/05-bucles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Bucles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/06-funcions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Funcions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/07-redireccions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Redireccions i tuberies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/08-lectura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Llegir dades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/09-arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/10-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Processar text
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/11-find-grep-xargs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. find, grep i xargs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/12-robustesa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Scripts robustos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/metode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Com resoldre un problema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/problemes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problemes resolts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/01-entorn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Entorn de treball
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/02-tipus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tipus i variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/03-cadenes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Cadenes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/04-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Control de flux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/05-estructures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Estructures de dades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/06-funcions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Funcions i mòduls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/07-fitxers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Fitxers, pathlib i glob
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/08-excepcions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Excepcions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/09-sysadmin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Python per a sysadmin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/10-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Classes i objectes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/exercicis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercicis resolts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-primers-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Primers passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Variables i tipus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-operadors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Operadors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-condicionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Condicionals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-bucles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Bucles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Arrays i taules hash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-tuberies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Tuberies i objectes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-funcions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Funcions i paràmetres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-fitxers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Fitxers i errors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sysadmin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. PowerShell per a sysadmin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercicis resolts
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercicis resolts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nivell-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivell bàsic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nivell bàsic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-calcular-ledat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Calcular l'edat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-calculadora-amb-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Calculadora amb menú
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-parell-i-taula-de-multiplicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Parell i taula de multiplicar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-endevina-el-numero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Endevina el número
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-estadistica-de-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Estadística de notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nivell-mitja-fitxers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivell mitjà: fitxers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nivell mitjà: fitxers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-paraules-mes-repetides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Paraules més repetides
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-informe-dels-fitxers-mes-grans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Informe dels fitxers més grans
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-netejar-fitxers-antics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Netejar fitxers antics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-copia-de-seguretat-amb-rotacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Còpia de seguretat amb rotació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-a-sysadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per a sysadmin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per a sysadmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10-alerta-despai-en-disc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Alerta d'espai en disc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-vigilar-serveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Vigilar serveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-alta-dusuaris-locals-des-dun-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Alta d'usuaris locals des d'un CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../xuletes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xuletes
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Xuletes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xuletes/bash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xuletes/linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ordres de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xuletes/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xuletes/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xuletes/powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossari/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossari
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bibliografia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bibliografia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nivell-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivell bàsic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nivell bàsic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-calcular-ledat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Calcular l'edat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-calculadora-amb-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Calculadora amb menú
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-parell-i-taula-de-multiplicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Parell i taula de multiplicar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-endevina-el-numero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Endevina el número
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-estadistica-de-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Estadística de notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nivell-mitja-fitxers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivell mitjà: fitxers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nivell mitjà: fitxers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-paraules-mes-repetides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Paraules més repetides
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-informe-dels-fitxers-mes-grans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Informe dels fitxers més grans
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-netejar-fitxers-antics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Netejar fitxers antics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-copia-de-seguretat-amb-rotacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Còpia de seguretat amb rotació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-a-sysadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per a sysadmin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per a sysadmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10-alerta-despai-en-disc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Alerta d'espai en disc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-vigilar-serveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Vigilar serveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-alta-dusuaris-locals-des-dun-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Alta d'usuaris locals des d'un CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/jossanmar9/apunts-asir/edit/main/docs/powershell/exercicis.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="exercicis-resolts">Exercicis resolts<a class="headerlink" href="#exercicis-resolts" title="Permanent link">&para;</a></h1>
+<p>Intenta'ls abans d'obrir la solució. Totes les solucions estan comentades línia a línia.</p>
+<div class="admonition tip">
+<p class="admonition-title">Com executar-los</p>
+<p>Guarda el codi en un fitxer <code>.ps1</code> i executa'l amb <code>.\nom.ps1</code>. Si dona l'error <em>running scripts is disabled</em>, mira el <a href="../01-primers-passos/#2-permetre-lexecucio-de-scripts">tema 1</a>.</p>
+</div>
+<h2 id="nivell-basic">Nivell bàsic<a class="headerlink" href="#nivell-basic" title="Permanent link">&para;</a></h2>
+<h3 id="1-calcular-ledat">1. Calcular l'edat<a class="headerlink" href="#1-calcular-ledat" title="Permanent link">&para;</a></h3>
+<p>Demana el nom i l'any de naixement, calcula l'edat i diu si és major d'edat. Si no ho és, quants anys li falten.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">Com et dius: Ana</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">En quin any vas nàixer: 2000</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="go">Hola, Ana. Tens (o faràs) 26 anys.</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="go">Eres major d'edat.</span>
+</code></pre></div>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">edat.ps1</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># Demana el nom i l'any de naixement i calcula l'edat</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$nom</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">"Com et dius"</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="no">[int]</span><span class="nv">$naixement</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">"En quin any vas nàixer"</span>     <span class="c"># [int] converteix el text a número</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">$any</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">Year</span>                  <span class="c"># l'any actual</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">$edat</span> <span class="p">=</span> <span class="nv">$any</span> <span class="p">-</span> <span class="nv">$naixement</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">Write-Host</span> <span class="s2">"Hola, $nom. Tens (o faràs) $edat anys."</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$edat</span> <span class="o">-ge</span> <span class="n">18</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="nb">Write-Host</span> <span class="s2">"Eres major d'edat."</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="nb">Write-Host</span> <span class="s2">"Eres menor d'edat. Et falten </span><span class="p">$(</span><span class="n">18</span> <span class="p">-</span> <span class="nv">$edat</span><span class="p">)</span><span class="s2"> anys per als 18."</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>(Get-Date).Year</code> és l'any actual. Els parèntesis fan que primer s'execute <code>Get-Date</code> i després se'n llija la propietat <code>Year</code>.</p>
+</details>
+<h3 id="2-calculadora-amb-menu">2. Calculadora amb menú<a class="headerlink" href="#2-calculadora-amb-menu" title="Permanent link">&para;</a></h3>
+<p>Menú amb les quatre operacions i una opció per a eixir. Es repetix fins que l'usuari trie eixir. No ha de deixar dividir per zero.</p>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">calculadora.ps1</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Calculadora amb menú que es repetix fins que l'usuari tria eixir</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">do</span> <span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">Write-Host</span> <span class="s2">""</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nb">Write-Host</span> <span class="s2">"1) Sumar   2) Restar   3) Multiplicar   4) Dividir   5) Eixir"</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nv">$opcio</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">"Tria una opció"</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$opcio</span> <span class="n">-in</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">)</span> <span class="p">{</span>            <span class="c"># només demanem números si cal</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="no">[double]</span><span class="nv">$a</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">"Primer número"</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="no">[double]</span><span class="nv">$b</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">"Segon número"</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="k">switch</span> <span class="p">(</span><span class="nv">$opcio</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="s2">"1"</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">"$a + $b = </span><span class="p">$(</span><span class="nv">$a</span> <span class="p">+</span> <span class="nv">$b</span><span class="p">)</span><span class="s2">"</span> <span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="s2">"2"</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">"$a - $b = </span><span class="p">$(</span><span class="nv">$a</span> <span class="p">-</span> <span class="nv">$b</span><span class="p">)</span><span class="s2">"</span> <span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="s2">"3"</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">"$a x $b = </span><span class="p">$(</span><span class="nv">$a</span> <span class="p">*</span> <span class="nv">$b</span><span class="p">)</span><span class="s2">"</span> <span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="s2">"4"</span> <span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="k">if</span> <span class="p">(</span><span class="nv">$b</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>                <span class="nb">Write-Host</span> <span class="s2">"No es pot dividir per zero"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>                <span class="nb">Write-Host</span> <span class="s2">"$a / $b = </span><span class="p">$(</span><span class="no">[math]</span><span class="p">::</span><span class="n">Round</span><span class="p">(</span><span class="nv">$a</span> <span class="p">/</span> <span class="nv">$b</span><span class="p">,</span> <span class="n">2</span><span class="p">))</span><span class="s2">"</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>            <span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="p">}</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="s2">"5"</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">"Adéu!"</span> <span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="k">default</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">"Opció no vàlida"</span> <span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$opcio</span> <span class="o">-ne</span> <span class="s2">"5"</span><span class="p">)</span>                            <span class="c"># repetix mentre no trie 5</span>
+</code></pre></div>
+<ul>
+<li><code>do { } while</code> perquè el menú s'ha de mostrar <strong>almenys una vegada</strong>.</li>
+<li><code>$opcio -in "1", "2", "3", "4"</code> evita demanar números si l'opció és eixir o no és vàlida.</li>
+<li><code>[double]</code> permet decimals.</li>
+</ul>
+</details>
+<h3 id="3-parell-i-taula-de-multiplicar">3. Parell i taula de multiplicar<a class="headerlink" href="#3-parell-i-taula-de-multiplicar" title="Permanent link">&para;</a></h3>
+<p>Script que rep un número com a paràmetre, diu si és parell i mostra la seua taula de multiplicar.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">.\taula.ps1 -Numero 7</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">7 és imparell</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">7 x  1 =   7</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="go">7 x  2 =  14</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="go">...</span>
+</code></pre></div>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">taula.ps1</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c"># Diu si un número és parell i mostra la seua taula de multiplicar</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">param</span><span class="p">(</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="no">[int]</span><span class="nv">$Numero</span>                         <span class="c"># si no es passa, PowerShell el pregunta</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$Numero</span> <span class="p">%</span> <span class="n">2</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>                 <span class="c"># residu 0 en dividir per 2 → parell</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="nb">Write-Host</span> <span class="s2">"$Numero és parell"</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="nb">Write-Host</span> <span class="s2">"$Numero és imparell"</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$i</span> <span class="k">in</span> <span class="n">1</span><span class="p">..</span><span class="n">10</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="s2">"{0} x {1,2} = {2,3}"</span> <span class="o">-f</span> <span class="nv">$Numero</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="p">(</span><span class="nv">$Numero</span> <span class="p">*</span> <span class="nv">$i</span><span class="p">))</span>   <span class="c"># alineat amb -f</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>Com que el paràmetre és <code>Mandatory</code>, si executes <code>.\taula.ps1</code> sense res, PowerShell el pregunta. <code>{1,2}</code> reserva 2 espais per al número, així els resultats queden alineats.</p>
+</details>
+<h3 id="4-endevina-el-numero">4. Endevina el número<a class="headerlink" href="#4-endevina-el-numero" title="Permanent link">&para;</a></h3>
+<p>El programa pensa un número de l'1 al 100 i l'usuari l'ha d'endevinar. Després de cada intent li diu si és més amunt o més avall, i al final quants intents ha necessitat.</p>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">endevina.ps1</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># Joc d'endevinar un número entre 1 i 100</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">$secret</span> <span class="p">=</span> <span class="nb">Get-Random</span> <span class="n">-Minimum</span> <span class="n">1</span> <span class="n">-Maximum</span> <span class="n">101</span>     <span class="c"># Maximum NO s'inclou: 1..100</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">$intents</span> <span class="p">=</span> <span class="n">0</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">do</span> <span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nv">$text</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">"Número (1-100)"</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="nv">$n</span> <span class="p">=</span> <span class="nv">$text</span> <span class="o">-as</span> <span class="no">[int]</span>                         <span class="c"># $null si no és un número</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$null</span> <span class="o">-eq</span> <span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="nb">Write-Host</span> <span class="s2">"Escriu un número"</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="k">continue</span>                                 <span class="c"># torna a preguntar sense comptar l'intent</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="p">}</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="nv">$intents</span><span class="p">++</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">-lt</span> <span class="nv">$secret</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="nb">Write-Host</span> <span class="s2">"Més amunt"</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">-gt</span> <span class="nv">$secret</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="nb">Write-Host</span> <span class="s2">"Més avall"</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="p">}</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">}</span> <span class="k">until</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">-eq</span> <span class="nv">$secret</span><span class="p">)</span>                         <span class="c"># repetix fins que l'encerte</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="nb">Write-Host</span> <span class="s2">"Encertat en $intents intents!"</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+</code></pre></div>
+<ul>
+<li><code>Get-Random -Maximum 101</code> dona números <strong>fins a 100</strong>: el màxim no s'inclou.</li>
+<li><code>-as [int]</code> torna <code>$null</code> si el text no és un número, en compte de donar error.</li>
+<li><code>do { } until</code> repetix <strong>fins que</strong> encerte.</li>
+</ul>
+</details>
+<h3 id="5-estadistica-de-notes">5. Estadística de notes<a class="headerlink" href="#5-estadistica-de-notes" title="Permanent link">&para;</a></h3>
+<p>Amb una llista de notes, mostra la mitjana, la màxima i la mínima, i quantes notes hi ha de cada categoria amb el seu percentatge.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">Alumnes: 6  Mitjana: 6.33  Màxima: 9.5  Mínima: 3</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Suspés       2  (33 %)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">Aprovat      1  (17 %)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="go">Notable      2  (33 %)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="go">Excel·lent   1  (17 %)</span>
+</code></pre></div>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">notes.ps1</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># Estadística d'una llista de notes</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">$notes</span> <span class="p">=</span> <span class="n">4</span><span class="p">,</span> <span class="n">6</span><span class="p">.</span><span class="n">5</span><span class="p">,</span> <span class="n">8</span><span class="p">,</span> <span class="n">9</span><span class="p">.</span><span class="n">5</span><span class="p">,</span> <span class="n">3</span><span class="p">,</span> <span class="n">7</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c"># Measure-Object calcula diverses coses d'una vegada</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$estad</span> <span class="p">=</span> <span class="nv">$notes</span> <span class="p">|</span> <span class="nb">Measure-Object</span> <span class="n">-Average</span> <span class="n">-Maximum</span> <span class="n">-Minimum</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">Write-Host</span> <span class="p">(</span><span class="s2">"Alumnes: {0}  Mitjana: {1:N2}  Màxima: {2}  Mínima: {3}"</span> <span class="o">-f</span> <span class="p">`</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="nv">$notes</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="nv">$estad</span><span class="p">.</span><span class="n">Average</span><span class="p">,</span> <span class="nv">$estad</span><span class="p">.</span><span class="n">Maximum</span><span class="p">,</span> <span class="nv">$estad</span><span class="p">.</span><span class="n">Minimum</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c"># Taula hash per a comptar quantes notes hi ha de cada categoria</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nv">$categories</span> <span class="p">=</span> <span class="no">[ordered]</span><span class="p">@{</span> <span class="s2">"Suspés"</span> <span class="p">=</span> <span class="n">0</span><span class="p">;</span> <span class="s2">"Aprovat"</span> <span class="p">=</span> <span class="n">0</span><span class="p">;</span> <span class="s2">"Notable"</span> <span class="p">=</span> <span class="n">0</span><span class="p">;</span> <span class="s2">"Excel·lent"</span> <span class="p">=</span> <span class="n">0</span> <span class="p">}</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$n</span> <span class="k">in</span> <span class="nv">$notes</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">-lt</span> <span class="n">5</span><span class="p">)</span>     <span class="p">{</span> <span class="nv">$categories</span><span class="p">[</span><span class="s2">"Suspés"</span><span class="p">]++</span> <span class="p">}</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="k">elseif</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">-lt</span> <span class="n">7</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$categories</span><span class="p">[</span><span class="s2">"Aprovat"</span><span class="p">]++</span> <span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="k">elseif</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">-lt</span> <span class="n">9</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$categories</span><span class="p">[</span><span class="s2">"Notable"</span><span class="p">]++</span> <span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="k">else</span>              <span class="p">{</span> <span class="nv">$categories</span><span class="p">[</span><span class="s2">"Excel·lent"</span><span class="p">]++</span> <span class="p">}</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">}</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$c</span> <span class="k">in</span> <span class="nv">$categories</span><span class="p">.</span><span class="n">Keys</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="nv">$percent</span> <span class="p">=</span> <span class="nv">$categories</span><span class="p">[</span><span class="nv">$c</span><span class="p">]</span> <span class="p">/</span> <span class="nv">$notes</span><span class="p">.</span><span class="n">Count</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="s2">"{0,-11}{1,3}  ({2:P0})"</span> <span class="o">-f</span> <span class="nv">$c</span><span class="p">,</span> <span class="nv">$categories</span><span class="p">[</span><span class="nv">$c</span><span class="p">],</span> <span class="nv">$percent</span><span class="p">)</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>Measure-Object</code> calcula diverses estadístiques d'una vegada.</li>
+<li><code>[ordered]@{ }</code> és una taula hash que <strong>manté l'ordre</strong> en què afiges les claus (una normal les pot mostrar desordenades).</li>
+<li>El <code>`</code> al final d'una línia fa que l'ordre continue en la següent.</li>
+</ul>
+</details>
+<h2 id="nivell-mitja-fitxers">Nivell mitjà: fitxers<a class="headerlink" href="#nivell-mitja-fitxers" title="Permanent link">&para;</a></h2>
+<h3 id="6-paraules-mes-repetides">6. Paraules més repetides<a class="headerlink" href="#6-paraules-mes-repetides" title="Permanent link">&para;</a></h3>
+<p>Rep un fitxer de text i mostra les 5 paraules (de més de 3 lletres) que més es repetixen.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">.\paraules.ps1 -Fitxer text.txt</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">Paraules en total: 10</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="go">Count Name</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="go">----- ----</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="go">    5 servidor</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="go">    1 bases</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="go">    1 caigut</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="go">...</span>
+</code></pre></div>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">paraules.ps1</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c"># Mostra les 5 paraules que més es repetixen en un fitxer de text</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">param</span><span class="p">(</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="no">[string]</span><span class="nv">$Fitxer</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$Fitxer</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="nb">Write-Host</span> <span class="s2">"No existix el fitxer $Fitxer"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="n">exit</span> <span class="n">1</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">}</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nv">$text</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="nv">$Fitxer</span> <span class="n">-Raw</span>                 <span class="c"># -Raw: tot el fitxer com un sol text</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nv">$paraules</span> <span class="p">=</span> <span class="nv">$text</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="n">-split</span> <span class="s2">"\W+"</span> <span class="p">|</span>       <span class="c"># talla per tot el que no siga lletra o número</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">3</span> <span class="p">}</span>             <span class="c"># només paraules de més de 3 lletres</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="nb">Write-Host</span> <span class="s2">"Paraules en total: </span><span class="p">$(</span><span class="nv">$paraules</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="nv">$paraules</span> <span class="p">|</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>    <span class="nb">Group-Object</span> <span class="p">|</span>                               <span class="c"># agrupa les iguals i compta</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>    <span class="nb">Sort-Object</span> <span class="n">Count</span> <span class="n">-Descending</span> <span class="p">|</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>    <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">5</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Name</span>
+</code></pre></div>
+<ul>
+<li><code>-Raw</code> llig tot el fitxer com un sol text (sense <code>-Raw</code>, seria una llista de línies).</li>
+<li><code>-split "\W+"</code> talla per qualsevol cosa que no siga lletra o número (espais, punts, comes...).</li>
+<li><code>Group-Object</code> agrupa les paraules iguals i en compta quantes n'hi ha.</li>
+</ul>
+</details>
+<h3 id="7-informe-dels-fitxers-mes-grans">7. Informe dels fitxers més grans<a class="headerlink" href="#7-informe-dels-fitxers-mes-grans" title="Permanent link">&para;</a></h3>
+<p>Busca els N fitxers més grans d'una carpeta (i subcarpetes), els mostra amb la mida en MB i guarda l'informe en un CSV.</p>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">grans.ps1</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c"># Informe dels fitxers més grans d'una carpeta, exportat a CSV</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">param</span><span class="p">(</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="no">[string]</span><span class="nv">$Carpeta</span> <span class="p">=</span> <span class="nv">$HOME</span><span class="p">,</span>                    <span class="c"># per defecte, la carpeta personal</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="no">[int]</span><span class="nv">$Quants</span> <span class="p">=</span> <span class="n">10</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="no">[string]</span><span class="nv">$Eixida</span> <span class="p">=</span> <span class="s2">"fitxers_grans.csv"</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nv">$fitxers</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$Carpeta</span> <span class="n">-Recurse</span> <span class="o">-File</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="nb">Sort-Object</span> <span class="n">Length</span> <span class="n">-Descending</span> <span class="p">|</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="nv">$Quants</span> <span class="n">FullName</span><span class="p">,</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        <span class="p">@{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s2">"MB"</span><span class="p">;</span> <span class="n">Expression</span> <span class="p">=</span> <span class="p">{</span> <span class="no">[math]</span><span class="p">::</span><span class="n">Round</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Length</span> <span class="p">/</span> <span class="n">1MB</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span> <span class="p">}</span> <span class="p">},</span>   <span class="c"># mida en MB</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        <span class="n">LastWriteTime</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nv">$fitxers</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-AutoSize</span>                <span class="c"># mostrar per pantalla</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nv">$fitxers</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="nv">$Eixida</span> <span class="n">-NoTypeInformation</span> <span class="c"># i guardar en CSV</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="nb">Write-Host</span> <span class="s2">"Informe guardat en $Eixida"</span>
+</code></pre></div>
+<ul>
+<li><code>@{ Name = "MB"; Expression = { ... } }</code> crea una columna nova calculada.</li>
+<li><code>-ErrorAction SilentlyContinue</code> amaga els errors de carpetes on no tens permís.</li>
+<li>El CSV es pot obrir directament amb Excel.</li>
+</ul>
+</details>
+<h3 id="8-netejar-fitxers-antics">8. Netejar fitxers antics<a class="headerlink" href="#8-netejar-fitxers-antics" title="Permanent link">&para;</a></h3>
+<p>Esborra els fitxers d'una carpeta que tinguen més de N dies. Amb <code>-Simula</code>, només ha de mostrar què esborraria.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">.\neteja.ps1 -Carpeta C:\temp -Dies 30 -Simula</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">Esborraria: C:\temp\vell.txt</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">1 fitxers</span>
+</code></pre></div>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">neteja.ps1</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c"># Esborra els fitxers d'una carpeta més antics que N dies</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">param</span><span class="p">(</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="no">[string]</span><span class="nv">$Carpeta</span><span class="p">,</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="no">[int]</span><span class="nv">$Dies</span> <span class="p">=</span> <span class="n">30</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="no">[switch]</span><span class="nv">$Simula</span>                              <span class="c"># amb -Simula només mostra, no esborra</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="p">)</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$Carpeta</span> <span class="n">-PathType</span> <span class="n">Container</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="nb">Write-Host</span> <span class="s2">"No és una carpeta: $Carpeta"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="n">exit</span> <span class="n">1</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="p">}</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nv">$limit</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="nv">$Dies</span><span class="p">)</span>              <span class="c"># la data de fa N dies</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nv">$vells</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="nv">$Carpeta</span> <span class="o">-File</span> <span class="n">-Recurse</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="n">LastWriteTime</span> <span class="o">-lt</span> <span class="nv">$limit</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$vells</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    <span class="nb">Write-Host</span> <span class="s2">"No hi ha fitxers de més de $Dies dies"</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    <span class="n">exit</span> <span class="n">0</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="p">}</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$f</span> <span class="k">in</span> <span class="nv">$vells</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$Simula</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>        <span class="nb">Write-Host</span> <span class="s2">"Esborraria: </span><span class="p">$(</span><span class="nv">$f</span><span class="p">.</span><span class="n">FullName</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>        <span class="nb">Remove-Item</span> <span class="nv">$f</span><span class="p">.</span><span class="n">FullName</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>        <span class="nb">Write-Host</span> <span class="s2">"Esborrat:   </span><span class="p">$(</span><span class="nv">$f</span><span class="p">.</span><span class="n">FullName</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    <span class="p">}</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="p">}</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="nb">Write-Host</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$vells</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span><span class="s2"> fitxers"</span>
+</code></pre></div>
+<ul>
+<li><code>(Get-Date).AddDays(-30)</code> és la data de fa 30 dies.</li>
+<li><code>[switch]$Simula</code> val <code>$true</code> si poses <code>-Simula</code> en executar-lo.</li>
+<li><strong>Prova sempre primer amb <code>-Simula</code></strong> abans d'esborrar de veritat.</li>
+</ul>
+</details>
+<h3 id="9-copia-de-seguretat-amb-rotacio">9. Còpia de seguretat amb rotació<a class="headerlink" href="#9-copia-de-seguretat-amb-rotacio" title="Permanent link">&para;</a></h3>
+<p>Comprimix una carpeta en un <code>.zip</code> amb la data i l'hora al nom, i conserva només les N còpies més recents.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">.\backup.ps1 -Origen C:\Users\ana\Documents -Desti D:\copies -Conserva 7</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">Creat D:\copies\Documents_20261010_183044.zip</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="go">Esborrada Documents_20261003_183040.zip</span>
+</code></pre></div>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">backup.ps1</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c"># Còpia comprimida d'una carpeta amb la data al nom; conserva només les N últimes</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">param</span><span class="p">(</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span><span class="no">[string]</span><span class="nv">$Origen</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span><span class="no">[string]</span><span class="nv">$Desti</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="no">[int]</span><span class="nv">$Conserva</span> <span class="p">=</span> <span class="n">7</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$Origen</span> <span class="n">-PathType</span> <span class="n">Container</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="nb">Write-Host</span> <span class="s2">"L'origen no és una carpeta"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="n">exit</span> <span class="n">1</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="p">}</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nb">New-Item</span> <span class="n">-Path</span> <span class="nv">$Desti</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span> <span class="p">|</span> <span class="nb">Out-Null</span>      <span class="c"># crea el destí si cal</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="nv">$nomCarpeta</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="nv">$Origen</span> <span class="n">-Leaf</span>                            <span class="c"># nom de la carpeta sense la ruta</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nv">$data</span> <span class="p">=</span> <span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s2">"yyyyMMdd_HHmmss"</span>                        <span class="c"># 20261010_183000</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="nv">$zip</span> <span class="p">=</span> <span class="nb">Join-Path</span> <span class="nv">$Desti</span> <span class="s2">"$nomCarpeta`_$data.zip"</span>                  <span class="c"># `_ perquè _ no s'unisca al nom de la variable</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="nb">Compress-Archive</span> <span class="n">-Path</span> <span class="s2">"$Origen/*"</span> <span class="n">-DestinationPath</span> <span class="nv">$zip</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="nb">Write-Host</span> <span class="s2">"Creat $zip"</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="c"># Rotació: ordenem les còpies per data i esborrem les que sobren</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="nv">$copies</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="nv">$Desti</span> <span class="n">-Filter</span> <span class="s2">"$nomCarpeta`_*.zip"</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">Name</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="nv">$sobren</span> <span class="p">=</span> <span class="nv">$copies</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="nv">$Conserva</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$sobren</span> <span class="o">-gt</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>    <span class="nv">$copies</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="nv">$sobren</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>        <span class="nb">Remove-Item</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>        <span class="nb">Write-Host</span> <span class="s2">"Esborrada </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>    <span class="p">}</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>Split-Path -Leaf</code> torna l'últim tros d'una ruta (el nom de la carpeta).</li>
+<li><code>Join-Path</code> unix trossos de ruta posant la barra correcta.</li>
+<li>Com que el nom porta la data en format <code>yyyyMMdd_HHmmss</code>, ordenar per nom és el mateix que ordenar per data.</li>
+<li>Per a executar-lo cada nit, crea una tasca programada (<a href="../10-sysadmin/#tasques-programades">tema 10</a>).</li>
+</ul>
+</details>
+<h2 id="per-a-sysadmin">Per a sysadmin<a class="headerlink" href="#per-a-sysadmin" title="Permanent link">&para;</a></h2>
+<h3 id="10-alerta-despai-en-disc">10. Alerta d'espai en disc<a class="headerlink" href="#10-alerta-despai-en-disc" title="Permanent link">&para;</a></h3>
+<p>Mostra l'espai de cada disc i marca en roig els que passen d'un percentatge (80 % per defecte). Ha d'acabar amb codi 1 si n'hi ha algun en alerta.</p>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">disc.ps1</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c"># Mostra l'espai de cada disc i avisa dels que passen d'un percentatge</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">param</span><span class="p">(</span><span class="no">[int]</span><span class="nv">$Llindar</span> <span class="p">=</span> <span class="n">80</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nv">$alertes</span> <span class="p">=</span> <span class="n">0</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nb">Get-PSDrive</span> <span class="n">-PSProvider</span> <span class="n">FileSystem</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Used</span> <span class="o">-ne</span> <span class="nv">$null</span> <span class="o">-and</span> <span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Used</span> <span class="p">+</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Free</span><span class="p">)</span> <span class="o">-gt</span> <span class="n">0</span> <span class="p">}</span> <span class="p">|</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="nv">$total</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Used</span> <span class="p">+</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Free</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>        <span class="nv">$percent</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Used</span> <span class="p">/</span> <span class="nv">$total</span> <span class="p">*</span> <span class="n">100</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>        <span class="nv">$text</span> <span class="p">=</span> <span class="s2">"{0,-15} {1,8:N1} GB {2,5:N0} %"</span> <span class="o">-f</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Root</span><span class="p">,</span> <span class="p">(</span><span class="nv">$total</span> <span class="p">/</span> <span class="n">1GB</span><span class="p">),</span> <span class="nv">$percent</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$percent</span> <span class="o">-ge</span> <span class="nv">$Llindar</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>            <span class="nb">Write-Host</span> <span class="s2">"$text  ALERTA"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>            <span class="nv">$alertes</span><span class="p">++</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>            <span class="nb">Write-Host</span> <span class="nv">$text</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>        <span class="p">}</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>    <span class="p">}</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$alertes</span> <span class="o">-gt</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">exit</span> <span class="n">1</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="n">exit</span> <span class="n">0</span> <span class="p">}</span>    <span class="c"># codi d'eixida útil per a tasques programades</span>
+</code></pre></div>
+<p><code>Get-PSDrive -PSProvider FileSystem</code> torna les unitats (C:, D:...) amb l'espai usat (<code>Used</code>) i lliure (<code>Free</code>). El codi d'eixida (<code>exit 1</code>) permet que una tasca programada o un altre script sàpiga si hi ha hagut alerta.</p>
+</details>
+<h3 id="11-vigilar-serveis">11. Vigilar serveis<a class="headerlink" href="#11-vigilar-serveis" title="Permanent link">&para;</a></h3>
+<p>Comprova si una llista de serveis està en marxa i arranca els que estiguen parats. <strong>Només Windows</strong>, com a administrador.</p>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">serveis.ps1</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c"># Comprova que uns serveis estan en marxa i arranca els que estiguen parats</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c"># (només Windows; cal executar-lo com a administrador per a arrancar-los)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nv">$serveis</span> <span class="p">=</span> <span class="s2">"Spooler"</span><span class="p">,</span> <span class="s2">"W32Time"</span><span class="p">,</span> <span class="s2">"WinRM"</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$nom</span> <span class="k">in</span> <span class="nv">$serveis</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="nv">$s</span> <span class="p">=</span> <span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="nv">$nom</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="nv">$s</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="nb">Write-Host</span> <span class="s2">"$nom no existix en este equip"</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>        <span class="k">continue</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="p">}</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$s</span><span class="p">.</span><span class="n">Status</span> <span class="o">-eq</span> <span class="s2">"Running"</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="nb">Write-Host</span> <span class="s2">"$nom està en marxa"</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="nb">Write-Host</span> <span class="s2">"$nom està parat. Arrancant..."</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>            <span class="nb">Start-Service</span> <span class="n">-Name</span> <span class="nv">$nom</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>            <span class="nb">Write-Host</span> <span class="s2">"  $nom arrancat"</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>        <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>            <span class="nb">Write-Host</span> <span class="s2">"  No s'ha pogut arrancar: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Message</span><span class="p">)</span><span class="s2">"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>        <span class="p">}</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>    <span class="p">}</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>-ErrorAction SilentlyContinue</code> en <code>Get-Service</code>: si el servei no existix, torna <code>$null</code> en compte de donar error.</li>
+<li><code>try</code>/<code>catch</code> amb <code>-ErrorAction Stop</code> per si no es pot arrancar (falta de permisos, servei deshabilitat...).</li>
+</ul>
+</details>
+<h3 id="12-alta-dusuaris-locals-des-dun-csv">12. Alta d'usuaris locals des d'un CSV<a class="headerlink" href="#12-alta-dusuaris-locals-des-dun-csv" title="Permanent link">&para;</a></h3>
+<p>Llig un CSV amb nom, cognom i grup, genera el login (inicials + primer cognom, sense accents) i una contrasenya aleatòria, i crea els usuaris. Per defecte, només ha de <strong>simular</strong>.</p>
+<details class="success">
+<summary>Solució</summary>
+<div class="highlight"><span class="filename">usuaris.csv</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Nom,Cognom,Grup
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Maria Josep,Pons Ferrer,Usuaris
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>Àngela,Bàñez,Administradors
+</code></pre></div>
+<div class="highlight"><span class="filename">alta-locals.ps1</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c"># Crea usuaris locals a partir d'un CSV (Nom,Cognom,Grup)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c"># Sense -Aplica només mostra el que faria. Amb -Aplica cal ser administrador (només Windows).</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">param</span><span class="p">(</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">)]</span><span class="no">[string]</span><span class="nv">$Csv</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="no">[switch]</span><span class="nv">$Aplica</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="p">)</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="k">function</span> <span class="nb">Get-Login</span> <span class="p">{</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="k">param</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$Nom</span><span class="p">,</span> <span class="no">[string]</span><span class="nv">$Cognom</span><span class="p">)</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="c"># Inicials del nom + primer cognom, en minúscules i sense accents</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="nv">$inicials</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$Nom</span> <span class="n">-split</span> <span class="s2">" "</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="p">})</span> <span class="n">-join</span> <span class="s2">""</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="nv">$login</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$inicials</span> <span class="p">+</span> <span class="p">(</span><span class="nv">$Cognom</span> <span class="n">-split</span> <span class="s2">" "</span><span class="p">)[</span><span class="n">0</span><span class="p">]).</span><span class="n">ToLower</span><span class="p">()</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="c"># Llevar accents: separar la lletra de l'accent i quedar-se només amb la lletra</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="nv">$normal</span> <span class="p">=</span> <span class="nv">$login</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="no">[Text.NormalizationForm]</span><span class="p">::</span><span class="n">FormD</span><span class="p">)</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>    <span class="k">return</span> <span class="p">(</span><span class="nv">$normal</span> <span class="o">-replace</span> <span class="s2">"\p{Mn}"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">}</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="k">function</span> <span class="nb">New-Contrasenya</span> <span class="p">{</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>    <span class="nv">$caracters</span> <span class="p">=</span> <span class="no">[char[]]</span><span class="s2">"ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>    <span class="k">return</span> <span class="n">-join</span> <span class="p">(</span><span class="n">1</span><span class="p">..</span><span class="n">12</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nb">Get-Random</span> <span class="n">-InputObject</span> <span class="nv">$caracters</span> <span class="p">})</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="p">}</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$fila</span> <span class="k">in</span> <span class="nb">Import-Csv</span> <span class="nv">$Csv</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>    <span class="nv">$login</span> <span class="p">=</span> <span class="nb">Get-Login</span> <span class="n">-Nom</span> <span class="nv">$fila</span><span class="p">.</span><span class="n">Nom</span> <span class="n">-Cognom</span> <span class="nv">$fila</span><span class="p">.</span><span class="n">Cognom</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>    <span class="nv">$clau</span> <span class="p">=</span> <span class="nb">New-Contrasenya</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$Aplica</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>        <span class="nv">$segura</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="nv">$clau</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>        <span class="nb">New-LocalUser</span> <span class="n">-Name</span> <span class="nv">$login</span> <span class="n">-Password</span> <span class="nv">$segura</span> <span class="n">-FullName</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$fila</span><span class="p">.</span><span class="n">Nom</span><span class="p">)</span><span class="s2"> </span><span class="p">$(</span><span class="nv">$fila</span><span class="p">.</span><span class="n">Cognom</span><span class="p">)</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>        <span class="nb">Add-LocalGroupMember</span> <span class="n">-Group</span> <span class="nv">$fila</span><span class="p">.</span><span class="n">Grup</span> <span class="n">-Member</span> <span class="nv">$login</span>
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>        <span class="nb">Write-Host</span> <span class="s2">"Creat $login en </span><span class="p">$(</span><span class="nv">$fila</span><span class="p">.</span><span class="n">Grup</span><span class="p">)</span><span class="s2">"</span>
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a>        <span class="nb">Write-Host</span> <span class="s2">"SIMULA: New-LocalUser -Name $login -FullName '</span><span class="p">$(</span><span class="nv">$fila</span><span class="p">.</span><span class="n">Nom</span><span class="p">)</span><span class="s2"> </span><span class="p">$(</span><span class="nv">$fila</span><span class="p">.</span><span class="n">Cognom</span><span class="p">)</span><span class="s2">'"</span>
+<a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a>        <span class="nb">Write-Host</span> <span class="s2">"SIMULA: Add-LocalGroupMember -Group </span><span class="p">$(</span><span class="nv">$fila</span><span class="p">.</span><span class="n">Grup</span><span class="p">)</span><span class="s2"> -Member $login"</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a>    <span class="p">}</span>
+<a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="s2">"{0,-12} {1}"</span> <span class="o">-f</span> <span class="nv">$login</span><span class="p">,</span> <span class="nv">$clau</span><span class="p">)</span>
+<a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>.Normalize(FormD)</code> separa cada lletra del seu accent, i <code>-replace "\p{Mn}", ""</code> esborra els accents: <em>Bàñez</em> → <em>banez</em>.</li>
+<li>La contrasenya s'ha de passar a <code>New-LocalUser</code> com a <code>SecureString</code>, per això el <code>ConvertTo-SecureString</code>.</li>
+<li>Amb <code>-Aplica</code> crea els usuaris de veritat: cal executar-lo <strong>com a administrador</strong> en Windows. Per a fer-ho en el Directori Actiu, mira l'exemple d'<a href="../10-sysadmin/#alta-massiva-des-dun-csv">alta massiva en AD</a>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="go">.\alta-locals.ps1 -Csv usuaris.csv</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="go">SIMULA: New-LocalUser -Name mjpons -FullName 'Maria Josep Pons Ferrer'</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="go">SIMULA: Add-LocalGroupMember -Group Usuaris -Member mjpons</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="go">mjpons       QVxYF3b4cdWa</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="go">...</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../10-sysadmin/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 10. PowerShell per a sysadmin">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                10. PowerShell per a sysadmin
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../xuletes/" class="md-footer__link md-footer__link--next" aria-label="Següent: Xuletes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                Xuletes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Apunts ASIR
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
