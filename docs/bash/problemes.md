@@ -530,4 +530,4 @@ Menú per a triar quins processos veure (meus, del terminal o tots). Després de
 
 ### 13. Buscar una paraula en tots els scripts
 
-Està resolt en el [tema 11](11-find-grep-xargs.md#exemple-buscar-una-paraula-en-tots-els-sh).
+Està resolt en el [tema 11](11-find-grep-xargs.md#exemple-buscar-una-paraula-en-tots-els-scripts).

@@ -140,5 +140,20 @@ Paraules que apareixen en els apunts, explicades amb paraules senzilles.
 **Sintaxi**
 :   Les regles d'escriptura d'un llenguatge. Un *error de sintaxi* vol dir que alguna cosa està mal escrita.
 
+**Cmdlet**
+:   Una ordre de PowerShell. Sempre té la forma *Verb-Nom*: `Get-Process`, `New-Item`...
+
+**Propietat**
+:   Una dada d'un objecte. Per exemple, un fitxer té les propietats `Name`, `Length` (mida)... Es llig amb un punt: `$fitxer.Length`.
+
+**Mètode**
+:   Una acció d'un objecte. Es crida amb un punt i parèntesis: `$text.ToUpper()`.
+
+**Política d'execució**
+:   La configuració de Windows que diu si es poden executar scripts de PowerShell. Es canvia amb `Set-ExecutionPolicy`.
+
+**Directori Actiu** (Active Directory)
+:   El servei de Windows Server que guarda els usuaris, grups i equips d'una organització en un sol lloc.
+
 **Classe / Objecte**
 :   Una classe és un motle; un objecte és una cosa concreta creada amb eixe motle.

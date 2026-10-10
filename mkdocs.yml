@@ -1,5 +1,5 @@
 site_name: Apunts ASIR
-site_description: Apunts i xuletes de Bash i Python per al CFGS ASIR
+site_description: Apunts i xuletes de Bash, Python i PowerShell per al CFGS ASIR
 # El teu usuari de GitHub
 site_url: https://jossanmar9.github.io/apunts-asir/
 repo_url: https://github.com/jossanmar9/apunts-asir
@@ -105,6 +105,19 @@ nav:
       - 9. Python per a sysadmin: python/09-sysadmin.md
       - 10. Classes i objectes: python/10-poo.md
       - Exercicis resolts: python/exercicis.md
+  - PowerShell:
+      - powershell/index.md
+      - 1. Primers passos: powershell/01-primers-passos.md
+      - 2. Variables i tipus: powershell/02-variables.md
+      - 3. Operadors: powershell/03-operadors.md
+      - 4. Condicionals: powershell/04-condicionals.md
+      - 5. Bucles: powershell/05-bucles.md
+      - 6. Arrays i taules hash: powershell/06-arrays.md
+      - 7. Tuberies i objectes: powershell/07-tuberies.md
+      - 8. Funcions i paràmetres: powershell/08-funcions.md
+      - 9. Fitxers i errors: powershell/09-fitxers.md
+      - 10. PowerShell per a sysadmin: powershell/10-sysadmin.md
+      - Exercicis resolts: powershell/exercicis.md
   - Xuletes:
       - xuletes/index.md
       - Bash: xuletes/bash.md

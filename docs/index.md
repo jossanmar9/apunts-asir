@@ -26,6 +26,14 @@ Apunts, exemples i exercicis resolts per al **CFGS Administració de Sistemes In
 
     [:octicons-arrow-right-24: Anar a Python](python/index.md)
 
+-   :material-powershell:{ .lg .middle } **PowerShell**
+
+    ---
+
+    El terminal de Windows: cmdlets, objectes i tuberies, scripts amb paràmetres, serveis, usuaris i Directori Actiu. Amb 12 exercicis resolts.
+
+    [:octicons-arrow-right-24: Anar a PowerShell](powershell/index.md)
+
 -   :material-file-document-outline:{ .lg .middle } **Xuletes**
 
     ---
