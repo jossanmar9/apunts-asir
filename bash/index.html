@@ -314,6 +314,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../glossari/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossari
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../bibliografia/" class="md-tabs__link">
         
   
@@ -1533,6 +1552,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../glossari/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossari
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../bibliografia/" class="md-nav__link">
         
   
@@ -1580,6 +1626,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#que-es-aco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què és açò?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ordre-recomanat" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1616,8 +1673,16 @@
 
 
 <h1 id="bash-scripting">Bash scripting<a class="headerlink" href="#bash-scripting" title="Permanent link">&para;</a></h1>
-<p>Un script de Bash és un fitxer de text amb ordres que el shell executa una darrere l'altra. Serveix per a automatitzar el que faries a mà en el terminal: crear usuaris, revisar logs, fer còpies de seguretat, vigilar el disc...</p>
+<h2 id="que-es-aco">Què és açò?<a class="headerlink" href="#que-es-aco" title="Permanent link">&para;</a></h2>
+<p>Quan obris un <strong>terminal</strong> en Linux i escrius ordres com <code>ls</code> o <code>cd</code>, qui les entén i les executa és un programa anomenat <strong>shell</strong>. El shell més habitual és <strong>Bash</strong>.</p>
+<p>Un <strong>script</strong> és simplement un fitxer de text on escrius diverses ordres, una darrere l'altra. Quan l'executes, Bash les fa totes en ordre, com si les escrigueres tu a mà.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple de la vida real</p>
+<p>Cada dia has de copiar els logs a una carpeta, comprimir-los i esborrar els vells. Són 5 ordres. En compte d'escriure-les cada matí, les poses en un fitxer <code>backup.sh</code> i executes només eixe fitxer.</p>
+</div>
+<p>A més d'ordres soltes, un script pot <strong>prendre decisions</strong> (si passa açò, fes allò), <strong>repetir coses</strong> (per a cada fitxer, fes...) i <strong>guardar dades</strong> en variables. Això és el que s'aprén en estos temes.</p>
 <h2 id="ordre-recomanat">Ordre recomanat<a class="headerlink" href="#ordre-recomanat" title="Permanent link">&para;</a></h2>
+<p>Si no has fet mai res, segueix-los en ordre: cada tema usa coses dels anteriors.</p>
 <table>
 <thead>
 <tr>
@@ -1628,58 +1693,63 @@
 <tbody>
 <tr>
 <td><a href="01-primer-script/">1. Primer script</a></td>
-<td>shebang, permisos, com s'executa</td>
+<td>crear un script, donar-li permisos i executar-lo</td>
 </tr>
 <tr>
 <td><a href="02-variables/">2. Variables i paràmetres</a></td>
-<td>variables, <code>$1</code>, <code>$#</code>, <code>"$@"</code>, cometes</td>
+<td>guardar dades i rebre-les en executar l'script</td>
 </tr>
 <tr>
 <td><a href="03-expressions/">3. Aritmètica i comparacions</a></td>
-<td><code>$(( ))</code>, <code>bc</code>, <code>[ ]</code>, <code>[[ ]]</code>, codis d'eixida</td>
+<td>fer comptes i comparar números, textos i fitxers</td>
 </tr>
 <tr>
 <td><a href="04-condicionals/">4. Condicionals</a></td>
-<td><code>if</code>, <code>elif</code>, <code>case</code>, <code>&amp;&amp;</code> i <code>\|\|</code></td>
+<td>prendre decisions amb <code>if</code> i <code>case</code></td>
 </tr>
 <tr>
 <td><a href="05-bucles/">5. Bucles</a></td>
-<td><code>for</code>, <code>while</code>, <code>until</code>, llegir fitxers línia a línia</td>
+<td>repetir ordres amb <code>for</code>, <code>while</code> i <code>until</code></td>
 </tr>
 <tr>
 <td><a href="06-funcions/">6. Funcions</a></td>
-<td><code>return</code> vs <code>echo</code>, <code>local</code>, <code>source</code></td>
+<td>agrupar codi per a reutilitzar-lo</td>
 </tr>
 <tr>
 <td><a href="07-redireccions/">7. Redireccions i tuberies</a></td>
-<td><code>&gt;</code>, <code>2&gt;</code>, <code>/dev/null</code>, <code>\|</code>, here-doc, <code>tee</code></td>
+<td>guardar l'eixida en fitxers i encadenar ordres</td>
 </tr>
 <tr>
 <td><a href="08-lectura/">8. Llegir dades</a></td>
-<td><code>read</code> i les seues opcions, menús amb <code>select</code></td>
+<td>demanar coses a l'usuari amb <code>read</code> i menús</td>
 </tr>
 <tr>
 <td><a href="09-arrays/">9. Arrays</a></td>
-<td>vectors indexats i associatius</td>
+<td>guardar moltes dades en una sola variable</td>
 </tr>
 <tr>
 <td><a href="10-text/">10. Processar text</a></td>
-<td><code>${var#...}</code>, <code>cut</code>, <code>tr</code>, <code>sort</code>, <code>uniq</code>, <code>awk</code>, <code>sed</code></td>
+<td>retallar, ordenar i filtrar text</td>
 </tr>
 <tr>
 <td><a href="11-find-grep-xargs/">11. find, grep i xargs</a></td>
-<td>buscar fitxers i text, passar llistes a ordres</td>
+<td>buscar fitxers i text dins dels fitxers</td>
 </tr>
 <tr>
 <td><a href="12-robustesa/">12. Scripts robustos</a></td>
-<td>validar arguments, <code>set -euo pipefail</code>, <code>trap</code>, depurar</td>
+<td>comprovar errors i depurar</td>
 </tr>
 </tbody>
 </table>
-<p>Després: <a href="metode/">com resoldre un problema</a> pas a pas i una col·lecció de <a href="problemes/">problemes resolts</a>.</p>
+<p>Després: <a href="metode/">com resoldre un problema</a> pas a pas i <a href="problemes/">problemes resolts</a> per a practicar.</p>
+<p>Si et trobes una paraula que no entens (<em>argument</em>, <em>procés</em>, <em>stdout</em>...), mira el <a href="../glossari/">glossari</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Com estudiar açò</p>
-<p>Obri un terminal al costat i prova <strong>cada</strong> exemple. Canvia valors, trenca'l a propòsit i mira què passa. Bash s'aprén executant, no llegint.</p>
+<p>Obri un terminal al costat i <strong>prova cada exemple</strong>. Canvia algun valor i torna a executar-lo. Bash s'aprén fent, no només llegint.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Durant un examen</p>
+<p>Cada tema acaba amb un requadre verd <strong>«Per a l'examen»</strong> amb el més important. Si tens pressa, ves directament allí. La <a href="../xuletes/bash/">xuleta de Bash</a> ho resumix tot en una pàgina.</p>
 </div>
 
 

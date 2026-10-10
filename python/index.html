@@ -314,6 +314,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../glossari/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossari
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../bibliografia/" class="md-tabs__link">
         
   
@@ -1533,6 +1552,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../glossari/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossari
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../bibliografia/" class="md-nav__link">
         
   
@@ -1580,6 +1626,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#que-es-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què és Python?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-que-python-si-ja-se-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per què Python si ja sé Bash?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ordre-recomanat" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1616,8 +1684,53 @@
 
 
 <h1 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
-<p>Python és un llenguatge fàcil de llegir i amb una biblioteca estàndard enorme. Per a un administrador de sistemes és el pas següent quan un script de Bash es fa massa llarg: tractar fitxers, processar logs, parlar amb APIs, automatitzar tasques...</p>
+<h2 id="que-es-python">Què és Python?<a class="headerlink" href="#que-es-python" title="Permanent link">&para;</a></h2>
+<p>Python és un <strong>llenguatge de programació</strong>: una manera d'escriure instruccions perquè l'ordinador les execute. Es diferencia d'altres llenguatges perquè és molt <strong>fàcil de llegir</strong>: quasi sembla anglés.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span> <span class="n">fitxer</span> <span class="ow">in</span> <span class="n">fitxers</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">if</span> <span class="n">fitxer</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".log"</span><span class="p">):</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">fitxer</span><span class="p">)</span>
+</code></pre></div>
+<p>Encara que no sàpies programar, segurament endevines què fa: <em>per a cada fitxer, si acaba en .log, mostra'l</em>.</p>
+<h2 id="per-que-python-si-ja-se-bash">Per què Python si ja sé Bash?<a class="headerlink" href="#per-que-python-si-ja-se-bash" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Bash</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ideal per a</td>
+<td>encadenar ordres del sistema</td>
+<td>programes amb lògica, càlculs i dades</td>
+</tr>
+<tr>
+<td>Números decimals</td>
+<td>no (cal <code>bc</code>)</td>
+<td>sí</td>
+</tr>
+<tr>
+<td>Estructures de dades</td>
+<td>limitades</td>
+<td>llistes, diccionaris... molt potents</td>
+</tr>
+<tr>
+<td>Scripts llargs</td>
+<td>es fan difícils de llegir</td>
+<td>es mantenen clars</td>
+</tr>
+<tr>
+<td>Funciona en</td>
+<td>Linux/Mac</td>
+<td>Linux, Mac i Windows</td>
+</tr>
+</tbody>
+</table>
+<p>En administració de sistemes s'usen tots dos: Bash per a coses ràpides, Python quan el script creix.</p>
 <h2 id="ordre-recomanat">Ordre recomanat<a class="headerlink" href="#ordre-recomanat" title="Permanent link">&para;</a></h2>
+<p>Si no has programat mai, segueix-los en ordre.</p>
 <table>
 <thead>
 <tr>
@@ -1628,50 +1741,51 @@
 <tbody>
 <tr>
 <td><a href="01-entorn/">1. Entorn de treball</a></td>
-<td>intèrpret, scripts, <code>venv</code>, <code>pip</code>, VS Code</td>
+<td>instal·lar, escriure i executar un programa</td>
 </tr>
 <tr>
 <td><a href="02-tipus/">2. Tipus i variables</a></td>
-<td>números, booleans, <code>input</code>, <code>print</code>, conversions</td>
+<td>guardar dades: números, textos, sí/no</td>
 </tr>
 <tr>
 <td><a href="03-cadenes/">3. Cadenes</a></td>
-<td>índexs, slicing, mètodes, f-strings</td>
+<td>treballar amb text</td>
 </tr>
 <tr>
 <td><a href="04-control/">4. Control de flux</a></td>
-<td><code>if</code>, <code>match</code>, <code>while</code>, <code>for</code>, <code>range</code></td>
+<td>prendre decisions (<code>if</code>) i repetir (<code>for</code>, <code>while</code>)</td>
 </tr>
 <tr>
 <td><a href="05-estructures/">5. Estructures de dades</a></td>
-<td>llistes, tuples, diccionaris, conjunts, comprensions</td>
+<td>llistes, diccionaris i altres col·leccions</td>
 </tr>
 <tr>
 <td><a href="06-funcions/">6. Funcions i mòduls</a></td>
-<td>paràmetres, retorn, àmbit, <code>import</code></td>
+<td>organitzar el codi i usar el d'altres</td>
 </tr>
 <tr>
 <td><a href="07-fitxers/">7. Fitxers, pathlib i glob</a></td>
-<td>llegir i escriure, <code>with</code>, CSV, JSON, rutes</td>
+<td>llegir i escriure fitxers, buscar-ne</td>
 </tr>
 <tr>
 <td><a href="08-excepcions/">8. Excepcions</a></td>
-<td><code>try</code>/<code>except</code>, validar dades</td>
+<td>controlar els errors</td>
 </tr>
 <tr>
 <td><a href="09-sysadmin/">9. Python per a sysadmin</a></td>
-<td><code>os</code>, <code>sys</code>, <code>subprocess</code>, <code>shutil</code>, <code>argparse</code>, logs</td>
+<td>executar ordres, arguments, logs...</td>
 </tr>
 <tr>
 <td><a href="10-poo/">10. Classes i objectes</a></td>
-<td><code>class</code>, <code>__init__</code>, mètodes, herència</td>
+<td>crear els teus propis tipus de dades</td>
 </tr>
 </tbody>
 </table>
-<p>Després: <a href="exercicis/">exercicis resolts</a> de dificultat creixent.</p>
+<p>Després: <a href="exercicis/">exercicis resolts</a> per a practicar.</p>
+<p>Si et trobes una paraula que no entens, mira el <a href="../glossari/">glossari</a>.</p>
 <div class="admonition tip">
-<p class="admonition-title">Bash o Python?</p>
-<p><strong>Bash</strong> per a encadenar ordres del sistema en pocs passos. <strong>Python</strong> quan hi ha lògica, càlculs, estructures de dades o més de 50–100 línies. Molts scripts reals combinen tots dos.</p>
+<p class="admonition-title">Durant un examen</p>
+<p>Cada tema acaba amb un requadre verd <strong>«Per a l'examen»</strong> amb el més important. La <a href="../xuletes/python/">xuleta de Python</a> ho resumix tot en una pàgina.</p>
 </div>
 
 
