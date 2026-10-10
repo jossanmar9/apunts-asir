@@ -1,0 +1,122 @@
+site_name: Apunts ASIR
+site_description: Apunts i xuletes del CFGS ASIR — José Vicente Sanjuan
+site_author: José Vicente Sanjuan
+# El teu usuari de GitHub
+site_url: https://jossanmar9.github.io/apunts-asir/
+repo_url: https://github.com/jossanmar9/apunts-asir
+repo_name: apunts-asir
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: ca
+  icon:
+    logo: material/server-network
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Mode fosc
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Mode clar
+  features:
+    - navigation.tabs          # una pestanya per mòdul
+    - navigation.sections
+    - navigation.indexes       # la pàgina index.md de cada carpeta és la portada del mòdul
+    - navigation.top
+    - navigation.footer        # botons Anterior / Següent
+    - search.suggest
+    - search.highlight
+    - content.code.copy        # botó de copiar als blocs de codi
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+
+plugins:
+  - search:
+      lang: [es, en]
+
+markdown_extensions:
+  - admonition               # !!! note / tip / warning
+  - pymdownx.details         # ??? desplegables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys            # ++ctrl+c++
+  - pymdownx.mark
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+nav:
+  - Inici: index.md
+  - Bash:
+      - bash/index.md
+      - 1. Primer script: bash/01-primer-script.md
+      - 2. Variables i paràmetres: bash/02-variables.md
+      - 3. Aritmètica i comparacions: bash/03-expressions.md
+      - 4. Condicionals: bash/04-condicionals.md
+      - 5. Bucles: bash/05-bucles.md
+      - 6. Funcions: bash/06-funcions.md
+      - 7. Redireccions i tuberies: bash/07-redireccions.md
+      - 8. Llegir dades: bash/08-lectura.md
+      - 9. Arrays: bash/09-arrays.md
+      - 10. Processar text: bash/10-text.md
+      - 11. find, grep i xargs: bash/11-find-grep-xargs.md
+      - 12. Scripts robustos: bash/12-robustesa.md
+      - Com resoldre un problema: bash/metode.md
+      - Problemes resolts: bash/problemes.md
+  - Python:
+      - python/index.md
+      - 1. Entorn de treball: python/01-entorn.md
+      - 2. Tipus i variables: python/02-tipus.md
+      - 3. Cadenes: python/03-cadenes.md
+      - 4. Control de flux: python/04-control.md
+      - 5. Estructures de dades: python/05-estructures.md
+      - 6. Funcions i mòduls: python/06-funcions.md
+      - 7. Fitxers, pathlib i glob: python/07-fitxers.md
+      - 8. Excepcions: python/08-excepcions.md
+      - 9. Python per a sysadmin: python/09-sysadmin.md
+      - 10. Classes i objectes: python/10-poo.md
+      - Exercicis resolts: python/exercicis.md
+  - Xuletes:
+      - xuletes/index.md
+      - Bash: xuletes/bash.md
+      - Ordres de Linux: xuletes/linux.md
+      - Python: xuletes/python.md
+      - Git: xuletes/git.md
+      - PowerShell: xuletes/powershell.md
+  - Bibliografia: bibliografia.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jossanmar9
+
+copyright: Apunts personals de José Vicente Sanjuan · CFGS ASIR · IES El Caminàs
