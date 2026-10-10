@@ -17,13 +17,15 @@ En quina unitat està? (C/F): c
 ??? success "Solució"
 
     ```python title="temperatura.py"
-    grau = float(input("Temperatura: "))
-    unitat = input("En quina unitat està? (C/F): ").strip().upper()
+    grau = float(input("Temperatura: "))                        # float: pot tindre decimals
+    unitat = input("En quina unitat està? (C/F): ").strip().upper()   # lleva espais i passa a majúscula
 
     if unitat == "C":
-        print(f"{grau} °C = {grau * 9 / 5 + 32:.1f} °F")
+        fahrenheit = grau * 9 / 5 + 32                          # fórmula de C a F
+        print(f"{grau} °C = {fahrenheit:.1f} °F")               # .1f → 1 decimal
     elif unitat == "F":
-        print(f"{grau} °F = {(grau - 32) * 5 / 9:.1f} °C")
+        celsius = (grau - 32) * 5 / 9                           # fórmula de F a C
+        print(f"{grau} °F = {celsius:.1f} °C")
     else:
         print("Unitat desconeguda")
     ```
@@ -37,17 +39,23 @@ Demana notes fins que l'usuari prema Intro sense escriure res. Mostra la mitjana
 ??? success "Solució"
 
     ```python title="notes.py"
-    notes = []
-    while (text := input("Nota (Intro per a acabar): ")) != "":
+    notes = []                                       # llista buida on guardarem les notes
+
+    # Demanem notes fins que l'usuari prema Intro sense escriure res
+    while True:
+        text = input("Nota (Intro per a acabar): ")
+        if text == "":                               # si no ha escrit res...
+            break                                    # ...acabem
         nota = float(text)
         if 0 <= nota <= 10:
-            notes.append(nota)
+            notes.append(nota)                       # afegim la nota a la llista
         else:
             print("La nota ha d'estar entre 0 i 10")
 
-    if not notes:
+    if not notes:                                    # si la llista està buida
         print("No has introduït cap nota")
     else:
+        # Diccionari per a comptar quantes notes hi ha de cada categoria
         categories = {"Suspés": 0, "Aprovat": 0, "Notable": 0, "Excel·lent": 0}
         for n in notes:
             if n < 5:
@@ -59,14 +67,16 @@ Demana notes fins que l'usuari prema Intro sense escriure res. Mostra la mitjana
             else:
                 categories["Excel·lent"] += 1
 
-        print(f"\nAlumnes: {len(notes)}  Mitjana: {sum(notes) / len(notes):.2f}")
+        mitjana = sum(notes) / len(notes)
+        print(f"\nAlumnes: {len(notes)}  Mitjana: {mitjana:.2f}")
         for nom, quants in categories.items():
-            print(f"{nom:<11}{quants:>3}  ({quants / len(notes):.0%})")
+            percentatge = quants / len(notes)
+            print(f"{nom:<11}{quants:>3}  ({percentatge:.0%})")   # :.0% → percentatge sense decimals
     ```
 
-    - L'operador morsa `:=` llig i comprova en la mateixa línia.
-    - Un diccionari fa de comptador per a cada categoria.
-    - `{x:.0%}` mostra un tant per u com a percentatge.
+    - `while True` amb `break` repetix fins que l'usuari deixa la resposta buida.
+    - Un diccionari fa de comptador: una clau per categoria i el valor és quantes n'hi ha.
+    - `{x:.0%}` mostra un número com 0.4 en forma de percentatge (40%).
 
 ### 3. Any de traspàs
 
@@ -76,11 +86,18 @@ Fes una funció que diga si un any és de traspàs.
 
     ```python title="traspas.py"
     def es_traspas(any_):
-        """Divisible per 4, excepte els seculars que no ho són per 400."""
+        """Torna True si l'any és de traspàs.
+
+        Regla: divisible per 4, EXCEPTE els acabats en 00,
+        que només ho són si també són divisibles per 400.
+        """
         return any_ % 4 == 0 and (any_ % 100 != 0 or any_ % 400 == 0)
 
     for a in (1900, 2000, 2024, 2026):
-        print(a, "és de traspàs" if es_traspas(a) else "no és de traspàs")
+        if es_traspas(a):
+            print(a, "és de traspàs")
+        else:
+            print(a, "no és de traspàs")
     ```
 
     La regla completa: divisible per 4, **excepte** els anys acabats en 00, que només ho són si són divisibles per 400 (2000 sí, 1900 no).
@@ -93,12 +110,14 @@ Calcula el MCD de dos números amb l'algorisme d'Euclides, i amb ell el mínim c
 
     ```python title="mcd.py"
     def mcd(a, b):
-        """Algorisme d'Euclides: mcd(a, b) = mcd(b, a % b) fins que b siga 0."""
+        """Màxim comú divisor amb l'algorisme d'Euclides."""
+        # Mentre b no siga 0: a passa a ser b, i b passa a ser el residu de a / b
         while b != 0:
-            a, b = b, a % b
-        return a
+            a, b = b, a % b          # les dues assignacions alhora
+        return a                     # quan b és 0, a és el MCD
 
     def mcm(a, b):
+        """Mínim comú múltiple: a * b / mcd(a, b)."""
         return a * b // mcd(a, b)
 
     print(mcd(48, 18))   # 6
@@ -115,22 +134,24 @@ Factorial d'un número de forma iterativa i recursiva, i el nombre combinatori *
 
     ```python title="factorial.py"
     def factorial_iteratiu(n):
+        """n! = 1 * 2 * 3 * ... * n, amb un bucle."""
         resultat = 1
-        for i in range(2, n + 1):
-            resultat *= i
+        for i in range(2, n + 1):    # de 2 fins a n (inclòs)
+            resultat *= i            # multiplica pel següent
         return resultat
 
     def factorial_recursiu(n):
-        if n <= 1:
+        """n! = n * (n-1)!, la funció es crida a si mateixa."""
+        if n <= 1:                   # cas base: 0! = 1! = 1
             return 1
         return n * factorial_recursiu(n - 1)
 
     def combinatori(n, m):
-        """Formes de triar m elements de n: n! / (m! (n-m)!)"""
+        """Formes de triar m elements de n: n! / (m! * (n-m)!)"""
         return factorial_iteratiu(n) // (factorial_iteratiu(m) * factorial_iteratiu(n - m))
 
     print(factorial_iteratiu(5), factorial_recursiu(5))   # 120 120
-    print(combinatori(49, 6))                             # 13983816 (la primitiva)
+    print(combinatori(49, 6))                             # 13983816 (combinacions de la primitiva)
     ```
 
     La versió recursiva és més semblant a la definició matemàtica, però per a números molt grans (més de ~1000) supera el límit de recursió de Python. La iterativa no té eixe problema.
@@ -143,12 +164,12 @@ Torna els *n* primers termes de la successió de Fibonacci (cada terme és la su
 
     ```python title="fibonacci.py"
     def fibonacci(n):
-        """Torna una llista amb els n primers termes."""
+        """Torna una llista amb els n primers termes de Fibonacci."""
         termes = []
-        a, b = 0, 1
-        for _ in range(n):
+        a, b = 0, 1                  # els dos primers termes
+        for _ in range(n):           # _ perquè no necessitem el número de volta
             termes.append(a)
-            a, b = b, a + b
+            a, b = b, a + b          # el següent és la suma dels dos anteriors
         return termes
 
     print(fibonacci(12))   # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
@@ -170,16 +191,27 @@ Al revés:  daba le arroz al a zorra elabaD
     ```python title="cadena.py"
     text = input("Escriu un text: ")
 
+    # Invertir sense [::-1]: posem cada lletra DAVANT de les que ja tenim
     invertit = ""
     for lletra in text:
-        invertit = lletra + invertit      # cada lletra va davant de les anteriors
+        invertit = lletra + invertit
 
-    vocals = sum(1 for c in text.lower() if c in "aeiouàèéíòóúü")
+    # Comptar vocals: recorrem el text en minúscules i comptem les que són vocal
+    vocals = 0
+    for c in text.lower():
+        if c in "aeiouàèéíòóúü":
+            vocals += 1
 
-    print(f"Al revés:  {invertit}")
+    print(f"Al revés:   {invertit}")
     print(f"Majúscules: {text.upper()}")
-    print(f"Longitud:  {len(text)}  Vocals: {vocals}")
-    print("És un palíndrom" if text.lower().replace(" ", "") == invertit.lower().replace(" ", "") else "No és un palíndrom")
+    print(f"Longitud:   {len(text)}  Vocals: {vocals}")
+
+    # Palíndrom: es llig igual al revés (sense comptar espais ni majúscules)
+    net = text.lower().replace(" ", "")
+    if net == net[::-1]:
+        print("És un palíndrom")
+    else:
+        print("No és un palíndrom")
     ```
 
     Amb slicing seria `text[::-1]`, però fer-ho amb un bucle ajuda a entendre com es construïx una cadena pas a pas.
@@ -195,17 +227,22 @@ Demana números fins que s'escriga 0. Mostra la suma, la mitjana, el major i la 
     while True:
         n = int(input("Número (0 per a acabar): "))
         if n == 0:
-            break
+            break                    # el 0 indica que s'ha acabat
         nums.append(n)
 
-    if nums:
-        parells = sum(n for n in nums if n % 2 == 0)
-        senars = sum(n for n in nums if n % 2 != 0)
+    if nums:                         # si s'ha escrit almenys un número
+        parells = 0
+        senars = 0
+        for n in nums:
+            if n % 2 == 0:           # residu 0 en dividir per 2 → parell
+                parells += n
+            else:
+                senars += n
         print(f"Suma: {sum(nums)}  Mitjana: {sum(nums) / len(nums):.2f}  Major: {max(nums)}")
         print(f"Suma dels parells: {parells}  Suma dels senars: {senars}")
     ```
 
-    `sum(n for n in nums if n % 2 == 0)` suma només els que complixen la condició, sense crear una llista intermèdia.
+    Per a saber si un número és parell es mira el residu de dividir-lo per 2: `n % 2 == 0`.
 
 ### 9. Tipus de triangle
 
@@ -214,19 +251,26 @@ Demana tres costats, comprova que formen un triangle i diu si és equilàter, is
 ??? success "Solució"
 
     ```python title="triangle.py"
-    a, b, c = sorted(float(input(f"Costat {i}: ")) for i in (1, 2, 3))
+    # Demanem els 3 costats i els ordenem de menor a major (a <= b <= c)
+    costats = []
+    for i in (1, 2, 3):
+        costats.append(float(input(f"Costat {i}: ")))
+    a, b, c = sorted(costats)
 
+    # Perquè siga un triangle, els dos menuts han de sumar més que el gran
     if a + b <= c:
         print("Amb eixos costats no es pot fer un triangle")
     else:
         if a == b == c:
-            tipus = "equilàter"
+            tipus = "equilàter"      # tres iguals
         elif a == b or b == c:
-            tipus = "isòsceles"
+            tipus = "isòsceles"      # dos iguals
         else:
-            tipus = "escalé"
+            tipus = "escalé"         # tots diferents
+
+        # Àrea amb la fórmula d'Heró (només cal saber els costats)
         s = (a + b + c) / 2
-        area = (s * (s - a) * (s - b) * (s - c)) ** 0.5     # fórmula d'Heró
+        area = (s * (s - a) * (s - b) * (s - c)) ** 0.5     # ** 0.5 = arrel quadrada
         print(f"Triangle {tipus}, àrea {area:.2f}")
     ```
 
@@ -239,7 +283,7 @@ Resol *ax² + bx + c = 0* (només solucions reals).
 ??? success "Solució"
 
     ```python title="equacio.py"
-    import math
+    import math                      # per a math.sqrt (arrel quadrada)
 
     print("ax² + bx + c = 0")
     a = float(input("a: "))
@@ -249,14 +293,14 @@ Resol *ax² + bx + c = 0* (només solucions reals).
     if a == 0:
         print("No és de segon grau")
     else:
-        disc = b ** 2 - 4 * a * c
-        if disc > 0:
+        disc = b ** 2 - 4 * a * c    # el discriminant diu quantes solucions hi ha
+        if disc > 0:                 # dues solucions
             x1 = (-b + math.sqrt(disc)) / (2 * a)
             x2 = (-b - math.sqrt(disc)) / (2 * a)
             print(f"Dues solucions: {x1:g} i {x2:g}")
-        elif disc == 0:
+        elif disc == 0:              # una solució
             print(f"Una solució doble: {-b / (2 * a):g}")
-        else:
+        else:                        # disc negatiu: l'arrel no existix en els reals
             print("No té solucions reals")
     ```
 
@@ -278,15 +322,16 @@ $ python3 wc.py prova.txt
     ```python title="wc.py"
     import sys
 
+    # Comprovem que ens han passat el nom del fitxer
     if len(sys.argv) != 2:
         sys.exit(f"Ús: {sys.argv[0]} <fitxer>")
 
+    linies = paraules = caracters = 0        # tres comptadors a 0
     try:
         with open(sys.argv[1], encoding="utf-8") as f:
-            linies = paraules = caracters = 0
-            for linia in f:
+            for linia in f:                  # recorrem línia a línia
                 linies += 1
-                paraules += len(linia.split())
+                paraules += len(linia.split())   # split() talla en paraules
                 caracters += len(linia)
     except FileNotFoundError:
         sys.exit(f"No existix: {sys.argv[1]}")
@@ -306,37 +351,42 @@ Agenda de contactes amb menú (afegir, buscar, llistar, esborrar) que es guarde 
     import json
     from pathlib import Path
 
-    FITXER = Path("agenda.json")
+    FITXER = Path("agenda.json")             # on es guarden les dades
 
     def carrega():
+        """Llig l'agenda del fitxer. Si no existix, torna una agenda buida."""
         if FITXER.exists():
             return json.loads(FITXER.read_text(encoding="utf-8"))
         return {}
 
     def guarda(agenda):
+        """Guarda l'agenda en el fitxer en format JSON."""
         FITXER.write_text(json.dumps(agenda, indent=2, ensure_ascii=False), encoding="utf-8")
 
     def main():
-        agenda = carrega()
+        agenda = carrega()                   # diccionari: nom → {telefon, correu}
         while True:
             print("\n1) Afegir  2) Buscar  3) Llistar  4) Esborrar  5) Eixir")
             opcio = input("> ").strip()
             match opcio:
                 case "1":
                     nom = input("Nom: ").strip()
-                    agenda[nom] = {"telefon": input("Telèfon: "), "correu": input("Correu: ")}
+                    telefon = input("Telèfon: ")
+                    correu = input("Correu: ")
+                    agenda[nom] = {"telefon": telefon, "correu": correu}
                     guarda(agenda)
                 case "2":
                     text = input("Buscar: ").lower()
                     for nom, dades in agenda.items():
-                        if text in nom.lower():
+                        if text in nom.lower():          # busca sense distingir majúscules
                             print(f"{nom}: {dades['telefon']}  {dades['correu']}")
                 case "3":
-                    for nom in sorted(agenda):
+                    for nom in sorted(agenda):           # en ordre alfabètic
                         print(f"{nom:<20}{agenda[nom]['telefon']:<12}{agenda[nom]['correu']}")
                 case "4":
                     nom = input("Nom a esborrar: ")
-                    if agenda.pop(nom, None) is not None:
+                    if nom in agenda:
+                        del agenda[nom]
                         guarda(agenda)
                         print("Esborrat")
                     else:
@@ -351,7 +401,7 @@ Agenda de contactes amb menú (afegir, buscar, llistar, esborrar) que es guarde 
     ```
 
     - El diccionari té el nom com a clau i un altre diccionari amb les dades com a valor.
-    - `agenda.pop(nom, None)` esborra i torna el valor, o `None` si no existia, sense donar error.
+    - `if nom in agenda` comprova que el contacte existix abans d'esborrar-lo amb `del`.
     - `ensure_ascii=False` guarda els accents tal qual en compte de `\u00e0`.
 
 ### 13. Calculadora de subxarxes
@@ -374,32 +424,37 @@ Hosts        62
     import ipaddress
 
     def ip_a_int(ip):
+        """'192.168.10.77' → un sol número de 32 bits."""
         a, b, c, d = (int(x) for x in ip.split("."))
+        # Cada octet es desplaça (<<) a la seua posició dins dels 32 bits
         return (a << 24) | (b << 16) | (c << 8) | d
 
     def int_a_ip(n):
+        """Un número de 32 bits → '192.168.10.77'."""
+        # Traiem cada octet desplaçant cap a la dreta i quedant-nos amb 8 bits (& 255)
         return ".".join(str((n >> despl) & 255) for despl in (24, 16, 8, 0))
 
     def calcula(cidr):
-        ip, prefix = cidr.split("/")
+        ip, prefix = cidr.split("/")         # "192.168.10.77/26" → "192.168.10.77" i "26"
         prefix = int(prefix)
+        # Màscara: tants 1 com diga el prefix, i la resta 0
         mascara = (0xFFFFFFFF << (32 - prefix)) & 0xFFFFFFFF
-        xarxa = ip_a_int(ip) & mascara
-        broadcast = xarxa | (~mascara & 0xFFFFFFFF)
+        xarxa = ip_a_int(ip) & mascara                      # posa a 0 els bits de host
+        broadcast = xarxa | (~mascara & 0xFFFFFFFF)         # posa a 1 els bits de host
         return {
             "Màscara": int_a_ip(mascara),
             "Xarxa": int_a_ip(xarxa),
             "Broadcast": int_a_ip(broadcast),
             "Primer host": int_a_ip(xarxa + 1),
             "Últim host": int_a_ip(broadcast - 1),
-            "Hosts": 2 ** (32 - prefix) - 2,
+            "Hosts": 2 ** (32 - prefix) - 2,                # totes menys xarxa i broadcast
         }
 
     cidr = input("IP/prefix (p. ex. 192.168.10.77/26): ")
     for clau, valor in calcula(cidr).items():
         print(f"{clau:<12} {valor}")
 
-    # Comprovació amb la biblioteca estàndard
+    # Comprovació amb el mòdul estàndard ipaddress
     xarxa = ipaddress.ip_interface(cidr).network
     print(f"\nipaddress diu: {xarxa}, broadcast {xarxa.broadcast_address}, {xarxa.num_addresses - 2} hosts")
     ```
@@ -419,29 +474,30 @@ Ordena una llista amb el mètode de la bombolla i busca un element amb cerca bin
 
     ```python title="ordenacio.py"
     def bombolla(nums):
-        v = nums.copy()
+        """Ordena una llista pel mètode de la bombolla."""
+        v = nums.copy()                      # treballem sobre una còpia
         n = len(v)
-        for i in range(n - 1):
+        for i in range(n - 1):               # n-1 passades
             canvis = False
-            for j in range(n - 1 - i):
-                if v[j] > v[j + 1]:
-                    v[j], v[j + 1] = v[j + 1], v[j]
+            for j in range(n - 1 - i):       # compara cada parella de veïns
+                if v[j] > v[j + 1]:          # si estan en mal ordre...
+                    v[j], v[j + 1] = v[j + 1], v[j]   # ...els intercanvia
                     canvis = True
-            if not canvis:          # ja està ordenada
+            if not canvis:                   # si no hi ha hagut cap canvi, ja està ordenada
                 break
         return v
 
     def cerca_binaria(v, buscat):
-        """Torna la posició de buscat en la llista ORDENADA v, o -1."""
-        esq, dre = 0, len(v) - 1
+        """Torna la posició de buscat en la llista ORDENADA v, o -1 si no hi és."""
+        esq, dre = 0, len(v) - 1             # busquem entre esq i dre
         while esq <= dre:
-            mig = (esq + dre) // 2
+            mig = (esq + dre) // 2           # mirem el del mig
             if v[mig] == buscat:
                 return mig
             if v[mig] < buscat:
-                esq = mig + 1
+                esq = mig + 1                # està en la meitat de la dreta
             else:
-                dre = mig - 1
+                dre = mig - 1                # està en la meitat de l'esquerra
         return -1
 
     dades = [42, 7, 19, 3, 88, 23, 15]
@@ -463,24 +519,41 @@ Funcions per a transposar una matriu i multiplicar dues matrius quadrades.
 
     ```python title="matrius.py"
     def transposa(m):
-        return [[m[f][c] for f in range(len(m))] for c in range(len(m[0]))]
+        """Les files passen a ser columnes."""
+        files = len(m)
+        columnes = len(m[0])
+        resultat = []
+        for c in range(columnes):
+            nova_fila = []
+            for f in range(files):
+                nova_fila.append(m[f][c])
+            resultat.append(nova_fila)
+        return resultat
 
     def multiplica(a, b):
+        """Multiplica dues matrius quadrades: cada element és fila de a × columna de b."""
         n = len(a)
-        return [[sum(a[i][k] * b[k][j] for k in range(n)) for j in range(n)] for i in range(n)]
+        resultat = []
+        for i in range(n):
+            fila = []
+            for j in range(n):
+                suma = 0
+                for k in range(n):
+                    suma += a[i][k] * b[k][j]
+                fila.append(suma)
+            resultat.append(fila)
+        return resultat
 
     def mostra(m):
         for fila in m:
             print(" ".join(f"{x:4}" for x in fila))
 
-    a = [[1, 2], [3, 4]]
-    b = [[5, 6], [7, 8]]
     mostra(transposa([[1, 2, 3], [4, 5, 6]]))
     print()
-    mostra(multiplica(a, b))
+    mostra(multiplica([[1, 2], [3, 4]], [[5, 6], [7, 8]]))
     ```
 
-    Les comprensions niades es lligen de fora cap a dins: la de fora crea les files i la de dins els elements de cada fila.
+    Per a multiplicar matrius calen tres bucles: `i` recorre les files del resultat, `j` les columnes, i `k` fa la suma de *fila de a × columna de b*.
 
 ## Per a sysadmin
 
@@ -497,25 +570,32 @@ Mostra l'ús de cada sistema de fitxers i marca els que superen un llindar (80 %
     import subprocess
     import sys
 
+    # El llindar es pot passar per argument; si no, 80 %
     LLINDAR = int(sys.argv[1]) if len(sys.argv) > 1 else 80
 
+    # df -P llista els sistemes de fitxers; -x exclou els virtuals que no interessen
     r = subprocess.run(["df", "-P", "-x", "tmpfs", "-x", "devtmpfs", "-x", "squashfs", "-x", "overlay"],
                        capture_output=True, text=True)
+    # Ens quedem amb l'última columna (punt de muntatge), saltant la capçalera
     punts = [linia.split()[-1] for linia in r.stdout.splitlines()[1:]]
 
     alertes = 0
     print(f"{'PUNT':<20}{'TOTAL':>9}{'USAT':>9}{'%':>6}")
     for punt in punts:
-        total, usat, _ = shutil.disk_usage(punt)
+        total, usat, _ = shutil.disk_usage(punt)     # espai en bytes
         percent = usat / total * 100
-        marca = "  ⚠️" if percent >= LLINDAR else ""
-        alertes += percent >= LLINDAR
+        if percent >= LLINDAR:
+            marca = "  ⚠️"
+            alertes += 1
+        else:
+            marca = ""
         print(f"{punt:<20}{total / 1e9:>8.1f}G{usat / 1e9:>8.1f}G{percent:>5.0f}%{marca}")
 
+    # Codi d'eixida: 1 si hi ha alguna alerta (útil per a cron o altres scripts)
     sys.exit(1 if alertes else 0)
     ```
 
-    `df -P` dona una eixida estable d'una línia per sistema; d'ella només traiem els punts de muntatge i les xifres les calcula `shutil.disk_usage`. `alertes += condicio` funciona perquè `True` val 1.
+    `df -P` mostra una línia per cada disc; d'ella només traiem el punt de muntatge (l'última columna). Les xifres les calcula `shutil.disk_usage`.
 
 ### 17. Còpies de seguretat amb rotació
 
@@ -531,6 +611,7 @@ Comprimix un directori en un `.tar.gz` amb la data i l'hora al nom, i conserva n
     from datetime import datetime
     from pathlib import Path
 
+    # Arguments: origen, destí i (opcional) quantes còpies conservar
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("origen", type=Path)
     p.add_argument("desti", type=Path)
@@ -538,16 +619,18 @@ Comprimix un directori en un `.tar.gz` amb la data i l'hora al nom, i conserva n
     args = p.parse_args()
 
     if not args.origen.is_dir():
-        p.error(f"{args.origen} no és un directori")
-    args.desti.mkdir(parents=True, exist_ok=True)
+        p.error(f"{args.origen} no és un directori")       # mostra l'error i ix
+    args.desti.mkdir(parents=True, exist_ok=True)          # crea el destí si cal
 
+    # Nom amb data i hora: Documents_20261010_174118
     nom = f"{args.origen.name}_{datetime.now():%Y%m%d_%H%M%S}"
     fitxer = shutil.make_archive(str(args.desti / nom), "gztar", root_dir=args.origen)
     print(f"Creat {fitxer} ({Path(fitxer).stat().st_size / 1024:.1f} KiB)")
 
+    # Rotació: llistem les còpies ordenades (per la data del nom) i esborrem les velles
     copies = sorted(args.desti.glob(f"{args.origen.name}_*.tar.gz"))
-    for vella in copies[:-args.conserva]:
-        vella.unlink()
+    for vella in copies[:-args.conserva]:                  # totes menys les N últimes
+        vella.unlink()                                     # esborrar el fitxer
         print(f"Esborrada {vella.name}")
     ```
 
@@ -583,14 +666,16 @@ Llig un CSV amb nom, cognom i grup, genera un login i una contrasenya aleatòria
     import unicodedata
 
     def sense_accents(text):
+        """Bàñez → Banez"""
         return unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
 
     def login(nom, cognom):
-        """Maria Josep, Pons Ferrer → mjpons"""
+        """Inicials del nom + primer cognom: Maria Josep, Pons Ferrer → mjpons"""
         inicials = "".join(paraula[0] for paraula in nom.split())
         return sense_accents(inicials + cognom.split()[0]).lower()
 
     def contrasenya(longitud=12):
+        """Contrasenya aleatòria segura amb lletres i números."""
         caracters = string.ascii_letters + string.digits
         return "".join(secrets.choice(caracters) for _ in range(longitud))
 
@@ -600,20 +685,20 @@ Llig un CSV amb nom, cognom i grup, genera un login i una contrasenya aleatòria
     args = p.parse_args()
 
     with open(args.csv, newline="", encoding="utf-8") as f:
-        for fila in csv.DictReader(f):
+        for fila in csv.DictReader(f):                     # cada fila: {"nom":..., "cognom":..., "grup":...}
             usuari = login(fila["nom"], fila["cognom"])
             clau = contrasenya()
             ordres = [
-                ["groupadd", "-f", fila["grup"]],
+                ["groupadd", "-f", fila["grup"]],          # crea el grup (-f: sense error si ja existix)
                 ["useradd", "-m", "-s", "/bin/bash", "-g", fila["grup"],
                  "-c", f"{fila['nom']} {fila['cognom']}", usuari],
             ]
-            if args.aplica:
+            if args.aplica:                                # mode real (cal ser root)
                 for ordre in ordres:
                     subprocess.run(ordre, check=True)
                 subprocess.run(["chpasswd"], input=f"{usuari}:{clau}", text=True, check=True)
                 subprocess.run(["chage", "-d", "0", usuari], check=True)   # canviar en el primer login
-            else:
+            else:                                          # mode simulació: només mostra
                 for ordre in ordres:
                     print("SIMULA:", shlex.join(ordre))
             print(f"{usuari:<12} {clau}")
@@ -645,6 +730,7 @@ Mou cada fitxer d'una carpeta a una subcarpeta segons el seu tipus (imatges, doc
     import sys
     from pathlib import Path
 
+    # Quines extensions van a cada carpeta
     TIPUS = {
         "Imatges": {".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg"},
         "Documents": {".pdf", ".docx", ".odt", ".txt", ".md", ".xlsx", ".pptx"},
@@ -653,23 +739,29 @@ Mou cada fitxer d'una carpeta a una subcarpeta segons el seu tipus (imatges, doc
     }
 
     def categoria(fitxer):
+        """Torna el nom de la carpeta on ha d'anar el fitxer."""
         for nom, extensions in TIPUS.items():
-            if fitxer.suffix.lower() in extensions:
+            if fitxer.suffix.lower() in extensions:        # .JPG i .jpg compten igual
                 return nom
         return "Altres"
 
+    # Carpeta: la passada per argument, o ~/Descàrregues
     carpeta = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.home() / "Descàrregues"
+
     moguts = 0
     for fitxer in carpeta.iterdir():
-        if not fitxer.is_file() or fitxer.name.startswith("."):
+        if not fitxer.is_file() or fitxer.name.startswith("."):   # saltem carpetes i ocults
             continue
         desti = carpeta / categoria(fitxer)
-        desti.mkdir(exist_ok=True)
+        desti.mkdir(exist_ok=True)                         # crea la subcarpeta si no existix
+
+        # Si ja hi ha un fitxer amb el mateix nom, afegim _1, _2... per no xafar-lo
         nou = desti / fitxer.name
         n = 1
-        while nou.exists():                     # no xafar si ja n'hi ha un amb el mateix nom
+        while nou.exists():
             nou = desti / f"{fitxer.stem}_{n}{fitxer.suffix}"
             n += 1
+
         shutil.move(fitxer, nou)
         moguts += 1
         print(f"{fitxer.name} → {desti.name}/")

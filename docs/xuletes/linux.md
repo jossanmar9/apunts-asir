@@ -19,7 +19,7 @@
 | ----------- | ------ |
 | `grep -rni "text" dir/` | Busca text recursivament |
 | `cut -d: -f1 /etc/passwd` | Talla columnes |
-| `sort \| uniq -c` | Ordena i compta repetits |
+| <code>sort &#124; uniq -c</code> | Ordena i compta repetits |
 | `wc -l` | Compta línies |
 | `tail -f fitxer.log` | Segueix un log en directe |
 | `sed 's/vell/nou/g'` | Substitueix text |
@@ -40,7 +40,7 @@
 
 | Comandament | Què fa |
 | ----------- | ------ |
-| `ps aux \| grep nom` | Busca un procés |
+| <code>ps aux &#124; grep nom</code> | Busca un procés |
 | `top` / `htop` | Monitor en directe |
 | `kill -9 PID` | Mata un procés |
 | `systemctl status nom` | Estat d'un servei |

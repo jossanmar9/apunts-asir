@@ -18,13 +18,19 @@ Pons Ferrer, Laura
     ```bash title="nom.sh"
     #!/bin/bash
     # Ús: ./nom.sh Nom Cognom1 Cognom2
+
+    # Comprovem que ens han passat exactament 3 arguments
     if [ $# -ne 3 ]; then
         echo "Ús: $0 nom cognom1 cognom2" >&2
         exit 1
     fi
+
+    # Guardem cada argument en una variable amb nom clar
     nom=$1
     cognom1=$2
     cognom2=$3
+
+    # Els mostrem en l'ordre que demana l'enunciat
     echo "$cognom1 $cognom2, $nom"
     ```
 
@@ -44,16 +50,18 @@ NO! El número secret és menor
     ```bash title="endevina.sh"
     #!/bin/bash
     # Ús: ./endevina.sh <número>
-    secret=4
+    secret=4                                 # el número que s'ha d'endevinar
 
+    # Comprovem que hi ha 1 argument i que és un número
     [ $# -eq 1 ] || { echo "Ús: $0 <número>" >&2; exit 1; }
     [[ $1 =~ ^[0-9]+$ ]] || { echo "'$1' no és un número" >&2; exit 1; }
 
+    # Comparem el número de l'usuari ($1) amb el secret
     if (( $1 == secret )); then
         echo "Encertat!"
-    elif (( secret < $1 )); then
+    elif (( secret < $1 )); then             # l'usuari ha dit un número massa gran
         echo "NO! El número secret és menor"
-    else
+    else                                     # l'usuari ha dit un número massa menut
         echo "NO! El número secret és major"
     fi
     ```
@@ -62,20 +70,21 @@ NO! El número secret és menor
 
     ```bash title="endevina2.sh"
     #!/bin/bash
-    secret=$(( RANDOM % 100 + 1 ))
-    intents=0
+    secret=$(( RANDOM % 100 + 1 ))           # número a l'atzar entre 1 i 100
+    intents=0                                # comptador d'intents
 
-    while true; do
+    while true; do                           # repetim fins que l'encerte (break)
         read -rp "Número (1-100): " n
+        # Si no és un número, avisem i tornem a preguntar sense comptar l'intent
         [[ $n =~ ^[0-9]+$ ]] || { echo "Escriu un número"; continue; }
-        (( intents++ ))
+        (( intents++ ))                      # sumem 1 intent
         if (( n < secret )); then
             echo "Més amunt"
         elif (( n > secret )); then
             echo "Més avall"
         else
             echo "Encertat en $intents intents!"
-            break
+            break                            # ix del bucle
         fi
     done
     ```
@@ -90,7 +99,11 @@ Rep dos enters per argument i diu quin és el major i quin el menor (o si són i
 
     ```bash title="major.sh"
     #!/bin/bash
+    # Ús: ./major.sh n1 n2
+
     [ $# -eq 2 ] || { echo "Ús: $0 n1 n2" >&2; exit 1; }
+
+    # Comprovem que tots dos són enters (poden ser negatius)
     for n in "$1" "$2"; do
         [[ $n =~ ^-?[0-9]+$ ]] || { echo "'$n' no és un enter" >&2; exit 1; }
     done
@@ -114,12 +127,14 @@ Compte enrere des del número que es passa per argument (10 si no se'n passa cap
 
     ```bash title="compte.sh"
     #!/bin/bash
-    inici=${1:-10}
+    # Ús: ./compte.sh [segons]   (10 si no se n'indica cap)
+    inici=${1:-10}                           # $1, o 10 si està buit
     [[ $inici =~ ^[0-9]+$ ]] || { echo "Ús: $0 [segons]" >&2; exit 1; }
 
+    # Comptem cap enrere: des d'inici fins a 1
     for (( i=inici; i>0; i-- )); do
-        printf "\r%3d " "$i"
-        sleep 1
+        printf "\r%3d " "$i"                 # \r torna al principi de la línia
+        sleep 1                              # espera 1 segon
     done
     printf "\rTemps!\n"
     ```
@@ -142,18 +157,22 @@ $ ./calcula.sh multiplicar 2 3 4
     ```bash title="calcula.sh"
     #!/bin/bash
     # Ús: ./calcula.sh sumar|multiplicar n1 n2 ...
+
+    # Funció que mostra com s'usa i ix amb error
     us() { echo "Ús: $0 sumar|multiplicar n1 [n2 ...]" >&2; exit 1; }
 
-    [ $# -ge 2 ] || us
-    operacio=$1
-    shift
+    [ $# -ge 2 ] || us                       # cal l'operació i almenys un número
+    operacio=$1                              # guardem l'operació...
+    shift                                    # ...i la llevem: ara "$@" només té números
 
+    # Valor inicial: 0 per a sumar, 1 per a multiplicar (amb 0 sempre donaria 0)
     case $operacio in
         sumar)       resultat=0; simbol="+" ;;
         multiplicar) resultat=1; simbol="x" ;;
         *)           us ;;
     esac
 
+    # Recorrem tots els números i anem acumulant
     for n in "$@"; do
         [[ $n =~ ^-?[0-9]+$ ]] || { echo "'$n' no és un enter" >&2; exit 1; }
         if [ "$operacio" = sumar ]; then
@@ -163,6 +182,7 @@ $ ./calcula.sh multiplicar 2 3 4
         fi
     done
 
+    # Unim els números amb el símbol (+ o x) per a mostrar l'operació
     operacions=$(IFS="$simbol"; echo "$*")
     echo "$operacions = $resultat  ($# números)"
     ```
@@ -189,12 +209,17 @@ pep            1001  /home/pep            /bin/zsh
     ```bash title="usuaris.sh"
     #!/bin/bash
     # Llista els usuaris que són persones (UID >= 1000 i amb shell d'accés)
-    fitxer=${1:-/etc/passwd}
+    fitxer=${1:-/etc/passwd}                 # el fitxer passat, o /etc/passwd
     [ -r "$fitxer" ] || { echo "No puc llegir $fitxer" >&2; exit 1; }
 
-    printf "%-12s %6s  %-20s %s\n" USUARI UID HOME SHELL
+    printf "%-12s %6s  %-20s %s\n" USUARI UID HOME SHELL    # capçalera de la taula
+
+    # Llegim línia a línia, separant els camps per ":"
+    # Format: usuari:x:uid:gid:nom:home:shell  (els que no volem van a _)
     while IFS=: read -r usuari _ uid _ _ home shell; do
+        # Els usuaris de persones tenen UID entre 1000 i 65533
         (( uid >= 1000 && uid < 65534 )) || continue
+        # Si el shell no permet entrar, no és una persona: el saltem
         case $shell in
             */nologin|*/false) continue ;;
         esac
@@ -234,19 +259,22 @@ Els 2 de 'directiu' cobren 4500 € de 10100 € (44.55 %)
     ofici=$2
     [ -r "$fitxer" ] || { echo "No puc llegir $fitxer" >&2; exit 1; }
 
-    total=0
-    total_ofici=0
-    persones=0
+    total=0          # suma de tots els salaris
+    total_ofici=0    # suma dels salaris de l'ofici buscat
+    persones=0       # quantes persones tenen eixe ofici
+
+    # read reparteix els 4 camps de cada línia en 4 variables
     while read -r nom cognom feina salari; do
-        (( total += salari ))
-        if [ "$feina" = "$ofici" ]; then
-            (( total_ofici += salari ))
-            (( persones++ ))
+        (( total += salari ))                # tots sumen al total
+        if [ "$feina" = "$ofici" ]; then     # si és de l'ofici buscat...
+            (( total_ofici += salari ))      # ...suma al seu total
+            (( persones++ ))                 # ...i compta la persona
         fi
     done < "$fitxer"
 
     (( persones > 0 )) || { echo "Ningú té l'ofici '$ofici'"; exit 0; }
 
+    # El percentatge té decimals → bc. Multipliquem per 100 ABANS de dividir
     percent=$(echo "scale=2; $total_ofici * 100 / $total" | bc)
     echo "Els $persones de '$ofici' cobren $total_ofici € de $total € ($percent %)"
     ```
@@ -257,10 +285,12 @@ Els 2 de 'directiu' cobren 4500 € de 10100 € (44.55 %)
 
     ```bash title="salaris_awk.sh"
     #!/bin/bash
+    # Ús: ./salaris_awk.sh <fitxer> <ofici>
+    # awk separa cada línia en columnes: $3 = ofici, $4 = salari
     awk -v ofici="$2" '
-        { total += $4 }
-        $3 == ofici { part += $4; n++ }
-        END {
+        { total += $4 }                      # cada línia: suma el salari al total
+        $3 == ofici { part += $4; n++ }      # si és de l ofici: suma a part i compta
+        END {                                # al final, mostra el resultat
             if (n == 0) { print "Ningú té eixe ofici"; exit }
             printf "%d persones, %d € de %d € (%.2f %%)\n", n, part, total, part * 100 / total
         }' "$1"
@@ -275,13 +305,14 @@ Suma la mida de tots els fitxers del directori indicat i dels seus subdirectoris
     ```bash title="mides.sh"
     #!/bin/bash
     # Suma la mida de tots els fitxers del directori (i subdirectoris), com du
-    dir=${1:-.}
+    dir=${1:-.}                              # el directori passat, o l'actual
     [ -d "$dir" ] || { echo "No és un directori: $dir" >&2; exit 1; }
 
     total=0
     fitxers=0
+    # find troba tots els fitxers; -print0 i read -d '' permeten noms amb espais
     while IFS= read -r -d '' f; do
-        mida=$(stat -c %s "$f")
+        mida=$(stat -c %s "$f")              # mida del fitxer en bytes
         (( total += mida ))
         (( fitxers++ ))
     done < <(find "$dir" -type f -print0)
@@ -298,8 +329,10 @@ Suma la mida de tots els fitxers del directori indicat i dels seus subdirectoris
     # Mateixa idea però traient la mida de ls -l (columna 5) amb tr i cut
     dir=${1:-.}
     total=0
+    # ls -lR llista recursivament; cada línia d'un fitxer comença per "-"
     while read -r linia; do
-        [[ $linia == -* ]] || continue          # només fitxers normals
+        [[ $linia == -* ]] || continue       # saltem carpetes, capçaleres, línies buides
+        # tr -s ' ' deixa un sol espai entre columnes; cut agafa la 5 (la mida)
         mida=$(echo "$linia" | tr -s ' ' | cut -d' ' -f5)
         (( total += mida ))
     done < <(ls -lR "$dir")
@@ -333,11 +366,13 @@ Pere              6  1 línies pendents
 
     ```bash title="comandes.sh"
     #!/bin/bash
-    # Format: client:article:quantitat:servit(s/n)
+    # Format de cada línia: client:article:quantitat:servit(s/n)
     fitxer=${1:-comandes.txt}
     [ -r "$fitxer" ] || { echo "No puc llegir $fitxer" >&2; exit 1; }
 
-    declare -A unitats pendents
+    # Dos arrays associatius amb el nom del client com a clau
+    declare -A unitats      # unitats[client] = total d'unitats demanades
+    declare -A pendents     # pendents[client] = línies encara no servides
 
     while IFS=: read -r client article quantitat servit; do
         (( unitats[$client] += quantitat ))
@@ -345,14 +380,15 @@ Pere              6  1 línies pendents
     done < "$fitxer"
 
     printf "%-10s %8s  %s\n" CLIENT UNITATS ESTAT
-    for client in "${!unitats[@]}"; do
+    for client in "${!unitats[@]}"; do       # recorrem tots els clients (les claus)
+        # ${pendents[$client]:-0} → 0 si el client no té cap pendent
         if (( ${pendents[$client]:-0} == 0 )); then
             estat="tot servit"
         else
             estat="${pendents[$client]} línies pendents"
         fi
         printf "%-10s %8d  %s\n" "$client" "${unitats[$client]}" "$estat"
-    done | sort
+    done | sort                              # ordenem per nom de client
     ```
 
     Dos arrays associatius amb el client com a clau: un acumula unitats i l'altre compta línies pendents. `${pendents[$client]:-0}` val 0 si el client no té cap pendent.
@@ -368,17 +404,19 @@ Una persona té 4.000 € i estalvia 200 € al mes. Vol comprar un lingot d'or 
     ```bash title="or.sh"
     #!/bin/bash
     # Quants mesos cal estalviar per a comprar un lingot d'or si el preu també puja?
-    estalvis=4000        # €
+    estalvis=4000        # € que té ara
     mensual=200          # € que estalvia cada mes
     preu=12000           # € que val el lingot hui
     puja=0.5             # % que puja l'or cada mes
 
     mes=0
+    # Repetim mentre els estalvis siguen menors que el preu.
+    # bc torna 1 (cert) o 0 (fals), i (( )) ho entén com a condició
     while (( $(echo "$estalvis < $preu" | bc) )); do
         (( mes++ ))
-        estalvis=$(( estalvis + mensual ))
-        preu=$(echo "scale=2; $preu * (100 + $puja) / 100" | bc)
-        if (( mes == 600 )); then
+        estalvis=$(( estalvis + mensual ))                         # un mes més d'estalvi
+        preu=$(echo "scale=2; $preu * (100 + $puja) / 100" | bc)   # el preu puja un 0,5 %
+        if (( mes == 600 )); then                                  # límit de seguretat: 50 anys
             echo "En 50 anys no hi arriba: l'or puja més ràpid que els estalvis"
             exit 1
         fi
@@ -414,14 +452,15 @@ $ ./carrega.sh 3
     ```bash title="carrega.sh"
     #!/bin/bash
     # Gràfica de la càrrega del sistema (mitjana d'1 minut) cada segon
-    mostres=${1:-10}
+    mostres=${1:-10}                         # quantes mesures fer (10 per defecte)
 
     for (( i=1; i<=mostres; i++ )); do
-        carrega=$(cut -d' ' -f1 /proc/loadavg)        # p. ex. 0.38
-        barres=$(echo "$carrega * 20 / 1" | bc)       # 0.38 → 7 barres
-        (( barres > 60 )) && barres=60
+        carrega=$(cut -d' ' -f1 /proc/loadavg)      # primer número de /proc/loadavg, p. ex. 0.38
+        barres=$(echo "$carrega * 20 / 1" | bc)     # 0.38 → 7 barres ("/ 1" lleva els decimals)
+        (( barres > 60 )) && barres=60              # que no passe de 60 caràcters
+
         grafica=""
-        for (( b=0; b<barres; b++ )); do grafica+="#"; done
+        for (( b=0; b<barres; b++ )); do grafica+="#"; done     # construïm la barra
         printf "%s %5s |%s\n" "$(date +%T)" "$carrega" "$grafica"
         sleep 1
     done
@@ -439,22 +478,25 @@ Menú per a triar quins processos veure (meus, del terminal o tots). Després de
     #!/bin/bash
     # Mostra processos filtrats i permet matar, parar o continuar-ne un
 
+    # 1. Menú per a triar quins processos mostrar
     PS3="Quins processos vols veure? "
     select filtre in "Meus" "Amb terminal" "Tots" "Eixir"; do
         case $REPLY in
-            1) ps -u "$USER" -o pid,stat,etime,cmd ;;
-            2) ps -o pid,tty,stat,cmd -t "$(tty)" ;;
-            3) ps -eo pid,user,stat,cmd --sort=-%cpu | head -20 ;;
+            1) ps -u "$USER" -o pid,stat,etime,cmd ;;                 # els de l'usuari
+            2) ps -o pid,tty,stat,cmd -t "$(tty)" ;;                  # els d'este terminal
+            3) ps -eo pid,user,stat,cmd --sort=-%cpu | head -20 ;;    # els 20 que més CPU usen
             4) exit 0 ;;
             *) echo "Opció no vàlida"; continue ;;
         esac
-        break
+        break                                                         # ja hem mostrat: ixim del menú
     done
 
+    # 2. Demanar el PID i comprovar que existix
     read -rp "PID del procés: " pid
     [[ $pid =~ ^[0-9]+$ ]] || { echo "PID no vàlid" >&2; exit 1; }
     ps -p "$pid" &> /dev/null || { echo "No existix el procés $pid" >&2; exit 1; }
 
+    # 3. Menú per a triar l'acció
     PS3="Què vols fer amb el $pid? "
     select accio in "Matar" "Parar" "Continuar" "Res"; do
         case $REPLY in
@@ -467,6 +509,7 @@ Menú per a triar quins processos veure (meus, del terminal o tots). Després de
         break
     done
 
+    # 4. Confirmar abans de fer-ho
     read -rp "Segur que vols enviar $senyal a $pid? (s/n) " r
     if [[ $r =~ ^[sS] ]]; then
         kill -s "$senyal" "$pid" && echo "Fet"

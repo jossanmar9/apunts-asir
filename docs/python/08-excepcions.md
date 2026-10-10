@@ -1,94 +1,167 @@
 # 8. Excepcions
 
-Quan alguna cosa va malament, Python llança una **excepció**. Si ningú la captura, el programa s'atura i mostra el *traceback*. Llig-lo **de baix a dalt**: l'última línia diu quin error és i on.
+## Què és una excepció
+
+Quan alguna cosa va malament mentre el programa s'executa (dividir per zero, obrir un fitxer que no existix, convertir "hola" a número...), Python **llança una excepció**: para el programa i mostra un missatge d'error.
+
+```python
+n = int(input("Número: "))      # l'usuari escriu: hola
+```
 
 ```console
 Traceback (most recent call last):
-  File "calc.py", line 2, in <module>
+  File "prova.py", line 1, in <module>
     n = int(input("Número: "))
 ValueError: invalid literal for int() with base 10: 'hola'
 ```
 
-## `try` / `except`
+### Com llegir el missatge d'error
+
+Llig-lo **de baix a dalt**:
+
+1. **L'última línia** diu el **tipus d'error** (`ValueError`) i què ha passat.
+2. Una mica més amunt diu **en quin fitxer i línia** (`line 1`).
+
+Amb això ja saps on mirar.
+
+## Controlar els errors: `try` / `except`
+
+En compte de deixar que el programa pete, pots **preveure** l'error i decidir què fer:
 
 ```python
 try:
-    n = int(input("Número: "))
-    print(100 / n)
+    n = int(input("Número: "))      # prova a fer açò...
+    print(f"El doble és {n * 2}")
+except ValueError:                  # ...i si dona ValueError, fes açò altre
+    print("Això no és un número")
+```
+
+**Com funciona:**
+
+1. Python intenta executar el bloc `try`.
+2. Si tot va bé, se salta l'`except`.
+3. Si hi ha un error del tipus indicat, para el `try` i executa l'`except`. El programa **no peta**.
+
+### Diversos errors possibles
+
+```python
+try:
+    a = int(input("Número: "))
+    b = int(input("Divisor: "))
+    print(a / b)
 except ValueError:
-    print("No és un número")
+    print("Has d'escriure números")
 except ZeroDivisionError:
     print("No es pot dividir per zero")
 ```
 
+### Veure el missatge de l'error
+
 ```python
 try:
     ...
-except (ValueError, TypeError) as e:     # diversos tipus, i el missatge en e
+except ValueError as e:
     print(f"Error: {e}")
-else:
-    print("Ha anat bé")                  # només si NO hi ha hagut excepció
-finally:
-    print("Açò s'executa sempre")        # tancar connexions, netejar...
 ```
 
-## Les més habituals
-
-| Excepció | Quan |
-| -------- | ---- |
-| `ValueError` | valor incorrecte: `int("abc")` |
-| `TypeError` | tipus incorrecte: `"a" + 1` |
-| `KeyError` | clau inexistent en un diccionari |
-| `IndexError` | posició fora d'una llista |
-| `ZeroDivisionError` | dividir per zero |
-| `FileNotFoundError` | el fitxer no existix |
-| `PermissionError` | sense permisos |
-| `KeyboardInterrupt` | l'usuari ha premut ++ctrl+c++ |
-
-## Patró: demanar fins que siga vàlid
+### `else` i `finally` (opcionals)
 
 ```python
-def demana_enter(missatge, minim=None, maxim=None):
-    while True:
-        try:
-            n = int(input(missatge))
-        except ValueError:
-            print("Escriu un número enter")
-            continue
-        if (minim is not None and n < minim) or (maxim is not None and n > maxim):
-            print(f"Ha d'estar entre {minim} i {maxim}")
-            continue
-        return n
+try:
+    n = int(input("Número: "))
+except ValueError:
+    print("No és un número")
+else:
+    print("Perfecte")                # només si NO hi ha hagut error
+finally:
+    print("Açò s'executa sempre")    # haja error o no
+```
 
-port = demana_enter("Port: ", 1, 65535)
+## Els errors més habituals
+
+| Error | Quan passa | Exemple |
+| ----- | ---------- | ------- |
+| `ValueError` | el valor no és vàlid | `int("hola")` |
+| `TypeError` | operació entre tipus incompatibles | `"a" + 1` |
+| `ZeroDivisionError` | dividir per zero | `5 / 0` |
+| `IndexError` | posició que no existix en una llista | `[1, 2][5]` |
+| `KeyError` | clau que no existix en un diccionari | `{"a": 1}["b"]` |
+| `FileNotFoundError` | el fitxer no existix | `open("no.txt")` |
+| `PermissionError` | no tens permís | `open("/etc/shadow")` |
+| `NameError` | variable que no existix (o mal escrita) | `print(nmo)` |
+
+## Patró: preguntar fins que siga vàlid
+
+Combinant `while True` amb `try`:
+
+```python
+while True:
+    try:
+        edat = int(input("Edat: "))
+        break                         # si arriba ací, és vàlid: ix del bucle
+    except ValueError:
+        print("Escriu un número, per favor")
+
+print(f"Tens {edat} anys")
 ```
 
 ## Patró: fitxers que poden no existir
 
 ```python
-import sys
-
+nom = input("Quin fitxer vols llegir? ")
 try:
-    with open(sys.argv[1]) as f:
-        dades = f.read()
-except IndexError:
-    sys.exit(f"Ús: {sys.argv[0]} <fitxer>")
+    with open(nom) as f:
+        print(f.read())
 except FileNotFoundError:
-    sys.exit(f"No existix: {sys.argv[1]}")
+    print(f"No existix el fitxer {nom}")
 except PermissionError:
-    sys.exit(f"Sense permís per a llegir {sys.argv[1]}")
+    print(f"No tens permís per a llegir {nom}")
 ```
 
-`sys.exit("missatge")` escriu el missatge a stderr i ix amb codi 1.
+## Llançar els teus propis errors: `raise`
 
-## Llançar les teues excepcions
+Si detectes una situació incorrecta, pots llançar tu un error:
 
 ```python
-def configura_port(port):
-    if not 1 <= port <= 65535:
-        raise ValueError(f"Port fora de rang: {port}")
+def posa_edat(edat):
+    if edat < 0:
+        raise ValueError("L'edat no pot ser negativa")
     ...
 ```
 
-!!! warning "No captures-ho tot a cegues"
-    `except:` o `except Exception:` sense fer res amaga errors de veritat (fins i tot de lletra). Captura només el que esperes i saps tractar.
+## Acabar el programa amb un error: `sys.exit`
+
+```python
+import sys
+
+if not fitxer_existix:
+    sys.exit("Error: no trobe el fitxer")    # mostra el missatge i acaba
+```
+
+## Errors típics
+
+| Error | Per què | Solució |
+| ----- | ------- | ------- |
+| L'`except` no captura l'error | Has posat un tipus diferent | Mira l'última línia del missatge i usa eixe tipus |
+| `except:` sense tipus amaga errors reals | Captura **tot**, fins i tot errors de lletra | Indica sempre el tipus: `except ValueError:` |
+| El programa continua amb una variable buida | Després de l'`except` no has parat ni tornat a preguntar | Usa un bucle o `sys.exit()` |
+
+!!! success "Per a l'examen"
+    ```python
+    try:
+        ...                        # el que pot fallar
+    except ValueError:             # int("hola")
+        ...
+    except FileNotFoundError:      # fitxer que no existix
+        ...
+
+    while True:                    # preguntar fins que siga vàlid
+        try:
+            n = int(input("> "))
+            break
+        except ValueError:
+            print("No és un número")
+    ```
+
+    - Missatge d'error: **llig l'última línia** (tipus) i la línia del codi
+    - Indica **sempre** el tipus d'error en l'`except`

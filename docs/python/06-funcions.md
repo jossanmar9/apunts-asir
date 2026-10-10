@@ -1,164 +1,242 @@
 # 6. Funcions i mòduls
 
-## Definir una funció
+## Què és una funció
+
+Una **funció** és un tros de codi amb nom que fa una tasca concreta. La crees una vegada i la uses (la **crides**) quantes vegades vulgues.
+
+Ja n'has usat moltes: `print()`, `input()`, `len()`... Ara aprendràs a crear les teues.
+
+**Per què?**
+
+- Per a **no repetir codi**.
+- Per a **dividir** un problema gran en trossos menuts i clars.
+
+## Crear-la i cridar-la
+
+```python
+def saluda():                 # def = "definir una funció"
+    print("Hola!")
+    print("Benvingut")
+
+saluda()                      # cridar-la
+saluda()                      # i una altra vegada
+```
+
+- `def` + nom + `()` + `:`
+- El codi de dins amb 4 espais.
+- Per a cridar-la: el nom **amb parèntesis**.
+
+## Paràmetres: passar-li dades
+
+```python
+def saluda(nom):              # nom és un PARÀMETRE: una variable que rep la dada
+    print(f"Hola, {nom}!")
+
+saluda("Ana")                 # Hola, Ana!
+saluda("Pep")                 # Hola, Pep!
+```
+
+Poden ser diversos:
 
 ```python
 def area_rectangle(base, altura):
-    """Torna l'àrea d'un rectangle."""
-    return base * altura
+    print(base * altura)
 
-print(area_rectangle(3, 4))   # 12
+area_rectangle(3, 4)          # 12
 ```
 
-- `return` torna el valor i acaba la funció. Sense `return`, torna `None`.
-- La primera línia entre `"""` és la documentació: la veus amb `help(area_rectangle)`.
+## `return`: tornar un resultat
+
+Fins ara les funcions mostraven el resultat amb `print`. Però normalment volem que **tornen** el resultat per a poder usar-lo després. Per a això està `return`:
+
+```python
+def area_rectangle(base, altura):
+    return base * altura      # torna el resultat a qui l'ha cridada
+
+a = area_rectangle(3, 4)      # a = 12
+print(f"L'àrea és {a}")
+total = area_rectangle(3, 4) + area_rectangle(2, 5)   # 12 + 10 = 22
+```
+
+### `print` o `return`?
+
+| | `print` | `return` |
+| - | ------- | -------- |
+| Què fa | **mostra** el valor per pantalla | **torna** el valor perquè el pugues usar |
+| Puc guardar el resultat? | No | Sí: `x = funcio()` |
+| Quan usar-lo | per a mostrar missatges | per a calcular coses |
+
+!!! warning "`return` acaba la funció"
+    El que hi haja després d'un `return` no s'executa.
+
+Si una funció no té `return`, torna `None` (res).
 
 ### Tornar diversos valors
 
 ```python
-def estadistiques(nums):
-    return min(nums), max(nums), sum(nums) / len(nums)
+def estadistiques(numeros):
+    return min(numeros), max(numeros), sum(numeros) / len(numeros)
 
 minim, maxim, mitjana = estadistiques([4, 8, 15])
 ```
 
-## Paràmetres
+## Valors per defecte
 
 ```python
-def connecta(host, port=22, usuari="root"):     # valors per defecte
+def connecta(host, port=22, usuari="root"):
     print(f"ssh {usuari}@{host} -p {port}")
 
-connecta("10.0.0.1")                     # port=22, usuari=root
-connecta("10.0.0.1", 2222)               # per posició
-connecta("10.0.0.1", usuari="ana")       # per nom
+connecta("10.0.0.1")                      # usa port=22 i usuari=root
+connecta("10.0.0.1", 2222)                # canvia el port
+connecta("10.0.0.1", usuari="ana")        # canvia només l'usuari (pel nom)
 ```
 
-Els paràmetres amb valor per defecte van sempre després dels obligatoris.
+Els paràmetres amb valor per defecte van **sempre després** dels que no en tenen.
 
-### Nombre variable d'arguments
+## Les variables de dins són locals
+
+Una variable creada **dins** d'una funció només existix dins:
 
 ```python
-def suma(*nums):            # nums és una tupla
-    return sum(nums)
-suma(1, 2, 3, 4)            # 10
+def calcula():
+    resultat = 42
 
-def mostra(**opcions):      # opcions és un diccionari
-    for k, v in opcions.items():
-        print(f"{k} = {v}")
-mostra(port=80, ssl=True)
+calcula()
+print(resultat)     # ❌ NameError: fora no existix
 ```
 
-!!! danger "No uses una llista com a valor per defecte"
-    ```python
-    def afig(x, llista=[]):     # ❌ la llista es comparteix entre crides
-        llista.append(x)
-        return llista
-
-    afig(1)    # [1]
-    afig(2)    # [1, 2]  😱 recorda la crida anterior
-
-    def afig(x, llista=None):   # ✅
-        if llista is None:
-            llista = []
-        llista.append(x)
-        return llista
-    ```
-
-## Àmbit de les variables
-
-Les variables creades dins d'una funció són **locals**: no existixen fora.
+Per a traure un valor de la funció, usa `return`:
 
 ```python
-total = 0
-def suma_u():
-    total = total + 1    # ❌ UnboundLocalError
+def calcula():
+    resultat = 42
+    return resultat
+
+r = calcula()
+print(r)            # 42 ✅
 ```
 
-Pots **llegir** variables globals, però per a modificar-les cal `global total`. Millor: passa-les com a paràmetre i torna el resultat.
+## Documentar la funció
 
-## Funcions lambda
-
-Funcions anònimes d'una línia, sobretot per a `sorted`, `max`, `filter`:
+La primera línia entre `"""` explica què fa. Es pot veure amb `help(funcio)`:
 
 ```python
-usuaris = [("pep", 1001), ("ana", 1000), ("root", 0)]
-sorted(usuaris, key=lambda u: u[1])        # ordenar per UID
-max(usuaris, key=lambda u: u[1])           # ('pep', 1001)
+def es_parell(n):
+    """Torna True si n és parell."""
+    return n % 2 == 0
 ```
-
-## Indicacions de tipus (opcional)
-
-```python
-def es_port_valid(port: int) -> bool:
-    return 1 <= port <= 65535
-```
-
-No canvien el funcionament, però ajuden a llegir el codi i l'editor t'avisa d'errors.
 
 ## Funcions recursives
 
-Una funció que es crida a si mateixa. Necessita un **cas base** que pare:
+Una funció **recursiva** es crida a si mateixa. Ha de tindre un **cas base** que pare, o no acabaria mai:
 
 ```python
 def factorial(n):
-    if n <= 1:          # cas base
+    if n <= 1:                     # cas base: ací para
         return 1
-    return n * factorial(n - 1)
+    return n * factorial(n - 1)    # es crida amb un número més menut
+
+factorial(4)    # 4 * 3 * 2 * 1 = 24
 ```
 
-## Mòduls
+## Funcions `lambda`
 
-Un mòdul és un fitxer `.py`. Per a usar el que hi ha dins:
+Una funció curta, sense nom, d'una sola línia. S'usa sobretot per a ordenar:
 
 ```python
-import math
-math.sqrt(16)
-
-from math import sqrt, pi
-sqrt(16)
-
-import datetime as dt
-dt.date.today()
+usuaris = [("pep", 1001), ("ana", 1000), ("root", 0)]
+ordenats = sorted(usuaris, key=lambda u: u[1])     # ordena pel segon element (UID)
 ```
 
-### Els teus propis mòduls
+`lambda u: u[1]` vol dir "*una funció que rep `u` i torna `u[1]`*".
+
+## Mòduls: usar codi ja fet
+
+Un **mòdul** és un fitxer amb funcions que pots usar. Python en porta molts inclosos. Per a usar-los, cal **importar-los**:
+
+```python
+import math                   # importa tot el mòdul
+print(math.sqrt(16))          # 4.0 → s'usa amb mòdul.funció
+
+from math import sqrt         # importa només una funció
+print(sqrt(16))               # 4.0 → s'usa directament
+
+import datetime as dt         # importa amb un nom més curt
+print(dt.date.today())
+```
+
+### Mòduls més útils
+
+| Mòdul | Per a què |
+| ----- | --------- |
+| `math` | funcions matemàtiques |
+| `random` | números a l'atzar |
+| `os`, `sys` | coses del sistema |
+| `pathlib` | treballar amb rutes i fitxers |
+| `shutil` | copiar, moure, esborrar fitxers |
+| `subprocess` | executar ordres del sistema |
+| `datetime` | dates i hores |
+| `json`, `csv` | llegir i escriure eixos formats |
+
+```python
+import random
+random.randint(1, 100)              # número a l'atzar entre 1 i 100
+random.choice(["roig", "verd"])     # un element a l'atzar
+```
+
+### Crear els teus propis mòduls
+
+Qualsevol fitxer `.py` és un mòdul. Si tens `utils.py`:
 
 ```python title="utils.py"
-def es_ip_valida(ip):
-    parts = ip.split(".")
-    return len(parts) == 4 and all(p.isdigit() and 0 <= int(p) <= 255 for p in parts)
+def es_parell(n):
+    return n % 2 == 0
 ```
 
-```python title="main.py"
-from utils import es_ip_valida
-print(es_ip_valida("192.168.1.300"))   # False
+el pots usar des d'un altre fitxer de la mateixa carpeta:
+
+```python
+from utils import es_parell
+print(es_parell(4))     # True
 ```
 
 ### `if __name__ == "__main__":`
 
+Veuràs molt esta línia al final dels programes:
+
 ```python
 def main():
-    ...
+    print("Programa principal")
 
 if __name__ == "__main__":
     main()
 ```
 
-El codi de dins només s'executa si llances el fitxer directament (`python3 utils.py`), **no** quan un altre fitxer el importa. Així un mateix fitxer pot ser script i mòdul alhora.
+Vol dir: "*executa `main()` només si estic executant este fitxer directament*". Si un altre fitxer l'importa, `main()` no s'executa. Així un fitxer pot ser programa i mòdul alhora.
 
-### Mòduls de la biblioteca estàndard que més usaràs
+## Errors típics
 
-| Mòdul | Per a què |
-| ----- | --------- |
-| `os`, `sys` | sistema, variables d'entorn, arguments |
-| `pathlib`, `glob`, `shutil` | rutes, buscar fitxers, copiar/moure |
-| `subprocess` | executar ordres del sistema |
-| `datetime`, `time` | dates i esperes |
-| `json`, `csv` | formats de dades |
-| `re` | expressions regulars |
-| `argparse` | opcions de línia d'ordres |
-| `logging` | registres |
-| `random` | números aleatoris |
-| `collections` | `Counter`, `defaultdict` |
+| Error | Per què | Solució |
+| ----- | ------- | ------- |
+| `NameError` en cridar la funció | La crides abans de definir-la | Posa el `def` abans |
+| La funció torna `None` | Falta el `return` (o has usat `print`) | Afig `return valor` |
+| `TypeError: missing 1 required positional argument` | No li has passat totes les dades | Revisa els paràmetres |
+| `NameError` amb una variable de la funció | Les variables de dins són locals | Usa `return` |
+| `ModuleNotFoundError` | El mòdul no està instal·lat o el nom és incorrecte | `pip install` dins d'un `venv` |
 
-Vegeu els temes [7](07-fitxers.md) i [9](09-sysadmin.md).
+!!! success "Per a l'examen"
+    ```python
+    def nom(param1, param2=valor_defecte):
+        """Què fa."""
+        ...
+        return resultat
+
+    x = nom(1)               # cridar-la i guardar el resultat
+    a, b = funcio()          # si torna diversos valors
+
+    import modul             # modul.funcio()
+    from modul import funcio # funcio()
+    ```
+
+    - `return` **torna** el valor · `print` només el **mostra**
+    - Les variables de dins **no existixen fora**

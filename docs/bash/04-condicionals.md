@@ -1,84 +1,170 @@
 # 4. Condicionals
 
-## `if`
+## Prendre decisions: `if`
+
+Un condicional fa que l'script faça una cosa **només si** es complix una condició. És com dir en valencià: "*si plou, agafa el paraigua; si no, agafa les ulleres de sol*".
+
+### L'estructura
 
 ```bash
-if CONDICIÓ; then
-    ordres
-elif ALTRA_CONDICIÓ; then
-    ordres
+if [ CONDICIÓ ]; then
+    # ordres si la condició és CERTA
 else
-    ordres
+    # ordres si la condició és FALSA
 fi
 ```
 
-La CONDICIÓ és **qualsevol ordre**: si torna 0, és certa. Per això funciona tant amb `[ ]` com amb ordres normals:
+- `if` = si
+- `then` = aleshores
+- `else` = si no (és opcional)
+- `fi` = final de l'if (és `if` al revés)
+
+### Exemple pas a pas
+
+```bash title="edat.sh"
+#!/bin/bash
+read -p "Quants anys tens? " edat       # demana un número (read: tema 8)
+
+if [ "$edat" -ge 18 ]; then             # si edat és major o igual que 18...
+    echo "Eres major d'edat"            # ...mostra açò
+else                                    # si no...
+    echo "Eres menor d'edat"            # ...mostra açò altre
+fi                                      # final de l'if
+```
+
+!!! note "Els espais de davant (indentació)"
+    Les ordres de dins de l'`if` es posen amb uns espais davant. Bash no ho necessita, però fa que el codi es llija molt millor i que vegis on comença i on acaba cada bloc.
+
+### Diverses opcions: `elif`
+
+Quan hi ha més de dos camins, s'usa `elif` ("else if" = "si no, si..."):
 
 ```bash
-if grep -q "^$usuari:" /etc/passwd; then
-    echo "L'usuari $usuari existix"
-fi
-
-if ping -c1 -W1 8.8.8.8 &> /dev/null; then
-    echo "Hi ha Internet"
+if [ "$nota" -lt 5 ]; then
+    echo "Suspés"
+elif [ "$nota" -lt 7 ]; then
+    echo "Aprovat"
+elif [ "$nota" -lt 9 ]; then
+    echo "Notable"
+else
+    echo "Excel·lent"
 fi
 ```
 
-`grep -q` no mostra res, només torna el codi. És la manera neta de preguntar "conté açò?".
+Bash comprova les condicions **de dalt a baix** i executa **només la primera** que siga certa. Per això, quan arriba al segon `elif` ja sap que la nota no és menor que 5 ni que 7: no cal tornar-ho a comprovar.
 
-### L'ordre dels `elif` importa
+## La condició pot ser qualsevol ordre
 
-Quan arribes a un `elif`, ja saps que les condicions anteriors eren falses, així que no cal repetir-les:
+Recorda el **codi d'eixida** del [tema 1](01-primer-script.md): 0 si va bé, altre número si falla. L'`if` en realitat mira eixe codi. Per tant, pots posar **qualsevol ordre** com a condició, no només `[ ]`:
 
 ```bash
-if (( us < 70 )); then
-    echo "OK"
-elif (( us < 90 )); then      # ja sé que us >= 70
-    echo "AVÍS"
-else                          # ja sé que us >= 90
-    echo "CRÍTIC"
+if grep -q "^ana:" /etc/passwd; then
+    echo "L'usuari ana existix"
 fi
 ```
 
-## `case`
+- `grep -q` busca el text sense mostrar res: només diu si l'ha trobat (codi 0) o no (codi 1).
 
-Quan compares **la mateixa variable** amb molts valors, `case` és més clar que una cadena de `elif`:
+```bash
+if ping -c1 8.8.8.8 &> /dev/null; then
+    echo "Hi ha connexió a Internet"
+else
+    echo "No hi ha connexió"
+fi
+```
+
+- `ping -c1` fa un sol ping. `&> /dev/null` amaga el que mostra ([tema 7](07-redireccions.md)).
+
+## Moltes opcions sobre la mateixa variable: `case`
+
+Quan has de comparar **una mateixa variable** amb molts valors, una cadena d'`elif` es fa llarga. `case` és més clar:
 
 ```bash
 case "$1" in
     start)
-        systemctl start nginx ;;
+        echo "Arrancant el servei..."
+        ;;
     stop)
-        systemctl stop nginx ;;
-    restart|reload)
-        systemctl restart nginx ;;
+        echo "Parant el servei..."
+        ;;
+    restart)
+        echo "Reiniciant..."
+        ;;
     *)
-        echo "Ús: $0 {start|stop|restart}" >&2
-        exit 1 ;;
+        echo "Opció no vàlida. Usa: start, stop o restart"
+        ;;
 esac
 ```
 
-- Cada opció acaba en `;;`.
-- `|` separa alternatives.
-- `*)` és "qualsevol altra cosa" (com l'`else`).
-- Accepta patrons: `*.jpg|*.png)`, `[sS]|[sS][iI])`, `[0-9])`.
+Com es llig:
+
+| Part | Significa |
+| ---- | --------- |
+| `case "$1" in` | mira què val `$1` |
+| `start)` | si val `start`, fes el que hi ha a sota... |
+| `;;` | ...fins ací (final d'esta opció) |
+| `*)` | si no coincidix amb cap anterior (com l'`else`) |
+| `esac` | final del case (`case` al revés) |
+
+Trucs útils:
 
 ```bash
-read -p "Vols continuar? (s/n) " resp
-case "$resp" in
-    [sS]*) echo "Continuem" ;;
-    [nN]*) echo "Cancel·lat"; exit 0 ;;
-    *)     echo "Resposta no vàlida" ;;
+case "$resposta" in
+    s|S|si|SI)  echo "Has dit que sí" ;;     # | separa diverses opcions
+    n|N|no|NO)  echo "Has dit que no" ;;
+    *)          echo "No t'entenc" ;;
+esac
+
+case "$fitxer" in
+    *.jpg|*.png) echo "És una imatge" ;;     # * = qualsevol cosa
+    *.txt)       echo "És un text" ;;
 esac
 ```
 
-## `&&` i `||` com a condicionals curts
+## Condicionals curts: `&&` i `||`
+
+Per a coses senzilles, hi ha una forma abreujada:
+
+| S'escriu | Significa |
+| -------- | --------- |
+| `A && B` | fes A, i **si ha anat bé**, fes B |
+| <code>A &#124;&#124; B</code> | fes A, i **si ha fallat**, fes B |
 
 ```bash
-[ -d "$dir" ] || mkdir -p "$dir"          # crea'l si no existix
-cd "$dir" && echo "Ara estic en $dir"     # només si cd ha anat bé
-[ $# -eq 1 ] || { echo "Ús: $0 fitxer"; exit 1; }
+mkdir /tmp/prova && echo "Carpeta creada"       # només mostra el missatge si mkdir funciona
+[ -d "$dir" ] || mkdir "$dir"                   # si la carpeta NO existix, crea-la
+[ $# -eq 1 ] || { echo "Falta un argument"; exit 1; }   # si no hi ha 1 argument, error i ix
 ```
 
-!!! warning "`a && b || c` no és un if/else"
-    Si `b` falla, també s'executa `c`. Per a lògica de veritat, usa `if`.
+Les claus `{ ...; }` agrupen diverses ordres. Cal el `;` abans de `}`.
+
+## Errors típics
+
+| Error | Per què | Solució |
+| ----- | ------- | ------- |
+| `syntax error near unexpected token 'else'` | Falta el `then` | `if [ ... ]; then` |
+| `syntax error: unexpected end of file` | Falta el `fi` (o `done`, `esac`) | Tanca cada bloc |
+| `[: missing ']'` | Falten espais | `[ "$a" -eq 1 ]` |
+| `elif` sense `then` | Cada `elif` necessita el seu | `elif [ ... ]; then` |
+| Al `case` s'executen dues opcions | Falta `;;` | Acaba cada opció amb `;;` |
+
+!!! success "Per a l'examen"
+    ```bash
+    if [ cond ]; then
+        ...
+    elif [ cond ]; then
+        ...
+    else
+        ...
+    fi
+    ```
+    ```bash
+    case "$var" in
+        opcio1) ... ;;
+        a|b)    ... ;;
+        *)      ... ;;
+    esac
+    ```
+
+    - La condició pot ser qualsevol ordre: `if grep -q "x" fitxer; then`
+    - `A && B` → B si A va bé · `A || B` → B si A falla

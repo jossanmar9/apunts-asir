@@ -354,12 +354,12 @@ Per a recordar-ho: `#` lleva per **davant** i `%` per **darrere** (al teclat, `#
 | `grep -c` | **compta** les línies que coincidixen | `grep -c ERROR app.log` → `2` |
 | `cut -d: -f1` | talla per camps | `cut -d: -f1 /etc/passwd` → usuaris |
 | `sort` | ordena línies | `sort noms.txt` |
-| `uniq -c` | lleva repetits i compta (sobre text ordenat) | `sort f \| uniq -c` |
-| `tr` | canvia caràcters | `echo hola \| tr a-z A-Z` → `HOLA` |
+| `uniq -c` | lleva repetits i compta (sobre text ordenat) | <code>sort f &#124; uniq -c</code> |
+| `tr` | canvia caràcters | <code>echo hola &#124; tr a-z A-Z</code> → `HOLA` |
 | `awk` | processa columnes | `awk '{print $1}' access.log` |
 | `sed` | busca i substituïx | `sed 's/vell/nou/g' f` |
 | `find` | busca fitxers, també en subcarpetes | `find /var/log -name "*.log"` |
-| `xargs` | passa una llista com a arguments d'una ordre | `find . -name "*.tmp" \| xargs rm` |
+| `xargs` | passa una llista com a arguments d'una ordre | <code>find . -name "*.tmp" &#124; xargs rm</code> |
 
 La tuberia `|` passa l'eixida d'una ordre com a entrada de la següent.
 

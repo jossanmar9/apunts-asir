@@ -1,138 +1,235 @@
 # 4. Control de flux
 
-## `if`, `elif`, `else`
+Normalment un programa s'executa línia a línia, de dalt a baix. Amb el **control de flux** canvies això:
+
+- **Condicionals** (`if`): executar una cosa **només si** es complix una condició.
+- **Bucles** (`for`, `while`): **repetir** una cosa diverses vegades.
+
+## `if`: prendre decisions
 
 ```python
-us = 85
-if us < 70:
-    print("OK")
-elif us < 90:
-    print("AVÍS")
+edat = int(input("Edat: "))
+
+if edat >= 18:
+    print("Eres major d'edat")
 else:
-    print("CRÍTIC")
+    print("Eres menor d'edat")
 ```
 
-Expressió condicional en una línia:
+Com es llig: "*si edat és major o igual que 18, mostra... ; si no, mostra...*".
+
+**Fixa't en:**
+
+- Els **dos punts** `:` al final de la línia de l'`if` i de l'`else`.
+- Les línies de dins tenen **4 espais** davant. Així sap Python què està dins de l'`if`.
+
+### Diverses opcions: `elif`
 
 ```python
-estat = "actiu" if codi == 0 else "error"
+nota = float(input("Nota: "))
+
+if nota < 5:
+    print("Suspés")
+elif nota < 7:
+    print("Aprovat")
+elif nota < 9:
+    print("Notable")
+else:
+    print("Excel·lent")
 ```
 
-Comprovar si un valor està en una llista:
+Python comprova les condicions de dalt a baix i executa **només la primera certa**. Quan arriba a `elif nota < 7`, ja sap que la nota no és menor que 5.
+
+### Comprovar si un valor és un d'uns quants
 
 ```python
-if resposta.lower() in ("s", "si", "sí", "y"):
+resposta = input("Continuar? ")
+if resposta in ("s", "si", "sí", "S"):
     print("Continuem")
 ```
 
-## `match` (Python 3.10+)
-
-Equivalent al `case` de Bash:
+### `if` en una línia
 
 ```python
-match ordre:
-    case "start":
-        arrancar()
-    case "stop" | "halt":
-        parar()
+estat = "aprovat" if nota >= 5 else "suspés"
+```
+
+## `match`: moltes opcions d'una variable
+
+Equivalent al `case` de Bash (Python 3.10 o posterior):
+
+```python
+opcio = input("Opció: ")
+
+match opcio:
+    case "1":
+        print("Has triat la primera")
+    case "2" | "3":
+        print("Has triat la segona o la tercera")
     case _:
-        print("Ordre desconeguda")
+        print("Opció no vàlida")
 ```
 
-`_` és "qualsevol altre valor".
+`case _:` és "qualsevol altra cosa", com l'`else`.
 
-## `while`
+## Bucles
 
-```python
-intents = 3
-while intents > 0:
-    clau = input("Contrasenya: ")
-    if clau == "secret":
-        print("Benvingut")
-        break
-    intents -= 1
-    print(f"Incorrecta. Et queden {intents}")
-else:
-    print("Compte bloquejat")   # només si el bucle acaba SENSE break
-```
-
-## `for`
-
-`for` recorre qualsevol col·lecció: llista, cadena, fitxer, diccionari...
+### `for`: per a cada element
 
 ```python
 for servei in ["ssh", "nginx", "cron"]:
-    print(servei)
+    print(f"Comprovant {servei}")
+```
 
+```console
+Comprovant ssh
+Comprovant nginx
+Comprovant cron
+```
+
+La variable `servei` agafa cada valor de la llista, un per volta, i s'executa el bloc de dins.
+
+`for` pot recórrer qualsevol col·lecció: una llista, les lletres d'un text, les línies d'un fitxer...
+
+```python
 for lletra in "hola":
     print(lletra)
 ```
 
-### `range`
+### `range`: repetir N vegades o comptar
 
 ```python
-range(5)          # 0 1 2 3 4
-range(1, 6)       # 1 2 3 4 5   (el final no s'inclou)
-range(0, 20, 5)   # 0 5 10 15
-range(10, 0, -1)  # 10 9 ... 1
+for i in range(5):
+    print(i)          # 0 1 2 3 4  (5 voltes, comença en 0)
 ```
 
+| S'escriu | Genera | |
+| -------- | ------ | - |
+| `range(5)` | 0, 1, 2, 3, 4 | 5 números des de 0 |
+| `range(1, 6)` | 1, 2, 3, 4, 5 | des de 1 fins a 6 **sense incloure'l** |
+| `range(0, 20, 5)` | 0, 5, 10, 15 | de 5 en 5 |
+| `range(10, 0, -1)` | 10, 9, ... 1 | cap enrere |
+
+!!! warning "El final no s'inclou"
+    `range(1, 10)` va de 1 a **9**. Per a arribar a 10: `range(1, 11)`.
+
 ```python
+# Taula de multiplicar del 7
 for i in range(1, 11):
-    print(f"7 x {i:2} = {7 * i}")
+    print(f"7 x {i} = {7 * i}")
 ```
 
-### `enumerate` i `zip`
+### `enumerate`: tindre també la posició
 
 ```python
-for num, linia in enumerate(linies, start=1):   # índex + valor
-    print(f"{num}: {linia}")
-
-noms = ["ana", "pep"]
-notes = [8, 6]
-for nom, nota in zip(noms, notes):              # dues llistes en paral·lel
-    print(nom, nota)
+noms = ["Ana", "Pep", "Laura"]
+for num, nom in enumerate(noms, start=1):
+    print(f"{num}. {nom}")
 ```
 
-## `break`, `continue`, `pass`
+```console
+1. Ana
+2. Pep
+3. Laura
+```
+
+### `while`: mentre siga cert
 
 ```python
-for linia in open("/etc/ssh/sshd_config"):
-    linia = linia.strip()
-    if not linia or linia.startswith("#"):
-        continue                 # salta comentaris i buides
-    if linia.startswith("Port"):
-        print(linia)
-        break                    # ja l'hem trobat
+compte = 5
+while compte > 0:
+    print(compte)
+    compte -= 1        # resta 1 (si no, no acabaria mai)
+print("Ja!")
 ```
 
-`pass` no fa res: serveix per a deixar un bloc buit mentre escrius.
+`while` s'usa quan **no saps quantes voltes** faràs. Per exemple, preguntar fins que la resposta siga vàlida:
 
-## Bucles niats
+```python
+clau = ""
+while clau != "secret":
+    clau = input("Contrasenya: ")
+print("Correcta!")
+```
+
+!!! danger "Bucle infinit"
+    Si la condició del `while` no deixa mai de ser certa, el programa no acaba. Per a parar-lo: ++ctrl+c++.
+
+## `break` i `continue`
+
+| Paraula | Què fa |
+| ------- | ------ |
+| `break` | **ix del bucle** immediatament |
+| `continue` | deixa la volta actual i **passa a la següent** |
+
+```python
+for n in range(1, 11):
+    if n % 2 == 0:
+        continue          # si és parell, salta'l
+    if n > 7:
+        break             # si passa de 7, acaba
+    print(n)
+# mostra: 1 3 5 7
+```
+
+### El patró més útil: repetir fins que l'usuari escriga bé
+
+```python
+while True:                              # bucle "infinit"...
+    text = input("Escriu un número: ")
+    if text.isdigit():                   # si és un número...
+        numero = int(text)
+        break                            # ...ix del bucle
+    print("Això no és un número")
+print(f"Has escrit {numero}")
+```
+
+## Bucles dins de bucles
 
 ```python
 for fila in range(1, 4):
-    for col in range(1, 4):
-        print(f"{fila * col:3}", end="")
-    print()
+    for columna in range(1, 4):
+        print(fila * columna, end=" ")   # end=" " → no baixa de línia
+    print()                              # baixa de línia al final de cada fila
 ```
 
-## Operador morsa `:=`
-
-Assigna i compara alhora. Útil en bucles que demanen dades:
-
-```python
-while (ordre := input("> ")) != "eixir":
-    print(f"Has escrit {ordre}")
+```console
+1 2 3
+2 4 6
+3 6 9
 ```
 
-## Validar una entrada (patró habitual)
+Per cada volta del bucle de fora, el de dins fa **totes** les seues voltes.
 
-```python
-while True:
-    text = input("Port (1-65535): ")
-    if text.isdigit() and 1 <= int(text) <= 65535:
-        port = int(text)
-        break
-    print("Valor no vàlid")
-```
+## Errors típics
+
+| Error | Per què | Solució |
+| ----- | ------- | ------- |
+| `SyntaxError: expected ':'` | Falten els dos punts | `if x > 5:` · `for x in y:` |
+| `IndentationError` | El bloc no té els espais correctes | 4 espais dins de cada bloc |
+| `range(1, 10)` no arriba a 10 | El final no s'inclou | `range(1, 11)` |
+| El `while` no acaba mai | La condició sempre és certa | Canvia la variable dins del bucle |
+| `if x = 5:` | `=` guarda, `==` compara | `if x == 5:` |
+
+!!! success "Per a l'examen"
+    ```python
+    if cond:
+        ...
+    elif cond:
+        ...
+    else:
+        ...
+
+    for x in llista:
+        ...
+    for i in range(1, 11):     # 1..10
+        ...
+    while cond:
+        ...
+    while True:                # repetir fins a break
+        if ok: break
+    ```
+
+    - **`:` al final** i **4 espais** dins de cada bloc
+    - `range(a, b)` → de `a` a `b-1`
+    - `break` ix · `continue` passa a la següent
