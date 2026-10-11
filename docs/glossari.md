@@ -155,5 +155,44 @@ Paraules que apareixen en els apunts, explicades amb paraules senzilles.
 **Directori Actiu** (Active Directory)
 :   El servei de Windows Server que guarda els usuaris, grups i equips d'una organització en un sol lloc.
 
+**Contenidor**
+:   Una aplicació aïllada amb tot el que necessita per a funcionar, creada a partir d'una imatge de Docker. Comparteix el kernel de l'equip (no és una màquina virtual).
+
+**Imatge** (Docker)
+:   La plantilla de només lectura a partir de la qual es creen els contenidors. Es descarreguen de Docker Hub.
+
+**Volum**
+:   Un espai on Docker guarda dades fora del contenidor, perquè no es perden quan l'esborres.
+
+**Port publicat**
+:   Un port del teu equip connectat amb un port del contenidor (`-p 8080:80`), perquè es puga accedir des de fora.
+
+**YAML**
+:   Un format de text per a fitxers de configuració on l'estructura es marca amb espais. El usa Docker Compose (`compose.yaml`).
+
+**Repositori** (Git)
+:   Una carpeta amb l'historial de canvis guardat per Git (en la carpeta oculta `.git`).
+
+**Commit**
+:   Una "foto" guardada del projecte, amb un missatge que explica què ha canviat.
+
+**Branca** (branch)
+:   Una línia de treball independent dins d'un repositori. La principal es diu `main`.
+
+**Remot** (remote)
+:   Una còpia del repositori en un altre lloc, com GitHub. Normalment es diu `origin`.
+
+**Push / Pull**
+:   Pujar els teus commits al remot / baixar els del remot.
+
+**Merge**
+:   Ajuntar els canvis d'una branca amb una altra.
+
+**Conflicte**
+:   Quan dues branques han canviat la mateixa línia i Git no sap quina triar: ho has de decidir tu.
+
+**Pull Request** (PR)
+:   Una petició en GitHub per a revisar i ajuntar una branca amb una altra.
+
 **Classe / Objecte**
 :   Una classe és un motle; un objecte és una cosa concreta creada amb eixe motle.

@@ -21,3 +21,13 @@ Estos apunts estan escrits a partir de l'estudi dels materials següents. Els te
 
 - **P. Ruiz** — *Scripts en PowerShell: Guía para principiantes.* SomeBooks.es. Llicència CC BY-NC-ND 3.0. Disponible en línia en [somebooks.es](https://somebooks.es/scripts-powershell-guia-principiantes/).
 - Documentació oficial: [learn.microsoft.com/powershell](https://learn.microsoft.com/es-es/powershell/).
+
+## Docker
+
+- **José Domingo Muñoz Rodríguez** — *Curso de Docker* (OpenWebinars, 2024). Llicència GPL-3.0. Disponible en [github.com/josedom24/curso_docker_ow](https://github.com/josedom24/curso_docker_ow).
+- Documentació oficial: [docs.docker.com](https://docs.docker.com/) i les pàgines de cada imatge en [Docker Hub](https://hub.docker.com/).
+
+## Git i GitHub
+
+- **Scott Chacon i Ben Straub** — *Pro Git*. Llicència CC BY-NC-SA 3.0. Disponible en castellà en [git-scm.com/book/es](https://git-scm.com/book/es/v2).
+- Documentació de GitHub: [docs.github.com/es](https://docs.github.com/es).

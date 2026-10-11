@@ -22,7 +22,7 @@ Posa sempre cometes a les variables, `"$var"`. T'estalvia errors estranys amb va
 
 ```bash
 #!/bin/bash
-# Comentari: què fa el script
+# Comentari: què fa l'script
 
 echo "Hola món"
 ```
@@ -65,7 +65,7 @@ suma=$(( 3 + 4 ))          # guardar el resultat d'un CÀLCUL → $(( ))
 
 | Variable | Significat |
 |---|---|
-| `$0` | nom del script |
+| `$0` | nom de l'script |
 | `$1` … `$9` | primer … novè argument |
 | `$#` | **quants** arguments hi ha |
 | `"$@"` | tots els arguments, **cadascun per separat** (el que normalment vols) |
@@ -134,8 +134,8 @@ Amb `elif`, l'ordre importa: quan arribes a l'`elif`, ja saps que la condició a
 
 ```bash
 if [ "$p" -lt 70 ]; then echo "OK"
-elif [ "$p" -lt 90 ]; then echo "AVISO"      # ja sé que p >= 70
-else echo "CRÍTICO"                          # ja sé que p >= 90
+elif [ "$p" -lt 90 ]; then echo "AVÍS"      # ja sé que p >= 70
+else echo "CRÍTIC"                          # ja sé que p >= 90
 fi
 ```
 
@@ -218,27 +218,27 @@ A cada volta, la variable agafa el **valor següent** de la llista.
 
 ### `for` sobre fitxers ⭐
 ```bash
-for entrada in ~/prueba_bash/*; do          # totes les entrades
-    nombre=$(basename "$entrada")
+for entrada in ~/proves/*; do          # totes les entrades
+    nom=$(basename "$entrada")
     if [ -d "$entrada" ]; then
-        echo "$nombre directorio"
+        echo "$nom és un directori"
     elif [ -f "$entrada" ]; then
-        echo "$nombre fichero"
+        echo "$nom és un fitxer"
     fi
 done
 ```
 
 ```bash
-for fichero in "$1"/*.log; do                # només els .log de la carpeta $1
-    nombre=$(basename "$fichero")
-    errores=$(grep -c ERROR "$fichero")
-    echo "$nombre → $errores ERROR"
+for fitxer in "$1"/*.log; do                  # només els .log de la carpeta $1
+    nom=$(basename "$fitxer")
+    errors=$(grep -c ERROR "$fitxer")
+    echo "$nom → $errors ERROR"
 done
 ```
 
 `*` **no** entra a les subcarpetes. Per a buscar també dins d'elles:
 ```bash
-for fichero in $(find "$1" -name "*.log"); do ...; done
+for fitxer in $(find "$1" -name "*.log"); do ...; done
 ```
 
 ### `for` estil C (comptar)
@@ -290,14 +290,14 @@ resultat=$(doble 5)           # resultat = 10
 
 **Tornar ÈXIT o ERROR → `return` (0 = bé, 1-255 = error)**
 ```bash
-es_par() {
+es_parell() {
     if [ $(( $1 % 2 )) -eq 0 ]; then return 0; else return 1; fi
 }
 
-es_par 4
-echo "Código devuelto: $?"    # 0
+es_parell 4
+echo "Codi tornat: $?"    # 0
 
-if es_par 7; then echo "Par"; else echo "Impar"; fi
+if es_parell 7; then echo "Parell"; else echo "Imparell"; fi
 ```
 
 **Funcions en un altre fitxer**
@@ -324,13 +324,13 @@ for s in "${serveis[@]}"; do echo "$s"; done
 ## ✂️ Manipular text de variables
 
 ```bash
-ruta="/home/ana/datos/app1.log"
+ruta="/home/ana/dades/app1.log"
 
 echo "${#ruta}"          # longitud del text → 25
 echo "${ruta:0:5}"       # des de la posició 0, 5 caràcters → /home
 echo "${ruta##*/}"       # lleva tot fins a l'última /  → app1.log
-echo "${ruta%/*}"        # lleva des de l'última /      → /home/ana/datos
-echo "${ruta%.log}"      # lleva el sufix .log          → /home/ana/datos/app1
+echo "${ruta%/*}"        # lleva des de l'última /      → /home/ana/dades
+echo "${ruta%.log}"      # lleva el sufix .log          → /home/ana/dades/app1
 echo "${ruta/log/txt}"   # canvia la primera "log" per "txt"
 ```
 

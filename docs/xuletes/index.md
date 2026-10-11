@@ -7,7 +7,8 @@ Resums d'una pàgina per a tindre oberts mentre treballes.
 | [Bash](bash.md) | sintaxi de scripts: variables, `if`, bucles, funcions, arrays, text |
 | [Ordres de Linux](linux.md) | fitxers, text, usuaris, processos, xarxa |
 | [Python](python.md) | sintaxi, estructures de dades, fitxers, sistema |
-| [Git](git.md) | flux de treball diari |
+| [Git](git.md) | flux diari, branques, Pull Requests, desfer canvis |
+| [Docker](docker.md) | contenidors, imatges, Compose, Dockerfile |
 | [PowerShell](powershell.md) | equivalents de Bash en Windows i Directori Actiu |
 
 !!! tip "Imprimir-les"

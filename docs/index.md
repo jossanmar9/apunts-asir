@@ -34,11 +34,27 @@ Apunts, exemples i exercicis resolts per al **CFGS Administració de Sistemes In
 
     [:octicons-arrow-right-24: Anar a PowerShell](powershell/index.md)
 
+-   :material-docker:{ .lg .middle } **Docker**
+
+    ---
+
+    Contenidors, imatges, volums, xarxes, Docker Compose i Dockerfile. Amb un entorn PHP + MariaDB reproduïble com els d'IAW.
+
+    [:octicons-arrow-right-24: Anar a Docker](docker/index.md)
+
+-   :material-git:{ .lg .middle } **Git i GitHub**
+
+    ---
+
+    Commits, branques, conflictes, Pull Requests i com desfer canvis. Amb els problemes que més passen i la seua solució.
+
+    [:octicons-arrow-right-24: Anar a Git](git/index.md)
+
 -   :material-file-document-outline:{ .lg .middle } **Xuletes**
 
     ---
 
-    Resums d'una pàgina: Bash, ordres de Linux, Python, Git i PowerShell.
+    Resums d'una pàgina: Bash, ordres de Linux, Python, PowerShell, Docker i Git.
 
     [:octicons-arrow-right-24: Veure xuletes](xuletes/index.md)
 
