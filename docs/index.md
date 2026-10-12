@@ -6,67 +6,81 @@ hide:
 
 # Apunts ASIR
 
-Apunts, exemples i exercicis resolts per al **CFGS Administració de Sistemes Informàtics en Xarxa**. Pensats per a consultar-los quan estàs fent un script i no recordes com era.
+Apunts senzills, amb exemples i exercicis resolts, per a estudiar i per a tindre a mà mentre treballes o fas un examen. Explicats des de zero. Els exemples s'han provat: les eixides que es mostren són reals.
 
 <div class="grid cards" markdown>
 
--   :material-console:{ .lg .middle } **Bash scripting**
+-   :material-school:{ .lg .middle } **Com estudiar**
 
     ---
 
-    De zero a scripts robustos: variables, condicionals, bucles, funcions, arrays, processament de text, `find`, `grep` i `xargs`. Amb 12 problemes resolts.
+    Un mètode per a aprendre més ràpid i recordar més, i consells de programadors experts.
 
-    [:octicons-arrow-right-24: Anar a Bash](bash/index.md)
+    [:octicons-arrow-right-24: Comença ací](estudiar/index.md)
 
--   :material-language-python:{ .lg .middle } **Python**
+-   :material-console:{ .lg .middle } **Bash**
 
     ---
 
-    Tipus, cadenes, estructures de dades, funcions, fitxers, excepcions i classes, amb un tema dedicat a l'administració de sistemes. Amb 19 exercicis resolts.
+    Scripts en Linux: variables, condicionals, bucles, funcions, arrays, text, `find` i `grep`.
 
-    [:octicons-arrow-right-24: Anar a Python](python/index.md)
+    [:octicons-arrow-right-24: Bash](bash/index.md)
 
 -   :material-powershell:{ .lg .middle } **PowerShell**
 
     ---
 
-    El terminal de Windows: cmdlets, objectes i tuberies, scripts amb paràmetres, serveis, usuaris i Directori Actiu. Amb 12 exercicis resolts.
+    El terminal de Windows: cmdlets, objectes, scripts, serveis, usuaris i Directori Actiu.
 
-    [:octicons-arrow-right-24: Anar a PowerShell](powershell/index.md)
+    [:octicons-arrow-right-24: PowerShell](powershell/index.md)
 
--   :material-docker:{ .lg .middle } **Docker**
+-   :material-language-python:{ .lg .middle } **Python**
 
     ---
 
-    Contenidors, imatges, volums, xarxes, Docker Compose i Dockerfile. Amb un entorn PHP + MariaDB reproduïble com els d'IAW.
+    Programació des de zero, amb un tema per a l'administració de sistemes.
 
-    [:octicons-arrow-right-24: Anar a Docker](docker/index.md)
+    [:octicons-arrow-right-24: Python](python/index.md)
 
 -   :material-git:{ .lg .middle } **Git i GitHub**
 
     ---
 
-    Commits, branques, conflictes, Pull Requests i com desfer canvis. Amb els problemes que més passen i la seua solució.
+    Commits, branques, Pull Requests i com desfer canvis.
 
-    [:octicons-arrow-right-24: Anar a Git](git/index.md)
+    [:octicons-arrow-right-24: Git](git/index.md)
+
+-   :material-docker:{ .lg .middle } **Docker**
+
+    ---
+
+    Contenidors, imatges, volums, xarxes, Docker Compose i Dockerfile.
+
+    [:octicons-arrow-right-24: Docker](docker/index.md)
+
+-   :material-language-php:{ .lg .middle } **PHP (aplicacions web)**
+
+    ---
+
+    Formularis, sessions, base de dades amb PDO, una aplicació CRUD i com desplegar-la.
+
+    [:octicons-arrow-right-24: PHP](php/index.md)
 
 -   :material-file-document-outline:{ .lg .middle } **Xuletes**
 
     ---
 
-    Resums d'una pàgina: Bash, ordres de Linux, Python, PowerShell, Docker i Git.
+    Resums d'una pàgina de cada tema, per a tindre oberts mentre treballes.
 
-    [:octicons-arrow-right-24: Veure xuletes](xuletes/index.md)
-
--   :material-lightbulb-on-outline:{ .lg .middle } **Com resoldre un problema**
-
-    ---
-
-    Un mètode pas a pas per a no quedar-se encallat davant d'un enunciat.
-
-    [:octicons-arrow-right-24: Llegir el mètode](bash/metode.md)
+    [:octicons-arrow-right-24: Xuletes](xuletes/index.md)
 
 </div>
+
+## Com estan fets
+
+- Cada tema acaba amb una taula d'**errors típics** (el missatge, per què passa i com se soluciona) i un requadre verd **«Per a l'examen»** amb el resum.
+- Els **exercicis resolts** tenen la solució amagada: intenta-ho abans d'obrir-la.
+- El [glossari](glossari.md) explica les paraules tècniques.
 
 !!! tip "Cerca"
     Prem ++s++ o ++slash++ per a buscar en tots els apunts alhora.

@@ -194,5 +194,119 @@ Paraules que apareixen en els apunts, explicades amb paraules senzilles.
 **Pull Request** (PR)
 :   Una petició en GitHub per a revisar i ajuntar una branca amb una altra.
 
+**Llenguatge de marques**
+:   Un llenguatge que usa etiquetes per a indicar què és cada part d'un text (títol, paràgraf, enllaç...). HTML i XML ho són. No és un llenguatge de programació.
+
+**Etiqueta** (HTML)
+:   Una marca entre `< >` que indica què és un contingut: `<p>`, `<h1>`, `<a>`... La majoria s'obrin i es tanquen (`<p>…</p>`).
+
+**Atribut** (HTML)
+:   Informació extra dins d'una etiqueta: `<a href="pagina.html">`, `<img alt="…">`.
+
+**Selector** (CSS)
+:   La part d'una regla CSS que diu a quins elements s'aplica: `p`, `.classe`, `#id`...
+
+**Model de caixa**
+:   La idea que cada element és una caixa amb contingut, farcit (*padding*), vora (*border*) i marge (*margin*).
+
+**Responsive** (disseny adaptable)
+:   Una web que es veu bé en qualsevol pantalla, del mòbil a l'ordinador.
+
+**Media query**
+:   Una regla CSS que només s'aplica si es complix una condició, normalment l'amplada de la pantalla: `@media (min-width: 768px)`.
+
 **Classe / Objecte**
 :   Una classe és un motle; un objecte és una cosa concreta creada amb eixe motle.
+
+## Sistemes operatius
+
+**Nucli** (kernel)
+:   La part central del sistema operatiu, que controla el maquinari.
+
+**Distribució**
+:   Un sistema Linux complet preparat per a instal·lar: Debian, Ubuntu, Rocky Linux...
+
+**Partició**
+:   Un tros del disc que el sistema tracta com un disc independent. La taula de particions pot ser **MBR** (antiga) o **GPT** (actual).
+
+**Sistema de fitxers**
+:   L'organització dels fitxers dins d'una partició: ext4, NTFS, FAT32, exFAT, XFS.
+
+**Muntar**
+:   Fer que el contingut d'un disc o partició aparega dins d'una carpeta. Els muntatges permanents van en `/etc/fstab`.
+
+**LVM**
+:   Volums lògics: una capa entre els discos i les particions que permet ampliar-les en calent.
+
+**Procés / PID**
+:   Un programa en execució / el seu número.
+
+**Servei** (dimoni)
+:   Un programa que funciona en segon pla esperant peticions (web, SSH, base de dades). En Linux es gestionen amb `systemctl`.
+
+**Paquet / repositori**
+:   Un programa preparat per a instal·lar / el servidor d'on es descarreguen (`apt`).
+
+**Permisos**
+:   Qui pot llegir (`r`), escriure (`w`) i executar (`x`) cada fitxer: el propietari, el grup i els altres. En octal: `755`, `644`.
+
+**root / sudo**
+:   L'administrador de Linux / l'ordre per a executar una ordre com a administrador.
+
+**Màquina virtual / hipervisor**
+:   Un ordinador simulat dins d'un altre / el programa que les gestiona (VirtualBox, Proxmox, Hyper-V).
+
+## Bases de dades (per a PHP)
+
+**SGBD**
+:   El programa que gestiona les bases de dades: PostgreSQL, MariaDB, SQLite.
+
+**SQL**
+:   El llenguatge per a crear i consultar bases de dades.
+
+**Taula / fila / columna**
+:   Les dades s'organitzen en taules; cada fila és un registre i cada columna un camp.
+
+**Clau primària / forana**
+:   La columna que identifica cada fila / la que apunta a la clau primària d'una altra taula.
+
+**JOIN**
+:   Ajuntar files de diverses taules relacionades.
+
+**Transacció**
+:   Un grup d'operacions que es fan totes o cap (`BEGIN` ... `COMMIT`).
+
+**Índex**
+:   Una estructura que fa més ràpides les cerques en una taula.
+
+**Normalització**
+:   Organitzar les taules per a no repetir dades (1FN, 2FN, 3FN).
+
+## Web i serveis
+
+**Servidor web**
+:   El programa que servix les pàgines: Apache, Nginx.
+
+**HTTPS / TLS / certificat**
+:   HTTP xifrat / el protocol que el xifra / el document que diu de qui és una clau pública, signat per una autoritat (CA).
+
+**PHP / backend**
+:   Llenguatge que s'executa en el servidor i genera les pàgines.
+
+**CRUD**
+:   Crear, llegir, modificar i esborrar: les operacions bàsiques d'una aplicació.
+
+**XML / JSON / YAML**
+:   Formats de text per a guardar i intercanviar dades.
+
+## Seguretat web
+
+**XSS**
+:   Atac que mostra codi JavaScript d'un atacant dins d'una web. Es para escapant amb `htmlspecialchars`.
+
+**Injecció SQL**
+:   Atac que modifica una consulta escrivint SQL en un formulari. Es para amb consultes preparades.
+
+**Hash**
+:   L'«empremta» d'unes dades, d'una sola direcció. Les contrasenyes es guarden així (`password_hash`).
+

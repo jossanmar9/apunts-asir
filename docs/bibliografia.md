@@ -31,3 +31,20 @@ Estos apunts estan escrits a partir de l'estudi dels materials següents. Els te
 
 - **Scott Chacon i Ben Straub** — *Pro Git*. Llicència CC BY-NC-SA 3.0. Disponible en castellà en [git-scm.com/book/es](https://git-scm.com/book/es/v2).
 - Documentació de GitHub: [docs.github.com/es](https://docs.github.com/es).
+
+## HTML i CSS
+
+- **MDN Web Docs** (Mozilla) — referència completa d'HTML i CSS, en castellà: [developer.mozilla.org/es](https://developer.mozilla.org/es/docs/Web).
+- **W3C** — validador d'HTML: [validator.w3.org](https://validator.w3.org/).
+- **CSS-Tricks** — guies visuals de [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) i [Grid](https://css-tricks.com/snippets/css/complete-guide-grid/).
+
+## PHP (aplicacions web)
+
+- **Manual oficial de PHP** (en castellà): [php.net/manual/es](https://www.php.net/manual/es/).
+- **OWASP** — [OWASP Top 10](https://owasp.org/www-project-top-ten/) i les *Cheat Sheets* de seguretat: [cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/).
+- Imatges oficials de [PHP](https://hub.docker.com/_/php) i [WordPress](https://hub.docker.com/_/wordpress) en Docker Hub.
+
+## Com estudiar i bones pràctiques
+
+- *100 cosas que todo programador debería saber* — recull de consells inspirat en *97 Things Every Programmer Should Know* (Kevlin Henney, ed., O'Reilly). Les idees de [Consells de programadors](estudiar/consells.md) en venen.
+- **Julia Evans** — [Wizard Zines](https://wizardzines.com/): còmics molt clars sobre Linux, Git, xarxes i depuració.

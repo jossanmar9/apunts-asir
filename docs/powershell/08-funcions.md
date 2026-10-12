@@ -163,7 +163,7 @@ Write-Host "El primer és $($args[0])"
 | `Funcio(1, 2)` no fa el que esperes | Passa una llista com a un sol paràmetre | `Funcio 1 2` o `Funcio -A 1 -B 2` |
 | `The term 'Funcio' is not recognized` | La crides abans de definir-la | Posa la funció al principi |
 | La variable queda buida en fer `$r = Funcio` | La funció usa `Write-Host` | Torna el valor (sense `Write-Host`) |
-| La funció torna coses de més | Alguna ordre de dins mostra resultats | `\| Out-Null` en eixa ordre |
+| La funció torna coses de més | Alguna ordre de dins mostra resultats | `| Out-Null` en eixa ordre |
 | `param` dona error en un script | No està en la primera línia | Posa `param( )` al principi (només poden anar comentaris abans) |
 
 !!! success "Per a l'examen"

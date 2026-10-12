@@ -39,7 +39,7 @@ Dins de la tuberia, l'objecte actual és **`$_`** (o `$PSItem`).
 | `Select-Object` | **triar** propietats, o els primers/últims | `cut`, `head`, `tail` |
 | `Sort-Object` | **ordenar** | `sort` |
 | `Measure-Object` | **comptar**, sumar, mitjana | `wc -l`, `awk` |
-| `Group-Object` | **agrupar** i comptar | `sort \| uniq -c` |
+| `Group-Object` | **agrupar** i comptar | `sort | uniq -c` |
 | `ForEach-Object` | fer una cosa **amb cada un** | `while read` |
 | `Format-Table` | mostrar en **taula** | `column` |
 | `Export-Csv` | guardar en **CSV** | — |
@@ -148,7 +148,7 @@ $dades | Where-Object Status -eq "Running"
 
 | Error | Per què | Solució |
 | ----- | ------- | ------- |
-| No sé com es diu una propietat | — | `... \| Get-Member` |
+| No sé com es diu una propietat | — | `... | Get-Member` |
 | Després de `Format-Table` no puc exportar | `Format-` ho convertix en text | Posa `Format-*` al final |
 | `Where-Object { Status -eq "Running" }` no filtra | Falta `$_.` dins de les claus | `{ $_.Status -eq "Running" }` |
 | El CSV té una primera línia estranya `#TYPE` | Windows PowerShell 5.1 l'afig | `-NoTypeInformation` |
