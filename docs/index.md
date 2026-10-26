@@ -6,81 +6,59 @@ hide:
 
 # Apunts ASIR
 
-Apunts senzills, amb exemples i exercicis resolts, per a estudiar i per a tindre a mà mentre treballes o fas un examen. Explicats des de zero. Els exemples s'han provat: les eixides que es mostren són reals.
+Resums explicats dels apunts de classe, organitzats per **mòdul, unitat i tema**, per a estudiar i consultar mentre fas els treballs. Amb exemples propis resolts pas a pas, resultats esperats i errors habituals.
 
 <div class="grid cards" markdown>
 
--   :material-school:{ .lg .middle } **Com estudiar**
+-   :material-web:{ .lg .middle } **IAW**
 
     ---
 
-    Un mètode per a aprendre més ràpid i recordar més, i consells de programadors experts.
+    **Implantació d’aplicacions web.** UT1: arquitectura, HTTP i entorns amb Compose. UT2: PHP, formularis, sessions i autenticació.
 
-    [:octicons-arrow-right-24: Comença ací](estudiar/index.md)
+    [:octicons-arrow-right-24: Estudia IAW](iaw/index.md)
 
--   :material-console:{ .lg .middle } **Bash**
-
-    ---
-
-    Scripts en Linux: variables, condicionals, bucles, funcions, arrays, text, `find` i `grep`.
-
-    [:octicons-arrow-right-24: Bash](bash/index.md)
-
--   :material-powershell:{ .lg .middle } **PowerShell**
+-   :material-server-network:{ .lg .middle } **ASO**
 
     ---
 
-    El terminal de Windows: cmdlets, objectes, scripts, serveis, usuaris i Directori Actiu.
+    **Administració de sistemes operatius.** UT0: Git i GitHub. UT1: Bash, decisions, bucles, funcions, filtres i depuració.
 
-    [:octicons-arrow-right-24: PowerShell](powershell/index.md)
+    [:octicons-arrow-right-24: Estudia ASO](aso/index.md)
 
 -   :material-language-python:{ .lg .middle } **Python**
 
     ---
 
-    Programació des de zero, amb un tema per a l'administració de sistemes.
+    **Introducció a la programació.** UT1: entorn i dades. UT2: objectes i cadenes. UT3: control de flux i biblioteques per a sysadmin.
 
-    [:octicons-arrow-right-24: Python](python/index.md)
+    [:octicons-arrow-right-24: Estudia Python](python-classe/index.md)
 
--   :material-git:{ .lg .middle } **Git i GitHub**
-
-    ---
-
-    Commits, branques, Pull Requests i com desfer canvis.
-
-    [:octicons-arrow-right-24: Git](git/index.md)
-
--   :material-docker:{ .lg .middle } **Docker**
+-   :material-school:{ .lg .middle } **Com estudiar**
 
     ---
 
-    Contenidors, imatges, volums, xarxes, Docker Compose i Dockerfile.
+    Un mètode per a aprendre més ràpid, recordar el que estudies i comprovar que ho entens.
 
-    [:octicons-arrow-right-24: Docker](docker/index.md)
-
--   :material-language-php:{ .lg .middle } **PHP (aplicacions web)**
-
-    ---
-
-    Formularis, sessions, base de dades amb PDO, una aplicació CRUD i com desplegar-la.
-
-    [:octicons-arrow-right-24: PHP](php/index.md)
-
--   :material-file-document-outline:{ .lg .middle } **Xuletes**
-
-    ---
-
-    Resums d'una pàgina de cada tema, per a tindre oberts mentre treballes.
-
-    [:octicons-arrow-right-24: Xuletes](xuletes/index.md)
+    [:octicons-arrow-right-24: Comença ací](estudiar/index.md)
 
 </div>
 
-## Com estan fets
+## Com treballar amb els apunts
 
-- Cada tema acaba amb una taula d'**errors típics** (el missatge, per què passa i com se soluciona) i un requadre verd **«Per a l'examen»** amb el resum.
-- Els **exercicis resolts** tenen la solució amagada: intenta-ho abans d'obrir-la.
-- El [glossari](glossari.md) explica les paraules tècniques.
+1. **Per a estudiar:** segueix les unitats en ordre. Entén la idea, prediu l’eixida i comprova el cas resolt.
+2. **Durant un treball:** busca el tema que necessites i adapta el procediment al teu enunciat, comprovant entrades, límits i errors.
+3. **Per a repassar:** consulta les taules i el requadre «Per a repassar» de cada tema.
 
-!!! tip "Cerca"
-    Prem ++s++ o ++slash++ per a buscar en tots els apunts alhora.
+Els casos resolts són nous i serveixen per a explicar la teoria. Els exercicis de classe per a practicar o entregar queden fora d’aquestes solucions.
+
+## Material complementari
+
+Els apunts anteriors continuen en **Complements**: [Bash](bash/index.md), [PowerShell](powershell/index.md), [Python ampliat](python/index.md), [Git](git/index.md), [Docker](docker/index.md) i [PHP](php/index.md). També tens les [xuletes](xuletes/index.md) i el [glossari](glossari.md).
+
+## Fonts i actualitzacions
+
+Resums preparats a partir dels materials accessibles el **26/10/2026**. La pàgina de [fonts i cobertura](classe.md) indica què s’ha resumit i què està pendent de publicar. Els actualitzarem **quan ho demanes**, després que apareguen apunts o exercicis nous.
+
+!!! tip "Cerca mentre treballes"
+    Prem ++s++ o ++slash++ i busca un concepte, com «POST», «while» o «cookie». La cerca inclou els resums i els complements.
