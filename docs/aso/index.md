@@ -1,10 +1,10 @@
 # ASO · Administración de sistemas operativos
 
-Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
+Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema desarrolla la teoría desde cero, explica qué hace cada instrucción y contiene problemas sencillos resueltos paso a paso. Las explicaciones incorporan el material que ya teníamos en el repositorio. Los problemas son diferentes de los ejercicios de práctica o entrega de clase.
 
 ## UT1 · Bash
 
-| Tema | Resumen y ejemplos |
+| Tema | Explicación y problemas paso a paso |
 | --- | --- |
 | 1 | [Scripts, variables y parámetros](02-bash-dades.md) |
 | 2 | [Cálculos y decisiones](03-bash-decisions.md) |
@@ -20,9 +20,9 @@ La introducción que corresponde a UT0 está en el [tema independiente de Git y 
 
 UT2 (procesos), UT3 (acceso remoto), UT4 (Ansible), UT5.1 (directorio Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directorio Activo), UT7.2 (PowerShell y directorio) y UT8 (monitorización) aparecen como «Próximamente». Las ampliaciones incluidas en los temas actuales no se presentan como teoría de esas unidades pendientes.
 
-## Cómo utilizar estos resúmenes
+## Cómo utilizar estos apuntes
 
-Lee la idea principal, sigue el caso resuelto y predice el resultado antes de probarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.
+Lee la explicación del concepto y después sigue el problema paso a paso. Anota los valores de las variables y predice el resultado antes de ejecutarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.
 
 Consulta también [Cómo estudiar](../estudiar/index.md), [Git y GitHub](../git-github/index.md) y las [fuentes y la cobertura](../classe.md).
 

@@ -1,18 +1,5 @@
 # Git y GitHub
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Repositorio** | Proyecto cuyo historial registra Git, normalmente mediante el directorio `.git`. |
-| **Commit** | Instantánea registrada de contenido con autor, mensaje y relación con commits anteriores. |
-| **Rama** | Referencia a una línea de trabajo; su nombre principal no es obligatorio que sea `main`. |
-| **Remoto** | Destino o fuente configurada para intercambiar datos Git, como `origin`. |
-| **Push, fetch y pull** | Enviar commits, obtener información remota e integrar tras obtener, respectivamente. |
-| **Merge y conflicto** | Integración de líneas de trabajo y situación que exige decidir cómo resolver cambios incompatibles. |
-| **Pull Request** | Propuesta de revisión e integración gestionada en GitHub. |
-| **Fork** | Repositorio copiado bajo otra cuenta para desarrollar o proponer cambios. |
-
 Tema independiente y transversal a IAW, ASO y Python. Cubre la introducción de UT0 de ASO: guardar, revisar y compartir cambios.
 
 ## ¿Qué guarda cada herramienta?
@@ -28,9 +15,55 @@ flowchart LR
 
 `git add` selecciona el contenido que entrará en el próximo commit. Si después vuelves a editar el archivo, la nueva edición todavía no está preparada. `git pull` obtiene e integra cambios remotos; puede producir conflictos que debes revisar.
 
-## Caso resuelto: corregir un inventario de cables
+## Qué problema resuelve Git cuando estudias o programas
 
-**Objetivo propio:** registrar que el stock real es de 8 cables. Crea una carpeta de laboratorio que no esté dentro de otro repositorio. Este ejemplo es local y no crea ni envía nada a GitHub.
+Guardar un archivo conserva su contenido actual, pero no explica qué cambió desde ayer ni por qué. Copiar carpetas con nombres como `final`, `final2` o `definitivo` conserva algunas versiones, pero hace difícil comparar y saber cuál contiene cada cambio. Git registra estados del proyecto y sus relaciones para poder revisar esa evolución.
+
+GitHub permite alojar una copia remota del repositorio. No sustituye al historial local ni convierte automáticamente en commit todo lo que escribas en tu editor. Primero decides qué guardar en Git y después qué enviar al remoto. Esta separación explica por qué puedes tener cambios en el ordenador que todavía no aparecen en GitHub.
+
+## Las tres zonas con un ejemplo de una sola línea
+
+Imagina un archivo `inventario.txt` que dice `Cables: 7` y ya pertenece a un commit. Lo editas para que diga `Cables: 8`. Ahora hay una diferencia entre tu carpeta de trabajo y el último estado guardado.
+
+`git add inventario.txt` prepara el contenido que quieres incluir en el próximo commit. No crea aún el commit. `git commit` registra lo preparado. `git push` intenta enviar los commits que faltan al remoto. Son pasos distintos que puedes observar por separado.
+
+Si preparas el archivo cuando dice 8 y después lo editas otra vez para que diga 9, no se actualiza mágicamente lo preparado. Puedes tener una versión preparada con 8 y una edición posterior con 9. `git diff --cached` permite revisar lo primero y `git diff` lo segundo.
+
+Esto es útil cuando una carpeta contiene trabajo a medias: no necesitas guardar todo junto por el simple hecho de que esté modificado. El área de preparación permite seleccionar un cambio coherente, revisarlo y describirlo con un mensaje.
+
+## Leer `status` antes de decidir el siguiente paso
+
+Un archivo nuevo aparece como no seguido, normalmente con `??` en la vista corta. Uno registrado y modificado aparece como modificación. La columna de preparación y la de la carpeta de trabajo expresan estados distintos; un mismo archivo puede tener cambios en ambas.
+
+No utilices `git add .` como respuesta automática a cualquier mensaje. Primero mira qué entraría, especialmente si hay archivos generados, configuraciones locales o datos que no quieres publicar. Preparar archivos concretos facilita aprender qué está ocurriendo.
+
+Después de un commit correcto, el árbol puede quedar limpio. Eso solo informa de los cambios locales pendientes: no demuestra por sí mismo que ya hayas enviado el commit ni que estés mirando en GitHub la misma rama.
+
+## Un commit registra una decisión que debes poder explicar
+
+El mensaje debería resumir qué aporta el cambio. «Corrige el recuento de cables» relaciona el commit con una modificación concreta. «Cosas» no ayuda a encontrarlo después. No necesitas escribir un texto largo para una edición pequeña, pero sí identificar su propósito.
+
+Un commit tampoco es una prueba automática de que funcione. Puedes registrar un programa con un error. Antes de guardarlo, ejecuta la comprobación que corresponda y revisa el diff para saber qué estás incluyendo.
+
+El identificador del commit permite referirse a él con precisión. `HEAD` indica el punto actual del trabajo, normalmente a través de la rama activa. `origin/main` representa la información local que tienes de esa rama remota después de actualizarla; no es una lectura continua de Internet.
+
+## Trabajar con una rama sin imaginar otra carpeta
+
+Una rama permite avanzar desde un punto del historial. Al cambiar de rama, Git ajusta la versión de los archivos registrados en la carpeta de trabajo. No crea necesariamente una carpeta nueva que tengas que localizar en el explorador.
+
+Si hay modificaciones sin guardar, cambiar de rama puede conservarlas cuando sea compatible o impedir el cambio cuando se perderían. Por eso debes revisar `status` antes de moverte. Si quieres empezar un trabajo nuevo, entiende primero desde qué rama y commit lo estás iniciando.
+
+Fusionar reúne líneas de trabajo. Cuando Git no puede decidir cómo combinar un contenido, muestra un conflicto para que revises el resultado correcto. Un conflicto no significa que se haya borrado todo: significa que falta una decisión que Git no puede tomar por ti.
+
+## Qué debes dominar primero y qué puedes consultar
+
+Para empezar, practica el ciclo editar → revisar → preparar → commit y distingue cuándo se envía al remoto. Después aprende a crear una rama, integrarla y reconocer un conflicto. Las herramientas para deshacer se estudian a partir de una pregunta concreta: qué cambio quieres retirar y dónde está guardado.
+
+No memorices una orden de borrado para cualquier problema. Eliminar una edición sin commit, corregir un mensaje y revertir un commit compartido son tareas diferentes. La tabla de recuperación de este tema sirve como consulta después de entender esa diferencia.
+
+## Problema explicado paso a paso: corregir un inventario de cables
+
+Registrar que el stock real es de 8 cables. Crea una carpeta de laboratorio que no esté dentro de otro repositorio. Este ejemplo es local y no crea ni envía nada a GitHub.
 
 ```bash
 mkdir inventario-lab
@@ -87,7 +120,7 @@ Si un archivo con credenciales ya se publicó, añadirlo al `.gitignore` no prot
 
 Una rama es una referencia que permite continuar una línea de trabajo sin mezclarla inmediatamente con otra. No es una copia manual de la carpeta. La rama inicial puede llamarse `main`, `master` u otro nombre: compruébalo con `git branch --show-current`.
 
-### Laboratorio resuelto: añadir una ubicación al inventario
+### Problema explicado paso a paso: añadir una ubicación al inventario
 
 Continúa en el laboratorio local del inventario y con el árbol de trabajo limpio:
 
@@ -153,7 +186,7 @@ Una PR abierta no significa que el cambio ya esté integrado. Un *fork* es una c
 
 `git reset --soft HEAD~1` mueve la referencia de la rama un commit atrás y deja sus cambios preparados; no es la herramienta predeterminada para deshacer commits compartidos. `reset --hard` también descarta cambios de trabajo: no lo ejecutes por ensayo y error.
 
-### Caso resuelto: un archivo se preparó antes de terminarlo
+### Problema explicado paso a paso: un archivo se preparó antes de terminarlo
 
 Si `ubicacion.txt` está editado y preparado, pero no debe entrar aún en el próximo commit, revisa `git diff --cached`, ejecuta `git restore --staged ubicacion.txt` y consulta `git status`. El archivo conserva su contenido editado, pero deja de estar preparado. No has perdido la edición ni modificado un commit.
 
@@ -167,6 +200,19 @@ Si `ubicacion.txt` está editado y preparado, pero no debe entrar aún en el pr�
 | `HEAD detached` | Estás en un commit concreto; crea una rama si quieres conservar trabajo nuevo |
 | La PR incluye otro trabajo | Rama de partida y commits incluidos antes de crearla |
 | El merge de GitHub no aparece localmente | Actualiza la rama local correspondiente |
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Repositorio** | Proyecto cuyo historial registra Git, normalmente mediante el directorio `.git`. |
+| **Commit** | Instantánea registrada de contenido con autor, mensaje y relación con commits anteriores. |
+| **Rama** | Referencia a una línea de trabajo; su nombre principal no es obligatorio que sea `main`. |
+| **Remoto** | Destino o fuente configurada para intercambiar datos Git, como `origin`. |
+| **Push, fetch y pull** | Enviar commits, obtener información remota e integrar tras obtener, respectivamente. |
+| **Merge y conflicto** | Integración de líneas de trabajo y situación que exige decidir cómo resolver cambios incompatibles. |
+| **Pull Request** | Propuesta de revisión e integración gestionada en GitHub. |
+| **Fork** | Repositorio copiado bajo otra cuenta para desarrollar o proponer cambios. |
 
 !!! success "Para repasar"
     Editar, preparar, guardar localmente y enviar son cuatro pasos diferentes. Explica en qué estado está tu cambio antes de repetir comandos.

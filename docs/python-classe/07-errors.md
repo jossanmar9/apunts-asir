@@ -1,13 +1,5 @@
 # UT3 · 2. Leer errores y depurar con método
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Excepción** | Evento que interrumpe el flujo normal de ejecución y puede ser tratado por un manejador. |
-| **Traza de llamadas** | Secuencia de puntos de ejecución que ayuda a localizar dónde se produjo una excepción. |
-| **Error lógico** | Resultado incorrecto aunque el programa no produzca ninguna excepción. |
-
 ## Tres problemas diferentes
 
 Un error de **sintaxis** impide interpretar el programa. Una excepción **durante la ejecución** aparece cuando una operación no se puede completar. Un error **lógico** produce una respuesta equivocada sin que Python lo detecte.
@@ -18,9 +10,56 @@ Un error de **sintaxis** impide interpretar el programa. Una excepción **durant
 | `int("cuatro")` | Excepción `ValueError` |
 | Multiplicar por unidades equivocadas | Lógica |
 
-## Caso resuelto: un recuento que parece funcionar
+## Leer lo ocurrido sin empezar cambiando código
 
-**Objetivo propio:** saber cuántos sobres hacen falta para 19 tarjetas, con 6 tarjetas por sobre. El código inicial utiliza `sobres = 19 // 6` y muestra 3.
+Cuando aparece una excepción, la última línea permite identificar su tipo y mensaje. Las líneas anteriores muestran el recorrido de llamadas y dónde falló. Busca la primera operación de tu programa que no pudo completar lo que esperaba hacer.
+
+`ValueError` en una conversión indica que el texto no representaba el valor esperado. `TypeError` apunta a una operación incompatible con los tipos. `NameError` puede ser simplemente un nombre mal escrito. No uses la misma corrección para errores que responden a preguntas diferentes.
+
+Si el programa termina sin excepciones, todavía puede calcular mal. En ese caso compara con un resultado sencillo que puedas obtener a mano y localiza el primer valor que se desvía de tu previsión.
+
+## Cómo recorre Python un `try/except`
+
+El bloque `try` contiene la operación que puede fallar. Si termina correctamente, se omiten los manejadores `except`. Si aparece una excepción reconocida por uno de ellos, se abandona el resto del `try` y se ejecuta ese manejador.
+
+No vuelve automáticamente a la línea que falló ni completa las asignaciones pendientes. Si una conversión no ha creado una variable, no puedes usarla después como si contuviera un número válido. Para volver a preguntar necesitas una repetición explícita o terminar ese camino.
+
+```python
+texto = "cuatro"
+try:
+    cantidad = int(texto)
+except ValueError:
+    print("No se ha obtenido una cantidad")
+else:
+    print(f"Cantidad válida: {cantidad}")
+print("Comprobación terminada")
+```
+
+La salida es `No se ha obtenido una cantidad` y `Comprobación terminada`. No se muestra `Cantidad válida`, porque la conversión falló. El `else` se utiliza aquí para el código que solo debe ejecutarse después de un `try` correcto.
+
+## Elegir qué errores tiene sentido tratar
+
+Captura una excepción cuando sabes qué alternativa ofrecer: pedir de nuevo un número, avisar de un archivo ausente o terminar con un mensaje concreto. Capturar cualquier cosa y seguir como si nada puede esconder un error de programación.
+
+Un error que esperas no significa que el dato sea válido después de capturarlo. La alternativa debe mantener un estado coherente: o consigues otro dato, o no realizas la operación. Esto es especialmente importante en cálculos donde una variable sin preparar acabaría produciendo otra excepción más confusa.
+
+`finally` permite ejecutar una acción al salir del bloque, haya o no error, dentro del flujo normal del lenguaje. Para archivos, `with` suele expresar con más claridad la necesidad de cerrarlos. No necesitas añadir `finally` a todos los ejemplos solo porque exista.
+
+## Puntos de interrupción y seguimiento de valores
+
+Pon una pausa antes de la línea que sospechas y observa sus entradas. Si el resultado de una resta es incorrecto, comprueba los operandos antes de cambiar la resta. Si el problema está en la lectura, corregir el cálculo no recuperará el dato original.
+
+Al avanzar, identifica qué línea se ha ejecutado y cuál está pendiente. Un nombre ausente antes de su asignación no es una prueba de que el depurador funcione mal. La observación debe relacionarse con el orden real del programa.
+
+## Comprobar la corrección, no solo que desaparezca el mensaje
+
+Después de corregir, repite el caso original y otro que antes funcionaba. Añade los límites si has tocado condiciones. Una corrección que evita una excepción devolviendo siempre cero puede ocultar el fallo y producir resultados incorrectos.
+
+Guarda el motivo de la corrección en tus notas: qué entrada causaba el problema, qué regla faltaba y qué comportamiento tiene ahora. Esa explicación te servirá al enfrentarte a un ejercicio parecido sin repetir el mismo error.
+
+## Problema explicado paso a paso: un recuento que parece funcionar
+
+Saber cuántos sobres hacen falta para 19 tarjetas, con 6 tarjetas por sobre. El código inicial utiliza `sobres = 19 // 6` y muestra 3.
 
 1. Calcula manualmente: tres sobres guardan 18 tarjetas y queda una fuera.
 2. Inspecciona `tarjetas`, `capacidad` y el resto con un breakpoint o impresiones.
@@ -90,6 +129,14 @@ print(f"Piezas aceptadas: {piezas}")
 Con las entradas `muchas`, `0` y `4`, aparecen el aviso de conversión, el aviso de rango y finalmente `Piezas aceptadas: 4`. `continue` vuelve a pedir después de la conversión fallida. No captures cualquier error con `except:`: podrías esconder un fallo de programación o impedir una interrupción que el usuario pretendía realizar.
 
 Este patrón amplía la explicación de excepciones de la teoría; si una actividad todavía no permite utilizarlas, sigue su método de validación indicado.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Excepción** | Evento que interrumpe el flujo normal de ejecución y puede ser tratado por un manejador. |
+| **Traza de llamadas** | Secuencia de puntos de ejecución que ayuda a localizar dónde se produjo una excepción. |
+| **Error lógico** | Resultado incorrecto aunque el programa no produzca ninguna excepción. |
 
 !!! success "Para repasar"
     Que el programa termine sin excepciones no demuestra que sea correcto. Necesitas datos de prueba con un resultado que puedas justificar.

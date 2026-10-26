@@ -1,24 +1,70 @@
 # UT2 · 2. Decisiones, bucles, arrays y funciones
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Condición y condicional** | Expresión que se evalúa y estructura que decide qué bloque ejecutar. |
-| **Bucle e iteración** | Estructura que repite y cada una de sus vueltas. |
-| **Función y llamada** | Bloque reutilizable con nombre y acción de ejecutarlo con unos argumentos. |
-| **Retorno y variable local** | Resultado entregado a quien llama y dato cuyo ámbito está dentro de la función. |
-| **Array indexado y asociativo** | Colección consultada por posición o por claves con significado. |
-
 ## Elige la estructura según el problema
 
 Utiliza `if/elseif/else` cuando importen condiciones o intervalos; `switch` cuando compares opciones concretas. Un `for` sirve para una repetición con contador; `while`, para repetir mientras se cumple una condición; `foreach`, para recorrer los elementos de un array.
 
 No escribas un bucle por costumbre. Pregúntate qué cambia en cada vuelta, cuándo termina y qué resultado debes acumular.
 
-## Ejemplo resuelto: preparar cajas de libros
+## Pensar una decisión antes de elegir la sintaxis
 
-**Problema propio:** hay tres lotes de libros. Cada caja admite seis ejemplares. Queremos mostrar cuántas cajas necesita cada lote y el total de cajas; los lotes no se mezclan.
+Un condicional responde a una pregunta. Antes de escribir `if`, exprésala con palabras: «si no quedan paquetes, termina» o «si la opción es audio, muestra escuchar». Después elige qué dato debe compararse y qué valores produce cada camino.
+
+`if` sirve para una pregunta. `elseif` permite comprobar otra cuando la anterior fue falsa. `else` recoge los casos restantes. No se ejecutan todas las ramas de una cadena, sino la primera que corresponde. Si necesitas ejecutar varias comprobaciones independientes, utiliza varios `if` y explica por qué no se excluyen entre sí.
+
+`switch` puede resultar más cómodo al comparar una misma opción con varios valores concretos. Cada `break` evita continuar dentro del siguiente caso. No lo introduzcas solo para hacer más corto el programa: primero debe estar claro qué caso representa cada valor.
+
+## Un array reúne datos que vas a tratar de la misma manera
+
+En lugar de crear `$sala1`, `$sala2` y `$sala3`, puedes reunir los nombres en un array y recorrerlo. En un array indexado accedes por posición; en uno asociativo, por una clave que expresa el significado del dato.
+
+```php
+<?php
+$salas = ['Azul', 'Gris'];
+$aforo = ['Azul' => 18, 'Gris' => 12];
+foreach ($salas as $sala) {
+    echo $sala . ': ' . $aforo[$sala] . " plazas\n";
+}
+```
+
+La salida muestra `Azul: 18 plazas` y `Gris: 12 plazas`. La variable `$sala` toma un nombre en cada vuelta. Ese nombre permite consultar su cantidad en el segundo array. Este ejemplo presupone que ambas colecciones contienen las claves correspondientes; si los datos fueran externos habría que comprobarlo.
+
+## Qué se repite en un bucle
+
+Un bucle ejecuta un bloque varias veces. La parte que cambia puede ser el elemento que recorres, un contador o una cantidad pendiente. Lo que debe conservarse entre vueltas se inicializa antes; lo que representa un cálculo nuevo se obtiene dentro.
+
+En el ejemplo de cajas, el total debe empezar en cero antes de `foreach`, porque reúne resultados de todos los lotes. El número de cajas del lote se calcula dentro, porque cambia con la cantidad de cada lote. Si inicializas ambos en el mismo lugar por costumbre, uno de ellos perderá su propósito.
+
+Para depurar, escribe una fila por vuelta: valor actual, condición, resultado y acumulador. Esa tabla te permite comprobar el bucle sin ejecutarlo mentalmente de golpe.
+
+## Crear una función significa poner nombre a una tarea
+
+Una función tiene entradas, un trabajo y, si corresponde, una salida. Los parámetros son nombres que recibirán valores en cada llamada. `return` entrega el resultado y termina esa ejecución de la función; no imprime una respuesta para el usuario.
+
+```php
+<?php
+function plazasLibres(int $capacidad, int $ocupadas): int
+{
+    return $capacidad - $ocupadas;
+}
+$primeraSala = plazasLibres(18, 11);
+$segundaSala = plazasLibres(12, 4);
+echo $primeraSala . ' / ' . $segundaSala . "\n";
+```
+
+La salida es `7 / 8`. No se ejecuta la resta al definir la función, sino en cada llamada. La primera utiliza 18 y 11; la segunda utiliza 12 y 4. Los nombres internos no obligan a que las variables del programa que llama tengan esos mismos nombres.
+
+Esta separación facilita probar: puedes llamar a la función con cantidades pequeñas y saber qué esperas. Si dentro leyera directamente un formulario, necesitarías preparar además una petición HTTP para comprobar la misma resta.
+
+## Evitar funciones que hacen demasiadas cosas
+
+Una función que lee un formulario, valida, calcula, escribe HTML y redirige es difícil de reutilizar. Empieza por una separación sencilla: el receptor obtiene y valida; la función calcula; el HTML presenta. No hace falta convertir cada línea en otra función.
+
+Utiliza nombres que expliquen el propósito. `plazasLibres` dice más que `hacerCosas`. Una función que devuelve una cantidad debería entregar esa cantidad, no una frase ya decorada que después tengas que volver a interpretar.
+
+## Problema explicado paso a paso: preparar cajas de libros
+
+Hay tres lotes de libros. Cada caja admite seis ejemplares. Queremos mostrar cuántas cajas necesita cada lote y el total de cajas; los lotes no se mezclan.
 
 ```php
 <?php
@@ -126,6 +172,16 @@ echo etiqueta('Azul', 'Zona') . "\n";
 Resultado esperado: `Sala: Azul` y `Zona: Azul`. El segundo parámetro tiene un valor predeterminado, pero puede sustituirse. `$nombre` y `$prefijo` son locales a la llamada; `return` entrega el texto a quien la llamó.
 
 Para archivos que solo contienen funciones PHP, suele ser práctico omitir la etiqueta de cierre `?>`: reduces el riesgo de introducir espacios que se envíen accidentalmente antes de una cabecera HTTP.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Condición y condicional** | Expresión que se evalúa y estructura que decide qué bloque ejecutar. |
+| **Bucle e iteración** | Estructura que repite y cada una de sus vueltas. |
+| **Función y llamada** | Bloque reutilizable con nombre y acción de ejecutarlo con unos argumentos. |
+| **Retorno y variable local** | Resultado entregado a quien llama y dato cuyo ámbito está dentro de la función. |
+| **Array indexado y asociativo** | Colección consultada por posición o por claves con significado. |
 
 !!! success "Para repasar"
     Haz una tabla de seguimiento: entrada de cada vuelta, cálculo y acumulador. Si puedes explicarla, entiendes el bucle.

@@ -1,14 +1,5 @@
 # UT2 · 1. PHP, variables y generación de HTML
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Variable y tipo de dato** | Nombre asociado a un valor y categoría que determina qué operaciones admite. |
-| **Cadena y booleano** | Texto y valor lógico verdadero/falso, respectivamente. |
-| **Sintaxis** | Reglas que permiten interpretar instrucciones de un lenguaje. |
-| **Escape de HTML** | Transformación de texto para que no se interprete como marcado en el contexto de salida. |
-
 ## Dónde se ejecuta cada cosa
 
 PHP se ejecuta en el servidor. El resultado puede ser HTML, JSON o texto. El navegador no ejecuta el PHP original. Abrir un `.php` como archivo local no equivale a solicitarlo a un servidor PHP.
@@ -30,7 +21,62 @@ Las variables comienzan por `$` y distinguen mayúsculas. `=` asigna; `===` comp
 
 Las comillas dobles pueden interpolar variables; las simples conservan el texto literal. `//` y `/* ... */` son comentarios PHP. Un comentario HTML puede llegar al navegador; un comentario PHP no forma parte de la respuesta.
 
-## Ejemplo resuelto: plazas de un taller de cerámica
+## Qué hace PHP antes de que el navegador reciba la página
+
+Un archivo PHP puede contener instrucciones del servidor y texto que formará parte de la respuesta. Cuando llega una petición, el intérprete ejecuta las instrucciones y produce una salida. El navegador recibe esa salida, no el programa que la generó.
+
+Esto permite que dos visitas al mismo archivo reciban contenidos distintos: el programa puede utilizar datos enviados, resultados de una consulta o el estado de una sesión. Para empezar, usamos valores fijados dentro del código y así podemos seguir el cálculo sin añadir todavía formularios.
+
+La apertura habitual es `<?php`. Dentro de ese bloque escribes instrucciones PHP, que suelen terminar con punto y coma. Al cerrar con `?>`, vuelves a texto de salida, normalmente HTML. La forma `<?= $valor ?>` imprime directamente una expresión dentro de esa salida.
+
+## Leer una asignación de derecha a izquierda
+
+En `$libres = $capacidad - $reservas;`, primero se leen los valores de la derecha, se calcula la resta y después se guarda el resultado bajo el nombre de la izquierda. El signo `=` no pregunta si ambos lados son iguales.
+
+Si cambias `$reservas` más tarde, `$libres` no se recalcula por sí solo. Una variable que contiene el resultado no conserva una fórmula viva. Tendrás que ejecutar de nuevo la operación cuando corresponda. Esta idea ayuda a seguir programas donde las cantidades se actualizan por pasos.
+
+```php
+<?php
+$capacidad = 10;
+$reservas = 3;
+$libres = $capacidad - $reservas;
+$reservas = 5;
+echo $libres . "\n";
+$libres = $capacidad - $reservas;
+echo $libres . "\n";
+```
+
+Primero aparece 7 y después 5. La segunda asignación a `$reservas` no modifica la resta anterior; la nueva resta sí obtiene el valor actualizado.
+
+## Texto, números y booleanos tienen papeles distintos
+
+`'18'` es texto y `18` es un entero. Pueden representar una información parecida para una persona, pero no son el mismo tipo. Una entrada HTTP llega normalmente como texto y debe validarse antes de usarse como cantidad.
+
+Una comparación como `$libres === 0` produce `true` o `false`. Ese resultado puede utilizarse después en una decisión. No necesitas escribir el texto `'true'`: sería una cadena de cuatro letras, no el valor lógico.
+
+Conocer el tipo evita interpretar una salida engañosa. `var_dump` resulta útil porque muestra valor y tipo; imprimir solo un booleano con `echo` puede ser poco claro, ya que su conversión a texto no presenta necesariamente las palabras que esperas.
+
+## Concatenación e interpolación
+
+La concatenación une textos con `.`. Las comillas dobles permiten interpolar una variable sencilla; las simples conservan el texto literal. Ambas formas son válidas si sabes qué resultado construyen.
+
+```php
+<?php
+$sala = 'Azul';
+echo 'Sala: ' . $sala . "\n";
+echo "Sala: $sala\n";
+echo 'Sala: $sala' . "\n";
+```
+
+Las dos primeras líneas muestran `Sala: Azul`; la tercera muestra literalmente `Sala: $sala`. El salto `\n` funciona aquí dentro de comillas dobles. En una página HTML normal, un salto del código fuente no obliga al navegador a dibujar otra línea: necesitas una estructura HTML adecuada.
+
+## Separar el cálculo de la presentación
+
+Organiza primero los datos y después el HTML que los muestra. De ese modo puedes comprobar una resta o una condición sin mezclarla con etiquetas y estilos. No hace falta crear una arquitectura complicada: basta con que el lector sepa dónde se preparan los valores y dónde se representan.
+
+Cuando un valor contiene texto externo, escápalo al insertarlo en HTML. La razón no es que PHP no sepa imprimirlo, sino que el navegador podría interpretarlo como marcado. El ejemplo del taller muestra tanto el cálculo de plazas como la presentación segura del nombre.
+
+## Problema explicado paso a paso: plazas de un taller de cerámica
 
 **Objetivo:** mostrar las plazas disponibles. No hay formulario ni datos de clase: los valores están fijados para seguir el cálculo.
 
@@ -89,6 +135,15 @@ echo str_replace('azul', 'verde', $limpio) . "\n";
 ### Diagnóstico de tipos
 
 `var_dump($valor)` muestra tipo y contenido. Esto ayuda a explicar por qué `3 === '3'` es falso: uno es entero y otro es texto. No conviertas entradas a ciegas para hacer desaparecer el error; define primero qué representación admite el programa y valida antes del cálculo.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Variable y tipo de dato** | Nombre asociado a un valor y categoría que determina qué operaciones admite. |
+| **Cadena y booleano** | Texto y valor lógico verdadero/falso, respectivamente. |
+| **Sintaxis** | Reglas que permiten interpretar instrucciones de un lenguaje. |
+| **Escape de HTML** | Transformación de texto para que no se interprete como marcado en el contexto de salida. |
 
 !!! success "Para repasar"
     Primero se calculan los datos; después se genera la respuesta. Validar datos y escapar HTML son operaciones diferentes.

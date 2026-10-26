@@ -6,7 +6,7 @@ hide:
 
 # Apuntes ASIR
 
-Resúmenes explicados de los apuntes de clase, organizados por **módulo, unidad y tema**, para estudiar y consultar mientras haces los trabajos. Con ejemplos propios resueltos paso a paso, resultados esperados y errores habituales.
+Apuntes desarrollados de clase, organizados por **módulo, unidad y tema**, para preparar los exámenes y consultar mientras haces ejercicios. Cada concepto se explica desde cero y se acompaña de problemas sencillos resueltos paso a paso, resultados esperados y errores habituales.
 
 <div class="grid cards" markdown>
 
@@ -54,11 +54,11 @@ Resúmenes explicados de los apuntes de clase, organizados por **módulo, unidad
 
 ## Cómo trabajar con los apuntes
 
-1. **Para estudiar:** sigue las unidades en orden. Entiende la idea, predice la salida y comprueba el caso resuelto.
+1. **Para estudiar:** sigue las unidades en orden. Lee la explicación completa y sigue los cambios de cada variable en los problemas. Intenta justificar cada paso antes de ejecutarlo.
 2. **Durante un trabajo:** busca el tema que necesitas y adapta el procedimiento a tu enunciado, comprobando entradas, límites y errores.
 3. **Para repasar:** consulta las tablas y el recuadro «Para repasar» de cada tema.
 
-Los casos resueltos son propios y sirven para explicar la teoría. Los ejercicios de clase para practicar o entregar quedan fuera de estas soluciones.
+Los problemas se explican paso a paso para aprender a aplicar la teoría. Se utilizan enunciados diferentes de los ejercicios de clase para practicar o entregar.
 
 ## Una guía completa dentro de cada tema
 
@@ -66,7 +66,7 @@ Cada tema reúne la teoría de clase, las ampliaciones útiles de nuestros apunt
 
 ## Fuentes y actualizaciones
 
-Resúmenes preparados a partir de los materiales accesibles el **26/10/2026**, traducidos al castellano el **27/10/2026**. La página de [fuentes y cobertura](classe.md) indica qué se ha resumido y qué está pendiente de publicar. Los actualizaremos **cuando lo solicites**, después de que aparezcan apuntes o ejercicios nuevos.
+Apuntes preparados a partir de los materiales accesibles el **26/10/2026**, desarrollados y revisados en castellano el **27/10/2026**. La página de [fuentes y cobertura](classe.md) indica qué temas están desarrollados y cuáles están pendientes de publicar. Los actualizaremos **cuando lo solicites**, después de que aparezcan apuntes o ejercicios nuevos.
 
 !!! tip "Busca mientras trabajas"
-    Pulsa ++s++ o ++slash++ y busca un concepto como «POST», «while» o «cookie». La búsqueda incluye los temas publicados y la guía de estudio.
+    Pulsa ++s++ o ++slash++ y busca un concepto como «POST», «while» o «cookie». La búsqueda incluye los temas publicados y la guía de estudio. Dentro de cada tema, el índice permite ir directamente a la explicación, al problema o al vocabulario que necesitas.

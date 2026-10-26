@@ -1,20 +1,46 @@
 # UT2 · 5. Depurar una aplicación sin probar al azar
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Depurar** | Localizar y corregir la causa de un comportamiento incorrecto. |
-| **Log** | Registro de eventos o errores que ayuda a reconstruir lo ocurrido. |
-| **Caso de prueba** | Entradas y condiciones concretas con un resultado esperado que puedes justificar. |
-
 ## Sigue el recorrido de la petición
 
 Cuando una página no hace lo que esperas, separa tres preguntas: **¿ha llegado la petición?**, **¿qué ha recibido PHP?** y **¿qué respuesta ha generado?**. Un formulario que no conserva un valor no se diagnostica igual que un contenedor que no arranca.
 
-## Caso resuelto: no aparece la duración del turno
+## Empezar por una pregunta concreta
 
-**Situación propia:** en un formulario de visita guiada el control dice `name="duracion"`, pero el receptor lee `$_POST['tiempo']`. Al enviar 25, el resumen aparece vacío.
+«La web no funciona» incluye demasiados problemas posibles. Convierte esa frase en una observación: no conecta, recibe un estado inesperado, falta un campo, aparece una excepción o el cálculo es incorrecto. Cada observación orienta hacia una comprobación distinta.
+
+Anota también lo que esperabas. Si el formulario debía aceptar 15 minutos y muestra un error de rango, tienes una condición concreta que investigar. Si no sabes qué resultado esperabas, todavía no puedes decidir si el programa falla.
+
+## Comprobar una capa cada vez
+
+Empieza por el acceso al servidor: URL y puerto correctos, servicio levantado y respuesta recibida. Después mira el procesamiento PHP: archivo ejecutado, método y campos. Finalmente comprueba el significado del resultado: reglas y cálculo.
+
+Esto evita cambiar la lógica de un formulario cuando todavía estás conectando al puerto equivocado. También evita reinstalar contenedores cuando el dato llega bien y el único fallo es leer una clave con otro nombre.
+
+El navegador permite observar la petición y la respuesta. Los logs permiten observar lo que ocurrió en el servicio. Una impresión temporal como `var_dump` permite observar una variable en un punto. Cada herramienta responde a una pregunta distinta; elige la que te permita comprobar tu hipótesis.
+
+## Una hipótesis debe poder ponerse a prueba
+
+Si piensas «el campo no llega», abre el cuerpo del POST y búscalo. Si aparece, esa hipótesis ya no explica el problema. Mira después cómo lo lee el receptor. Si piensas «la sesión cambia en cada visita», observa la cookie y revisa si estás alternando perfiles.
+
+Cambiar muchas cosas antes de comprobar impide saber cuál influía. Haz una corrección pequeña, repite la entrada que fallaba y comprueba después que el caso que antes funcionaba sigue funcionando.
+
+No elimines una validación solo para obtener una pantalla de éxito. Puede que el dato enviado sea incorrecto y la validación esté haciendo bien su trabajo. La corrección debe respetar la regla que hayas definido para el problema.
+
+## Leer un error de sintaxis con calma
+
+Un mensaje puede señalar la línea donde el intérprete ya no pudo continuar, no necesariamente la primera línea que contiene la causa. Si falta una comilla o un punto y coma antes, el problema puede hacerse visible al llegar a la siguiente instrucción.
+
+`php -l archivo.php` comprueba sintaxis sin atender una petición web completa. Que esa comprobación pase no demuestra que el formulario reciba sus datos ni que la sesión esté bien configurada. Después necesitas probar el comportamiento real.
+
+## Guardar lo aprendido para la siguiente vez
+
+Anota síntoma, causa y corrección. «POST vacío → el control no tenía `name` → añadir el nombre y leer esa clave» es una referencia útil. «Reinicié y funcionó» no permite explicar la causa ni repetir con seguridad la solución.
+
+Este registro convierte los errores en material de estudio. Durante un ejercicio puedes reconocer un patrón sin repetir pruebas a ciegas, y en el examen puedes justificar qué comprobación harías primero y por qué.
+
+## Problema explicado paso a paso: no aparece la duración del turno
+
+En un formulario de visita guiada el control dice `name="duracion"`, pero el receptor lee `$_POST['tiempo']`. Al enviar 25, el resumen aparece vacío.
 
 1. En Red del navegador, abre la petición POST. El cuerpo contiene `duracion=25`: el navegador envía bien el dato.
 2. En desarrollo local, inspecciona el receptor con `var_dump($_POST);`. La clave es `duracion`, no `tiempo`.
@@ -60,6 +86,14 @@ Anota el archivo que se ejecuta, el comando o URL, los datos exactos y el result
 Para una validación de duraciones, separa los casos de **forma** (`muchos`), **rango** (4 o 41) y **estructura** (un array cuando esperabas texto). Si solo pruebas números dentro del rango, no detectas los otros problemas.
 
 En la salida de `docker compose logs`, identifica qué servicio escribe el mensaje. Un fallo DNS al conectar con MariaDB, una credencial rechazada y una tabla ausente requieren correcciones diferentes, aunque todos puedan terminar en una página de error.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Depurar** | Localizar y corregir la causa de un comportamiento incorrecto. |
+| **Log** | Registro de eventos o errores que ayuda a reconstruir lo ocurrido. |
+| **Caso de prueba** | Entradas y condiciones concretas con un resultado esperado que puedes justificar. |
 
 !!! success "Para repasar"
     Reproduce, observa, explica una causa, corrige y repite el caso que fallaba. Cambiar muchas cosas a la vez dificulta saber cuál resolvía el problema.

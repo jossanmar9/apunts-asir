@@ -1,23 +1,54 @@
 # UT2 · 3. Formularios: recibir, validar y conservar datos
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Validación** | Comprobación de que los datos cumplen la estructura y las reglas del problema. |
-| **XSS** | Interpretación de contenido no fiable como código o marcado ejecutable en una página; exige una salida adecuada a cada contexto. |
-| **Inyección SQL** | Alteración de una consulta al mezclar datos con instrucciones SQL; se previene separando consulta y parámetros. |
-| **POST–Redirect–GET** | Procesar el envío, redirigir y mostrar el resultado mediante una nueva consulta GET. |
-
 ## El recorrido completo
 
 HTML presenta los controles; el navegador envía los que tienen `name`; PHP recibe los valores en `$_GET` o `$_POST`. El servidor debe validarlos aunque el formulario utilice `required`, `min` o un desplegable: una petición se puede enviar sin utilizar esa interfaz.
 
 El orden que ayuda a pensar es **leer → validar → calcular → mostrar**. Escapar con `htmlspecialchars` es necesario al insertar texto en HTML, pero no comprueba que el contenido sea admisible para el problema.
 
-## Ejemplo resuelto: solicitar tiempo de un telescopio
+## Del control HTML a una variable PHP
 
-**Problema propio:** solicitar un turno de observación de 5 a 40 minutos. Hay que elegir telescopio y aceptar la norma de dejarlo recogido. El formulario conserva los datos si hay un error. No calcula presupuestos ni resuelve la práctica de contratación de clase.
+Un formulario relaciona una interfaz con un receptor. `action` indica el destino y `method` el modo de envío. Cada control necesita un atributo `name` para identificar su dato; el texto de una etiqueta visible no sustituye a ese nombre.
+
+Imagina un control `<input name="minutos">`. Cuando envías 15, el servidor recibe un campo llamado `minutos`. En un formulario POST, PHP lo sitúa en `$_POST['minutos']`. No lo buscará automáticamente en una variable `$minutos`: debes leerlo y decidir qué hacer con él.
+
+`id` sirve para relaciones de la interfaz, como conectar un `<label>` con el control. `name` sirve para el envío. Puedes utilizar el mismo texto en ambos, pero cumplen funciones diferentes. Confundirlos hace que una entrada se vea bien y aun así no llegue con el nombre que espera el programa.
+
+## La primera visita no es un envío vacío
+
+Al abrir la página por su URL, normalmente haces GET. Todavía no has solicitado comprobar ninguna entrada. Si intentas validar todos los campos en ese momento, mostrarás errores antes de que el usuario haya tenido oportunidad de escribir.
+
+Por eso el ejemplo distingue el método: primero inicializa valores para presentar el formulario y solo procesa cuando recibe POST. Después del envío puede representar errores o un resultado, conservando los datos cuando sea necesario.
+
+No deduzcas que hay un envío solo porque exista alguna variable. Comprobar `REQUEST_METHOD` expresa la intención y permite entender el flujo de la página. Los campos individuales se comprueban después, porque pueden faltar aunque el método sea POST.
+
+## Leer, limpiar, validar y escapar son pasos diferentes
+
+Leer obtiene lo recibido. Limpiar puede quitar espacios de los extremos con `trim`. Validar comprueba reglas como «es un entero entre 5 y 40». Escapar prepara texto para representarlo en un contexto de salida, como HTML.
+
+Si alguien envía ` 15 `, puede tener sentido quitar esos espacios antes de validar. Si envía `quince`, quitar espacios no lo convierte en el número 15. Si envía `<b>15</b>`, escapar permite mostrar ese texto, pero no lo convierte en una duración válida.
+
+No uses una única operación para sustituir las otras. Este orden te permite explicar por qué un dato se acepta o se rechaza y evita que una presentación segura oculte una validación incompleta.
+
+## Por qué se utiliza una lista de errores
+
+El formulario puede tener más de un problema. Un array de errores permite comprobar cada campo y añadir un mensaje para cada incumplimiento. Solo cuando la lista está vacía continúas con el cálculo o la operación.
+
+Los mensajes deben indicar qué corregir. «Duración fuera de rango: utiliza de 5 a 40 minutos» resulta más útil que «dato malo». Si hay dos errores, presentarlos juntos evita obligar al usuario a corregir uno y reenviar para descubrir el siguiente.
+
+El ejemplo conserva las entradas aceptadas como texto para volver a rellenar los controles. Al escribirlas en `value`, se escapan. Para un desplegable se marca la opción con `selected`; para una casilla se utiliza `checked`. No son atributos que PHP añada automáticamente por haber leído el dato.
+
+## Cómo leer el problema del telescopio
+
+Primero sigue una visita GET: mira los valores iniciales y comprueba que todavía no hay un resultado. Después sigue un POST válido y anota qué devuelve cada llamada a `campo`. Finalmente, sigue un POST incorrecto y observa qué mensajes se acumulan.
+
+No intentes entender todo el archivo como una sola operación. Separa su parte de procesamiento y su parte de presentación. Busca después dónde se conectan: las variables que prepara la primera aparecen en los controles y en los mensajes que construye la segunda.
+
+Esta lectura sirve durante el examen y mientras haces otro formulario: identificas el mismo recorrido y adaptas sus reglas, en lugar de copiar campos que no pertenecen a tu enunciado.
+
+## Problema explicado paso a paso: solicitar tiempo de un telescopio
+
+Solicitar un turno de observación de 5 a 40 minutos. Hay que elegir telescopio y aceptar la norma de dejarlo recogido. El formulario conserva los datos si hay un error. No calcula presupuestos ni resuelve la práctica de contratación de clase.
 
 Guarda este archivo como `turno.php` en el servidor PHP:
 
@@ -138,6 +169,15 @@ Guarda el dato con su significado original y escápalo al presentarlo. Escapar a
 Un formulario con archivos necesita `enctype="multipart/form-data"`. PHP deja un temporal y describe nombre, tamaño, ruta temporal y error en `$_FILES`. Comprueba primero `UPLOAD_ERR_OK`, después los límites y el tipo real; `accept` en HTML solo ayuda a elegir, no valida en el servidor.
 
 La carpeta de destino y la política de ejecución son parte del diseño: un archivo recibido no debe convertirse accidentalmente en código ejecutable. El nombre del usuario no es un destino fiable. En este tema se explica el mecanismo; el laboratorio del telescopio no necesita adjuntos.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Validación** | Comprobación de que los datos cumplen la estructura y las reglas del problema. |
+| **XSS** | Interpretación de contenido no fiable como código o marcado ejecutable en una página; exige una salida adecuada a cada contexto. |
+| **Inyección SQL** | Alteración de una consulta al mezclar datos con instrucciones SQL; se previene separando consulta y parámetros. |
+| **POST–Redirect–GET** | Procesar el envío, redirigir y mostrar el resultado mediante una nueva consulta GET. |
 
 !!! success "Para repasar"
     Antes de calcular nada, define qué entradas son válidas. Prepara un caso correcto, un límite y un caso incorrecto.

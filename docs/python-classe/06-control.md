@@ -1,21 +1,50 @@
 # UT3 · 1. Condicionales y bucles con seguimiento de valores
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Indentación** | Espacios iniciales que delimitan los bloques de Python. |
-| **Iterable** | Objeto del que un recorrido puede obtener elementos uno a uno. |
-| **Contador y acumulador** | Variable que cuenta coincidencias y variable que suma cantidades. |
-| **Bucle anidado** | Bucle dentro de otro; sus recorridos pueden multiplicar el trabajo total. |
-
 ## Decidir con `if`
 
 Un bloque comienza con `:` y se delimita con una indentación coherente. `if/elif/else` prueba las condiciones en orden y ejecuta el primer bloque que corresponde. No es lo mismo que varios `if` independientes, que pueden ejecutar más de un bloque.
 
-## Ejemplo resuelto: estado de una cola de impresión
+## Un programa toma un camino, no todos a la vez
 
-**Problema propio:** con 0 documentos la cola está vacía; de 1 a 4, es corta; a partir de 5, es larga. Una cantidad negativa es incoherente.
+Sin decisiones, las instrucciones se ejecutan según el orden establecido. Un `if` permite elegir si ejecutar un bloque. Su condición produce un resultado lógico y la indentación marca cuáles son las instrucciones que dependen de ella.
+
+Dos `if` seguidos son dos decisiones independientes. Una cadena `if/elif/else` selecciona el primer camino que corresponde. Si necesitas clasificar un valor en una única categoría, esta diferencia importa: con varios `if` podrías imprimir más de una clasificación.
+
+Al estudiar un condicional, toma un valor concreto y pregunta qué ocurre en cada línea. Si la primera condición es verdadera, las siguientes ramas de esa cadena no se ejecutan. Si es falsa, continúas a la siguiente. No intentes interpretar todas las condiciones como si se evaluaran simultáneamente.
+
+## El orden de los límites forma parte de la solución
+
+Antes de escribir código, define los intervalos con palabras. En la cola de impresión del ejemplo, cero tiene un significado distinto de uno y cuatro está dentro de la categoría corta. Cinco ya pertenece a otra categoría.
+
+Una vez escritos los límites, prueba justo antes, en el límite y justo después. Esto revela diferencias entre `<` y `<=`. Un programa puede acertar con 2 y 8 y aun así fallar exactamente con 4 o 5.
+
+No confundas validar con clasificar. Primero puede ser necesario rechazar una cantidad negativa; después clasificar los valores que tienen sentido. Si permites que una entrada incoherente llegue a un camino normal, el mensaje podría parecer correcto sin representar un estado posible.
+
+## `while`: repetir a partir de un estado que cambia
+
+La condición se comprueba antes de cada vuelta, incluida la primera. Si ya es falsa al principio, el cuerpo se ejecuta cero veces. Esto no es un error: puede ser precisamente el comportamiento deseado cuando no queda trabajo.
+
+Identifica qué variable cambia y cómo se acerca a la parada. En el ejemplo de cinta se reduce la longitud restante. Si olvidas reducirla, la misma condición seguirá siendo verdadera. Si la reduces demasiado o en el lugar equivocado, puedes saltarte una vuelta necesaria.
+
+Un bucle que pregunta al usuario también necesita avanzar: la nueva respuesta sustituye la anterior. Si solo imprimes «respuesta incorrecta» sin volver a leer, seguirá comprobando para siempre el mismo dato.
+
+## `for`: recorrer una colección paso a paso
+
+La variable del `for` toma cada elemento del iterable, no necesariamente su índice. En `for color in ['azul', 'gris']`, primero vale `azul` y luego `gris`. Si necesitas además una numeración, `enumerate` la proporciona de manera explícita.
+
+`range(3)` representa 0, 1 y 2: son tres valores, aunque el último no sea 3. El límite excluido permite expresar un número de repeticiones sin añadir uno a la longitud. Con inicio y paso, escribe los primeros valores a mano para comprobar que interpretas correctamente el recorrido.
+
+El cuerpo del bucle se ejecuta una vez por valor seleccionado. La instrucción situada después y al mismo nivel de indentación se ejecuta al terminar el recorrido. Una indentación incorrecta puede hacer que un resumen aparezca en cada vuelta en lugar de una sola vez.
+
+## Acumular sin reiniciar el progreso
+
+Un contador o acumulador que resume todo el recorrido se inicializa antes. Dentro se actualiza según la entrada de esa vuelta. Al terminar, se muestra el resultado final.
+
+Si pones `total = 0` dentro del bucle, la siguiente vuelta olvida lo acumulado. Si imprimes el total dentro, obtienes resultados parciales. Ninguna de las dos cosas es incorrecta por sí misma, pero debe corresponder a lo que pide el problema. La posición de cada instrucción expresa esa decisión.
+
+## Problema explicado paso a paso: estado de una cola de impresión
+
+Con 0 documentos la cola está vacía; de 1 a 4, es corta; a partir de 5, es larga. Una cantidad negativa es incoherente.
 
 ```python
 documentos = 4
@@ -84,7 +113,7 @@ Muestra `1 ocre`, `2 azul` y `3 gris`. Utiliza `_` como nombre de variable por c
 
 ## `break`, `continue` y `else` de un bucle
 
-Ejemplo propio: buscar una etiqueta urgente entre notas:
+Vamos a buscar una etiqueta urgente entre notas:
 
 ```python
 notas = ["pendiente", "urgente", "resuelto"]
@@ -120,6 +149,15 @@ print(f"Sesiones seleccionadas: {contador}; minutos: {total}")
 Resultado: `Sesiones seleccionadas: 2; minutos: 15`. El contador no debe sumar la duración; el acumulador sí. Ambos se inicializan antes del recorrido, no en cada vuelta.
 
 Como ampliación de los apuntes propios, Python también dispone de `match` para seleccionar casos desde Python 3.10. No necesitas introducirlo en un ejercicio que pide `if`: dominar el razonamiento y respetar las herramientas del enunciado es más importante que usar una sintaxis distinta.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Indentación** | Espacios iniciales que delimitan los bloques de Python. |
+| **Iterable** | Objeto del que un recorrido puede obtener elementos uno a uno. |
+| **Contador y acumulador** | Variable que cuenta coincidencias y variable que suma cantidades. |
+| **Bucle anidado** | Bucle dentro de otro; sus recorridos pueden multiplicar el trabajo total. |
 
 !!! success "Para repasar"
     Escribe la condición, qué cambia y cuándo termina. En un recorrido, separa «omitir este elemento» de «dejar de buscar».

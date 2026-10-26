@@ -1,10 +1,10 @@
 # Fuentes, cobertura y actualizaciones
 
-Esta web ofrece **resúmenes propios**, separados por módulo, unidad y tema, y una sección independiente de **Git y GitHub**. Los enlaces originales permiten contrastar la teoría y consultar las indicaciones del profesorado.
+Esta web ofrece **apuntes desarrollados**, separados por módulo, unidad y tema, y una sección independiente de **Git y GitHub**. Los enlaces originales permiten contrastar la teoría y consultar las indicaciones del profesorado.
 
 ## Materiales consultados
 
-| Módulo | Fuente original | Resúmenes disponibles |
+| Módulo | Fuente original | Apuntes disponibles |
 | --- | --- | --- |
 | IAW | [victoria-nr · iaw-alumnos](https://victoria-nr.github.io/iaw-alumnos/) | [UT1 y UT2](iaw/index.md) |
 | ASO | [angelabserrano · aso](https://angelabserrano.github.io/aso/) | [UT1 · Bash](aso/index.md) |
@@ -42,10 +42,10 @@ Las ampliaciones de nuestros apuntes se han integrado en los temas publicados, e
 
 Integración revisada el **27/10/2026**. Se mantiene la fecha original de consulta de las fuentes de clase.
 
-## ¿Cómo son los ejemplos resueltos?
+## ¿Cómo se explican los problemas?
 
-Cada caso propio explica el problema, los datos, las decisiones, el código cuando hace falta y el resultado esperado. Los ejemplos tienen un contexto y un procedimiento propios: no son las actividades para practicar o entregar con otros nombres o cifras. Se pueden consultar mientras trabajas para entender la técnica y aplicarla a otro enunciado.
+Cada problema explica el problema, los datos, las decisiones, el código cuando hace falta y el resultado esperado. Se empieza por situaciones sencillas y se explica el motivo de cada instrucción. Los enunciados son diferentes de las actividades de clase para practicar o entregar. Se pueden consultar mientras trabajas para entender la técnica y aplicarla a otro enunciado.
 
 ## ¿Cuándo se actualiza?
 
-**Cuando lo indique el estudiante.** En cada revisión se consultarán los materiales nuevos, se añadirán o corregirán los resúmenes afectados y se comprobará que los casos didácticos siguen siendo diferentes de los ejercicios asignados. No se descargan ni incorporan novedades automáticamente.
+**Cuando lo indique el estudiante.** En cada revisión se consultarán los materiales nuevos, se añadirán o corregirán los temas afectados y se comprobará que los casos didácticos siguen siendo diferentes de los ejercicios asignados. No se descargan ni incorporan novedades automáticamente.

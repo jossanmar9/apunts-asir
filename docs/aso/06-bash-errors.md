@@ -1,26 +1,50 @@
 # UT1 · 5. Errores, depuración y scripts de administración
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Proceso y PID** | Programa en ejecución e identificador que permite distinguirlo. |
-| **Señal** | Notificación enviada a un proceso para comunicar un evento o pedir una acción. |
-| **Permisos** | Reglas de lectura, escritura y ejecución aplicables a usuarios y grupos. |
-| **root y sudo** | Cuenta administradora y herramienta para ejecutar con la identidad permitida por su política. |
-| **Servicio o demonio** | Proceso que atiende trabajo en segundo plano; su gestión depende del sistema de inicio. |
-| **Directorio Activo (Active Directory)** | Servicio de directorio de Windows que centraliza identidades y recursos; su administración completa corresponde a una unidad posterior. |
-| **Paquete y repositorio de paquetes** | Software preparado para instalar y fuente desde la que se distribuye; no equivalen a un repositorio Git. |
-
 ## El estado de un comando es información
 
 En shell, 0 indica éxito y otros valores indican otros resultados. `grep` devuelve 1 cuando no encuentra coincidencias: no siempre representa una avería. `$?` cambia con el siguiente comando; a menudo resulta más claro escribir `if comando; then ...`.
 
 `set -u` detecta variables no definidas. `set -e` puede detener el script ante determinados fallos, pero tiene excepciones en condicionales y otras construcciones. `set -o pipefail` hace visible un fallo en una tubería que terminaría con un último comando correcto. Ninguna opción sustituye el tratamiento de los errores esperables.
 
-## Ejemplo resuelto: informe de líneas de un documento
+## De un enunciado a una solución que puedas justificar
 
-**Problema propio:** recibir un archivo de texto y mostrar cuántas líneas tiene, incluido un nombre con espacios. No copia archivos ni crea usuarios.
+Empieza escribiendo una llamada concreta y su salida. Si el programa recibe un archivo, decide si la ruta llega como argumento o se pregunta por teclado; son interfaces distintas. Después describe lo que debe ocurrir cuando falta la ruta, apunta a un directorio o no puede leerse.
+
+La solución no empieza por una colección de órdenes que conoces. Empieza por una secuencia con propósito: recibir la entrada, validarla, ejecutar una transformación, comprobar su resultado y presentar una respuesta. El mismo método sirve para una entrega y para un examen, porque permite explicar cada decisión.
+
+Prueba primero una transformación pequeña con datos que conozcas. Cuando funcione, conviértela en una función o intégrala en el programa. Añade el siguiente paso y repite. Si escribes todo de una vez, un fallo puede tener demasiadas causas posibles y te costará localizarlo.
+
+## Qué comprueba cada nivel de revisión
+
+`bash -n` detecta problemas de estructura y sintaxis: un `fi` ausente o un bloque mal formado. No demuestra que la ruta exista ni que el cálculo sea correcto. `bash -x` sí ejecuta y muestra las expansiones: puede revelar un argumento vacío o una orden construida de forma distinta a la esperada.
+
+Un analizador como ShellCheck detecta muchos patrones problemáticos, como expansiones sin comillas. Tampoco conoce todo el significado del ejercicio. Finalmente, los casos de prueba comprueban comportamiento con datos concretos. Necesitas distinguir estos niveles para no dar por correcto un programa solo porque la sintaxis es válida.
+
+Durante la depuración, imprime el dato con límites visibles: `printf 'DEBUG: archivo=[%s]\n' "$archivo" >&2`. Los corchetes ayudan a ver un dato vacío o espacios sobrantes. Retira o controla estos mensajes cuando dejen de hacer falta.
+
+## Por qué `set -e` no reemplaza los `if`
+
+`set -e` tiene reglas y excepciones según el contexto de ejecución. Una orden usada como condición de un `if`, por ejemplo, puede fallar sin que eso signifique terminar inmediatamente el script: precisamente estás utilizando su resultado para decidir.
+
+Además, algunas órdenes devuelven un estado no cero como resultado normal de una consulta. Que `grep` no encuentre coincidencias puede ser una respuesta esperable. El programa debe decidir si significa «no hay resultados», «faltan datos obligatorios» o una situación que requiere terminar.
+
+Con una tubería, el estado habitual corresponde a la última orden. `pipefail` permite que un fallo anterior también afecte al resultado global. Aun así debes explicar qué harás cuando ese resultado sea no cero: mostrar una ayuda, continuar con otra entrada, reintentar o detenerte.
+
+## Un registro útil cuenta qué ocurrió, no solo que algo falló
+
+Un mensaje como «error» no identifica la operación ni el dato que la provocó. «No se puede leer el archivo indicado: notas.txt» permite actuar. Mantén los resultados normales por stdout y los errores por stderr para que quien llame al programa pueda separarlos.
+
+No confundas el mensaje con el código de salida. Una orden puede imprimir algo y fallar; otra puede no imprimir nada y terminar correctamente. Si necesitas guardar el código en una variable, hazlo antes de ejecutar otra orden que sustituya `$?`.
+
+## Preparar pruebas de examen y de consulta
+
+Para cada programa, combina un caso normal, un límite y al menos un error de entrada. Prueba también espacios en nombres si el programa trabaja con rutas. Escribe qué esperas antes de ejecutarlo: mirar una salida y decidir después que «parece bien» es una comprobación más débil.
+
+Una tabla de seguimiento muestra el estado de variables importantes después de cada paso. Si puedes reconstruirla a mano con datos pequeños, podrás explicar por qué funciona el script y detectar dónde diverge una ejecución real. Esa comprensión es lo que permite adaptar la técnica a un enunciado diferente, sin copiar una solución de clase.
+
+## Problema explicado paso a paso: informe de líneas de un documento
+
+Recibir un archivo de texto y mostrar cuántas líneas tiene, incluido un nombre con espacios. No copia archivos ni crea usuarios.
 
 ```bash
 #!/usr/bin/env bash
@@ -94,6 +118,18 @@ Un proceso es un programa en ejecución; su PID permite identificarlo. Una seña
 Los permisos `r`, `w` y `x` significan lectura, escritura y ejecución; en directorios, `x` permite atravesarlos. `chmod u+x informe.sh` añade ejecución al propietario. `root` es la cuenta administradora y `sudo` ejecuta una orden con la identidad autorizada por su configuración; no necesitas elevar permisos para practicar sobre tus propios archivos.
 
 Esto aporta contexto a Bash; el desarrollo completo de procesos, servicios y administración de directorio se incorporará cuando exista el material de esas unidades.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Proceso y PID** | Programa en ejecución e identificador que permite distinguirlo. |
+| **Señal** | Notificación enviada a un proceso para comunicar un evento o pedir una acción. |
+| **Permisos** | Reglas de lectura, escritura y ejecución aplicables a usuarios y grupos. |
+| **root y sudo** | Cuenta administradora y herramienta para ejecutar con la identidad permitida por su política. |
+| **Servicio o demonio** | Proceso que atiende trabajo en segundo plano; su gestión depende del sistema de inicio. |
+| **Directorio Activo (Active Directory)** | Servicio de directorio de Windows que centraliza identidades y recursos; su administración completa corresponde a una unidad posterior. |
+| **Paquete y repositorio de paquetes** | Software preparado para instalar y fuente desde la que se distribuye; no equivalen a un repositorio Git. |
 
 !!! success "Para repasar"
     Una comprobación debe producir una decisión y un fallo debe quedar visible. Antes de ejecutar un script, identifica qué modifica y qué necesita para funcionar.

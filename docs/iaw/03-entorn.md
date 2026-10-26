@@ -1,29 +1,52 @@
 # UT1 · 3. Docker Compose y un entorno que puedes reconstruir
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Contenedor** | Instancia aislada creada a partir de una imagen; comparte el núcleo donde corre el motor. |
-| **Imagen Docker** | Conjunto de capas usado como base de los contenedores; no es la persistencia de sus datos nuevos. |
-| **Volumen y bind mount** | Almacenamiento gestionado por Docker y montaje de una ruta del anfitrión, respectivamente. |
-| **Puerto publicado** | Conexión entre un puerto del anfitrión y otro del contenedor. |
-| **YAML** | Formato de configuración que expresa la estructura mediante claves, listas e indentación. |
-| **Núcleo y distribución** | Parte que gestiona recursos del sistema y conjunto Linux preparado con herramientas y paquetes. |
-| **Máquina virtual e hipervisor** | Equipo virtualizado y software que gestiona su ejecución. |
-| **Partición y sistema de archivos** | Región de un disco y organización utilizada para almacenar sus archivos. |
-| **Montar** | Hacer accesible un sistema de archivos o una ruta en un punto del árbol de directorios. |
-| **LVM** | Capa de gestión de volúmenes lógicos de Linux; no es el mismo mecanismo que un volumen de Docker. |
-
 ## Conceptos antes de copiar configuraciones
 
 Una **imagen** es la base con la que se crea un contenedor. Un **contenedor** es una instancia de esa imagen, que puede estar detenida o en ejecución. Un **servicio de Compose** describe cómo crearlo: imagen, configuración, red, montajes y puertos.
 
 Un montaje de carpeta (*bind mount*) conecta una ruta de tu equipo con una del contenedor. Un volumen con nombre es almacenamiento gestionado por Docker; resulta apropiado para datos que deben sobrevivir a la sustitución del contenedor.
 
-## Laboratorio resuelto: cartelera de un cineclub
+## Imagen, contenedor y servicio: tres nombres para tres cosas
 
-Este ejemplo propio aísla la comunicación Nginx–PHP, sin reproducir la práctica de despliegue de clase. Necesitas Docker con Compose. Crea una carpeta de pruebas con esta estructura:
+La imagen es la base preparada para crear contenedores. Un contenedor añade un entorno concreto de ejecución a esa base. Un servicio de Compose describe qué contenedor quieres obtener y cómo conectarlo con el resto. No son tres archivos iguales con nombres diferentes.
+
+Puedes crear dos contenedores a partir de la misma imagen y darles configuraciones o montajes distintos. Detener uno no elimina la imagen. Eliminar un contenedor no borra necesariamente los datos de un volumen que se montó en él. Para entender qué permanece, identifica dónde se guarda cada cosa.
+
+La imagen no cambia porque edites un archivo dentro de un contenedor. Si necesitas incorporar una modificación a futuras instancias, debes describirla en un Dockerfile o montar explícitamente los archivos que quieras usar durante el desarrollo.
+
+## Comprender un puerto sin memorizar el orden
+
+En `8092:80`, el primer número corresponde al anfitrión y el segundo al contenedor. El navegador del alumno visita el primero; el programa dentro del contenedor escucha en el segundo. Publicar el 8092 no obliga a cambiar la configuración de Nginx para que escuche internamente en 8092.
+
+El prefijo `127.0.0.1:` limita la publicación al propio anfitrión. Para consultar este laboratorio desde ese equipo se usa `http://localhost:8092`. Los servicios internos no necesitan salir a ese puerto para hablar entre sí: utilizan su red interna y los nombres de servicio.
+
+PHP-FPM escucha FastCGI en el laboratorio. No intentes comprobarlo abriendo `http://localhost:9000` como si fuese otro servidor HTTP. La prueba web debe pasar por Nginx, que sí recibe HTTP y sabe cómo delegar el procesamiento.
+
+## Leer un montaje de izquierda a derecha
+
+En `./public:/srv/cineclub:ro`, `./public` es la carpeta del proyecto en el anfitrión, `/srv/cineclub` el lugar donde aparecerá dentro del contenedor y `ro` indica solo lectura. Ambos lados representan rutas de sistemas distintos, aunque contengan los mismos archivos.
+
+Nginx y PHP deben referirse de forma coherente al archivo que van a procesar. Si Nginx anuncia a PHP la ruta `/srv/cineclub/index.php`, PHP tiene que poder abrirla dentro de su contenedor. Tener el archivo en una carpeta distinta sin adaptar la configuración rompe esa relación.
+
+Un montaje también puede ocultar el contenido que ya existía en la imagen bajo la ruta de destino. Si montas una carpeta vacía sobre la carpeta de la web, no verás automáticamente la página incluida en la imagen: estarás viendo la carpeta vacía montada.
+
+## Leer el YAML sin perderse con la indentación
+
+`services:` contiene las definiciones de servicio. Dentro de cada servicio, `image`, `ports` y `volumes` son claves diferentes. El guion inicia un elemento de lista, como un puerto o un montaje. La indentación indica a qué bloque pertenece cada línea.
+
+Utiliza espacios coherentes, no tabuladores. Una línea bien escrita en el lugar incorrecto puede cambiar la estructura o resultar inválida. `docker compose config` ayuda a comprobar cómo interpreta Compose el archivo y qué valores ha sustituido.
+
+Si ves `${WEB_PORT:-8092}`, significa que se toma `WEB_PORT` y se utiliza 8092 como alternativa cuando no hay un valor útil. `.env` proporciona valores para esa sustitución. Para que PHP reciba una variable de entorno debes pasarla a su servicio mediante `environment` o `env_file`; no basta con que exista en algún archivo del proyecto.
+
+## Qué comando usar después de cada cambio
+
+Si solo modificas PHP en un bind mount, el contenedor ve el archivo del anfitrión. Si modificas la composición del proyecto, `docker compose up -d` aplica la configuración necesaria. Si modificas un Dockerfile, pide reconstrucción con `--build`.
+
+`restart` reinicia lo existente; no sustituye automáticamente todos esos pasos. Ante una duda, identifica si has cambiado **código montado**, **configuración del servicio** o **contenido de la imagen**. Elegir la orden a partir del tipo de cambio evita reinicios que no pueden resolver el problema.
+
+## Problema explicado paso a paso: cartelera de un cineclub
+
+Este ejemplo permite estudiar la comunicación Nginx–PHP, sin reproducir la práctica de despliegue de clase. Necesitas Docker con Compose. Crea una carpeta de pruebas con esta estructura:
 
 ```text
 cineclub/
@@ -153,7 +176,7 @@ Las etiquetas de imagen de este ejemplo son móviles. Para repetir exactamente u
 
 Una imagen se construye por capas. Un Dockerfile añade instrucciones como `FROM`, `WORKDIR`, `COPY`, `RUN` y `CMD`: base, carpeta de trabajo, copia de archivos, acción de construcción y comando predeterminado. Un `.dockerignore` excluye contenido del contexto de construcción; un `.gitignore` controla qué registra Git. No son intercambiables.
 
-### Caso resuelto: añadir una extensión de PHP
+### Problema explicado paso a paso: añadir una extensión de PHP
 
 Para practicar la construcción sin introducir todavía una aplicación con SQL, crea `php/Dockerfile`:
 
@@ -171,6 +194,21 @@ Un *bind mount* muestra una carpeta del anfitrión; un volumen con nombre separa
 Un `healthcheck` comprueba una condición de salud. La forma larga de `depends_on` puede esperar a `condition: service_healthy` si el servicio dependiente define esa comprobación. Esto permite distinguir «el proceso arrancó» de «la base de datos ya atiende conexiones». No sustituye gestionar una caída posterior desde la aplicación.
 
 Docker usa el núcleo del sistema donde corre su motor; en algunos equipos ese motor vive en una máquina virtual. Una distribución Linux es el conjunto de sistema y herramientas; una imagen de usuario no incorpora por sí sola un núcleo independiente. La ruta donde se monta un disco pertenece al sistema de archivos y no debe confundirse con publicar un puerto de red.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Contenedor** | Instancia aislada creada a partir de una imagen; comparte el núcleo donde corre el motor. |
+| **Imagen Docker** | Conjunto de capas usado como base de los contenedores; no es la persistencia de sus datos nuevos. |
+| **Volumen y bind mount** | Almacenamiento gestionado por Docker y montaje de una ruta del anfitrión, respectivamente. |
+| **Puerto publicado** | Conexión entre un puerto del anfitrión y otro del contenedor. |
+| **YAML** | Formato de configuración que expresa la estructura mediante claves, listas e indentación. |
+| **Núcleo y distribución** | Parte que gestiona recursos del sistema y conjunto Linux preparado con herramientas y paquetes. |
+| **Máquina virtual e hipervisor** | Equipo virtualizado y software que gestiona su ejecución. |
+| **Partición y sistema de archivos** | Región de un disco y organización utilizada para almacenar sus archivos. |
+| **Montar** | Hacer accesible un sistema de archivos o una ruta en un punto del árbol de directorios. |
+| **LVM** | Capa de gestión de volúmenes lógicos de Linux; no es el mismo mecanismo que un volumen de Docker. |
 
 !!! success "Para repasar"
     Explica cada lado de un puerto y de un montaje. Para reconstruir el proyecto necesitas código, configuración, variables documentadas y pasos de verificación.

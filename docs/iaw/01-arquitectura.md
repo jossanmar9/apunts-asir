@@ -1,25 +1,5 @@
 # UT1 · 1. Cómo funciona una aplicación web
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Servidor web** | Programa que recibe peticiones HTTP y sirve recursos; en este stack es Nginx. |
-| **Backend / PHP** | Parte que procesa la petición en el servidor; PHP es el lenguaje usado aquí. |
-| **Lenguaje de marcas** | Describe la estructura de un documento mediante etiquetas, como HTML o XML. |
-| **Etiqueta y atributo HTML** | La etiqueta define un elemento; el atributo añade información, como `class` o `href`. |
-| **Selector CSS** | Parte de una regla que identifica los elementos a los que se aplica. |
-| **Modelo de caja** | Contenido, espacio interior, borde y margen de un elemento. |
-| **Diseño adaptable y media query** | Presentación que se adapta al espacio disponible; una media query aplica reglas bajo una condición. |
-| **SGBD y SQL** | Gestor de bases de datos y lenguaje utilizado para definir o consultar datos relacionales. |
-| **Tabla, fila y columna** | Conjunto de registros, cada registro y cada uno de sus campos. |
-| **Clave primaria y foránea** | Identificador de una fila y referencia a una clave de otra tabla. |
-| **CRUD** | Crear, leer, actualizar y eliminar: las operaciones básicas sobre datos. |
-| **JOIN** | Operación SQL que combina filas de tablas según una relación o condición. |
-| **Transacción** | Grupo de operaciones que se confirma o revierte como una unidad, según las garantías del gestor. |
-| **Índice de base de datos** | Estructura que acelera determinadas consultas a cambio de espacio y trabajo adicional al modificar datos. |
-| **Normalización** | Organización de tablas y relaciones para reducir redundancias y anomalías de actualización. |
-
 ## La idea que debes entender
 
 Una aplicación web atiende peticiones de un cliente. El navegador solicita un recurso, el servidor prepara una respuesta y el navegador la representa. Una URL es una dirección de acceso, no una carpeta cuyo contenido ejecute el navegador dentro del servidor.
@@ -49,7 +29,37 @@ flowchart LR
     P --> W
 ```
 
-## Caso resuelto: una sala y su cartel
+## Entender una petición sin aprender comandos todavía
+
+Piensa en abrir una ficha de una pieza del museo. Escribes una dirección y el navegador pide esa ficha. El servidor no sabe qué estabas pensando: recibe una petición con una ruta y, si corresponde, algunos datos. Tiene que decidir cómo responder a lo que realmente ha recibido.
+
+Si la dirección apunta a una imagen que ya existe, el servidor puede devolver su contenido. Si apunta a un programa que debe buscar una pieza, primero hay que ejecutar ese programa. En ambos casos hay una respuesta, pero el trabajo necesario para prepararla es diferente.
+
+El navegador tampoco observa todas esas operaciones internas. Puede recibir exactamente el mismo HTML desde un archivo estático o desde PHP. Mirar solo el aspecto de una página no permite decidir cómo se ha generado.
+
+## Cliente y servidor son papeles, no modelos de ordenador
+
+El cliente inicia la petición y el servidor la atiende. Tu portátil puede actuar como cliente al abrir una web y como servidor si ejecutas un entorno de desarrollo. `localhost` significa «este mismo equipo» desde el lugar donde se utiliza; no es un nombre que identifique siempre al ordenador del alumno desde cualquier contenedor.
+
+En un despliegue con varios servicios, un componente también puede ser cliente de otro. PHP actúa como cliente de MariaDB al consultar información. Esto no convierte a MariaDB en la herramienta que dibuja la página: cada pieza mantiene su responsabilidad.
+
+## Seguir la información de principio a fin
+
+Vamos a pedir la ficha de la pieza 47. El navegador envía su identificador. Nginx recibe la petición y la deriva a PHP-FPM si corresponde procesar PHP. PHP interpreta el identificador, consulta datos si lo necesita y prepara el contenido de la ficha. Ese contenido vuelve por Nginx hasta el navegador.
+
+Dentro de ese recorrido se distinguen **datos**, **instrucciones** y **presentación**. El identificador es un dato de entrada. El programa PHP contiene instrucciones para trabajar con él. El HTML resultante describe la presentación que recibirá el navegador. Mezclar estas tres cosas hace más difícil entender dónde está un fallo.
+
+Si la base de datos guarda el nombre «Vasija azul», PHP puede incorporarlo a un título HTML. La base de datos no necesita conocer el tamaño de letra y el CSS no necesita conocer la contraseña de MariaDB. Separar responsabilidades ayuda tanto a programar como a estudiar.
+
+## Por qué no se instala todo en una sola pieza
+
+Una aplicación podría tener varios componentes en el mismo sistema, pero sus funciones seguirían siendo distintas. Separarlos en servicios permite saber qué hay que revisar o cambiar: la configuración HTTP, el código que se ejecuta o el almacenamiento.
+
+En el modelo LAMP clásico se instalaban Linux, Apache, una base MySQL/MariaDB y PHP. Con contenedores puedes describir un entorno parecido mediante archivos del proyecto. No desaparece la configuración: pasa a estar organizada y documentada para poder reconstruirla.
+
+Para el examen, lo importante no es memorizar nombres de herramientas como una lista. Debes poder decir qué problema resuelve cada una. Si te preguntan quién ejecuta un archivo PHP en el stack de clase, la respuesta es PHP-FPM; si preguntan quién recibe la petición web, es Nginx; si preguntan dónde persisten las filas, es el gestor de base de datos.
+
+## Problema explicado paso a paso: una sala y su cartel
 
 **Situación:** `/carteles/sala-azul.svg` es una imagen guardada; `/pieza.php?codigo=47` consulta una pieza; `/ayuda.php` genera HTML sin consultar datos.
 
@@ -104,6 +114,26 @@ Un diseño adaptable ajusta su presentación al espacio disponible. Una *media q
 Un sistema gestor de bases de datos (SGBD), como MariaDB, administra datos persistentes. En una base relacional, una tabla contiene filas y columnas. SQL permite definir y consultar esos datos. Una clave primaria identifica una fila; una clave foránea relaciona esa fila con otra tabla.
 
 Conectar componentes no equivale a implementar un CRUD: crear, leer, actualizar y eliminar son operaciones de la aplicación. En UT1 interesa entender dónde vive cada responsabilidad. Los JOIN, índices y transacciones se desarrollarán con el tema de acceso a bases de datos, sin presentar esa unidad como publicada antes de tiempo.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Servidor web** | Programa que recibe peticiones HTTP y sirve recursos; en este stack es Nginx. |
+| **Backend / PHP** | Parte que procesa la petición en el servidor; PHP es el lenguaje usado aquí. |
+| **Lenguaje de marcas** | Describe la estructura de un documento mediante etiquetas, como HTML o XML. |
+| **Etiqueta y atributo HTML** | La etiqueta define un elemento; el atributo añade información, como `class` o `href`. |
+| **Selector CSS** | Parte de una regla que identifica los elementos a los que se aplica. |
+| **Modelo de caja** | Contenido, espacio interior, borde y margen de un elemento. |
+| **Diseño adaptable y media query** | Presentación que se adapta al espacio disponible; una media query aplica reglas bajo una condición. |
+| **SGBD y SQL** | Gestor de bases de datos y lenguaje utilizado para definir o consultar datos relacionales. |
+| **Tabla, fila y columna** | Conjunto de registros, cada registro y cada uno de sus campos. |
+| **Clave primaria y foránea** | Identificador de una fila y referencia a una clave de otra tabla. |
+| **CRUD** | Crear, leer, actualizar y eliminar: las operaciones básicas sobre datos. |
+| **JOIN** | Operación SQL que combina filas de tablas según una relación o condición. |
+| **Transacción** | Grupo de operaciones que se confirma o revierte como una unidad, según las garantías del gestor. |
+| **Índice de base de datos** | Estructura que acelera determinadas consultas a cambio de espacio y trabajo adicional al modificar datos. |
+| **Normalización** | Organización de tablas y relaciones para reducir redundancias y anomalías de actualización. |
 
 !!! success "Para repasar"
     Identifica cliente, servidor web, runtime y persistencia. Después explica con tus palabras el recorrido de una petición estática y de una dinámica.

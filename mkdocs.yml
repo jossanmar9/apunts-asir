@@ -1,5 +1,5 @@
 site_name: Apuntes ASIR
-site_description: "Resúmenes por módulo y tema de IAW, ASO y Python, Git y GitHub, ejemplos propios resueltos y consejos para estudiar ASIR"
+site_description: "Apuntes desarrollados de IAW, ASO, Python y Git y GitHub, con explicaciones desde cero y problemas fáciles paso a paso para estudiar ASIR"
 # Tu usuario de GitHub
 site_url: https://jossanmar9.github.io/apunts-asir/
 repo_url: https://github.com/jossanmar9/apunts-asir

@@ -1,14 +1,5 @@
 # UT3 · 3. Bibliotecas para administración de sistemas
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Módulo y biblioteca** | Unidad importable de código y conjunto de herramientas; una biblioteca puede contener varios módulos. |
-| **Ruta y sistema de archivos** | Dirección de un recurso y organización en la que se guarda. |
-| **CSV y JSON** | Representaciones de datos tabulares y estructurados; requieren lectores adecuados a cada formato. |
-| **Gestor de contexto** | Objeto usado con `with` para gestionar entrada, salida y liberación de recursos. |
-
 ## Importar una herramienta, no memorizar un catálogo
 
 La biblioteca estándar ya viene con Python. `import sys` permite acceder con el prefijo `sys.`; `from pathlib import Path` importa directamente el nombre `Path`. Un nombre de archivo como `random.py` o `sys.py` en tu proyecto puede causar confusiones con imports: utiliza nombres propios.
@@ -23,9 +14,53 @@ La biblioteca estándar ya viene con Python. `import sys` permite acceder con el
 | shutil | Copias, movimientos y uso del disco |
 | random / time | Simulaciones aleatorias / pausas |
 
-## Ejemplo resuelto: calendario de calibración
+## Para qué sirve importar un módulo
 
-**Problema propio:** a partir de una fecha fija, preparar tres fechas de revisión cada dos días. Utilizar una fecha fija permite comprobar el resultado sin depender del día en que ejecutes el código.
+Un módulo reúne código que puedes reutilizar. `import pathlib` da acceso a sus nombres con el prefijo, como `pathlib.Path`. `from pathlib import Path` permite usar directamente `Path`. No son dos bibliotecas distintas ni necesitas instalar una de ellas por usar otra forma de importación.
+
+La biblioteca estándar se distribuye con Python e incluye las herramientas que utilizamos aquí. Otras bibliotecas externas requieren instalación. Antes de ejecutar `pip`, comprueba cuál es el caso y qué intérprete está activo.
+
+Evita que tu archivo tenga el mismo nombre que un módulo que quieres importar. Un `random.py` dentro del proyecto puede interferir con la búsqueda de módulos y dar mensajes desconcertantes. Cambiar el contenido de la biblioteca no es lo primero que debes intentar ante ese problema.
+
+## Construir una ruta es distinto de abrir un archivo
+
+`Path('fichas') / 'azul.txt'` representa una ruta. Crear ese objeto no crea automáticamente la carpeta ni el archivo. Después puedes preguntar si existe, si es archivo o directorio, o intentar una operación con ella.
+
+Una ruta relativa parte del directorio de trabajo del proceso. Si ejecutas el mismo script desde otra carpeta, puede referirse a otro lugar. Por eso conviene observar `Path.cwd()` cuando no encuentras lo que esperabas. La carpeta donde está guardado el script y el directorio desde el que se ejecuta no son necesariamente el mismo.
+
+`name`, `parent` y `suffix` describen partes de la ruta. `is_file()` consulta si corresponde a un archivo; `stat()` obtiene información del recurso. Una propiedad del nombre no demuestra que el recurso exista: puedes preguntar el sufijo de una ruta que todavía no se ha creado.
+
+## Recorrer el nivel actual o recorrer subcarpetas
+
+`iterdir()` enumera las entradas inmediatas. No baja automáticamente por todas las carpetas. `glob` permite seleccionar con un patrón y `rglob` realiza una búsqueda recursiva con el patrón indicado.
+
+Al recorrer, comprueba si cada entrada es del tipo que necesitas. Una carpeta también tiene nombre y puede terminar en un texto parecido a una extensión; no debes sumar su tamaño como si fuera uno de los documentos del informe.
+
+No dependas del orden que encuentres al listar para explicar una salida exacta. Si el ejercicio necesita un orden concreto, aplica `sorted` u otra regla explícita. Así la presentación tiene un criterio que puedes justificar.
+
+## Leer texto y entender cuándo se cierra
+
+Abrir un archivo crea un recurso que necesita cerrarse. `with` delimita el trabajo con él y realiza el cierre al salir del bloque. Dentro puedes recorrer líneas, leer todo el texto o escribir según el modo elegido.
+
+El modo `r` lee, `w` crea o sustituye contenido y `a` añade al final. Elegir mal el modo puede borrar datos aunque el programa no dé ninguna excepción. Expresa la codificación, por ejemplo `encoding='utf-8'`, para no depender de una interpretación distinta entre equipos.
+
+Un salto de línea puede formar parte del texto leído. `strip()` lo elimina, pero también elimina otros espacios de los extremos. Si esos espacios tienen significado en tu formato, utiliza una operación más específica en lugar de limpiar por costumbre.
+
+## Copiar no es lo mismo que mover
+
+Copiar deja el origen y crea o sustituye un destino; mover cambia la ubicación o el nombre del recurso. Antes de operar, decide qué pasa si el destino existe y qué debe conservarse. Una comprobación previa no garantiza que nada cambie entre comprobar y actuar, así que las operaciones aún pueden fallar.
+
+Para estudiar estas funciones, utiliza una carpeta pequeña de laboratorio. Es más fácil justificar qué ocurrió con dos archivos conocidos que con un árbol grande cuyo estado inicial no has revisado. Las funciones que eliminan árboles no son necesarias para aprender a construir una ruta.
+
+## Fechas: separar el dato del texto que lo representa
+
+Una fecha no es simplemente una cadena como `27/10/2026`. El objeto permite hacer operaciones de calendario; el formato decide cómo mostrarlo. `timedelta` expresa una duración y evita calcular cambios de mes con restas manuales de números.
+
+El calendario del ejemplo empieza en una fecha fijada para que puedas seguir sus tres resultados a mano. Al usar `today()` o `now()`, el punto de partida procede del reloj y la salida varía. Debes distinguir qué es una diferencia esperable por la fecha del sistema y qué sería un error de tu fórmula.
+
+## Problema explicado paso a paso: calendario de calibración
+
+A partir de una fecha fija, preparar tres fechas de revisión cada dos días. Utilizar una fecha fija permite comprobar el resultado sin depender del día en que ejecutes el código.
 
 ```python
 from datetime import date, timedelta
@@ -45,9 +80,9 @@ R03 | 30/10/2026
 
 `timedelta` representa una duración y sabe atravesar cambios de mes. `%d`, `%m` y `%Y` formatean día, mes y año. `date.today()` y `datetime.now()` consultan el reloj; `weekday()` numera el lunes como 0 y el domingo como 6. Una fecha/hora sin zona no incorpora automáticamente las reglas de otra zona horaria.
 
-## Ejemplo resuelto: resumen de documentos Markdown
+## Problema explicado paso a paso: resumen de documentos Markdown
 
-**Objetivo propio:** leer una carpeta pasada como argumento y sumar el tamaño de los archivos `.md` inmediatos. No modifica el contenido.
+Leer una carpeta pasada como argumento y sumar el tamaño de los archivos `.md` inmediatos. No modifica el contenido.
 
 Guarda `documentos.py`:
 
@@ -127,6 +162,15 @@ print(f"Carpeta: {args.carpeta}; límite: {args.limite}")
 Guárdalo como `opciones.py`. `python opciones.py fichas --limite 5` muestra `Carpeta: fichas; límite: 5`. `--limite muchas` produce un error de argumentos. El programa aún no inspecciona la carpeta: solo demuestra cómo interpretar la llamada.
 
 Para ejecutar otro programa, `subprocess.run` acepta una lista con el comando y cada argumento por separado. `capture_output=True` captura stdout y stderr, `text=True` devuelve texto y `returncode` permite revisar el estado. Evita construir una orden de shell concatenando datos externos. El módulo `re` proporciona `search`, `findall` y patrones compilados; recuerda diferenciar una coincidencia de formato de una validación completa del dato.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Módulo y biblioteca** | Unidad importable de código y conjunto de herramientas; una biblioteca puede contener varios módulos. |
+| **Ruta y sistema de archivos** | Dirección de un recurso y organización en la que se guarda. |
+| **CSV y JSON** | Representaciones de datos tabulares y estructurados; requieren lectores adecuados a cada formato. |
+| **Gestor de contexto** | Objeto usado con `with` para gestionar entrada, salida y liberación de recursos. |
 
 !!! success "Para repasar"
     Elige el módulo según la tarea, consulta el tipo que devuelve cada operación y prueba primero con un conjunto pequeño de archivos conocidos.

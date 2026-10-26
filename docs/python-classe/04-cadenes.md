@@ -1,21 +1,66 @@
 # UT2 · 1. Objetos, métodos y tratamiento de cadenas
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Método** | Operación que se llama sobre un objeto, como `texto.strip()`. |
-| **Propiedad o atributo** | Dato accesible en un objeto; en `ruta.name`, `name` es un atributo, no una llamada. |
-| **Slicing** | Extracción de una parte de una secuencia con inicio, fin y paso. |
-| **Cadena inmutable** | Texto cuyos caracteres no se cambian en el mismo objeto; los métodos devuelven nuevos resultados. |
-
 ## Función y método
 
 Una función se llama como `len(texto)`. Un método se llama sobre el objeto: `texto.upper()`. Los paréntesis ejecutan la operación; `texto.upper` solo obtiene una referencia al método. Las cadenas son inmutables: debes conservar el valor devuelto si quieres seguir utilizando la transformación.
 
-## Ejemplo resuelto: interpretar una etiqueta de archivo sonoro
+## Un texto es una secuencia de caracteres
 
-**Problema propio:** de la etiqueta `"  jazz:directo:flac  "`, obtener el estilo, el tipo de grabación y el formato. Los dos separadores están garantizados en este primer ejemplo.
+Una cadena permite acceder a sus caracteres por posición. El primer índice es 0 porque se cuenta desde el principio sin avanzar ninguna posición; el segundo está a un paso, en el índice 1. Un índice negativo cuenta desde el final, de modo que `-1` identifica el último carácter.
+
+Es útil escribir los índices debajo de la palabra antes de hacer cortes:
+
+```text
+Texto:   m  a  p  a
+Índice:  0  1  2  3
+Final:  -4 -3 -2 -1
+```
+
+`"mapa"[0]` obtiene `m` y `"mapa"[-1]` obtiene `a`. Pedir una posición inexistente es distinto de pedir un tramo que llega más allá del final: un acceso individual puede producir `IndexError`, mientras un corte se ajusta a los límites disponibles.
+
+## Leer un corte como dos fronteras
+
+En `texto[inicio:fin]`, se incluye `inicio` y se excluye `fin`. Esto permite que la longitud de un tramo sencillo sea `fin - inicio`. En `"mapa"[1:3]` se toman los índices 1 y 2: el resultado es `ap`, no `apa`.
+
+Si omites el inicio, partes del principio. Si omites el final, llegas hasta el final. Un tercer valor indica el paso. `texto[::-1]` recorre en orden inverso; no modifica por sí mismo la variable original.
+
+```python
+texto = "laminas"
+print(texto[:3])
+print(texto[3:])
+print(texto[::2])
+```
+
+La salida es `lam`, `inas` y `lmns`. Antes de ejecutar, escribe los índices y marca cuáles selecciona cada expresión. Así puedes explicar un corte en un examen sin depender de recordarlo como un truco.
+
+## Los métodos devuelven resultados
+
+`strip` produce una cadena sin espacios de los extremos. `upper` produce una representación en mayúsculas. `replace` produce un resultado con sustituciones. Ninguno convierte una cadena inmutable en una caja de caracteres que se altere en el mismo lugar.
+
+```python
+texto = "  mapa  "
+limpio = texto.strip()
+print(repr(texto))
+print(repr(limpio))
+```
+
+Se muestra `'  mapa  '` y después `'mapa'`. Si quieres seguir trabajando con la versión limpia bajo el mismo nombre, escribe `texto = texto.strip()`. Si necesitas conservar ambas versiones, utiliza dos nombres como en el ejemplo.
+
+## Elegir entre buscar una posición y comprobar una presencia
+
+Si solo necesitas saber si aparece un texto, `in` expresa la pregunta directamente. Si necesitas cortar antes o después de un separador, puede interesarte su posición con `find`. Si necesitas contar cuántas veces aparece, utiliza `count`.
+
+No uses el resultado de `find` como booleano sin interpretarlo: una coincidencia en la posición cero no es lo mismo que ausencia, que se representa mediante -1. Compara explícitamente cuando corresponda. La diferencia entre `find` e `index` se vuelve importante cuando el separador puede faltar.
+
+## Separar campos no es adivinar su significado
+
+`split(';')` divide por el separador y devuelve una lista. A continuación debes comprobar cuántas partes hay y qué representa cada una. Una columna que contiene `18` sigue siendo texto hasta que la conviertes; una línea incompleta puede no tener la posición que intentas consultar.
+
+`join` hace la operación de presentación contraria: une cadenas con un separador. La llamada se escribe sobre el separador, como `' / '.join(partes)`. No convierte automáticamente elementos numéricos de una lista en textos si necesitas unirlos.
+
+## Problema explicado paso a paso: interpretar una etiqueta de archivo sonoro
+
+De la etiqueta `"  jazz:directo:flac  "`, obtener el estilo, el tipo de grabación y el formato. Los dos separadores están garantizados en este primer ejemplo.
 
 ```python
 original = "  jazz:directo:flac  "
@@ -81,6 +126,15 @@ print(" | ".join(partes))
 La salida es `['azul', '18', 'abierta']` y `azul | 18 | abierta`. Separar no convierte `18` a entero ni valida que existan exactamente tres campos. Antes de extraer posiciones o convertir, comprueba la estructura que espera el problema.
 
 `split()` sin argumentos agrupa espacios en blanco y descarta los de los extremos. `split(' ')` utiliza exactamente un espacio y puede crear elementos vacíos. Elige según lo que significa el formato, no solo por cuál parece funcionar con un ejemplo.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Método** | Operación que se llama sobre un objeto, como `texto.strip()`. |
+| **Propiedad o atributo** | Dato accesible en un objeto; en `ruta.name`, `name` es un atributo, no una llamada. |
+| **Slicing** | Extracción de una parte de una secuencia con inicio, fin y paso. |
+| **Cadena inmutable** | Texto cuyos caracteres no se cambian en el mismo objeto; los métodos devuelven nuevos resultados. |
 
 !!! success "Para repasar"
     Escribe los índices bajo la cadena antes de cortarla. Comprueba siempre qué ocurre si falta el separador que esperas.

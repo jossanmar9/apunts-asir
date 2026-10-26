@@ -1,13 +1,5 @@
 # UT1 · 2. Cálculos, comprobaciones y decisiones en Bash
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Expresión regular** | Patrón que describe una forma de texto para reconocer coincidencias. |
-| **Código de salida** | Estado con el que termina una orden; 0 indica éxito según la convención de shell. |
-| **Condición** | Prueba que selecciona un camino de ejecución; también puede ser el estado de una orden. |
-
 ## Tres tipos de comprobación
 
 Para enteros, `(( expresion ))` permite calcular y comparar. Para texto y archivos, `[[ condicion ]]` resulta cómodo en Bash. La forma clásica `[ condicion ]` también existe y exige espacios alrededor de los corchetes y operandos bien separados.
@@ -24,9 +16,59 @@ Para enteros, `(( expresion ))` permite calcular y comparar. Para texto y archiv
 
 `-e` puede ser falso en un enlace roto: utiliza también `-L` si quieres detectar cualquier enlace. `&&` significa «y», `||` significa «o» y `!` niega una condición. Un comando con código 0 se considera correcto o verdadero en un `if`.
 
-## Ejemplo resuelto: comprobar una reserva de butacas
+## Hacer cuentas: no todo texto parecido a una operación se calcula
 
-**Problema propio:** una sala de prueba tiene 12 butacas libres. El script acepta una cantidad entre 1 y 12, escrita con una o dos cifras sin ceros iniciales.
+Si escribes `printf '%s\n' '8 + 3'`, estás imprimiendo texto. La expansión aritmética `$((8 + 3))` pide a Bash que evalúe la operación y sustituya la expresión por su resultado.
+
+```bash
+piezas=23
+capacidad=5
+completos=$((piezas / capacidad))
+sobrantes=$((piezas % capacidad))
+printf 'Lotes completos: %s; piezas sueltas: %s\n' "$completos" "$sobrantes"
+```
+
+Resultado: `Lotes completos: 4; piezas sueltas: 3`. La división entera cuenta cuántos grupos completos caben; el resto cuenta lo que queda. No son resultados intercambiables. Si necesitas incluir un grupo incompleto, necesitas decidir qué hacer con el resto.
+
+Las multiplicaciones y divisiones respetan la prioridad habitual; los paréntesis aclaran el orden. Al calcular un porcentaje entero, dividir demasiado pronto puede perder la fracción: con 3 de 8 piezas, `3 / 8 * 100` da 0, mientras `3 * 100 / 8` da 37. Este último valor sigue siendo una aproximación entera, no 37,5.
+
+Dentro de `((...))` puedes utilizar el nombre de la variable sin `$`. Es un contexto aritmético, no una cadena normal. No introduzcas datos sin validar en él: la shell puede interpretarlos como expresiones y no como la cantidad literal que imaginabas.
+
+## Cómo decide `if`: estado cero significa verdadero
+
+La estructura se lee «ejecuta esta prueba; si termina con estado cero, ejecuta este bloque»:
+
+```bash
+if [[ 3 -gt 2 ]]; then
+    printf 'La condición se cumple\n'
+else
+    printf 'La condición no se cumple\n'
+fi
+```
+
+El ejemplo imprime «La condición se cumple» porque 3 es mayor que 2. `then` inicia el primer camino y `fi` cierra la estructura. `else` es opcional. El sangrado de los bloques facilita la lectura, pero Bash reconoce los límites por sus palabras de control, no por el número de espacios.
+
+`[ ... ]` es una orden de prueba que exige argumentos separados: `[ "$a" -gt 3 ]` contiene espacios después de `[` y antes de `]`. `[[ ... ]]` es una construcción propia de Bash, con reglas más cómodas para patrones y condiciones compuestas. Para números, `((...))` admite comparaciones como `>=`.
+
+No utilices un `>` suelto como si fuera una comparación numérica dentro de `[ ... ]`: la shell puede tratarlo como redirección. Los operadores numéricos clásicos son `-eq`, `-ne`, `-lt`, `-le`, `-gt` y `-ge`; los de texto son `=` y `!=`.
+
+## Elegir el orden de varias condiciones
+
+Un `if/elif/else` ejecuta el primer camino verdadero. Ese orden forma parte de la solución. Si primero preguntas «¿hay al menos una pieza?», una cantidad de veinte también cumple; nunca llegaría a un `elif` posterior pensado para cantidades grandes.
+
+Define intervalos de manera que cubran los casos válidos sin dejar huecos. Prueba exactamente los valores de frontera, no solo valores intermedios. Un programa que distingue menos de 5, de 5 a 10 y más de 10 debe probar 4, 5, 10 y 11, además de una entrada inválida.
+
+Al combinar condiciones, `A && B` exige ambas y `A || B` admite al menos una. El cortocircuito evita evaluar lo que ya no hace falta. Puedes aprovecharlo para validar antes de calcular: primero el texto debe tener la forma permitida y solo después haces la comparación numérica.
+
+## Verificar una ruta es hacer una pregunta concreta
+
+`-e` pregunta si existe, `-f` si es un archivo ordinario y `-d` si es un directorio. Una carpeta puede existir y aun así no ser un archivo de entrada válido. `-r`, `-w` y `-x` preguntan por accesos, mientras `-s` pregunta si tiene tamaño no nulo.
+
+Si una operación falla, responde a la pregunta que realmente necesitabas comprobar. Por ejemplo, antes de leer un documento puedes exigir que sea archivo ordinario y legible; no necesitas hacerlo ejecutable. Sobre un directorio, `x` significa poder atravesarlo, no que sea un programa.
+
+## Problema explicado paso a paso: comprobar una reserva de butacas
+
+Una sala de prueba tiene 12 butacas libres. El script acepta una cantidad entre 1 y 12, escrita con una o dos cifras sin ceros iniciales.
 
 ```bash
 #!/usr/bin/env bash
@@ -107,6 +149,14 @@ Las formas cortas `orden && siguiente` y `orden || alternativa` dependen del mis
 | `[[ "$nombre" =~ ^[A-Z]+$ ]]` | ¿Coincide con esta expresión regular? |
 
 En la prueba de patrón `*.txt`, dejar el patrón sin comillas permite interpretarlo como patrón; la variable sigue protegida. Diferencia este caso de pasar argumentos a una orden externa, donde normalmente debes entrecomillar las expansiones.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Expresión regular** | Patrón que describe una forma de texto para reconocer coincidencias. |
+| **Código de salida** | Estado con el que termina una orden; 0 indica éxito según la convención de shell. |
+| **Condición** | Prueba que selecciona un camino de ejecución; también puede ser el estado de una orden. |
 
 !!! success "Para repasar"
     Primero comprueba la forma del dato; después realiza cálculos o decisiones. No confundas `=` de asignación, igualdad de texto y comparación numérica.

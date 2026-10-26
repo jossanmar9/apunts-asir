@@ -1,14 +1,5 @@
 # UT2 · 4. Cookies, sesiones y acceso privado
 
-## Palabras clave de este tema
-
-| Término | Significado en este tema |
-| --- | --- |
-| **Cookie** | Dato que guarda el navegador y envía en las peticiones que corresponden a su ámbito. |
-| **Sesión** | Estado que el servidor asocia con un identificador del cliente entre varias peticiones. |
-| **Hash de contraseña** | Representación calculada para verificar una contraseña sin guardarla en claro; no se descifra. |
-| **Autenticación y autorización** | Comprobar la identidad y decidir los permisos de esa identidad. |
-
 ## ¿Por qué una variable no recuerda la visita anterior?
 
 Cada petición ejecuta de nuevo el programa. Una variable como `$seccion = 'mapas';` no recuerda una selección hecha en una petición anterior. HTTP no incorpora por sí mismo una memoria de usuario: la aplicación debe construirla.
@@ -21,7 +12,45 @@ Cada petición ejecuta de nuevo el programa. Una variable como `$seccion = 'mapa
 
 El cliente puede modificar las cookies. No las uses como prueba de permisos. Una sesión también necesita controles de acceso en el servidor.
 
-## Ejemplo resuelto: recordar la vista de un catálogo
+## Qué se pierde al terminar una petición
+
+Una variable normal existe durante la ejecución que la crea. Al pedir otra página, el servidor inicia otro procesamiento. Si necesitas recordar una preferencia o quién ha iniciado sesión, debes guardar ese estado mediante algún mecanismo apropiado.
+
+Esto no significa que el navegador olvide todo visualmente ni que se borren las tablas de una base de datos en cada visita. Significa que HTTP no relaciona por sí solo dos peticiones con un estado de aplicación que tú hayas definido.
+
+Una cookie permite al navegador conservar un dato y devolverlo en peticiones posteriores dentro de su ámbito. Una sesión utiliza normalmente una cookie identificadora para localizar información guardada en el servidor. Son mecanismos relacionados, no dos nombres para lo mismo.
+
+## Qué ocurre al guardar una cookie
+
+`setcookie` añade una cabecera a la respuesta. Esa cabecera solicita al navegador guardar el dato. El navegador lo enviará después si la ruta, dominio y demás condiciones corresponden.
+
+Por eso `$_COOKIE` no contiene automáticamente el valor que acabas de enviar: representa lo recibido al comenzar esta petición. La nueva cookie todavía está viajando en sentido contrario. El ejemplo redirige para provocar un GET posterior y leer en él el dato actualizado.
+
+Al definir caducidad, piensa qué quieres recordar y durante cuánto tiempo. Al definir ruta, piensa qué páginas necesitan recibirla. Para una preferencia de vista basta un valor permitido, como `lista` o `cuadricula`; no necesitas guardar en la cookie todo el contenido del catálogo.
+
+## Qué hace `session_start`
+
+Esta llamada crea o recupera la sesión correspondiente al identificador del cliente. Debe ejecutarse en cada página que vaya a utilizar ese estado y antes de enviar una salida que impida preparar las cabeceras necesarias.
+
+Después puedes escribir en `$_SESSION` y recuperar el valor en otra petición de la misma sesión. No basta con escribir una variable `$usuario` en una página y esperar que exista en las demás. Tampoco basta con mostrar un botón de entrada: la ruta privada necesita una comprobación en el servidor.
+
+Distingue el nombre de usuario del identificador de sesión. El navegador suele conservar el segundo; el servidor asocia con él la información necesaria. Compartir ordenador no obliga a compartir sesión, pero dos pestañas del mismo perfil normalmente comparten sus cookies.
+
+## Entender el acceso por contraseña sin aprenderlo de memoria
+
+El formulario entrega un usuario y una clave. El servidor busca si conoce ese usuario y verifica la clave con el hash guardado. Si la comprobación funciona, renueva el identificador y conserva la identidad en la sesión. Después redirige a la zona privada.
+
+Un hash no es una clave cifrada que puedas recuperar con una operación inversa. `password_verify` utiliza la información del hash para comprobar una candidata. No compares el texto de dos llamadas nuevas a `password_hash`: pueden producir representaciones diferentes para la misma contraseña debido al uso de una sal aleatoria.
+
+Si la comprobación falla, el programa no debe crear una sesión autenticada por el simple hecho de que el campo usuario no esté vacío. Haber recibido un nombre no demuestra la identidad. El mensaje al usuario puede ser genérico para no revelar qué parte de las credenciales coincidió.
+
+## Cómo comprobar entrada y salida
+
+Prueba primero abrir directamente la página privada sin entrar. Debe rechazarte o redirigirte. Prueba después una clave incorrecta y confirma que sigues sin acceso. Con la clave del laboratorio, entra y solicita de nuevo la página privada.
+
+Por último, sal y vuelve a pedir esa ruta. Destruir la sesión y eliminar su cookie no son exactamente la misma operación: el ejemplo contempla ambas. No te limites a pulsar «atrás», porque el navegador podría mostrar una representación ya almacenada sin que el servidor acabe de autorizarla otra vez.
+
+## Problema explicado paso a paso: recordar la vista de un catálogo
 
 Guarda `vista.php`:
 
@@ -154,7 +183,7 @@ Entra en una ventana normal y abre `archivo.php` en una ventana privada: la segu
 
 Una política de inactividad se aplica comprobando la última actividad en el servidor, no solo ocultando una pantalla. Una cookie con `admin=1` no prueba autorización; el servidor debe recuperar los permisos desde una fuente en la que confíe.
 
-### Caso resuelto: entrar no significa tener cualquier permiso
+### Problema explicado paso a paso: entrar no significa tener cualquier permiso
 
 Imagina que el archivo de partituras distingue visitantes y personal de archivo. Después de verificar la identidad, la aplicación asigna un rol desde sus propios datos. Antes de una operación reservada, comprueba ese rol en el servidor.
 
@@ -171,6 +200,15 @@ echo 'Operación permitida al personal de archivo';
 En este fragmento no se fija el rol desde un formulario: presupone que el proceso de acceso lo ha guardado desde datos fiables. Sin sesión o con otro rol devuelve 403; con rol `archivo`, permite continuar. Es una comprobación de autorización, distinta del acceso por contraseña.
 
 El botón «atrás» puede mostrar una representación en caché después de salir. La prueba importante es solicitar de nuevo la ruta privada y comprobar que el servidor deniega el acceso. En contenido sensible puedes usar una política de caché como `Cache-Control: no-store`.
+
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Cookie** | Dato que guarda el navegador y envía en las peticiones que corresponden a su ámbito. |
+| **Sesión** | Estado que el servidor asocia con un identificador del cliente entre varias peticiones. |
+| **Hash de contraseña** | Representación calculada para verificar una contraseña sin guardarla en claro; no se descifra. |
+| **Autenticación y autorización** | Comprobar la identidad y decidir los permisos de esa identidad. |
 
 !!! success "Para repasar"
     Ocultar un enlace no protege una ruta. La comprobación debe ejecutarse en el servidor antes de cualquier contenido privado.

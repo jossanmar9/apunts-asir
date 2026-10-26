@@ -1,6 +1,6 @@
 # Apuntes ASIR
 
-Resúmenes en **castellano** de los apuntes de clase de **IAW, ASO y Python**, organizados por módulo, unidad y tema, con explicaciones desde cero y ejemplos propios resueltos paso a paso. **Git y GitHub tiene una sección independiente.** Sirven para estudiar y como guía mientras haces los trabajos.
+Apuntes desarrollados en **castellano** de los apuntes de clase de **IAW, ASO y Python**, organizados por módulo, unidad y tema, con explicaciones desde cero y ejemplos propios resueltos paso a paso. **Git y GitHub tiene una sección independiente.** Sirven para preparar los exámenes y como guía mientras haces ejercicios. Las tablas y el repaso complementan la explicación; no la sustituyen.
 
 🌐 **[Web de Apuntes ASIR](https://jossanmar9.github.io/apunts-asir/)**
 
@@ -14,11 +14,19 @@ Resúmenes en **castellano** de los apuntes de clase de **IAW, ASO y Python**, o
 | Git y GitHub | Tema independiente: repositorios, commits, remoto y SSH | [Git y GitHub](docs/git-github/index.md) |
 | Cómo estudiar | Método de estudio y consejos para aprender | [Cómo estudiar](docs/estudiar/index.md) |
 
-Cada tema incluye teoría explicada, ejemplos propios con el razonamiento y el resultado esperado, errores habituales y un resumen de repaso. Los casos didácticos **no son los ejercicios de clase para practicar o entregar**, ni versiones con solo los nombres o los datos cambiados.
+Cada tema incluye explicaciones desde cero, instrucciones comentadas, problemas fáciles resueltos paso a paso, seguimiento de variables, resultados esperados y errores habituales. El vocabulario y el repaso quedan al final como consulta. Los casos didácticos **no son los ejercicios de clase para practicar o entregar**, ni versiones con solo los nombres o los datos cambiados.
 
 ## Material integrado
 
 Las tablas, explicaciones y técnicas de los apuntes anteriores se han incorporado dentro de IAW, ASO, Python y Git y GitHub. No hay una sección pública de complementos ni un glosario separado: los términos se definen en su contexto. Consulta el [mapa de integración](archivo/INTEGRACION.md) para localizar los originales conservados.
+
+## Criterio de redacción
+
+- Desarrolla la explicación para un estudiante que empieza: qué significa cada concepto, cómo funciona y por qué se utiliza.
+- Incorpora el desarrollo útil del material anterior; no lo reduzcas a una tabla o a una mención.
+- Utiliza problemas sencillos y explícalos paso a paso, con la salida y el motivo de cada operación. Evita las etiquetas «problema propio» o «con datos conocidos».
+- Mantén enunciados distintos de los ejercicios de práctica o entrega de clase.
+- Sitúa vocabulario, tablas y repaso como apoyo a la explicación, sin sustituirla.
 
 ## Fuentes y criterio de actualización
 
@@ -26,7 +34,7 @@ Las tablas, explicaciones y técnicas de los apuntes anteriores se han incorpora
 - [ASO — angelabserrano](https://angelabserrano.github.io/aso/)
 - [Introducción a Python — victoria-nr](https://victoria-nr.github.io/python-intro-alumnos/)
 
-Última consulta: **26/10/2026**. Traducción al castellano: **27/10/2026**. Consulta la [cobertura por unidades](docs/classe.md). Los resúmenes y ejemplos son de redacción propia; las fuentes de teoría se enlazan en cada tema.
+Última consulta: **26/10/2026**. Traducción al castellano: **27/10/2026**. Consulta la [cobertura por unidades](docs/classe.md). Los apuntes y ejemplos son de redacción propia; las fuentes de teoría se enlazan en cada tema.
 
 **Actualización manual, cuando lo solicite el estudiante.** Cuando se anuncien materiales nuevos:
 
