@@ -1,12 +1,12 @@
 
 <!doctype html>
-<html lang="ca" class="no-js">
+<html lang="es" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resums per mòdul i tema d’IAW, ASO i Python, amb exemples propis resolts, guia de consulta i consells per a estudiar ASIR">
+        <meta name="description" content="Resúmenes por módulo y tema de IAW, ASO y Python, Git y GitHub, ejemplos propios resueltos y consejos para estudiar ASIR">
       
       
       
@@ -27,7 +27,7 @@
     
     
       
-        <title>Docker Compose i entorn reproduïble - Apunts ASIR</title>
+        <title>Docker Compose y entorno reproducible - Apuntes ASIR</title>
       
     
     
@@ -80,8 +80,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#ut1-3-docker-compose-i-un-entorn-que-pots-reconstruir" class="md-skip">
-          Salta el contingut
+        <a href="#ut1-3-docker-compose-y-un-entorno-que-puedes-reconstruir" class="md-skip">
+          Saltar a contenido
         </a>
       
     </div>
@@ -93,8 +93,8 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Capçalera">
-    <a href="../.." title="Apunts ASIR" class="md-header__button md-logo" aria-label="Apunts ASIR" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Apuntes ASIR" class="md-header__button md-logo" aria-label="Apuntes ASIR" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
@@ -108,13 +108,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Apunts ASIR
+            Apuntes ASIR
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker Compose i entorn reproduïble
+              Docker Compose y entorno reproducible
             
           </span>
         </div>
@@ -127,9 +127,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Mode fosc"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Mode fosc" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
     
@@ -137,9 +137,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
       </label>
     
@@ -162,16 +162,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Cerca">
+      <nav class="md-search__options" aria-label="Buscar">
         
-        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -184,7 +184,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Inicialitzant cerca
+            Inicializando búsqueda
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -196,7 +196,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/jossanmar9/apunts-asir" title="Ves al repositori" class="md-source" data-md-component="source">
+        <a href="https://github.com/jossanmar9/apunts-asir" title="Ir al repositorio" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
@@ -217,7 +217,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -233,7 +233,7 @@
   
     
   
-  Inici
+  Inicio
 
       </a>
     </li>
@@ -316,13 +316,35 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../git-github/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git y GitHub
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../estudiar/" class="md-tabs__link">
           
   
   
     
   
-  Com estudiar
+  Cómo estudiar
 
         </a>
       </li>
@@ -351,7 +373,7 @@
   
     
   
-  Complements
+  Complementos (valenciano)
 
         </a>
       </li>
@@ -374,7 +396,7 @@
   
     
   
-  Fonts i cobertura
+  Fuentes y cobertura
 
       </a>
     </li>
@@ -401,19 +423,19 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Apunts ASIR" class="md-nav__button md-logo" aria-label="Apunts ASIR" data-md-component="logo">
+    <a href="../.." title="Apuntes ASIR" class="md-nav__button md-logo" aria-label="Apuntes ASIR" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
 
     </a>
-    Apunts ASIR
+    Apuntes ASIR
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/jossanmar9/apunts-asir" title="Ves al repositori" class="md-source" data-md-component="source">
+      <a href="https://github.com/jossanmar9/apunts-asir" title="Ir al repositorio" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
@@ -440,7 +462,7 @@
   <span class="md-ellipsis">
     
   
-    Inici
+    Inicio
   
 
     
@@ -572,7 +594,7 @@
   <span class="md-ellipsis">
     
   
-    UT1 · Entorn d’implantació web
+    UT1 · Entorno de implantación web
   
 
     
@@ -588,7 +610,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    UT1 · Entorn d’implantació web
+    UT1 · Entorno de implantación web
   
 
           </label>
@@ -608,7 +630,7 @@
   <span class="md-ellipsis">
     
   
-    Arquitectura i components
+    Arquitectura y componentes
   
 
     
@@ -636,7 +658,7 @@
   <span class="md-ellipsis">
     
   
-    HTTP i diagnòstic
+    HTTP y diagnóstico
   
 
     
@@ -673,7 +695,7 @@
   <span class="md-ellipsis">
     
   
-    Docker Compose i entorn reproduïble
+    Docker Compose y entorno reproducible
   
 
     
@@ -691,7 +713,7 @@
   <span class="md-ellipsis">
     
   
-    Docker Compose i entorn reproduïble
+    Docker Compose y entorno reproducible
   
 
     
@@ -703,7 +725,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
   
@@ -712,15 +734,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
+      Tabla de contenidos
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conceptes-abans-de-copiar-configuracions" class="md-nav__link">
+  <a href="#conceptos-antes-de-copiar-configuraciones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conceptes abans de copiar configuracions
+        Conceptos antes de copiar configuraciones
       
     </span>
   </a>
@@ -728,22 +750,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#laboratori-resolt-cartellera-dun-cineclub" class="md-nav__link">
+  <a href="#laboratorio-resuelto-cartelera-de-un-cineclub" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Laboratori resolt: cartellera d'un cineclub
+        Laboratorio resuelto: cartelera de un cineclub
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Laboratori resolt: cartellera d&#39;un cineclub">
+    <nav class="md-nav" aria-label="Laboratorio resuelto: cartelera de un cineclub">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#per-que-funciona" class="md-nav__link">
+  <a href="#por-que-funciona" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Per què funciona?
+        ¿Por qué funciona?
       
     </span>
   </a>
@@ -751,10 +773,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ordres-i-comprovacio" class="md-nav__link">
+  <a href="#comandos-y-comprobacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ordres i comprovació
+        Comandos y comprobación
       
     </span>
   </a>
@@ -767,10 +789,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-si-afegim-una-base-de-dades" class="md-nav__link">
+  <a href="#y-si-anadimos-una-base-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I si afegim una base de dades?
+        ¿Y si añadimos una base de datos?
       
     </span>
   </a>
@@ -778,10 +800,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#env-environment-i-env_file" class="md-nav__link">
+  <a href="#env-environment-y-env_file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .env, environment i env_file
+        .env, environment y env_file
       
     </span>
   </a>
@@ -850,7 +872,7 @@
   <span class="md-ellipsis">
     
   
-    UT2 · Programació web en servidor
+    UT2 · Programación web en servidor
   
 
     
@@ -866,7 +888,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    UT2 · Programació web en servidor
+    UT2 · Programación web en servidor
   
 
           </label>
@@ -886,7 +908,7 @@
   <span class="md-ellipsis">
     
   
-    PHP i tipus de dades
+    PHP y tipos de datos
   
 
     
@@ -914,7 +936,7 @@
   <span class="md-ellipsis">
     
   
-    Control de flux, arrays i funcions
+    Control de flujo, arrays y funciones
   
 
     
@@ -942,7 +964,7 @@
   <span class="md-ellipsis">
     
   
-    Formularis i validació
+    Formularios y validación
   
 
     
@@ -970,7 +992,7 @@
   <span class="md-ellipsis">
     
   
-    Cookies, sessions i autenticació
+    Cookies, sesiones y autenticación
   
 
     
@@ -998,7 +1020,7 @@
   <span class="md-ellipsis">
     
   
-    Depuració i comprovacions
+    Depuración y comprobaciones
   
 
     
@@ -1038,8 +1060,6 @@
       
         
           
-        
-      
         
       
         
@@ -1109,6 +1129,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1132,7 +1160,7 @@
   <span class="md-ellipsis">
     
   
-    UT0 · Git i GitHub
+    UT1 · Bash
   
 
     
@@ -1145,106 +1173,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    UT0 · Git i GitHub
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../aso/01-git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git i GitHub
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UT1 · Bash
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1268,7 +1196,7 @@
   <span class="md-ellipsis">
     
   
-    Scripts, variables i paràmetres
+    Scripts, variables y parámetros
   
 
     
@@ -1296,7 +1224,7 @@
   <span class="md-ellipsis">
     
   
-    Càlculs i decisions
+    Cálculos y decisiones
   
 
     
@@ -1324,7 +1252,7 @@
   <span class="md-ellipsis">
     
   
-    Bucles i funcions
+    Bucles y funciones
   
 
     
@@ -1352,7 +1280,7 @@
   <span class="md-ellipsis">
     
   
-    Fitxers, filtres i expressions regulars
+    Archivos, filtros y expresiones regulares
   
 
     
@@ -1380,7 +1308,7 @@
   <span class="md-ellipsis">
     
   
-    Errors i scripts d’administració
+    Errores y scripts de administración
   
 
     
@@ -1520,7 +1448,7 @@
   <span class="md-ellipsis">
     
   
-    UT1 · Introducció, entorn i tipus de dades
+    UT1 · Introducción, entorno y tipos de datos
   
 
     
@@ -1536,7 +1464,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    UT1 · Introducció, entorn i tipus de dades
+    UT1 · Introducción, entorno y tipos de datos
   
 
           </label>
@@ -1556,7 +1484,7 @@
   <span class="md-ellipsis">
     
   
-    Programació i entorn
+    Programación y entorno
   
 
     
@@ -1584,7 +1512,7 @@
   <span class="md-ellipsis">
     
   
-    Variables, tipus i operadors
+    Variables, tipos y operadores
   
 
     
@@ -1612,7 +1540,7 @@
   <span class="md-ellipsis">
     
   
-    Entrada i eixida
+    Entrada y salida
   
 
     
@@ -1670,7 +1598,7 @@
   <span class="md-ellipsis">
     
   
-    UT2 · Objectes predefinits i cadenes
+    UT2 · Objetos predefinidos y cadenas
   
 
     
@@ -1686,7 +1614,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    UT2 · Objectes predefinits i cadenes
+    UT2 · Objetos predefinidos y cadenas
   
 
           </label>
@@ -1706,7 +1634,7 @@
   <span class="md-ellipsis">
     
   
-    Objectes i mètodes de cadenes
+    Objetos y métodos de cadenas
   
 
     
@@ -1734,7 +1662,7 @@
   <span class="md-ellipsis">
     
   
-    F-strings i Unicode
+    F-strings y Unicode
   
 
     
@@ -1794,7 +1722,7 @@
   <span class="md-ellipsis">
     
   
-    UT3 · Control de flux i biblioteques sysadmin
+    UT3 · Control de flujo y bibliotecas sysadmin
   
 
     
@@ -1810,7 +1738,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    UT3 · Control de flux i biblioteques sysadmin
+    UT3 · Control de flujo y bibliotecas sysadmin
   
 
           </label>
@@ -1830,7 +1758,7 @@
   <span class="md-ellipsis">
     
   
-    Condicionals i bucles
+    Condicionales y bucles
   
 
     
@@ -1858,7 +1786,7 @@
   <span class="md-ellipsis">
     
   
-    Errors i depuració
+    Errores y depuración
   
 
     
@@ -1886,7 +1814,7 @@
   <span class="md-ellipsis">
     
   
-    Biblioteques d’administració
+    Bibliotecas de administración
   
 
     
@@ -1928,8 +1856,6 @@
           
         
       
-        
-      
     
     
     
@@ -1947,6 +1873,77 @@
         
           
           <div class="md-nav__link md-nav__container">
+            <a href="../../git-github/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git y GitHub
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git y GitHub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
             <a href="../../estudiar/" class="md-nav__link ">
               
   
@@ -1954,7 +1951,7 @@
   <span class="md-ellipsis">
     
   
-    Com estudiar
+    Cómo estudiar
   
 
     
@@ -1965,18 +1962,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Com estudiar
+    Cómo estudiar
   
 
           </label>
@@ -1998,7 +1995,7 @@
   <span class="md-ellipsis">
     
   
-    Consells de programadors
+    Consejos de programación
   
 
     
@@ -2059,17 +2056,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Complements
+    Complementos (valenciano)
   
 
     
@@ -2080,12 +2077,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Complements
+    Complementos (valenciano)
   
 
           </label>
@@ -2145,7 +2142,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -2167,14 +2164,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2228,7 +2225,7 @@
   <span class="md-ellipsis">
     
   
-    2. Variables i paràmetres
+    2. Variables y parámetros
   
 
     
@@ -2256,7 +2253,7 @@
   <span class="md-ellipsis">
     
   
-    3. Aritmètica i comparacions
+    3. Aritmética y comparaciones
   
 
     
@@ -2284,7 +2281,7 @@
   <span class="md-ellipsis">
     
   
-    4. Condicionals
+    4. Condicionales
   
 
     
@@ -2340,7 +2337,7 @@
   <span class="md-ellipsis">
     
   
-    6. Funcions
+    6. Funciones
   
 
     
@@ -2368,7 +2365,7 @@
   <span class="md-ellipsis">
     
   
-    7. Redireccions i tuberies
+    7. Redirecciones y tuberías
   
 
     
@@ -2396,7 +2393,7 @@
   <span class="md-ellipsis">
     
   
-    8. Llegir dades
+    8. Leer datos
   
 
     
@@ -2452,7 +2449,7 @@
   <span class="md-ellipsis">
     
   
-    10. Processar text
+    10. Procesar texto
   
 
     
@@ -2480,7 +2477,7 @@
   <span class="md-ellipsis">
     
   
-    11. find, grep i xargs
+    11. find, grep y xargs
   
 
     
@@ -2536,7 +2533,7 @@
   <span class="md-ellipsis">
     
   
-    Com resoldre un problema
+    Cómo resolver un problema
   
 
     
@@ -2564,7 +2561,7 @@
   <span class="md-ellipsis">
     
   
-    Problemes resolts
+    Problemas resueltos
   
 
     
@@ -2634,7 +2631,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -2656,14 +2653,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2689,7 +2686,7 @@
   <span class="md-ellipsis">
     
   
-    1. Primers passos
+    1. Primeros pasos
   
 
     
@@ -2717,7 +2714,7 @@
   <span class="md-ellipsis">
     
   
-    2. Variables i tipus
+    2. Variables y tipos
   
 
     
@@ -2745,7 +2742,7 @@
   <span class="md-ellipsis">
     
   
-    3. Operadors
+    3. Operadores
   
 
     
@@ -2773,7 +2770,7 @@
   <span class="md-ellipsis">
     
   
-    4. Condicionals
+    4. Condicionales
   
 
     
@@ -2829,7 +2826,7 @@
   <span class="md-ellipsis">
     
   
-    6. Arrays i taules hash
+    6. Arrays y tablas hash
   
 
     
@@ -2857,7 +2854,7 @@
   <span class="md-ellipsis">
     
   
-    7. Tuberies i objectes
+    7. Tuberías y objetos
   
 
     
@@ -2885,7 +2882,7 @@
   <span class="md-ellipsis">
     
   
-    8. Funcions i paràmetres
+    8. Funciones y parámetros
   
 
     
@@ -2913,7 +2910,7 @@
   <span class="md-ellipsis">
     
   
-    9. Fitxers i errors
+    9. Archivos y errores
   
 
     
@@ -2941,7 +2938,7 @@
   <span class="md-ellipsis">
     
   
-    10. PowerShell per a sysadmin
+    10. PowerShell para sysadmin
   
 
     
@@ -2969,7 +2966,7 @@
   <span class="md-ellipsis">
     
   
-    Exercicis resolts
+    Ejercicios resueltos
   
 
     
@@ -3039,7 +3036,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -3061,14 +3058,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3094,7 +3091,7 @@
   <span class="md-ellipsis">
     
   
-    1. Entorn de treball
+    1. Entorno de trabajo
   
 
     
@@ -3122,7 +3119,7 @@
   <span class="md-ellipsis">
     
   
-    2. Tipus i variables
+    2. Tipos y variables
   
 
     
@@ -3150,7 +3147,7 @@
   <span class="md-ellipsis">
     
   
-    3. Cadenes
+    3. Cadenas
   
 
     
@@ -3178,7 +3175,7 @@
   <span class="md-ellipsis">
     
   
-    4. Control de flux
+    4. Control de flujo
   
 
     
@@ -3206,7 +3203,7 @@
   <span class="md-ellipsis">
     
   
-    5. Estructures de dades
+    5. Estructuras de datos
   
 
     
@@ -3234,7 +3231,7 @@
   <span class="md-ellipsis">
     
   
-    6. Funcions i mòduls
+    6. Funciones y módulos
   
 
     
@@ -3262,7 +3259,7 @@
   <span class="md-ellipsis">
     
   
-    7. Fitxers, pathlib i glob
+    7. Archivos, pathlib y glob
   
 
     
@@ -3290,7 +3287,7 @@
   <span class="md-ellipsis">
     
   
-    8. Excepcions
+    8. Excepciones
   
 
     
@@ -3318,7 +3315,7 @@
   <span class="md-ellipsis">
     
   
-    9. Python per a sysadmin
+    9. Python para sysadmin
   
 
     
@@ -3346,7 +3343,7 @@
   <span class="md-ellipsis">
     
   
-    10. Classes i objectes
+    10. Clases y objetos
   
 
     
@@ -3374,7 +3371,7 @@
   <span class="md-ellipsis">
     
   
-    Exercicis resolts
+    Ejercicios resueltos
   
 
     
@@ -3436,7 +3433,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -3458,14 +3455,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3491,7 +3488,7 @@
   <span class="md-ellipsis">
     
   
-    1. Conceptes i configuració
+    1. Conceptos y configuración
   
 
     
@@ -3519,7 +3516,7 @@
   <span class="md-ellipsis">
     
   
-    2. El treball diari
+    2. El trabajo diario
   
 
     
@@ -3575,7 +3572,7 @@
   <span class="md-ellipsis">
     
   
-    4. Branques
+    4. Ramas
   
 
     
@@ -3631,7 +3628,7 @@
   <span class="md-ellipsis">
     
   
-    6. Desfer canvis
+    6. Deshacer cambios
   
 
     
@@ -3659,7 +3656,7 @@
   <span class="md-ellipsis">
     
   
-    Casos pràctics
+    Casos prácticos
   
 
     
@@ -3723,7 +3720,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -3745,14 +3742,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3778,7 +3775,7 @@
   <span class="md-ellipsis">
     
   
-    1. Instal·lació
+    1. Instalación
   
 
     
@@ -3806,7 +3803,7 @@
   <span class="md-ellipsis">
     
   
-    2. Contenidors
+    2. Contenedores
   
 
     
@@ -3834,7 +3831,7 @@
   <span class="md-ellipsis">
     
   
-    3. Imatges
+    3. Imágenes
   
 
     
@@ -3862,7 +3859,7 @@
   <span class="md-ellipsis">
     
   
-    4. Emmagatzematge
+    4. Almacenamiento
   
 
     
@@ -3890,7 +3887,7 @@
   <span class="md-ellipsis">
     
   
-    5. Xarxes
+    5. Redes
   
 
     
@@ -3946,7 +3943,7 @@
   <span class="md-ellipsis">
     
   
-    7. Crear imatges (Dockerfile)
+    7. Crear imágenes (Dockerfile)
   
 
     
@@ -3974,7 +3971,7 @@
   <span class="md-ellipsis">
     
   
-    Exercicis resolts
+    Ejercicios resueltos
   
 
     
@@ -4038,7 +4035,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -4060,14 +4057,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4093,7 +4090,7 @@
   <span class="md-ellipsis">
     
   
-    1. Què és PHP
+    1. Qué es PHP
   
 
     
@@ -4121,7 +4118,7 @@
   <span class="md-ellipsis">
     
   
-    2. El llenguatge
+    2. El lenguaje
   
 
     
@@ -4149,7 +4146,7 @@
   <span class="md-ellipsis">
     
   
-    3. Formularis
+    3. Formularios
   
 
     
@@ -4177,7 +4174,7 @@
   <span class="md-ellipsis">
     
   
-    4. Sessions i usuaris
+    4. Sesiones y usuarios
   
 
     
@@ -4205,7 +4202,7 @@
   <span class="md-ellipsis">
     
   
-    5. Bases de dades amb PDO
+    5. Bases de datos con PDO
   
 
     
@@ -4233,7 +4230,7 @@
   <span class="md-ellipsis">
     
   
-    6. Una aplicació CRUD
+    6. Una aplicación CRUD
   
 
     
@@ -4261,7 +4258,7 @@
   <span class="md-ellipsis">
     
   
-    7. Desplegar aplicacions
+    7. Desplegar aplicaciones
   
 
     
@@ -4289,7 +4286,7 @@
   <span class="md-ellipsis">
     
   
-    Exercicis resolts
+    Ejercicios resueltos
   
 
     
@@ -4351,7 +4348,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -4362,7 +4359,7 @@
   <span class="md-ellipsis">
     
   
-    Xuletes
+    Chuletas
   
 
     
@@ -4373,18 +4370,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Xuletes
+    Chuletas
   
 
           </label>
@@ -4490,7 +4487,7 @@
   <span class="md-ellipsis">
     
   
-    Ordres de Linux
+    Comandos de Linux
   
 
     
@@ -4610,7 +4607,7 @@
   <span class="md-ellipsis">
     
   
-    Glossari
+    Glosario
   
 
     
@@ -4638,7 +4635,7 @@
   <span class="md-ellipsis">
     
   
-    Bibliografia
+    Bibliografía
   
 
     
@@ -4673,7 +4670,7 @@
   <span class="md-ellipsis">
     
   
-    Fonts i cobertura
+    Fuentes y cobertura
   
 
     
@@ -4699,7 +4696,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
   
@@ -4708,15 +4705,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
+      Tabla de contenidos
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conceptes-abans-de-copiar-configuracions" class="md-nav__link">
+  <a href="#conceptos-antes-de-copiar-configuraciones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conceptes abans de copiar configuracions
+        Conceptos antes de copiar configuraciones
       
     </span>
   </a>
@@ -4724,22 +4721,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#laboratori-resolt-cartellera-dun-cineclub" class="md-nav__link">
+  <a href="#laboratorio-resuelto-cartelera-de-un-cineclub" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Laboratori resolt: cartellera d'un cineclub
+        Laboratorio resuelto: cartelera de un cineclub
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Laboratori resolt: cartellera d&#39;un cineclub">
+    <nav class="md-nav" aria-label="Laboratorio resuelto: cartelera de un cineclub">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#per-que-funciona" class="md-nav__link">
+  <a href="#por-que-funciona" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Per què funciona?
+        ¿Por qué funciona?
       
     </span>
   </a>
@@ -4747,10 +4744,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ordres-i-comprovacio" class="md-nav__link">
+  <a href="#comandos-y-comprobacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ordres i comprovació
+        Comandos y comprobación
       
     </span>
   </a>
@@ -4763,10 +4760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-si-afegim-una-base-de-dades" class="md-nav__link">
+  <a href="#y-si-anadimos-una-base-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I si afegim una base de dades?
+        ¿Y si añadimos una base de datos?
       
     </span>
   </a>
@@ -4774,10 +4771,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#env-environment-i-env_file" class="md-nav__link">
+  <a href="#env-environment-y-env_file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .env, environment i env_file
+        .env, environment y env_file
       
     </span>
   </a>
@@ -4801,7 +4798,7 @@
 
 
   
-    <a href="https://github.com/jossanmar9/apunts-asir/edit/main/docs/iaw/03-entorn.md" title="Edita aquesta pàgina" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/jossanmar9/apunts-asir/edit/main/docs/iaw/03-entorn.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -4809,12 +4806,12 @@
   
 
 
-<h1 id="ut1-3-docker-compose-i-un-entorn-que-pots-reconstruir">UT1 · 3. Docker Compose i un entorn que pots reconstruir<a class="headerlink" href="#ut1-3-docker-compose-i-un-entorn-que-pots-reconstruir" title="Permanent link">&para;</a></h1>
-<h2 id="conceptes-abans-de-copiar-configuracions">Conceptes abans de copiar configuracions<a class="headerlink" href="#conceptes-abans-de-copiar-configuracions" title="Permanent link">&para;</a></h2>
-<p>Una <strong>imatge</strong> és la base amb què es crea un contenidor. Un <strong>contenidor</strong> és una instància d'eixa imatge, que pot estar parada o executant-se. Un <strong>servei de Compose</strong> descriu com crear-lo: imatge, configuració, xarxa, muntatges i ports.</p>
-<p>Un muntatge de carpeta (<em>bind mount</em>) connecta una ruta del teu equip amb una del contenidor. Un volum amb nom és emmagatzematge gestionat per Docker; és adequat per a dades que han de sobreviure a la substitució del contenidor.</p>
-<h2 id="laboratori-resolt-cartellera-dun-cineclub">Laboratori resolt: cartellera d'un cineclub<a class="headerlink" href="#laboratori-resolt-cartellera-dun-cineclub" title="Permanent link">&para;</a></h2>
-<p>Aquest exemple nou aïlla la comunicació Nginx–PHP, sense reproduir la pràctica de desplegament de classe. Necessites Docker amb Compose. Crea una carpeta de proves amb aquesta estructura:</p>
+<h1 id="ut1-3-docker-compose-y-un-entorno-que-puedes-reconstruir">UT1 · 3. Docker Compose y un entorno que puedes reconstruir<a class="headerlink" href="#ut1-3-docker-compose-y-un-entorno-que-puedes-reconstruir" title="Permanent link">&para;</a></h1>
+<h2 id="conceptos-antes-de-copiar-configuraciones">Conceptos antes de copiar configuraciones<a class="headerlink" href="#conceptos-antes-de-copiar-configuraciones" title="Permanent link">&para;</a></h2>
+<p>Una <strong>imagen</strong> es la base con la que se crea un contenedor. Un <strong>contenedor</strong> es una instancia de esa imagen, que puede estar detenida o en ejecución. Un <strong>servicio de Compose</strong> describe cómo crearlo: imagen, configuración, red, montajes y puertos.</p>
+<p>Un montaje de carpeta (<em>bind mount</em>) conecta una ruta de tu equipo con una del contenedor. Un volumen con nombre es almacenamiento gestionado por Docker; resulta apropiado para datos que deben sobrevivir a la sustitución del contenedor.</p>
+<h2 id="laboratorio-resuelto-cartelera-de-un-cineclub">Laboratorio resuelto: cartelera de un cineclub<a class="headerlink" href="#laboratorio-resuelto-cartelera-de-un-cineclub" title="Permanent link">&para;</a></h2>
+<p>Este ejemplo propio aísla la comunicación Nginx–PHP, sin reproducir la práctica de despliegue de clase. Necesitas Docker con Compose. Crea una carpeta de pruebas con esta estructura:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cineclub/
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── compose.yaml
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── .env.example
@@ -4826,7 +4823,7 @@
 </code></pre></div>
 <p><code>compose.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">services</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">cartellera</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">cartelera</span><span class="p">:</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:stable-alpine</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"127.0.0.1:${WEB_PORT:-8092}:80"</span>
@@ -4858,78 +4855,78 @@
 </code></pre></div>
 <p><code>public/index.php</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$titol</span> <span class="o">=</span> <span class="s1">'Sessió de curtmetratges'</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$titulo</span> <span class="o">=</span> <span class="s1">'Sesión de cortometrajes'</span><span class="p">;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="cp">?&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">&lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$titol</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">'UTF-8'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">&lt;p&gt;El motor PHP ha generat aquesta cartellera.&lt;/p&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">&lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$titulo</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">'UTF-8'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">&lt;p&gt;El motor PHP ha generado esta cartelera.&lt;/p&gt;</span>
 </code></pre></div>
-<p><code>.env.example</code> i la còpia local <code>.env</code>:</p>
+<p><code>.env.example</code> y su copia local <code>.env</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>WEB_PORT=8092
 </code></pre></div>
 <p><code>.gitignore</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>.env
 </code></pre></div>
-<h3 id="per-que-funciona">Per què funciona?<a class="headerlink" href="#per-que-funciona" title="Permanent link">&para;</a></h3>
+<h3 id="por-que-funciona">¿Por qué funciona?<a class="headerlink" href="#por-que-funciona" title="Permanent link">&para;</a></h3>
 <ol>
-<li>El navegador connecta al port <strong>8092 de l'amfitrió</strong>, publicat cap al <strong>80 de Nginx</strong>. El prefix <code>127.0.0.1</code> limita l'accés al mateix equip.</li>
-<li>Nginx busca <code>index.php</code> a <code>/srv/cineclub</code>.</li>
-<li><code>motor</code> és el nom DNS del servei PHP dins de la xarxa de Compose. Des de Nginx, <code>localhost</code> seria el contenidor de Nginx, no PHP.</li>
-<li>Els dos contenidors veuen el mateix codi en la mateixa ruta; PHP pot obrir el fitxer que Nginx li indica.</li>
-<li><code>:ro</code> permet llegir el muntatge, però impedeix escriure-hi des del contenidor.</li>
+<li>El navegador conecta al puerto <strong>8092 del anfitrión</strong>, publicado hacia el <strong>80 de Nginx</strong>. El prefijo <code>127.0.0.1</code> limita el acceso al propio equipo.</li>
+<li>Nginx busca <code>index.php</code> en <code>/srv/cineclub</code>.</li>
+<li><code>motor</code> es el nombre DNS del servicio PHP dentro de la red de Compose. Desde Nginx, <code>localhost</code> sería el contenedor de Nginx, no PHP.</li>
+<li>Los dos contenedores ven el mismo código en la misma ruta; PHP puede abrir el archivo que le indica Nginx.</li>
+<li><code>:ro</code> permite leer el montaje, pero impide escribir en él desde el contenedor.</li>
 </ol>
-<h3 id="ordres-i-comprovacio">Ordres i comprovació<a class="headerlink" href="#ordres-i-comprovacio" title="Permanent link">&para;</a></h3>
-<p>Des de la carpeta <code>cineclub</code>:</p>
+<h3 id="comandos-y-comprobacion">Comandos y comprobación<a class="headerlink" href="#comandos-y-comprobacion" title="Permanent link">&para;</a></h3>
+<p>Desde la carpeta <code>cineclub</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>config
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>docker<span class="w"> </span>compose<span class="w"> </span>ps
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>curl<span class="w"> </span>-i<span class="w"> </span>http://localhost:8092/
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>--tail<span class="o">=</span><span class="m">30</span><span class="w"> </span>cartellera<span class="w"> </span>motor
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>--tail<span class="o">=</span><span class="m">30</span><span class="w"> </span>cartelera<span class="w"> </span>motor
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>docker<span class="w"> </span>compose<span class="w"> </span>down
 </code></pre></div>
-<p><strong>Resultat esperat:</strong> estat HTTP 200 i una cartellera amb «Sessió de curtmetratges». <code>config</code> comprova i resol la configuració; <code>ps</code> mostra l'estat; <code>logs</code> ajuda a investigar. <code>down</code> elimina els contenidors i la xarxa del projecte. <code>depends_on</code> ordena l'arrancada, però amb aquesta forma no garanteix que una aplicació estiga preparada per a atendre peticions.</p>
-<h2 id="i-si-afegim-una-base-de-dades">I si afegim una base de dades?<a class="headerlink" href="#i-si-afegim-una-base-de-dades" title="Permanent link">&para;</a></h2>
-<p>MariaDB seria un altre servei, per exemple <code>arxiu</code>. PHP connectaria a <code>arxiu:3306</code>, no al port de l'amfitrió. Un volum com <code>dades_arxiu:/var/lib/mysql</code> conservaria la informació. Els scripts de <code>/docker-entrypoint-initdb.d/</code> s'apliquen en la inicialització d'un directori de dades buit; no es tornen a executar simplement perquè edites el SQL.</p>
-<p>Un Dockerfile permet derivar una imatge, per exemple amb <code>FROM php:8.3-fpm-alpine</code> i <code>RUN docker-php-ext-install pdo_mysql</code> per a disposar del controlador PDO de MySQL/MariaDB. Després Compose usa <code>build:</code> i cal reconstruir la imatge. La connexió i les consultes es treballen als <a href="../../php/05-pdo/">apunts complementaris de PDO</a>.</p>
-<h2 id="env-environment-i-env_file"><code>.env</code>, <code>environment</code> i <code>env_file</code><a class="headerlink" href="#env-environment-i-env_file" title="Permanent link">&para;</a></h2>
-<p>Compose pot llegir <code>.env</code> per a substituir <code>${WEB_PORT}</code> en el YAML. Això <strong>no introdueix automàticament totes les variables dins de PHP</strong>. <code>environment:</code> passa variables concretes al servei; <code>env_file:</code> carrega un fitxer de variables dins del contenidor. Un <code>.env.example</code> documenta els noms amb valors de prova; les credencials reals no han d'anar al repositori.</p>
-<p>Les etiquetes d'imatge d'aquest exemple són mòbils. Per a repetir exactament una versió cal registrar-ne una versió immutable o el digest, a més del procediment.</p>
+<p><strong>Resultado esperado:</strong> estado HTTP 200 y una cartelera con «Sesión de cortometrajes». <code>config</code> comprueba y resuelve la configuración; <code>ps</code> muestra el estado; <code>logs</code> ayuda a investigar. <code>down</code> elimina los contenedores y la red del proyecto. <code>depends_on</code> ordena el arranque, pero con esta forma no garantiza que una aplicación esté preparada para atender peticiones.</p>
+<h2 id="y-si-anadimos-una-base-de-datos">¿Y si añadimos una base de datos?<a class="headerlink" href="#y-si-anadimos-una-base-de-datos" title="Permanent link">&para;</a></h2>
+<p>MariaDB sería otro servicio, por ejemplo <code>archivo</code>. PHP conectaría a <code>archivo:3306</code>, no al puerto del anfitrión. Un volumen como <code>datos_archivo:/var/lib/mysql</code> conservaría la información. Los scripts de <code>/docker-entrypoint-initdb.d/</code> se aplican al inicializar un directorio de datos vacío; no vuelven a ejecutarse simplemente porque edites el SQL.</p>
+<p>Un Dockerfile permite derivar una imagen, por ejemplo con <code>FROM php:8.3-fpm-alpine</code> y <code>RUN docker-php-ext-install pdo_mysql</code> para disponer del controlador PDO de MySQL/MariaDB. Después Compose utiliza <code>build:</code> y hay que reconstruir la imagen. La conexión y las consultas se trabajan en los <a href="../../php/05-pdo/">apuntes complementarios de PDO</a>.</p>
+<h2 id="env-environment-y-env_file"><code>.env</code>, <code>environment</code> y <code>env_file</code><a class="headerlink" href="#env-environment-y-env_file" title="Permanent link">&para;</a></h2>
+<p>Compose puede leer <code>.env</code> para sustituir <code>${WEB_PORT}</code> en el YAML. Esto <strong>no introduce automáticamente todas las variables dentro de PHP</strong>. <code>environment:</code> pasa variables concretas al servicio; <code>env_file:</code> carga un archivo de variables dentro del contenedor. Un <code>.env.example</code> documenta los nombres con valores de prueba; las credenciales reales no deben ir al repositorio.</p>
+<p>Las etiquetas de imagen de este ejemplo son móviles. Para repetir exactamente una versión debes registrar una versión inmutable o el digest, además del procedimiento.</p>
 <table>
 <thead>
 <tr>
-<th>Símptoma</th>
-<th>Què revises primer</th>
+<th>Síntoma</th>
+<th>Qué revisas primero</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Port ocupat</td>
-<td>Canvia <code>WEB_PORT</code> i recrea el servei.</td>
+<td>Puerto ocupado</td>
+<td>Cambia <code>WEB_PORT</code> y recrea el servicio.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Fitxer, <code>root</code>, ruta del muntatge i URL.</td>
+<td>Archivo, <code>root</code>, ruta del montaje y URL.</td>
 </tr>
 <tr>
 <td>502</td>
-<td>Estat de <code>motor</code>, nom DNS i port FastCGI.</td>
+<td>Estado de <code>motor</code>, nombre DNS y puerto FastCGI.</td>
 </tr>
 <tr>
-<td>PHP no veu una variable</td>
-<td><code>environment</code> o <code>env_file</code>, no només <code>.env</code>.</td>
+<td>PHP no ve una variable</td>
+<td><code>environment</code> o <code>env_file</code>, no solo <code>.env</code>.</td>
 </tr>
 <tr>
-<td>Dades desaparegudes</td>
-<td>Volum usat i si s'ha eliminat. <code>down -v</code> elimina volums.</td>
+<td>Los datos han desaparecido</td>
+<td>Volumen utilizado y si se ha eliminado. <code>down -v</code> elimina volúmenes.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition success">
-<p class="admonition-title">Per a repassar</p>
-<p>Explica cada costat d'un port i d'un muntatge. Per a reconstruir el projecte necessites codi, configuració, variables documentades i passos de verificació.</p>
+<p class="admonition-title">Para repasar</p>
+<p>Explica cada lado de un puerto y de un montaje. Para reconstruir el proyecto necesitas código, configuración, variables documentadas y pasos de verificación.</p>
 </div>
 <hr />
-<p>Font del temari: <a href="https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/">apunts originals de UT1</a>. Explicació i casos didàctics propis. Consulta: 26/10/2026.</p>
+<p>Fuente del temario: <a href="https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/">apuntes originales de UT1</a>. Explicación y casos didácticos propios. Consulta: 26/10/2026.</p>
 
 
 
@@ -4955,7 +4952,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Torna a l'inici
+  Volver al principio
 </button>
         
       </main>
@@ -4964,10 +4961,10 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="../02-http/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: HTTP i diagnòstic">
+          <a href="../02-http/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: HTTP y diagnóstico">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4977,20 +4974,20 @@
                 Anterior
               </span>
               <div class="md-ellipsis">
-                HTTP i diagnòstic
+                HTTP y diagnóstico
               </div>
             </div>
           </a>
         
         
           
-          <a href="../04-php/" class="md-footer__link md-footer__link--next" aria-label="Següent: PHP i tipus de dades">
+          <a href="../04-php/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: PHP y tipos de datos">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Següent
+                Siguiente
               </span>
               <div class="md-ellipsis">
-                PHP i tipus de dades
+                PHP y tipos de datos
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5007,7 +5004,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Apunts ASIR
+      Apuntes ASIR
     </div>
   
   
@@ -5031,7 +5028,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
