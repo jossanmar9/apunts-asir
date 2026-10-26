@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Resúmenes por módulo y tema de IAW, ASO y Python, Git y GitHub, ejemplos propios resueltos y consejos para estudiar ASIR">
+        <meta name="description" content="Apuntes desarrollados de IAW, ASO, Python y Git y GitHub, con explicaciones desde cero y problemas fáciles paso a paso para estudiar ASIR">
       
       
       
@@ -1911,17 +1911,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#palabras-clave-de-este-tema" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Palabras clave de este tema
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#que-guarda-cada-herramienta" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1933,15 +1922,81 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#caso-resuelto-corregir-un-inventario-de-cables" class="md-nav__link">
+  <a href="#que-problema-resuelve-git-cuando-estudias-o-programas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Caso resuelto: corregir un inventario de cables
+        Qué problema resuelve Git cuando estudias o programas
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Caso resuelto: corregir un inventario de cables">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-tres-zonas-con-un-ejemplo-de-una-sola-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las tres zonas con un ejemplo de una sola línea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leer-status-antes-de-decidir-el-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leer status antes de decidir el siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#un-commit-registra-una-decision-que-debes-poder-explicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un commit registra una decisión que debes poder explicar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trabajar-con-una-rama-sin-imaginar-otra-carpeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trabajar con una rama sin imaginar otra carpeta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-debes-dominar-primero-y-que-puedes-consultar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué debes dominar primero y qué puedes consultar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-explicado-paso-a-paso-corregir-un-inventario-de-cables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema explicado paso a paso: corregir un inventario de cables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problema explicado paso a paso: corregir un inventario de cables">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2006,10 +2061,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#laboratorio-resuelto-anadir-una-ubicacion-al-inventario" class="md-nav__link">
+  <a href="#problema-explicado-paso-a-paso-anadir-una-ubicacion-al-inventario" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Laboratorio resuelto: añadir una ubicación al inventario
+        Problema explicado paso a paso: añadir una ubicación al inventario
       
     </span>
   </a>
@@ -2056,10 +2111,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#caso-resuelto-un-archivo-se-preparo-antes-de-terminarlo" class="md-nav__link">
+  <a href="#problema-explicado-paso-a-paso-un-archivo-se-preparo-antes-de-terminarlo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Caso resuelto: un archivo se preparó antes de terminarlo
+        Problema explicado paso a paso: un archivo se preparó antes de terminarlo
       
     </span>
   </a>
@@ -2076,6 +2131,17 @@
     <span class="md-ellipsis">
       
         Errores frecuentes al entregar trabajos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#palabras-clave-de-este-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Palabras clave de este tema
       
     </span>
   </a>
@@ -2108,49 +2174,6 @@
 
 
 <h1 id="git-y-github">Git y GitHub<a class="headerlink" href="#git-y-github" title="Permanent link">&para;</a></h1>
-<h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Término</th>
-<th>Significado en este tema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Repositorio</strong></td>
-<td>Proyecto cuyo historial registra Git, normalmente mediante el directorio <code>.git</code>.</td>
-</tr>
-<tr>
-<td><strong>Commit</strong></td>
-<td>Instantánea registrada de contenido con autor, mensaje y relación con commits anteriores.</td>
-</tr>
-<tr>
-<td><strong>Rama</strong></td>
-<td>Referencia a una línea de trabajo; su nombre principal no es obligatorio que sea <code>main</code>.</td>
-</tr>
-<tr>
-<td><strong>Remoto</strong></td>
-<td>Destino o fuente configurada para intercambiar datos Git, como <code>origin</code>.</td>
-</tr>
-<tr>
-<td><strong>Push, fetch y pull</strong></td>
-<td>Enviar commits, obtener información remota e integrar tras obtener, respectivamente.</td>
-</tr>
-<tr>
-<td><strong>Merge y conflicto</strong></td>
-<td>Integración de líneas de trabajo y situación que exige decidir cómo resolver cambios incompatibles.</td>
-</tr>
-<tr>
-<td><strong>Pull Request</strong></td>
-<td>Propuesta de revisión e integración gestionada en GitHub.</td>
-</tr>
-<tr>
-<td><strong>Fork</strong></td>
-<td>Repositorio copiado bajo otra cuenta para desarrollar o proponer cambios.</td>
-</tr>
-</tbody>
-</table>
 <p>Tema independiente y transversal a IAW, ASO y Python. Cubre la introducción de UT0 de ASO: guardar, revisar y compartir cambios.</p>
 <h2 id="que-guarda-cada-herramienta">¿Qué guarda cada herramienta?<a class="headerlink" href="#que-guarda-cada-herramienta" title="Permanent link">&para;</a></h2>
 <p>Git es el programa que conserva el historial en tu equipo. GitHub aloja una copia remota y ofrece colaboración. Puedes hacer commits sin conexión; para enviarlos al remoto necesitas red y permisos.</p>
@@ -2159,8 +2182,31 @@
     B --&gt;|git commit| C[Historial local]
     C --&gt;|git push| D[Remoto]</code></pre>
 <p><code>git add</code> selecciona el contenido que entrará en el próximo commit. Si después vuelves a editar el archivo, la nueva edición todavía no está preparada. <code>git pull</code> obtiene e integra cambios remotos; puede producir conflictos que debes revisar.</p>
-<h2 id="caso-resuelto-corregir-un-inventario-de-cables">Caso resuelto: corregir un inventario de cables<a class="headerlink" href="#caso-resuelto-corregir-un-inventario-de-cables" title="Permanent link">&para;</a></h2>
-<p><strong>Objetivo propio:</strong> registrar que el stock real es de 8 cables. Crea una carpeta de laboratorio que no esté dentro de otro repositorio. Este ejemplo es local y no crea ni envía nada a GitHub.</p>
+<h2 id="que-problema-resuelve-git-cuando-estudias-o-programas">Qué problema resuelve Git cuando estudias o programas<a class="headerlink" href="#que-problema-resuelve-git-cuando-estudias-o-programas" title="Permanent link">&para;</a></h2>
+<p>Guardar un archivo conserva su contenido actual, pero no explica qué cambió desde ayer ni por qué. Copiar carpetas con nombres como <code>final</code>, <code>final2</code> o <code>definitivo</code> conserva algunas versiones, pero hace difícil comparar y saber cuál contiene cada cambio. Git registra estados del proyecto y sus relaciones para poder revisar esa evolución.</p>
+<p>GitHub permite alojar una copia remota del repositorio. No sustituye al historial local ni convierte automáticamente en commit todo lo que escribas en tu editor. Primero decides qué guardar en Git y después qué enviar al remoto. Esta separación explica por qué puedes tener cambios en el ordenador que todavía no aparecen en GitHub.</p>
+<h2 id="las-tres-zonas-con-un-ejemplo-de-una-sola-linea">Las tres zonas con un ejemplo de una sola línea<a class="headerlink" href="#las-tres-zonas-con-un-ejemplo-de-una-sola-linea" title="Permanent link">&para;</a></h2>
+<p>Imagina un archivo <code>inventario.txt</code> que dice <code>Cables: 7</code> y ya pertenece a un commit. Lo editas para que diga <code>Cables: 8</code>. Ahora hay una diferencia entre tu carpeta de trabajo y el último estado guardado.</p>
+<p><code>git add inventario.txt</code> prepara el contenido que quieres incluir en el próximo commit. No crea aún el commit. <code>git commit</code> registra lo preparado. <code>git push</code> intenta enviar los commits que faltan al remoto. Son pasos distintos que puedes observar por separado.</p>
+<p>Si preparas el archivo cuando dice 8 y después lo editas otra vez para que diga 9, no se actualiza mágicamente lo preparado. Puedes tener una versión preparada con 8 y una edición posterior con 9. <code>git diff --cached</code> permite revisar lo primero y <code>git diff</code> lo segundo.</p>
+<p>Esto es útil cuando una carpeta contiene trabajo a medias: no necesitas guardar todo junto por el simple hecho de que esté modificado. El área de preparación permite seleccionar un cambio coherente, revisarlo y describirlo con un mensaje.</p>
+<h2 id="leer-status-antes-de-decidir-el-siguiente-paso">Leer <code>status</code> antes de decidir el siguiente paso<a class="headerlink" href="#leer-status-antes-de-decidir-el-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p>Un archivo nuevo aparece como no seguido, normalmente con <code>??</code> en la vista corta. Uno registrado y modificado aparece como modificación. La columna de preparación y la de la carpeta de trabajo expresan estados distintos; un mismo archivo puede tener cambios en ambas.</p>
+<p>No utilices <code>git add .</code> como respuesta automática a cualquier mensaje. Primero mira qué entraría, especialmente si hay archivos generados, configuraciones locales o datos que no quieres publicar. Preparar archivos concretos facilita aprender qué está ocurriendo.</p>
+<p>Después de un commit correcto, el árbol puede quedar limpio. Eso solo informa de los cambios locales pendientes: no demuestra por sí mismo que ya hayas enviado el commit ni que estés mirando en GitHub la misma rama.</p>
+<h2 id="un-commit-registra-una-decision-que-debes-poder-explicar">Un commit registra una decisión que debes poder explicar<a class="headerlink" href="#un-commit-registra-una-decision-que-debes-poder-explicar" title="Permanent link">&para;</a></h2>
+<p>El mensaje debería resumir qué aporta el cambio. «Corrige el recuento de cables» relaciona el commit con una modificación concreta. «Cosas» no ayuda a encontrarlo después. No necesitas escribir un texto largo para una edición pequeña, pero sí identificar su propósito.</p>
+<p>Un commit tampoco es una prueba automática de que funcione. Puedes registrar un programa con un error. Antes de guardarlo, ejecuta la comprobación que corresponda y revisa el diff para saber qué estás incluyendo.</p>
+<p>El identificador del commit permite referirse a él con precisión. <code>HEAD</code> indica el punto actual del trabajo, normalmente a través de la rama activa. <code>origin/main</code> representa la información local que tienes de esa rama remota después de actualizarla; no es una lectura continua de Internet.</p>
+<h2 id="trabajar-con-una-rama-sin-imaginar-otra-carpeta">Trabajar con una rama sin imaginar otra carpeta<a class="headerlink" href="#trabajar-con-una-rama-sin-imaginar-otra-carpeta" title="Permanent link">&para;</a></h2>
+<p>Una rama permite avanzar desde un punto del historial. Al cambiar de rama, Git ajusta la versión de los archivos registrados en la carpeta de trabajo. No crea necesariamente una carpeta nueva que tengas que localizar en el explorador.</p>
+<p>Si hay modificaciones sin guardar, cambiar de rama puede conservarlas cuando sea compatible o impedir el cambio cuando se perderían. Por eso debes revisar <code>status</code> antes de moverte. Si quieres empezar un trabajo nuevo, entiende primero desde qué rama y commit lo estás iniciando.</p>
+<p>Fusionar reúne líneas de trabajo. Cuando Git no puede decidir cómo combinar un contenido, muestra un conflicto para que revises el resultado correcto. Un conflicto no significa que se haya borrado todo: significa que falta una decisión que Git no puede tomar por ti.</p>
+<h2 id="que-debes-dominar-primero-y-que-puedes-consultar">Qué debes dominar primero y qué puedes consultar<a class="headerlink" href="#que-debes-dominar-primero-y-que-puedes-consultar" title="Permanent link">&para;</a></h2>
+<p>Para empezar, practica el ciclo editar → revisar → preparar → commit y distingue cuándo se envía al remoto. Después aprende a crear una rama, integrarla y reconocer un conflicto. Las herramientas para deshacer se estudian a partir de una pregunta concreta: qué cambio quieres retirar y dónde está guardado.</p>
+<p>No memorices una orden de borrado para cualquier problema. Eliminar una edición sin commit, corregir un mensaje y revertir un commit compartido son tareas diferentes. La tabla de recuperación de este tema sirve como consulta después de entender esa diferencia.</p>
+<h2 id="problema-explicado-paso-a-paso-corregir-un-inventario-de-cables">Problema explicado paso a paso: corregir un inventario de cables<a class="headerlink" href="#problema-explicado-paso-a-paso-corregir-un-inventario-de-cables" title="Permanent link">&para;</a></h2>
+<p>Registrar que el stock real es de 8 cables. Crea una carpeta de laboratorio que no esté dentro de otro repositorio. Este ejemplo es local y no crea ni envía nada a GitHub.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>inventario-lab
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>inventario-lab
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>init
@@ -2222,7 +2268,7 @@
 <p>Si un archivo con credenciales ya se publicó, añadirlo al <code>.gitignore</code> no protege el secreto anterior. Revoca o cambia la credencial y revisa después cómo retirar los datos del historial según el proyecto.</p>
 <h2 id="ramas-una-linea-de-trabajo-para-cada-cambio">Ramas: una línea de trabajo para cada cambio<a class="headerlink" href="#ramas-una-linea-de-trabajo-para-cada-cambio" title="Permanent link">&para;</a></h2>
 <p>Una rama es una referencia que permite continuar una línea de trabajo sin mezclarla inmediatamente con otra. No es una copia manual de la carpeta. La rama inicial puede llamarse <code>main</code>, <code>master</code> u otro nombre: compruébalo con <code>git branch --show-current</code>.</p>
-<h3 id="laboratorio-resuelto-anadir-una-ubicacion-al-inventario">Laboratorio resuelto: añadir una ubicación al inventario<a class="headerlink" href="#laboratorio-resuelto-anadir-una-ubicacion-al-inventario" title="Permanent link">&para;</a></h3>
+<h3 id="problema-explicado-paso-a-paso-anadir-una-ubicacion-al-inventario">Problema explicado paso a paso: añadir una ubicación al inventario<a class="headerlink" href="#problema-explicado-paso-a-paso-anadir-una-ubicacion-al-inventario" title="Permanent link">&para;</a></h3>
 <p>Continúa en el laboratorio local del inventario y con el árbol de trabajo limpio:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>ubicacion
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Ubicación: armario azul\n'</span><span class="w"> </span>&gt;<span class="w"> </span>ubicacion.txt
@@ -2310,7 +2356,7 @@
 </tbody>
 </table>
 <p><code>git reset --soft HEAD~1</code> mueve la referencia de la rama un commit atrás y deja sus cambios preparados; no es la herramienta predeterminada para deshacer commits compartidos. <code>reset --hard</code> también descarta cambios de trabajo: no lo ejecutes por ensayo y error.</p>
-<h3 id="caso-resuelto-un-archivo-se-preparo-antes-de-terminarlo">Caso resuelto: un archivo se preparó antes de terminarlo<a class="headerlink" href="#caso-resuelto-un-archivo-se-preparo-antes-de-terminarlo" title="Permanent link">&para;</a></h3>
+<h3 id="problema-explicado-paso-a-paso-un-archivo-se-preparo-antes-de-terminarlo">Problema explicado paso a paso: un archivo se preparó antes de terminarlo<a class="headerlink" href="#problema-explicado-paso-a-paso-un-archivo-se-preparo-antes-de-terminarlo" title="Permanent link">&para;</a></h3>
 <p>Si <code>ubicacion.txt</code> está editado y preparado, pero no debe entrar aún en el próximo commit, revisa <code>git diff --cached</code>, ejecuta <code>git restore --staged ubicacion.txt</code> y consulta <code>git status</code>. El archivo conserva su contenido editado, pero deja de estar preparado. No has perdido la edición ni modificado un commit.</p>
 <h2 id="errores-frecuentes-al-entregar-trabajos">Errores frecuentes al entregar trabajos<a class="headerlink" href="#errores-frecuentes-al-entregar-trabajos" title="Permanent link">&para;</a></h2>
 <table>
@@ -2344,6 +2390,49 @@
 <tr>
 <td>El merge de GitHub no aparece localmente</td>
 <td>Actualiza la rama local correspondiente</td>
+</tr>
+</tbody>
+</table>
+<h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Significado en este tema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Repositorio</strong></td>
+<td>Proyecto cuyo historial registra Git, normalmente mediante el directorio <code>.git</code>.</td>
+</tr>
+<tr>
+<td><strong>Commit</strong></td>
+<td>Instantánea registrada de contenido con autor, mensaje y relación con commits anteriores.</td>
+</tr>
+<tr>
+<td><strong>Rama</strong></td>
+<td>Referencia a una línea de trabajo; su nombre principal no es obligatorio que sea <code>main</code>.</td>
+</tr>
+<tr>
+<td><strong>Remoto</strong></td>
+<td>Destino o fuente configurada para intercambiar datos Git, como <code>origin</code>.</td>
+</tr>
+<tr>
+<td><strong>Push, fetch y pull</strong></td>
+<td>Enviar commits, obtener información remota e integrar tras obtener, respectivamente.</td>
+</tr>
+<tr>
+<td><strong>Merge y conflicto</strong></td>
+<td>Integración de líneas de trabajo y situación que exige decidir cómo resolver cambios incompatibles.</td>
+</tr>
+<tr>
+<td><strong>Pull Request</strong></td>
+<td>Propuesta de revisión e integración gestionada en GitHub.</td>
+</tr>
+<tr>
+<td><strong>Fork</strong></td>
+<td>Repositorio copiado bajo otra cuenta para desarrollar o proponer cambios.</td>
 </tr>
 </tbody>
 </table>
