@@ -1,5 +1,20 @@
 # UT1 · 3. Docker Compose y un entorno que puedes reconstruir
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Contenedor** | Instancia aislada creada a partir de una imagen; comparte el núcleo donde corre el motor. |
+| **Imagen Docker** | Conjunto de capas usado como base de los contenedores; no es la persistencia de sus datos nuevos. |
+| **Volumen y bind mount** | Almacenamiento gestionado por Docker y montaje de una ruta del anfitrión, respectivamente. |
+| **Puerto publicado** | Conexión entre un puerto del anfitrión y otro del contenedor. |
+| **YAML** | Formato de configuración que expresa la estructura mediante claves, listas e indentación. |
+| **Núcleo y distribución** | Parte que gestiona recursos del sistema y conjunto Linux preparado con herramientas y paquetes. |
+| **Máquina virtual e hipervisor** | Equipo virtualizado y software que gestiona su ejecución. |
+| **Partición y sistema de archivos** | Región de un disco y organización utilizada para almacenar sus archivos. |
+| **Montar** | Hacer accesible un sistema de archivos o una ruta en un punto del árbol de directorios. |
+| **LVM** | Capa de gestión de volúmenes lógicos de Linux; no es el mismo mecanismo que un volumen de Docker. |
+
 ## Conceptos antes de copiar configuraciones
 
 Una **imagen** es la base con la que se crea un contenedor. Un **contenedor** es una instancia de esa imagen, que puede estar detenida o en ejecución. Un **servicio de Compose** describe cómo crearlo: imagen, configuración, red, montajes y puertos.
@@ -109,7 +124,7 @@ docker compose down
 
 MariaDB sería otro servicio, por ejemplo `archivo`. PHP conectaría a `archivo:3306`, no al puerto del anfitrión. Un volumen como `datos_archivo:/var/lib/mysql` conservaría la información. Los scripts de `/docker-entrypoint-initdb.d/` se aplican al inicializar un directorio de datos vacío; no vuelven a ejecutarse simplemente porque edites el SQL.
 
-Un Dockerfile permite derivar una imagen, por ejemplo con `FROM php:8.3-fpm-alpine` y `RUN docker-php-ext-install pdo_mysql` para disponer del controlador PDO de MySQL/MariaDB. Después Compose utiliza `build:` y hay que reconstruir la imagen. La conexión y las consultas se trabajan en los [apuntes complementarios de PDO](../php/05-pdo.md).
+Un Dockerfile permite derivar una imagen, por ejemplo con `FROM php:8.3-fpm-alpine` y `RUN docker-php-ext-install pdo_mysql` para disponer del controlador PDO de MySQL/MariaDB. Después Compose utiliza `build:` y hay que reconstruir la imagen. La conexión y las consultas se desarrollarán con UT3, cuando se publique esa parte del temario. Aquí se prepara el entorno y se distingue qué componente ejecuta cada tarea.
 
 ## `.env`, `environment` y `env_file`
 
@@ -124,6 +139,38 @@ Las etiquetas de imagen de este ejemplo son móviles. Para repetir exactamente u
 | 502 | Estado de `motor`, nombre DNS y puerto FastCGI. |
 | PHP no ve una variable | `environment` o `env_file`, no solo `.env`. |
 | Los datos han desaparecido | Volumen utilizado y si se ha eliminado. `down -v` elimina volúmenes. |
+
+## Guía de consulta de Docker integrada en este tema
+
+| Tarea | Comando | Qué debes distinguir |
+| --- | --- | --- |
+| Ver contenedores activos | `docker ps` | Solo los que están en ejecución |
+| Incluir contenedores detenidos | `docker ps -a` | Detenido no significa eliminado |
+| Ver imágenes locales | `docker image ls` | Una imagen puede servir a varios contenedores |
+| Inspeccionar un servicio de Compose | `docker compose exec motor php -v` | Ejecuta en un contenedor ya iniciado |
+| Reconstruir y aplicar cambios | `docker compose up -d --build` | `restart` no reconstruye una imagen |
+| Detener sin eliminar | `docker compose stop` | Puedes volver a iniciar con `start` |
+
+Una imagen se construye por capas. Un Dockerfile añade instrucciones como `FROM`, `WORKDIR`, `COPY`, `RUN` y `CMD`: base, carpeta de trabajo, copia de archivos, acción de construcción y comando predeterminado. Un `.dockerignore` excluye contenido del contexto de construcción; un `.gitignore` controla qué registra Git. No son intercambiables.
+
+### Caso resuelto: añadir una extensión de PHP
+
+Para practicar la construcción sin introducir todavía una aplicación con SQL, crea `php/Dockerfile`:
+
+```dockerfile
+FROM php:8.3-fpm-alpine
+RUN docker-php-ext-install pdo_mysql
+```
+
+En el servicio `motor`, sustituye `image:` por `build: ./php`, conservando el montaje. Ejecuta `docker compose up -d --build` y comprueba con `docker compose exec motor php -m`. El resultado esperado incluye `pdo_mysql`. Has añadido un controlador; todavía no has creado tablas ni realizado una consulta.
+
+## Volumen, montaje y estado de preparación
+
+Un *bind mount* muestra una carpeta del anfitrión; un volumen con nombre separa los datos del ciclo de vida del contenedor. `down` conserva los volúmenes con nombre salvo que solicites eliminarlos; una copia del YAML no es una copia de los datos del volumen.
+
+Un `healthcheck` comprueba una condición de salud. La forma larga de `depends_on` puede esperar a `condition: service_healthy` si el servicio dependiente define esa comprobación. Esto permite distinguir «el proceso arrancó» de «la base de datos ya atiende conexiones». No sustituye gestionar una caída posterior desde la aplicación.
+
+Docker usa el núcleo del sistema donde corre su motor; en algunos equipos ese motor vive en una máquina virtual. Una distribución Linux es el conjunto de sistema y herramientas; una imagen de usuario no incorpora por sí sola un núcleo independiente. La ruta donde se monta un disco pertenece al sistema de archivos y no debe confundirse con publicar un puerto de red.
 
 !!! success "Para repasar"
     Explica cada lado de un puerto y de un montaje. Para reconstruir el proyecto necesitas código, configuración, variables documentadas y pasos de verificación.

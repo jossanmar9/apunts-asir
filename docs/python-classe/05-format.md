@@ -1,5 +1,13 @@
 # UT2 · 2. F-strings, formatos y Unicode
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Unicode** | Estándar de representación de caracteres mediante puntos de código. |
+| **Formato de presentación** | Regla que decide cómo se muestra un valor sin cambiar necesariamente ese valor. |
+| **Comparación lexicográfica** | Orden que compara secuencias elemento a elemento; no equivale automáticamente al orden alfabético de una lengua. |
+
 ## El valor y su presentación son cosas diferentes
 
 Una f-string transforma expresiones en texto. El formato `:.2f` muestra dos cifras decimales; `:03d` muestra un entero con al menos tres cifras y ceros a la izquierda. El valor numérico original no cambia porque lo muestres con un formato.
@@ -52,6 +60,17 @@ La comparación de cadenas es lexicográfica por puntos de código, no una orden
 | Llaves sin sustituir | Falta `f` al principio. |
 | `ValueError` con formato `d` | El valor no es un entero compatible con el formato. |
 | Comparación sorprendente | Mira mayúsculas, espacios y representación con `repr`. |
+
+## Alinear una tabla sin cambiar los valores
+
+```python
+for nombre, cantidad in [("Cuarzo", 7), ("Mica", 12)]:
+    print(f"{nombre:<10}{cantidad:>4d}")
+```
+
+`<10` reserva al menos diez posiciones y alinea el nombre a la izquierda; `>4d` alinea el entero a la derecha en al menos cuatro posiciones. Verás dos filas con las cantidades alineadas. El ancho mínimo no recorta textos más largos.
+
+Esto ayuda a construir informes de terminal. Para intercambiar datos con otro programa, elige un formato estructurado como JSON o CSV en lugar de obligarlo a reconstruir columnas visuales.
 
 !!! success "Para repasar"
     Separa el cálculo del formato. Para comprobar texto, define primero qué diferencias quieres aceptar.

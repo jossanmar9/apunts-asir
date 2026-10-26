@@ -1,5 +1,14 @@
 # UT2 · 4. Cookies, sesiones y acceso privado
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Cookie** | Dato que guarda el navegador y envía en las peticiones que corresponden a su ámbito. |
+| **Sesión** | Estado que el servidor asocia con un identificador del cliente entre varias peticiones. |
+| **Hash de contraseña** | Representación calculada para verificar una contraseña sin guardarla en claro; no se descifra. |
+| **Autenticación y autorización** | Comprobar la identidad y decidir los permisos de esa identidad. |
+
 ## ¿Por qué una variable no recuerda la visita anterior?
 
 Cada petición ejecuta de nuevo el programa. Una variable como `$seccion = 'mapas';` no recuerda una selección hecha en una petición anterior. HTTP no incorpora por sí mismo una memoria de usuario: la aplicación debe construirla.
@@ -132,6 +141,36 @@ Este ejemplo explica el mecanismo. Una aplicación publicada también necesita H
 ## Comprobar el aislamiento
 
 Entra en una ventana normal y abre `archivo.php` en una ventana privada: la segunda debe pedir acceso. Dos pestañas del mismo perfil suelen compartir cookies y sesión; no sirven para simular dos usuarios independientes.
+
+## Reglas de sesión recuperadas y puestas en contexto
+
+| Medida | Qué aporta |
+| --- | --- |
+| `HttpOnly` | Impide leer la cookie mediante JavaScript; no elimina todos los efectos de XSS |
+| `Secure` | Limita el envío de la cookie a conexiones HTTPS |
+| `SameSite` | Restringe su envío en determinados contextos entre sitios |
+| Renovar el identificador al entrar | Reduce el riesgo de fijación de sesión |
+| Caducidad por inactividad | Limita cuánto dura un acceso abandonado |
+
+Una política de inactividad se aplica comprobando la última actividad en el servidor, no solo ocultando una pantalla. Una cookie con `admin=1` no prueba autorización; el servidor debe recuperar los permisos desde una fuente en la que confíe.
+
+### Caso resuelto: entrar no significa tener cualquier permiso
+
+Imagina que el archivo de partituras distingue visitantes y personal de archivo. Después de verificar la identidad, la aplicación asigna un rol desde sus propios datos. Antes de una operación reservada, comprueba ese rol en el servidor.
+
+```php
+<?php
+session_start();
+if (($_SESSION['rol'] ?? '') !== 'archivo') {
+    http_response_code(403);
+    exit('Acceso no autorizado para esta operación');
+}
+echo 'Operación permitida al personal de archivo';
+```
+
+En este fragmento no se fija el rol desde un formulario: presupone que el proceso de acceso lo ha guardado desde datos fiables. Sin sesión o con otro rol devuelve 403; con rol `archivo`, permite continuar. Es una comprobación de autorización, distinta del acceso por contraseña.
+
+El botón «atrás» puede mostrar una representación en caché después de salir. La prueba importante es solicitar de nuevo la ruta privada y comprobar que el servidor deniega el acceso. En contenido sensible puedes usar una política de caché como `Cache-Control: no-store`.
 
 !!! success "Para repasar"
     Ocultar un enlace no protege una ruta. La comprobación debe ejecutarse en el servidor antes de cualquier contenido privado.

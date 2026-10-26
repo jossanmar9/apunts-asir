@@ -1,5 +1,14 @@
 # UT2 · 3. Formularios: recibir, validar y conservar datos
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Validación** | Comprobación de que los datos cumplen la estructura y las reglas del problema. |
+| **XSS** | Interpretación de contenido no fiable como código o marcado ejecutable en una página; exige una salida adecuada a cada contexto. |
+| **Inyección SQL** | Alteración de una consulta al mezclar datos con instrucciones SQL; se previene separando consulta y parámetros. |
+| **POST–Redirect–GET** | Procesar el envío, redirigir y mostrar el resultado mediante una nueva consulta GET. |
+
 ## El recorrido completo
 
 HTML presenta los controles; el navegador envía los que tienen `name`; PHP recibe los valores en `$_GET` o `$_POST`. El servidor debe validarlos aunque el formulario utilice `required`, `min` o un desplegable: una petición se puede enviar sin utilizar esa interfaz.
@@ -99,6 +108,36 @@ Esta demostración valida una solicitud; no comprueba disponibilidad real ni la 
 | `$_POST` vacío | `method`, atributos `name` y archivo `action`. |
 | Resultado antes de enviar | Falta distinguir GET y POST. |
 | Los valores se pierden | No los vuelves a escribir en `value`, `selected` o `checked`. |
+
+## Tabla de consulta: controles y datos que recibe PHP
+
+| Control | Lo que llega al servidor |
+| --- | --- |
+| `input name="titulo"` | Un campo `titulo` si se envía el control |
+| `textarea name="nota"` | Texto, incluidos posibles saltos de línea |
+| Checkbox sin marcar | Normalmente no envía ese campo |
+| Varios campos `name="colores[]"` | Un array en `$_POST['colores']` |
+| Archivo adjunto | Información en `$_FILES`, no el contenido en `$_POST` |
+
+Valida también la estructura: si esperas texto, comprueba `is_string`; si esperas una colección, comprueba `is_array` y después cada valor permitido.
+
+## XSS: validar no sustituye escapar
+
+```php
+<?php
+$nota = '<b>Revisar vitrina</b>';
+echo htmlspecialchars($nota, ENT_QUOTES, 'UTF-8');
+```
+
+La respuesta contiene `&lt;b&gt;Revisar vitrina&lt;/b&gt;`; el navegador muestra las etiquetas como texto. Así no interpretas la nota como marcado HTML. Este escape sirve para texto en HTML y atributos entrecomillados; otros contextos, como JavaScript o una URL, requieren su tratamiento correspondiente.
+
+Guarda el dato con su significado original y escápalo al presentarlo. Escapar al guardar y volver a escapar al mostrar puede producir entidades duplicadas. La inyección SQL es un problema distinto: se evita separando parámetros de la consulta mediante consultas preparadas cuando trabajes con bases de datos.
+
+## Adjuntos: entender el recorrido antes de implementarlos
+
+Un formulario con archivos necesita `enctype="multipart/form-data"`. PHP deja un temporal y describe nombre, tamaño, ruta temporal y error en `$_FILES`. Comprueba primero `UPLOAD_ERR_OK`, después los límites y el tipo real; `accept` en HTML solo ayuda a elegir, no valida en el servidor.
+
+La carpeta de destino y la política de ejecución son parte del diseño: un archivo recibido no debe convertirse accidentalmente en código ejecutable. El nombre del usuario no es un destino fiable. En este tema se explica el mecanismo; el laboratorio del telescopio no necesita adjuntos.
 
 !!! success "Para repasar"
     Antes de calcular nada, define qué entradas son válidas. Prepara un caso correcto, un límite y un caso incorrecto.

@@ -1,5 +1,14 @@
 # UT3 · 3. Bibliotecas para administración de sistemas
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Módulo y biblioteca** | Unidad importable de código y conjunto de herramientas; una biblioteca puede contener varios módulos. |
+| **Ruta y sistema de archivos** | Dirección de un recurso y organización en la que se guarda. |
+| **CSV y JSON** | Representaciones de datos tabulares y estructurados; requieren lectores adecuados a cada formato. |
+| **Gestor de contexto** | Objeto usado con `with` para gestionar entrada, salida y liberación de recursos. |
+
 ## Importar una herramienta, no memorizar un catálogo
 
 La biblioteca estándar ya viene con Python. `import sys` permite acceder con el prefijo `sys.`; `from pathlib import Path` importa directamente el nombre `Path`. Un nombre de archivo como `random.py` o `sys.py` en tu proyecto puede causar confusiones con imports: utiliza nombres propios.
@@ -87,6 +96,37 @@ print(f"Documentos: {cantidad}; bytes: {bytes_total}")
 | El tamaño difiere del previsto | Bytes, saltos de línea y codificación del archivo. |
 | Falla `stat()` pese a la comprobación | Permisos o cambios del archivo entre comprobar y leer. |
 | No incluye subcarpetas | `iterdir` no es un recorrido recursivo. |
+
+## Leer y escribir un archivo con cierre automático
+
+```python
+from pathlib import Path
+ruta = Path("nota-laboratorio.txt")
+with ruta.open("w", encoding="utf-8") as archivo:
+    archivo.write("Vitrina revisada\n")
+with ruta.open(encoding="utf-8") as archivo:
+    for linea in archivo:
+        print(linea.strip())
+```
+
+Se crea o sobrescribe `nota-laboratorio.txt` y se muestra `Vitrina revisada`. `with` garantiza el cierre al salir del bloque, incluso si aparece una excepción. El modo `w` sustituye el contenido; `a` añade. Practica con una ruta de laboratorio, no con un archivo que necesites conservar.
+
+## Argumentos con ayuda automática
+
+Como ampliación de `sys.argv`, `argparse` define opciones y genera `-h`:
+
+```python
+import argparse
+parser = argparse.ArgumentParser(description="Configura un informe de prueba")
+parser.add_argument("carpeta")
+parser.add_argument("--limite", type=int, default=3)
+args = parser.parse_args()
+print(f"Carpeta: {args.carpeta}; límite: {args.limite}")
+```
+
+Guárdalo como `opciones.py`. `python opciones.py fichas --limite 5` muestra `Carpeta: fichas; límite: 5`. `--limite muchas` produce un error de argumentos. El programa aún no inspecciona la carpeta: solo demuestra cómo interpretar la llamada.
+
+Para ejecutar otro programa, `subprocess.run` acepta una lista con el comando y cada argumento por separado. `capture_output=True` captura stdout y stderr, `text=True` devuelve texto y `returncode` permite revisar el estado. Evita construir una orden de shell concatenando datos externos. El módulo `re` proporciona `search`, `findall` y patrones compilados; recuerda diferenciar una coincidencia de formato de una validación completa del dato.
 
 !!! success "Para repasar"
     Elige el módulo según la tarea, consulta el tipo que devuelve cada operación y prueba primero con un conjunto pequeño de archivos conocidos.

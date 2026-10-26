@@ -1,5 +1,14 @@
 # UT2 · 1. PHP, variables y generación de HTML
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Variable y tipo de dato** | Nombre asociado a un valor y categoría que determina qué operaciones admite. |
+| **Cadena y booleano** | Texto y valor lógico verdadero/falso, respectivamente. |
+| **Sintaxis** | Reglas que permiten interpretar instrucciones de un lenguaje. |
+| **Escape de HTML** | Transformación de texto para que no se interprete como marcado en el contexto de salida. |
+
 ## Dónde se ejecuta cada cosa
 
 PHP se ejecuta en el servidor. El resultado puede ser HTML, JSON o texto. El navegador no ejecuta el PHP original. Abrir un `.php` como archivo local no equivale a solicitarlo a un servidor PHP.
@@ -62,6 +71,24 @@ Un array indexado utiliza posiciones: `$salas = ['Azul', 'Verde'];` y `$salas[0]
 | `Parse error` | Mira `;`, comillas y llaves, también en la línea anterior. |
 | Se muestra código PHP | Abres el archivo directamente o el servidor no lo procesa. |
 | El texto del usuario se convierte en HTML | Escápalo en el punto donde generas HTML. |
+
+## Texto, tipos y operaciones que conviene distinguir
+
+Los apuntes anteriores separaban bien la operación que calcula de la que presenta el resultado. En PHP, `.` concatena texto y `+` suma: no utilices uno esperando el comportamiento del otro. `strlen` cuenta bytes; para contar caracteres de texto multibyte puedes utilizar `mb_strlen`, si la extensión correspondiente está disponible.
+
+```php
+<?php
+$texto = '  sala azul  ';
+$limpio = trim($texto);
+echo strtoupper($limpio) . "\n";
+echo str_replace('azul', 'verde', $limpio) . "\n";
+```
+
+**Salida esperada:** `SALA AZUL` y `sala verde`. `trim` limpia los extremos, no los espacios interiores. `strtoupper` es suficiente para este texto ASCII; el tratamiento completo de mayúsculas Unicode requiere herramientas multibyte apropiadas.
+
+### Diagnóstico de tipos
+
+`var_dump($valor)` muestra tipo y contenido. Esto ayuda a explicar por qué `3 === '3'` es falso: uno es entero y otro es texto. No conviertas entradas a ciegas para hacer desaparecer el error; define primero qué representación admite el programa y valida antes del cálculo.
 
 !!! success "Para repasar"
     Primero se calculan los datos; después se genera la respuesta. Validar datos y escapar HTML son operaciones diferentes.

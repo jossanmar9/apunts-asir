@@ -1,5 +1,15 @@
 # UT1 · 1. Programar y preparar el entorno
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Intérprete** | Programa que procesa y ejecuta el código Python. |
+| **Bytecode** | Representación intermedia que utiliza habitualmente CPython al ejecutar el código. |
+| **Entorno virtual** | Conjunto aislado de intérprete y paquetes de un proyecto, sin virtualizar una máquina completa. |
+| **Cmdlet** | Comando propio de PowerShell, como `Get-Command`. |
+| **Política de ejecución** | Configuración de PowerShell que afecta a la ejecución de scripts; puede afectar a la activación de un entorno. |
+
 ## Programar es concretar una secuencia
 
 Un programa expresa pasos sin ambigüedades. Antes del código, define qué entra, qué hay que transformar y qué debe salir. Python es un lenguaje de alto nivel: permite representar esos pasos sin escribir directamente instrucciones de la CPU.
@@ -65,6 +75,14 @@ Pon un punto de interrupción en `minutos = ...` y ejecuta el depurador. Antes d
 | No se encuentra `audio.py` | Carpeta de trabajo y nombre del archivo. |
 | `NameError` con `Print` | Python distingue mayúsculas; es `print`. |
 | Paquete instalado pero no importable | Intérprete del editor y del terminal. |
+
+## Consola interactiva, archivo y directorio de trabajo
+
+`python3` sin un archivo abre normalmente la consola interactiva: escribes una expresión y ves su resultado. `python3 audio.py` ejecuta un archivo. No copies el prompt `>>>` dentro del programa: es la marca de la consola, no código Python.
+
+El directorio de trabajo es la carpeta desde la que se resuelven las rutas relativas. Abrir un archivo en el editor no cambia necesariamente el directorio del terminal. Esto explica muchos errores de «archivo no encontrado».
+
+En Windows, PowerShell es una shell cuyos comandos propios se llaman cmdlets, como `Get-Command`. Su política de ejecución puede afectar al script de activación del entorno virtual; no es un sistema que sustituya a los permisos ni al control de seguridad del equipo. Si no puedes activar el entorno, puedes seleccionar directamente su intérprete en VS Code o ejecutar `.\.venv\Scripts\python.exe audio.py`.
 
 !!! success "Para repasar"
     Explica entrada, transformación y salida antes del código. Después identifica qué programa edita y qué programa ejecuta.

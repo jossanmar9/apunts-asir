@@ -1,5 +1,14 @@
 # UT1 · 2. HTTP: peticiones, respuestas y diagnóstico
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **HTTP y HTTPS** | Protocolo de petición/respuesta y su uso sobre una conexión protegida con TLS. |
+| **TLS y certificado** | TLS protege la conexión; el certificado vincula una identidad con una clave pública verificable. |
+| **Cabecera y cuerpo** | Metadatos de una petición o respuesta y su contenido. |
+| **JSON / XML** | Formatos de texto para representar e intercambiar datos; no implican por sí mismos una base de datos. |
+
 ## Qué viaja por la red
 
 HTTP define cómo un cliente solicita una acción y cómo contesta un servidor. HTTPS protege esa comunicación mediante TLS. Una petición incluye un método, una ruta, cabeceras y, a veces, un cuerpo. La respuesta incluye un estado, cabeceras y, habitualmente, un cuerpo.
@@ -62,6 +71,18 @@ curl -I http://localhost:8092/
 | 404 | Recurso no encontrado |
 | 500 | Fallo interno; revisa los logs |
 | 502 / 503 | Problema con el servicio posterior / servicio no disponible |
+
+## HTTPS, certificados y lectura de una URL
+
+En `https://museo.example:8443/piezas?zona=azul`, `https` es el esquema, `museo.example` el host, `8443` el puerto explícito, `/piezas` la ruta y `zona=azul` la consulta. El fragmento de una URL, como `#horario`, lo interpreta normalmente el cliente y no se envía como parte de la petición HTTP al servidor.
+
+TLS protege la conexión y el certificado permite verificar la identidad del servidor para el dominio solicitado. HTTPS no decide si un usuario tiene permiso para entrar: esa autorización sigue siendo responsabilidad de la aplicación.
+
+### Caso resuelto: seguir una redirección
+
+Cuando el ejemplo de cookies guarda una preferencia, responde con 303 y `Location: vista.php`. La primera respuesta no contiene necesariamente la vista final. El navegador solicita después esa dirección con GET.
+
+Para verlo con `curl`, usa `-i` para inspeccionar la respuesta original y `-L` para seguir la redirección. Si hay cookies, `-c cookies.txt -b cookies.txt` permite conservarlas entre peticiones. Sin un almacén de cookies, dos llamadas separadas no simulan necesariamente una misma sesión de navegador.
 
 !!! success "Para repasar"
     Separa método, ruta, cabeceras, cuerpo y estado. Un código HTTP orienta el diagnóstico, pero debes contrastarlo con la petición y los logs.

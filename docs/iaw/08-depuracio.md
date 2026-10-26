@@ -1,5 +1,13 @@
 # UT2 · 5. Depurar una aplicación sin probar al azar
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Depurar** | Localizar y corregir la causa de un comportamiento incorrecto. |
+| **Log** | Registro de eventos o errores que ayuda a reconstruir lo ocurrido. |
+| **Caso de prueba** | Entradas y condiciones concretas con un resultado esperado que puedes justificar. |
+
 ## Sigue el recorrido de la petición
 
 Cuando una página no hace lo que esperas, separa tres preguntas: **¿ha llegado la petición?**, **¿qué ha recibido PHP?** y **¿qué respuesta ha generado?**. Un formulario que no conserva un valor no se diagnostica igual que un contenedor que no arranca.
@@ -44,6 +52,14 @@ En un servidor publicado, los detalles deben ir a los logs y la respuesta al usu
 Prepara una tabla con caso normal, límite inferior, límite superior, dato ausente y dato incorrecto. Para el telescopio, por ejemplo, 5 y 40 son válidos, pero 4 y 41 no. Si solo pruebas 15, no has comprobado los límites.
 
 En Git, registra una corrección coherente con `git add archivo.php`, `git diff --cached` y `git commit -m "Valida la duración del turno"`. El commit documenta el cambio; no sustituye la prueba de funcionamiento.
+
+## Preparar una prueba que otra persona pueda repetir
+
+Anota el archivo que se ejecuta, el comando o URL, los datos exactos y el resultado esperado. Una captura sin esos datos puede mostrar un resultado, pero no explicar cómo reproducirlo.
+
+Para una validación de duraciones, separa los casos de **forma** (`muchos`), **rango** (4 o 41) y **estructura** (un array cuando esperabas texto). Si solo pruebas números dentro del rango, no detectas los otros problemas.
+
+En la salida de `docker compose logs`, identifica qué servicio escribe el mensaje. Un fallo DNS al conectar con MariaDB, una credencial rechazada y una tabla ausente requieren correcciones diferentes, aunque todos puedan terminar en una página de error.
 
 !!! success "Para repasar"
     Reproduce, observa, explica una causa, corrige y repite el caso que fallaba. Cambiar muchas cosas a la vez dificulta saber cuál resolvía el problema.

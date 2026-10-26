@@ -1,6 +1,6 @@
 # ASO · Administración de sistemas operativos
 
-Resúmenes para estudiar y consultar mientras haces los trabajos. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
+Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
 
 ## UT1 · Bash
 
@@ -18,7 +18,7 @@ La introducción que corresponde a UT0 está en el [tema independiente de Git y 
 
 ## Material pendiente de publicar
 
-UT2 (procesos), UT3 (acceso remoto), UT4 (Ansible), UT5.1 (directorio Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directorio Activo), UT7.2 (PowerShell y directorio) y UT8 (monitorización) aparecen como «Próximamente». Los apuntes complementarios anteriores no se presentan como resumen de esa teoría todavía pendiente.
+UT2 (procesos), UT3 (acceso remoto), UT4 (Ansible), UT5.1 (directorio Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directorio Activo), UT7.2 (PowerShell y directorio) y UT8 (monitorización) aparecen como «Próximamente». Las ampliaciones incluidas en los temas actuales no se presentan como teoría de esas unidades pendientes.
 
 ## Cómo utilizar estos resúmenes
 

@@ -1,5 +1,13 @@
 # UT1 · 2. Cálculos, comprobaciones y decisiones en Bash
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Expresión regular** | Patrón que describe una forma de texto para reconocer coincidencias. |
+| **Código de salida** | Estado con el que termina una orden; 0 indica éxito según la convención de shell. |
+| **Condición** | Prueba que selecciona un camino de ejecución; también puede ser el estado de una orden. |
+
 ## Tres tipos de comprobación
 
 Para enteros, `(( expresion ))` permite calcular y comparar. Para texto y archivos, `[[ condicion ]]` resulta cómodo en Bash. La forma clásica `[ condicion ]` también existe y exige espacios alrededor de los corchetes y operandos bien separados.
@@ -69,6 +77,36 @@ case "$accion" in
     *) printf 'Opción desconocida\n' >&2; exit 1 ;;
 esac
 ```
+
+## Usar directamente el resultado de un comando
+
+Una condición de shell también puede ser un comando: no necesitas capturar su texto y compararlo si ya proporciona un estado útil.
+
+```bash
+#!/usr/bin/env bash
+if command -v bash >/dev/null 2>&1; then
+    printf 'Bash está disponible\n'
+else
+    printf 'No se ha localizado Bash en PATH\n' >&2
+fi
+```
+
+`command -v` comprueba si puede localizar el comando. `>/dev/null 2>&1` descarta su salida y sus errores; el `if` sigue recibiendo el código de salida. En un sistema donde ejecutas este script con Bash, el resultado normal es el primer mensaje.
+
+Las formas cortas `orden && siguiente` y `orden || alternativa` dependen del mismo mecanismo: la segunda orden se ejecuta si la primera termina bien o mal, respectivamente. No sustituyas automáticamente un `if/else` por `a && b || c`: si `b` falla, también se ejecuta `c`.
+
+### Comparaciones que suelen confundirse
+
+| Expresión | Qué pregunta |
+| --- | --- |
+| `[ "$a" = "$b" ]` | ¿Son iguales como texto? |
+| `[ "$a" -eq "$b" ]` | ¿Son iguales como enteros? |
+| `[[ -r "$ruta" ]]` | ¿Se puede leer la ruta? |
+| `[[ -x "$ruta" ]]` | ¿Tiene acceso de ejecución o búsqueda para este usuario? |
+| `[[ "$nombre" == *.txt ]]` | ¿Coincide con un patrón de nombre? |
+| `[[ "$nombre" =~ ^[A-Z]+$ ]]` | ¿Coincide con esta expresión regular? |
+
+En la prueba de patrón `*.txt`, dejar el patrón sin comillas permite interpretarlo como patrón; la variable sigue protegida. Diferencia este caso de pasar argumentos a una orden externa, donde normalmente debes entrecomillar las expansiones.
 
 !!! success "Para repasar"
     Primero comprueba la forma del dato; después realiza cálculos o decisiones. No confundas `=` de asignación, igualdad de texto y comparación numérica.

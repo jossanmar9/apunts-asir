@@ -1,5 +1,14 @@
 # UT3 · 1. Condicionales y bucles con seguimiento de valores
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Indentación** | Espacios iniciales que delimitan los bloques de Python. |
+| **Iterable** | Objeto del que un recorrido puede obtener elementos uno a uno. |
+| **Contador y acumulador** | Variable que cuenta coincidencias y variable que suma cantidades. |
+| **Bucle anidado** | Bucle dentro de otro; sus recorridos pueden multiplicar el trabajo total. |
+
 ## Decidir con `if`
 
 Un bloque comienza con `:` y se delimita con una indentación coherente. `if/elif/else` prueba las condiciones en orden y ejecuta el primer bloque que corresponde. No es lo mismo que varios `if` independientes, que pueden ejecutar más de un bloque.
@@ -92,6 +101,25 @@ else:
 `break` termina el bucle y evita su `else`. Si eliminas `urgente` de los datos, el recorrido termina normalmente y ejecuta el `else`. En un `while`, la regla es la misma: `else` se ejecuta cuando termina sin `break`, incluso si nunca ha entrado en el cuerpo.
 
 Los bucles anidados multiplican recorridos: dos colores por tres tamaños producen seis combinaciones. Antes de anidar, calcula cuántas vueltas darás.
+
+## Separar búsqueda, contador y acumulador
+
+Una búsqueda intenta encontrar un caso; un contador suma una unidad por coincidencia; un acumulador suma una cantidad. Identifica cuál necesitas antes de escribir el bucle.
+
+```python
+duraciones = [4, 9, 6]
+contador = 0
+total = 0
+for duracion in duraciones:
+    if duracion >= 6:
+        contador += 1
+        total += duracion
+print(f"Sesiones seleccionadas: {contador}; minutos: {total}")
+```
+
+Resultado: `Sesiones seleccionadas: 2; minutos: 15`. El contador no debe sumar la duración; el acumulador sí. Ambos se inicializan antes del recorrido, no en cada vuelta.
+
+Como ampliación de los apuntes propios, Python también dispone de `match` para seleccionar casos desde Python 3.10. No necesitas introducirlo en un ejercicio que pide `if`: dominar el razonamiento y respetar las herramientas del enunciado es más importante que usar una sintaxis distinta.
 
 !!! success "Para repasar"
     Escribe la condición, qué cambia y cuándo termina. En un recorrido, separa «omitir este elemento» de «dejar de buscar».

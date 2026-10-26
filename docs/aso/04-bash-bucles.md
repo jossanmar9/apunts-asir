@@ -1,5 +1,14 @@
 # UT1 · 3. Bucles y funciones: repetir sin duplicar
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Bucle infinito** | Repetición que no alcanza una parada; en terminal se suele interrumpir con Ctrl+C. |
+| **Iteración** | Cada ejecución del cuerpo de un bucle. |
+| **Variable local** | Dato limitado al ámbito de una función mediante `local` en Bash. |
+| **Subshell** | Shell hija cuyo estado, como variables modificadas, no se traslada automáticamente a la shell que la inició. |
+
 ## ¿Cuándo conviene cada bucle?
 
 `for` recorre una colección conocida. `while` repite mientras una condición es verdadera. `until` repite mientras es falsa. `break` sale del bucle y `continue` pasa a la siguiente vuelta. En todos los casos debes poder explicar la condición de finalización.
@@ -75,6 +84,37 @@ Si separas funciones en un archivo propio, `source ./funciones.sh` las carga en 
 | Bucle infinito | No cambia la variable que decide la parada. |
 | El valor capturado contiene mensajes sobrantes | La función imprime depuración por stdout; envíala a stderr. |
 | `return` truncado | Los estados tienen un rango limitado; utiliza stdout para los datos. |
+
+## Leer un archivo línea a línea sin romper sus datos
+
+Este patrón de los apuntes anteriores es útil para procesar listados. Mantiene espacios, barras y la última línea aunque no termine con salto:
+
+```bash
+#!/usr/bin/env bash
+while IFS= read -r linea || [[ -n "$linea" ]]; do
+    printf 'Recibido: [%s]\n' "$linea"
+done < notas.txt
+```
+
+Para probarlo, crea `notas.txt` con dos líneas: `Sala azul` y `Pendiente de revisar`. Obtendrás una línea `Recibido: [...]` por cada una. `IFS=` evita recortar o separar por espacios; `-r` conserva las barras; `< notas.txt` conecta el archivo con la entrada del bucle.
+
+En Bash, un bucle colocado después de una tubería suele ejecutarse en una subshell. Si cuentas dentro de `cat notas.txt | while ...`, el contador puede no conservar su valor fuera del bucle. La redirección anterior evita esa dificultad.
+
+## Menú que se repite hasta terminar
+
+```bash
+#!/usr/bin/env bash
+while true; do
+    read -r -p 'Escribe ver o salir: ' opcion || break
+    case "$opcion" in
+        ver) printf 'La consulta está preparada\n' ;;
+        salir) break ;;
+        *) printf 'Opción no reconocida\n' ;;
+    esac
+done
+```
+
+Con las entradas `ver`, `otra` y `salir`, se muestran el mensaje de consulta y el aviso de opción incorrecta; la tercera termina el bucle. La comprobación de `read` también permite salir si se cierra la entrada. Si quieres un menú numerado, `select` lo genera; `REPLY` contiene la respuesta escrita y la variable elegida contiene el texto de la opción.
 
 !!! success "Para repasar"
     Una función debe tener una tarea clara. Dibuja qué recibe, qué imprime y qué estado devuelve.

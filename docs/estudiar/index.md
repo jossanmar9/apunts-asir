@@ -99,11 +99,11 @@ Un ejercicio difícil suele contener varias tareas que puedes abordar por separa
     4. Localizar copias antiguas con `find -mtime +7`, revisando la selección antes de añadir `-delete`.
     5. Programar la ejecución con `cron`.
 
-    Prueba cada paso antes de pasar al siguiente. El [método complementario para resolver problemas](../bash/metode.md) desarrolla esta idea.
+    Prueba cada paso antes de pasar al siguiente. La [guía de scripts y depuración de ASO](../aso/06-bash-errors.md) aplica este método a un programa completo.
 
 ## 8. Tu chuleta
 
-Prepara una chuleta **propia** de una o dos páginas por lenguaje y complétala conforme practiques. Elegir qué anotar ya exige ordenar lo que sabes. Las [chuletas del repositorio](../xuletes/index.md) pueden servir como punto de partida.
+Prepara una chuleta **propia** de una o dos páginas por lenguaje y complétala conforme practiques. Elegir qué anotar ya exige ordenar lo que sabes. Las tablas de consulta y los recuadros «Para repasar» de cada tema pueden servir como punto de partida.
 
 Guarda tus ejercicios y scripts en un repositorio Git. Haz commits con mensajes claros al terminar cada cambio coherente. Practicarás Git y conservarás un historial de tu aprendizaje.
 

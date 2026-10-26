@@ -1,5 +1,14 @@
 # UT1 · 2. Variables, tipos y operadores
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Objeto y clase** | Valor concreto con tipo e identidad y tipo que define sus características; la creación de clases se desarrolla más adelante. |
+| **Mutabilidad** | Capacidad de cambiar un objeto sin sustituirlo por otro. |
+| **Lista y diccionario** | Colección ordenada consultable por índice y colección de pares clave–valor. |
+| **Índice** | Posición utilizada para acceder a un elemento; las secuencias de Python empiezan en 0. |
+
 ## Un nombre apunta a un objeto
 
 En `muestras = 12`, Python evalúa primero el lado derecho y asocia el nombre `muestras` con el resultado. El tipo pertenece al objeto: `type(muestras)` indica `int`. Un objeto tiene tipo, valor e identidad; `id()` permite consultar un identificador durante su vida, no un número estable que debas memorizar.
@@ -63,6 +72,30 @@ print(texto, texto_nuevo)  # rojo ROJO
 ```
 
 La lista es mutable y los dos nombres apuntan a la misma lista. La cadena es inmutable: `upper()` crea un resultado nuevo. `is` compara identidad y `==` compara igualdad de valores; para comparar textos utiliza `==`. Puedes explorar operaciones con `help(str)`.
+
+## Referencia rápida de conversiones y valores lógicos
+
+| Expresión | Resultado | Motivo |
+| --- | --- | --- |
+| `int('12')` | `12` | Texto decimal convertible a entero |
+| `float('2.5')` | `2.5` | El punto es el separador que reconoce esta conversión |
+| `str(12)` | `'12'` | Representación textual |
+| `bool('False')` | `True` | Es una cadena no vacía, no el booleano `False` |
+| `bool('')` | `False` | Cadena vacía |
+
+La conversión no interpreta lo que una persona quería decir. Para una respuesta de sí/no, compara valores permitidos después de normalizar el texto, en lugar de utilizar `bool(input(...))`.
+
+## Referencias compartidas y copia
+
+```python
+original = ["azul", "gris"]
+copia = original.copy()
+copia.append("ocre")
+print(original)
+print(copia)
+```
+
+La salida es `['azul', 'gris']` y `['azul', 'gris', 'ocre']`. `copy()` crea otra lista y añadir un elemento ya no modifica la primera. Es una copia superficial: si hubiera objetos mutables anidados, seguirían compartidos. El tema de estructuras de datos desarrollará esa diferencia; aquí sirve para entender nombres, identidad y mutabilidad.
 
 !!! success "Para repasar"
     Antes de una operación, identifica los tipos. El texto `"8"` y el entero `8` tienen significados diferentes aunque se parezcan en pantalla.

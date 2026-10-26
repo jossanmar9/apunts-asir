@@ -60,13 +60,13 @@ Resúmenes explicados de los apuntes de clase, organizados por **módulo, unidad
 
 Los casos resueltos son propios y sirven para explicar la teoría. Los ejercicios de clase para practicar o entregar quedan fuera de estas soluciones.
 
-## Material complementario anterior
+## Una guía completa dentro de cada tema
 
-En **Complementos (valenciano)** se conservan los materiales anteriores: [Bash](bash/index.md), [PowerShell](powershell/index.md), [Python ampliado](python/index.md), [Git ampliado](git/index.md), [Docker](docker/index.md) y [PHP](php/index.md). También están las [chuletas](xuletes/index.md) y el [glosario](glossari.md). Los resúmenes de clase y la sección de estudio están en castellano.
+Cada tema reúne la teoría de clase, las ampliaciones útiles de nuestros apuntes y sus palabras clave explicadas. Las tablas de consulta y los ejemplos están junto al concepto que necesitas, sin tener que saltar a otra colección de materiales.
 
 ## Fuentes y actualizaciones
 
 Resúmenes preparados a partir de los materiales accesibles el **26/10/2026**, traducidos al castellano el **27/10/2026**. La página de [fuentes y cobertura](classe.md) indica qué se ha resumido y qué está pendiente de publicar. Los actualizaremos **cuando lo solicites**, después de que aparezcan apuntes o ejercicios nuevos.
 
 !!! tip "Busca mientras trabajas"
-    Pulsa ++s++ o ++slash++ y busca un concepto como «POST», «while» o «cookie». La búsqueda incluye los resúmenes y los complementos.
+    Pulsa ++s++ o ++slash++ y busca un concepto como «POST», «while» o «cookie». La búsqueda incluye los temas publicados y la guía de estudio.

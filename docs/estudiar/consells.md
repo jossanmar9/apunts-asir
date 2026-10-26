@@ -51,7 +51,7 @@ main() {
 
 ## 4. Divide el problema en partes manejables (Edsger W. Dijkstra)
 
-Antes de programar, escribe los pasos y resuélvelos uno a uno, **probando cada paso**. Consulta el [método complementario](../bash/metode.md).
+Antes de programar, escribe los pasos y resuélvelos uno a uno, **probando cada paso**. Consulta el [método de trabajo de ASO](../aso/06-bash-errors.md).
 
 ## 5. Haz que funcione y después mejóralo (Kent Beck)
 

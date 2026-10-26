@@ -1,6 +1,6 @@
 # Python · Introducción a la programación
 
-Resúmenes para estudiar y consultar mientras haces los trabajos. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
+Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
 
 ## UT1 · Introducción, entorno y tipos de datos
 
@@ -27,7 +27,7 @@ Resúmenes para estudiar y consultar mientras haces los trabajos. Cada tema expl
 
 ## Material pendiente de publicar
 
-UT4 (POO, prevista en empresa), UT5 (estructuras de datos) y UT6 (funciones, módulos y archivos) aparecen en la planificación, pero no tienen teoría en el menú consultado. Los materiales anteriores del repositorio sobre esos temas siguen disponibles como complemento.
+UT4 (POO, prevista en empresa), UT5 (estructuras de datos) y UT6 (funciones, módulos y archivos) aparecen en la planificación, pero no tienen teoría en el menú consultado. Las nociones que se necesitan para entender los ejemplos actuales se explican dentro de su tema; estas unidades se desarrollarán cuando corresponda.
 
 ## Cómo utilizar estos resúmenes
 

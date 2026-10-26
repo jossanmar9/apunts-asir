@@ -1,5 +1,15 @@
 # UT2 · 2. Decisiones, bucles, arrays y funciones
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Condición y condicional** | Expresión que se evalúa y estructura que decide qué bloque ejecutar. |
+| **Bucle e iteración** | Estructura que repite y cada una de sus vueltas. |
+| **Función y llamada** | Bloque reutilizable con nombre y acción de ejecutarlo con unos argumentos. |
+| **Retorno y variable local** | Resultado entregado a quien llama y dato cuyo ámbito está dentro de la función. |
+| **Array indexado y asociativo** | Colección consultada por posición o por claves con significado. |
+
 ## Elige la estructura según el problema
 
 Utiliza `if/elseif/else` cuando importen condiciones o intervalos; `switch` cuando compares opciones concretas. Un `for` sirve para una repetición con contador; `while`, para repetir mientras se cumple una condición; `foreach`, para recorrer los elementos de un array.
@@ -94,6 +104,28 @@ Una función recibe parámetros, calcula y devuelve un resultado. Las variables 
 | Reiniciar `$total` dentro del bucle | Solo queda el resultado de la última vuelta. Inicializa antes. |
 | `echo` en lugar de `return` | La pantalla muestra algo, pero la llamada no recibe el valor calculado. |
 | Condición que no cambia | El bucle no termina. Anota la variable que avanza. |
+
+## Recorrer claves y valores sin perder la relación
+
+`foreach ($datos as $clave => $valor)` conserva la asociación. Es útil para generar una lista de cantidades o un resumen de formulario. En un array indexado la clave suele ser una posición; en uno asociativo expresa el significado del dato.
+
+Una función con parámetros explícitos es más fácil de probar que otra que lee directamente `$_POST`. Por ejemplo, `cajasNecesarias(13, 6)` puede probarse sin navegador. El receptor del formulario debe leer y validar; la función debe recibir los datos ya preparados para su tarea.
+
+## Parámetros opcionales y responsabilidad local
+
+```php
+<?php
+function etiqueta(string $nombre, string $prefijo = 'Sala'): string
+{
+    return $prefijo . ': ' . $nombre;
+}
+echo etiqueta('Azul') . "\n";
+echo etiqueta('Azul', 'Zona') . "\n";
+```
+
+Resultado esperado: `Sala: Azul` y `Zona: Azul`. El segundo parámetro tiene un valor predeterminado, pero puede sustituirse. `$nombre` y `$prefijo` son locales a la llamada; `return` entrega el texto a quien la llamó.
+
+Para archivos que solo contienen funciones PHP, suele ser práctico omitir la etiqueta de cierre `?>`: reduces el riesgo de introducir espacios que se envíen accidentalmente antes de una cabecera HTTP.
 
 !!! success "Para repasar"
     Haz una tabla de seguimiento: entrada de cada vuelta, cálculo y acumulador. Si puedes explicarla, entiendes el bucle.

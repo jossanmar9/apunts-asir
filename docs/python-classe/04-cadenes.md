@@ -1,5 +1,14 @@
 # UT2 · 1. Objetos, métodos y tratamiento de cadenas
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Método** | Operación que se llama sobre un objeto, como `texto.strip()`. |
+| **Propiedad o atributo** | Dato accesible en un objeto; en `ruta.name`, `name` es un atributo, no una llamada. |
+| **Slicing** | Extracción de una parte de una secuencia con inicio, fin y paso. |
+| **Cadena inmutable** | Texto cuyos caracteres no se cambian en el mismo objeto; los métodos devuelven nuevos resultados. |
+
 ## Función y método
 
 Una función se llama como `len(texto)`. Un método se llama sobre el objeto: `texto.upper()`. Los paréntesis ejecutan la operación; `texto.upper` solo obtiene una referencia al método. Las cadenas son inmutables: debes conservar el valor devuelto si quieres seguir utilizando la transformación.
@@ -57,6 +66,21 @@ Acceder a `sonido[99]` produce `IndexError`, pero un corte como `sonido[:99]` se
 ## Funciones de biblioteca y aleatoriedad
 
 `string.ascii_letters` y `string.digits` proporcionan alfabetos útiles. `random.choice(secuencia)` selecciona un elemento y `random.randint(a, b)` incluye ambos extremos. Para demostrar una selección de muestra puedes hacer `random.choice("ABC")`; el resultado varía. Las contraseñas o tokens reales necesitan una fuente adecuada como `secrets`, no la aleatoriedad de simulación de `random`.
+
+## Separar y reunir texto
+
+Los apuntes anteriores incluían `split` y `join`, útiles cuando el separador expresa la estructura de los datos:
+
+```python
+registro = "azul;18;abierta"
+partes = registro.split(";")
+print(partes)
+print(" | ".join(partes))
+```
+
+La salida es `['azul', '18', 'abierta']` y `azul | 18 | abierta`. Separar no convierte `18` a entero ni valida que existan exactamente tres campos. Antes de extraer posiciones o convertir, comprueba la estructura que espera el problema.
+
+`split()` sin argumentos agrupa espacios en blanco y descarta los de los extremos. `split(' ')` utiliza exactamente un espacio y puede crear elementos vacíos. Elige según lo que significa el formato, no solo por cuál parece funcionar con un ejemplo.
 
 !!! success "Para repasar"
     Escribe los índices bajo la cadena antes de cortarla. Comprueba siempre qué ocurre si falta el separador que esperas.

@@ -31,7 +31,16 @@ Esta web ofrece **resúmenes propios**, separados por módulo, unidad y tema, y 
 - **ASO:** desde UT2 hasta UT8, incluidas las subdivisiones de directorio, Samba y PowerShell, las páginas indican «Próximamente».
 - **Python:** UT4 a UT6 constan en la planificación, sin teoría en el menú consultado; UT4 está prevista en empresa.
 
-Los apuntes antiguos accesibles en **Complementos (valenciano)** pueden adelantar algunos conceptos, pero no se presentan como resumen de unidades todavía no publicadas.
+Las ampliaciones de nuestros apuntes se han integrado en los temas publicados, en castellano y con ejemplos propios. Las palabras clave se explican dentro de su tema. Estas ampliaciones no convierten las unidades pendientes en material de clase ya publicado.
+
+## Ampliaciones integradas
+
+- **IAW:** HTML y CSS de contexto, tipos y texto en PHP, Dockerfile, redes, persistencia, formularios y seguridad de sesión.
+- **ASO:** lectura y arrays, decisiones, bucles, archivos, filtros, redirecciones, permisos y método de depuración.
+- **Python:** conversiones, referencias, texto, formato, recorridos, excepciones, archivos y argumentos.
+- **Git y GitHub:** revisión de cambios, ramas, conflictos, Pull Requests y recuperación.
+
+Integración revisada el **27/10/2026**. Se mantiene la fecha original de consulta de las fuentes de clase.
 
 ## ¿Cómo son los ejemplos resueltos?
 

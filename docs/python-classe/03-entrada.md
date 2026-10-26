@@ -1,5 +1,13 @@
 # UT1 · 3. Leer datos y mostrar resultados
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Conversión de tipo** | Construcción de un valor de otro tipo, como `int("12")`. |
+| **Entrada y salida** | Datos que recibe el programa y resultados que presenta. |
+| **F-string** | Cadena que incorpora expresiones entre llaves para construir una representación textual. |
+
 ## `input()` siempre devuelve texto
 
 Si el usuario escribe `12`, `input()` devuelve `"12"`. Para calcular debes convertirlo con `int()` o `float()`. Convertir no es lo mismo que validar todas las reglas del problema: un entero negativo sigue siendo un entero, pero puede ser inadmisible como cantidad de muestras.
@@ -50,6 +58,19 @@ Haz una tabla con el texto introducido, el tipo después de la conversión, la f
 | `TypeError` al sumar | Se están mezclando texto y números. |
 | Se ve `{consumo}` literalmente | Falta la `f` antes de las comillas. |
 | Aparecen demasiados decimales | Aplica un formato de presentación; no es una validación. |
+
+## Separadores, final de línea y observación de valores
+
+```python
+print("azul", "gris", sep=" / ", end=" -> ")
+print("fin")
+texto = "  12  "
+print(repr(texto))
+```
+
+Las dos primeras instrucciones producen una sola línea: `azul / gris -> fin`. `end` cambia el final de la primera impresión. `repr` muestra una representación que conserva visibles las comillas y los espacios: `'  12  '`. Es útil al comprobar por qué dos entradas no son iguales.
+
+Distingue los datos del mensaje que pide esos datos. En `float(input('Horas: '))`, `Horas: ` es la indicación al usuario; el texto que escribe se convierte después. Si falla, inspecciona primero el texto recibido antes de cambiar la fórmula.
 
 !!! success "Para repasar"
     Lee texto, convierte cuando haga falta y muestra un formato comprensible. Identifica en qué paso puede fallar cada entrada.

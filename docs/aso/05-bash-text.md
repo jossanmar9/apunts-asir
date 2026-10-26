@@ -1,5 +1,14 @@
 # UT1 · 4. Archivos, tuberías, filtros y expresiones regulares
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **stdin, stdout y stderr** | Canales de entrada, salida normal y error, numerados 0, 1 y 2. |
+| **Redirección** | Conexión de un canal con un archivo u otro destino mediante operadores como `>` o `<`. |
+| **Tubería** | Conexión de stdout de una orden con stdin de la siguiente mediante `\|`. |
+| **`/dev/null`** | Destino especial que descarta lo que se escribe en él. |
+
 ## Conectar comandos
 
 Un comando dispone de entrada estándar, salida estándar y salida de error. `>` crea o sobrescribe; `>>` añade; `2>` redirige errores; `|` envía stdout a la entrada del siguiente comando. El error no entra automáticamente en la tubería.
@@ -64,6 +73,41 @@ wc -l < taller.log
 | `+` con `-E` | Una o más repeticiones |
 
 Un patrón con cuatro grupos de una a tres cifras detecta la **forma** de una IPv4, pero no garantiza que cada octeto esté entre 0 y 255. No confundas reconocer una forma con validar todo su significado.
+
+## Redirecciones: importa el orden
+
+Los descriptores 0, 1 y 2 corresponden a stdin, stdout y stderr. En `programa > salida.log 2>&1`, primero se conecta stdout al archivo y después stderr al mismo destino. Invertirlo (`2>&1 > salida.log`) puede dejar stderr apuntando al terminal.
+
+`tee resumen.txt` permite ver y guardar una salida; `tee -a resumen.txt` añade. Un *here-document* crea una entrada de varias líneas. Si entrecomillas el delimitador, no se expanden las variables:
+
+```bash
+cat <<'FIN'
+El texto $USER se conserva literalmente.
+FIN
+```
+
+### Caso resuelto: buscar en archivos con espacios en el nombre
+
+Prepara una carpeta `fichas` con `sala azul.txt`, cuyo contenido sea `material frágil`, y `sala gris.txt`, con `material normal`.
+
+```bash
+find fichas -type f -name '*.txt' -exec grep -HnF -- 'frágil' {} +
+```
+
+Resultado esperado: una coincidencia en `fichas/sala azul.txt:1:material frágil`. `find` localiza archivos, `-exec` los pasa como argumentos y `grep -HnF` muestra nombre, línea y coincidencia literal. No se divide `sala azul.txt` en dos argumentos.
+
+Otra opción, con GNU `xargs`, es `find fichas -type f -name '*.txt' -print0 | xargs -0 -r grep -HnF -- 'frágil'`. El carácter nulo separa nombres de forma fiable y `-r` evita ejecutar `grep` sin archivos. La disponibilidad de `-r` depende de la implementación. No uses `find ... | rm`: `rm` necesita argumentos, no una lista por stdin.
+
+| Necesitas buscar… | Opción útil |
+| --- | --- |
+| Sin distinguir mayúsculas | `grep -i` |
+| Líneas que no coinciden | `grep -v` |
+| Coincidencia silenciosa para un `if` | `grep -q` |
+| Texto literal, sin regex | `grep -F` |
+| Archivos sin bajar a subcarpetas | `find carpeta -maxdepth 1 -type f` |
+| Archivos vacíos | `find carpeta -type f -empty` |
+
+Las opciones `-size`, `-mtime` y `-user` añaden criterios de tamaño, antigüedad y propietario. Revisa primero la selección con `-print` antes de asociarle una modificación.
 
 !!! success "Para repasar"
     Prueba cada tramo de la tubería por separado. Si el resultado es incorrecto, localiza el primer tramo donde los datos dejan de ser los esperados.

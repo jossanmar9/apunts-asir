@@ -1,6 +1,6 @@
 # IAW · Implantación de aplicaciones web
 
-Resúmenes para estudiar y consultar mientras haces los trabajos. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
+Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
 
 ## UT1 · Entorno de implantación web
 

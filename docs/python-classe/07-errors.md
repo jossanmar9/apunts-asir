@@ -1,5 +1,13 @@
 # UT3 · 2. Leer errores y depurar con método
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Excepción** | Evento que interrumpe el flujo normal de ejecución y puede ser tratado por un manejador. |
+| **Traza de llamadas** | Secuencia de puntos de ejecución que ayuda a localizar dónde se produjo una excepción. |
+| **Error lógico** | Resultado incorrecto aunque el programa no produzca ninguna excepción. |
+
 ## Tres problemas diferentes
 
 Un error de **sintaxis** impide interpretar el programa. Una excepción **durante la ejecución** aparece cuando una operación no se puede completar. Un error **lógico** produce una respuesta equivocada sin que Python lo detecte.
@@ -60,6 +68,28 @@ else:
 ## Guía mientras trabajas
 
 Reproduce el caso pequeño que falla, anota qué esperabas y observa los valores antes de la línea. Cambia una causa concreta y repite el caso original y los límites. En VS Code, una variable que todavía no aparece puede simplemente no haberse asignado en el punto donde estás detenido.
+
+## Capturar solo lo que sabes tratar
+
+Una validación que repite la lectura puede separar conversión y regla del problema:
+
+```python
+while True:
+    texto = input("Piezas de 1 a 9: ")
+    try:
+        piezas = int(texto)
+    except ValueError:
+        print("Escribe un entero")
+        continue
+    if 1 <= piezas <= 9:
+        break
+    print("El valor está fuera del rango")
+print(f"Piezas aceptadas: {piezas}")
+```
+
+Con las entradas `muchas`, `0` y `4`, aparecen el aviso de conversión, el aviso de rango y finalmente `Piezas aceptadas: 4`. `continue` vuelve a pedir después de la conversión fallida. No captures cualquier error con `except:`: podrías esconder un fallo de programación o impedir una interrupción que el usuario pretendía realizar.
+
+Este patrón amplía la explicación de excepciones de la teoría; si una actividad todavía no permite utilizarlas, sigue su método de validación indicado.
 
 !!! success "Para repasar"
     Que el programa termine sin excepciones no demuestra que sea correcto. Necesitas datos de prueba con un resultado que puedas justificar.

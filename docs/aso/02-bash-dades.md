@@ -1,5 +1,17 @@
 # UT1 · 1. Bash: scripts, variables, entrada y parámetros
 
+## Palabras clave de este tema
+
+| Término | Significado en este tema |
+| --- | --- |
+| **Terminal y shell** | Interfaz de texto y programa que interpreta los comandos; son piezas diferentes. |
+| **Comando y script** | Instrucción que ejecutas y archivo que reúne instrucciones. |
+| **Shebang** | Primera línea `#!` que indica el intérprete al ejecutar directamente el archivo. |
+| **Ruta absoluta y relativa** | Dirección desde la raíz o desde el directorio de partida; `.` es el actual y `..` el superior. |
+| **Directorio y `~`** | Carpeta y abreviatura habitual de la carpeta personal en la shell. |
+| **Argumento y opción** | Dato pasado al ejecutar; una opción modifica el comportamiento, habitualmente con `-` o `--`. |
+| **Variable de entorno y PATH** | Dato heredable por procesos hijos y lista de directorios donde se buscan comandos. |
+
 ## ¿Qué ejecuta Bash?
 
 Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea `#!/usr/bin/env bash` indica el intérprete cuando lo ejecutas directamente. Con `bash nombre.sh` eliges Bash explícitamente; con `./nombre.sh` necesitas permiso de ejecución, que puedes dar con `chmod u+x nombre.sh`.
@@ -63,6 +75,32 @@ El primer bloque muestra `muestra.version` y `muestra`. `%` elimina el sufijo qu
 | `nombre = valor` | Escribe `nombre=valor`. |
 | Un nombre con espacios se divide | Utiliza `"$nombre"` al pasarlo a un comando. |
 | Argumentos vacíos o desplazados | Revisa las comillas en la llamada y `$#`. |
+
+## Elegir entre argumentos y entrada interactiva
+
+Si el enunciado dice «recibe una carpeta», la interfaz normal es `bash programa.sh carpeta`. Si dice «pregunta la carpeta», utiliza `read`. Un script programado sin una persona delante no debería quedarse esperando una respuesta por teclado.
+
+| Variante de `read` | Cuándo utilizarla |
+| --- | --- |
+| `IFS= read -r linea` | Conservar espacios iniciales y barras invertidas |
+| `read -r -s clave` | No mostrar lo que se escribe; añade después un salto de línea |
+| `read -r -t 10 respuesta` | Esperar como máximo diez segundos y comprobar su estado |
+| `read -r nombre resto` | Repartir una línea entre varias variables |
+
+### Caso resuelto: conservar nombres con espacios en un array
+
+```bash
+#!/usr/bin/env bash
+salas=('Azul cielo' 'Gris perla')
+salas+=('Verde musgo')
+for indice in "${!salas[@]}"; do
+    printf '%s: %s\n' "$indice" "${salas[$indice]}"
+done
+```
+
+La salida tiene tres líneas: `0: Azul cielo`, `1: Gris perla` y `2: Verde musgo`. `+=` añade sin sustituir lo anterior; `${!salas[@]}` recorre los índices existentes. Las comillas conservan cada nombre completo. `unset 'salas[1]'` eliminaría ese elemento, pero no renumeraría automáticamente los demás.
+
+Para cargar un archivo de una entrada por línea, utiliza `mapfile -t salas < salas.txt` en una versión de Bash que disponga de `mapfile`. Es más seguro para espacios que `salas=($(cat salas.txt))`. Los arrays asociativos necesitan `declare -A` y permiten acceder por clave, como `capacidad[azul]=18`.
 
 !!! success "Para repasar"
     Diferencia una variable, un argumento y una entrada por teclado. Sigue siempre cómo llegan los datos al programa.
