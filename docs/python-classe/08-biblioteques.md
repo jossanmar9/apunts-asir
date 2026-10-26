@@ -1,32 +1,32 @@
-# UT3 · 3. Biblioteques per a administració de sistemes
+# UT3 · 3. Bibliotecas para administración de sistemas
 
-## Importar una eina, no memoritzar un catàleg
+## Importar una herramienta, no memorizar un catálogo
 
-La biblioteca estàndard ja ve amb Python. `import sys` dona accés amb el prefix `sys.`; `from pathlib import Path` importa directament el nom `Path`. Un nom de fitxer com `random.py` o `sys.py` en el teu projecte pot causar confusions amb imports: usa noms propis.
+La biblioteca estándar ya viene con Python. `import sys` permite acceder con el prefijo `sys.`; `from pathlib import Path` importa directamente el nombre `Path`. Un nombre de archivo como `random.py` o `sys.py` en tu proyecto puede causar confusiones con imports: utiliza nombres propios.
 
-| Mòdul | Què consultes o fas |
+| Módulo | Qué consultas o haces |
 | --- | --- |
 | sys | `argv`, `version`, `platform`, `exit` |
-| os | Entorn amb `getenv`, directori amb `getcwd`, contingut amb `listdir` |
+| os | Entorno con `getenv`, directorio con `getcwd`, contenido con `listdir` |
 | platform | `system`, `release`, `processor` |
-| datetime | Dates, hores, diferències i format |
-| pathlib | Construcció de rutes i propietats dels fitxers |
-| shutil | Còpies, moviments i ús del disc |
-| random / time | Simulacions aleatòries / pauses |
+| datetime | Fechas, horas, diferencias y formato |
+| pathlib | Construcción de rutas y propiedades de los archivos |
+| shutil | Copias, movimientos y uso del disco |
+| random / time | Simulaciones aleatorias / pausas |
 
-## Exemple resolt: calendari de calibratge
+## Ejemplo resuelto: calendario de calibración
 
-**Problema nou:** a partir d'una data fixa, preparar tres dates de revisió cada dos dies. Usar una data fixa permet comprovar el resultat sense dependre del dia en què executes el codi.
+**Problema propio:** a partir de una fecha fija, preparar tres fechas de revisión cada dos días. Utilizar una fecha fija permite comprobar el resultado sin depender del día en que ejecutes el código.
 
 ```python
 from datetime import date, timedelta
-inici = date(2026, 10, 26)
+inicio = date(2026, 10, 26)
 for numero in range(3):
-    revisio = inici + timedelta(days=numero * 2)
-    print(f"R{numero + 1:02d} | {revisio:%d/%m/%Y}")
+    revision = inicio + timedelta(days=numero * 2)
+    print(f"R{numero + 1:02d} | {revision:%d/%m/%Y}")
 ```
 
-**Resultat esperat:**
+**Resultado esperado:**
 
 ```text
 R01 | 26/10/2026
@@ -34,63 +34,63 @@ R02 | 28/10/2026
 R03 | 30/10/2026
 ```
 
-`timedelta` representa una duració i sap travessar canvis de mes. `%d`, `%m` i `%Y` formaten dia, mes i any. `date.today()` i `datetime.now()` consulten el rellotge; `weekday()` numera dilluns com a 0 i diumenge com a 6. Una data/hora sense zona no incorpora automàticament les regles d'una altra zona horària.
+`timedelta` representa una duración y sabe atravesar cambios de mes. `%d`, `%m` y `%Y` formatean día, mes y año. `date.today()` y `datetime.now()` consultan el reloj; `weekday()` numera el lunes como 0 y el domingo como 6. Una fecha/hora sin zona no incorpora automáticamente las reglas de otra zona horaria.
 
-## Exemple resolt: resum de documents Markdown
+## Ejemplo resuelto: resumen de documentos Markdown
 
-**Objectiu nou:** llegir una carpeta passada com a argument i sumar la mida dels fitxers `.md` immediats. No modifica el contingut.
+**Objetivo propio:** leer una carpeta pasada como argumento y sumar el tamaño de los archivos `.md` inmediatos. No modifica el contenido.
 
-Desa `documents.py`:
+Guarda `documentos.py`:
 
 ```python
 import sys
 from pathlib import Path
 
 if len(sys.argv) != 2:
-    print("Ús: python documents.py carpeta")
+    print("Uso: python documentos.py carpeta")
     sys.exit(1)
 
 carpeta = Path(sys.argv[1])
 if not carpeta.is_dir():
-    print("Cal indicar una carpeta existent")
+    print("Debes indicar una carpeta existente")
     sys.exit(2)
 
-quantitat = 0
+cantidad = 0
 bytes_total = 0
 for ruta in sorted(carpeta.iterdir()):
     if ruta.is_file() and ruta.suffix.lower() == ".md":
-        quantitat += 1
+        cantidad += 1
         bytes_total += ruta.stat().st_size
         print(ruta.name)
-print(f"Documents: {quantitat}; bytes: {bytes_total}")
+print(f"Documentos: {cantidad}; bytes: {bytes_total}")
 ```
 
-`sys.argv[0]` és el script i `[1]` la carpeta. `Path` representa una ruta; `/` combina components sense concatenar separadors manualment. `iterdir()` recorre el nivell immediat i `stat().st_size` consulta bytes. L'ordre es fa explícit amb `sorted`.
+`sys.argv[0]` es el script y `[1]` la carpeta. `Path` representa una ruta; `/` combina componentes sin concatenar separadores manualmente. `iterdir()` recorre el nivel inmediato y `stat().st_size` consulta bytes. El orden se hace explícito con `sorted`.
 
-**Prova controlada:** crea una carpeta amb `a.md` de tres bytes (`abc`) i `b.md` de dos bytes (`xy`), sense salts finals, i un `imatge.txt` qualsevol. L'eixida enumera `a.md`, `b.md` i acaba amb `Documents: 2; bytes: 5`. La mida en bytes no sempre coincideix amb el nombre de caràcters en UTF-8.
+**Prueba controlada:** crea una carpeta con `a.md` de tres bytes (`abc`) y `b.md` de dos bytes (`xy`), sin saltos finales, y un `imagen.txt` cualquiera. La salida enumera `a.md`, `b.md` y termina con `Documentos: 2; bytes: 5`. El tamaño en bytes no siempre coincide con el número de caracteres en UTF-8.
 
-## Rutes i operacions que necessiten atenció
+## Rutas y operaciones que necesitan atención
 
-`Path.cwd()` consulta el directori actual; `exists`, `is_file` i `is_dir` comproven; `parent`, `name` i `suffix` descriuen la ruta. `mkdir(parents=True, exist_ok=True)` crea carpetes intermèdies i tolera una carpeta ja existent. `glob('*.md')` busca en el nivell actual i `rglob('*.md')` ho fa recursivament. `rename` pot moure o substituir segons el sistema; `rmdir` només elimina un directori buit.
+`Path.cwd()` consulta el directorio actual; `exists`, `is_file` e `is_dir` comprueban; `parent`, `name` y `suffix` describen la ruta. `mkdir(parents=True, exist_ok=True)` crea carpetas intermedias y tolera una carpeta ya existente. `glob('*.md')` busca en el nivel actual y `rglob('*.md')` lo hace recursivamente. `rename` puede mover o sustituir según el sistema; `rmdir` solo elimina un directorio vacío.
 
-`shutil.copy` copia fitxers i pot sobreescriure; `move` els mou; `rmtree` elimina un arbre complet. Abans d'usar-les, defineix origen, destí i què faràs si ja existeix. `shutil.disk_usage(Path.cwd())` retorna total, usat i lliure en bytes per al sistema de fitxers corresponent; no totes les plataformes comparteixen una ruta com `/`.
+`shutil.copy` copia archivos y puede sobrescribir; `move` los mueve; `rmtree` elimina un árbol completo. Antes de utilizarlas, define origen, destino y qué harás si ya existe. `shutil.disk_usage(Path.cwd())` devuelve total, usado y libre en bytes para el sistema de archivos correspondiente; no todas las plataformas comparten una ruta como `/`.
 
-`os.getenv('NOM', 'alternativa')` consulta una variable d'entorn. `platform.system()` pot retornar `Linux`, `Windows` o `Darwin`; `processor()` pot retornar text buit. No deduïsques el gestor de paquets exacte només del nom Linux: hi ha distribucions diferents.
+`os.getenv('NOMBRE', 'alternativa')` consulta una variable de entorno. `platform.system()` puede devolver `Linux`, `Windows` o `Darwin`; `processor()` puede devolver texto vacío. No deduzcas el gestor de paquetes exacto solo del nombre Linux: hay distribuciones diferentes.
 
-`random.randint(1, 6)` simula un dau; `time.sleep(0.1)` pausa el procés. No cal esperar realment minuts per a provar un bucle: usa dades fixes i pauses curtes durant el laboratori.
+`random.randint(1, 6)` simula un dado; `time.sleep(0.1)` pausa el proceso. No necesitas esperar minutos reales para probar un bucle: utiliza datos fijos y pausas cortas durante el laboratorio.
 
-## Errors típics
+## Errores típicos
 
-| Símptoma | Revisió |
+| Síntoma | Revisión |
 | --- | --- |
-| No troba la carpeta | El punt de partida de les rutes relatives és el directori de treball. |
-| La mida és diferent de la prevista | Bytes, salts de línia i codificació del fitxer. |
-| Falla `stat()` malgrat la comprovació | Permisos o canvis del fitxer entre comprovar i llegir. |
-| No inclou subcarpetes | `iterdir` no és un recorregut recursiu. |
+| No encuentra la carpeta | El punto de partida de las rutas relativas es el directorio de trabajo. |
+| El tamaño difiere del previsto | Bytes, saltos de línea y codificación del archivo. |
+| Falla `stat()` pese a la comprobación | Permisos o cambios del archivo entre comprobar y leer. |
+| No incluye subcarpetas | `iterdir` no es un recorrido recursivo. |
 
-!!! success "Per a repassar"
-    Tria el mòdul per la tasca, consulta el tipus que retorna cada operació i prova primer amb un conjunt menut de fitxers coneguts.
+!!! success "Para repasar"
+    Elige el módulo según la tarea, consulta el tipo que devuelve cada operación y prueba primero con un conjunto pequeño de archivos conocidos.
 
 ---
 
-Fonts del temari: [05-librerias-sysadmin](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/05-librerias-sysadmin/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [05-librerias-sysadmin](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/05-librerias-sysadmin/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

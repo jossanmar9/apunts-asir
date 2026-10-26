@@ -1,18 +1,18 @@
-# UT1 · 3. Bucles i funcions: repetir sense duplicar
+# UT1 · 3. Bucles y funciones: repetir sin duplicar
 
-## Quan convé cada bucle?
+## ¿Cuándo conviene cada bucle?
 
-`for` recorre una col·lecció coneguda. `while` repeteix mentre una condició és certa. `until` repeteix mentre és falsa. `break` ix del bucle i `continue` passa a la volta següent. En tots els casos has de poder explicar la condició de finalització.
+`for` recorre una colección conocida. `while` repite mientras una condición es verdadera. `until` repite mientras es falsa. `break` sale del bucle y `continue` pasa a la siguiente vuelta. En todos los casos debes poder explicar la condición de finalización.
 
-## Exemple resolt: preparar etiquetes de prestatgeries
+## Ejemplo resuelto: preparar etiquetas de estanterías
 
-**Problema nou:** volem quatre etiquetes, excepte la tercera, que està fora de servei. Una funció crea cada etiqueta perquè el format estiga en un únic lloc.
+**Problema propio:** queremos cuatro etiquetas, excepto la tercera, que está fuera de servicio. Una función crea cada etiqueta para que el formato esté en un único lugar.
 
 ```bash
 #!/usr/bin/env bash
 etiqueta() {
     local numero=$1
-    printf 'PRESTATGE-%02d\n' "$numero"
+    printf 'ESTANTERIA-%02d\n' "$numero"
 }
 for numero in 1 2 3 4; do
     if (( numero == 3 )); then
@@ -22,63 +22,63 @@ for numero in 1 2 3 4; do
 done
 ```
 
-**Eixida esperada:** `PRESTATGE-01`, `PRESTATGE-02` i `PRESTATGE-04`, cadascun en una línia.
+**Salida esperada:** `ESTANTERIA-01`, `ESTANTERIA-02` y `ESTANTERIA-04`, cada una en una línea.
 
-1. La funció es defineix abans de cridar-la.
-2. Dins de la funció, `$1` és el primer argument de **la funció**, no necessàriament el del script.
-3. `local` limita la variable a la funció. `%02d` formata l'enter amb almenys dues xifres.
-4. `continue` salta l'etiqueta 3, però deixa que el recorregut continue amb 4.
+1. La función se define antes de llamarla.
+2. Dentro de la función, `$1` es el primer argumento de **la función**, no necesariamente el del script.
+3. `local` limita la variable a la función. `%02d` formatea el entero con al menos dos cifras.
+4. `continue` omite la etiqueta 3, pero permite que el recorrido continúe con 4.
 
-## `while` i `until` amb seguiment
+## `while` y `until` con seguimiento
 
 ```bash
 #!/usr/bin/env bash
-pendents=3
-while (( pendents > 0 )); do
-    printf 'Caixes pendents: %s\n' "$pendents"
-    pendents=$((pendents - 1))
+pendientes=3
+while (( pendientes > 0 )); do
+    printf 'Cajas pendientes: %s\n' "$pendientes"
+    pendientes=$((pendientes - 1))
 done
 
-revisades=0
-until (( revisades == 2 )); do
-    revisades=$((revisades + 1))
-    printf 'Revisió %s completada\n' "$revisades"
+revisadas=0
+until (( revisadas == 2 )); do
+    revisadas=$((revisadas + 1))
+    printf 'Revisión %s completada\n' "$revisadas"
 done
 ```
 
-El `while` mostra 3, 2 i 1. El `until` mostra revisions 1 i 2: quan la condició passa a ser certa, ja no entra. Canviar `until` per `while` sense negar la condició altera completament el comportament.
+El `while` muestra 3, 2 y 1. El `until` muestra las revisiones 1 y 2: cuando la condición pasa a ser verdadera, ya no entra. Cambiar `until` por `while` sin negar la condición altera completamente el comportamiento.
 
-## Funció que calcula i funció que comprova
+## Función que calcula y función que comprueba
 
-Bash diferencia **dades per stdout** i **estat per return**:
+Bash distingue **datos por stdout** y **estado por return**:
 
 ```bash
 #!/usr/bin/env bash
-nom_etiqueta() {
-    printf 'CAIXA-%s\n' "$1"
+nombre_etiqueta() {
+    printf 'CAJA-%s\n' "$1"
 }
-es_codi() {
+es_codigo() {
     [[ "$1" =~ ^[A-Z]{2}[0-9]{2}$ ]]
 }
-nom=$(nom_etiqueta 'AB42')
-if es_codi 'AB42'; then
-    printf '%s és vàlid\n' "$nom"
+nombre=$(nombre_etiqueta 'AB42')
+if es_codigo 'AB42'; then
+    printf '%s es válido\n' "$nombre"
 fi
 ```
 
-`$(...)` captura el text. La funció de comprovació retorna l'estat de l'última ordre: 0 si el patró coincideix. `return 250` és un codi d'estat, no una manera de retornar un text ni un càlcul arbitrari.
+`$(...)` captura el texto. La función de comprobación devuelve el estado del último comando: 0 si el patrón coincide. `return 250` es un código de estado, no una forma de devolver un texto ni un cálculo arbitrario.
 
-Si separes funcions en un fitxer propi, `source ./funcions.sh` les carrega en la shell actual; executar `bash funcions.sh` inicia una shell filla i no deixa les definicions disponibles en la mare.
+Si separas funciones en un archivo propio, `source ./funciones.sh` las carga en la shell actual; ejecutar `bash funciones.sh` inicia una shell hija y no deja las definiciones disponibles en la shell que la llamó.
 
-| Error | Causa i correcció |
+| Error | Causa y corrección |
 | --- | --- |
-| Bucle infinit | No canvia la variable que decideix la parada. |
-| Valor capturat conté missatges sobrants | La funció imprimeix depuració per stdout; envia-la a stderr. |
-| `return` truncat | Els estats tenen rang limitat; usa stdout per a dades. |
+| Bucle infinito | No cambia la variable que decide la parada. |
+| El valor capturado contiene mensajes sobrantes | La función imprime depuración por stdout; envíala a stderr. |
+| `return` truncado | Los estados tienen un rango limitado; utiliza stdout para los datos. |
 
-!!! success "Per a repassar"
-    Una funció ha de tindre una tasca clara. Dibuixa què rep, què imprimeix i quin estat retorna.
+!!! success "Para repasar"
+    Una función debe tener una tarea clara. Dibuja qué recibe, qué imprime y qué estado devuelve.
 
 ---
 
-Font del temari: [apunts originals d’ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

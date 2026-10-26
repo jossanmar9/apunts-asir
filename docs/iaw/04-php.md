@@ -1,71 +1,71 @@
-# UT2 · 1. PHP, variables i generació d'HTML
+# UT2 · 1. PHP, variables y generación de HTML
 
-## On s'executa cada cosa
+## Dónde se ejecuta cada cosa
 
-PHP s'executa al servidor. El resultat pot ser HTML, JSON o text. El navegador no executa el PHP original. Obrir un `.php` com a fitxer local no equival a demanar-lo a un servidor PHP.
+PHP se ejecuta en el servidor. El resultado puede ser HTML, JSON o texto. El navegador no ejecuta el PHP original. Abrir un `.php` como archivo local no equivale a solicitarlo a un servidor PHP.
 
-Per a aquests exemples pots usar la carpeta `public` del laboratori d'UT1. Si tens l'intèrpret PHP instal·lat, també pots provar només PHP amb `php -S 127.0.0.1:8093 -t public`. Eixe servidor és per a desenvolupament local i no reprodueix el stack complet de Nginx i MariaDB.
+Para estos ejemplos puedes utilizar la carpeta `public` del laboratorio de UT1. Si tienes instalado el intérprete PHP, también puedes probar solo PHP con `php -S 127.0.0.1:8093 -t public`. Ese servidor es para desarrollo local y no reproduce el stack completo de Nginx y MariaDB.
 
-## Les regles bàsiques
+## Las reglas básicas
 
-Les variables comencen per `$` i distingeixen majúscules. `=` assigna; `===` compara valor i tipus. Les instruccions solen acabar en `;`. El punt `.` concatena text i `echo` escriu en la resposta. `<?= expressio ?>` equival a imprimir eixa expressió.
+Las variables comienzan por `$` y distinguen mayúsculas. `=` asigna; `===` compara valor y tipo. Las instrucciones suelen acabar en `;`. El punto `.` concatena texto y `echo` escribe en la respuesta. `<?= expresion ?>` equivale a imprimir esa expresión.
 
-| Tipus | Exemple | Per a què serveix |
+| Tipo | Ejemplo | Para qué sirve |
 | --- | --- | --- |
-| int | `24` | Recompte enter |
-| float | `2.75` | Quantitat decimal |
-| string | `'Sala violeta'` | Text |
-| bool | `true` | Una condició |
-| array | `['A', 'B']` | Una col·lecció |
-| null | `null` | Absència de valor |
+| int | `24` | Recuento entero |
+| float | `2.75` | Cantidad decimal |
+| string | `'Sala violeta'` | Texto |
+| bool | `true` | Una condición |
+| array | `['A', 'B']` | Una colección |
+| null | `null` | Ausencia de valor |
 
-Les cometes dobles poden interpolar variables; les simples conserven el text literal. `//` i `/* ... */` són comentaris PHP. Un comentari HTML pot arribar al navegador; un comentari PHP no forma part de la resposta.
+Las comillas dobles pueden interpolar variables; las simples conservan el texto literal. `//` y `/* ... */` son comentarios PHP. Un comentario HTML puede llegar al navegador; un comentario PHP no forma parte de la respuesta.
 
-## Exemple resolt: places d'un taller de ceràmica
+## Ejemplo resuelto: plazas de un taller de cerámica
 
-**Objectiu:** mostrar les places que queden. No hi ha formulari ni dades de classe: els valors estan fixats per a seguir el càlcul.
+**Objetivo:** mostrar las plazas disponibles. No hay formulario ni datos de clase: los valores están fijados para seguir el cálculo.
 
-Desa `taller.php`:
+Guarda `taller.php`:
 
 ```php
 <?php
-$capacitat = 18;
-$reserves = 11;
-$lliures = $capacitat - $reserves;
-$nom = 'Ceràmica & color';
-$complet = $lliures === 0;
+$capacidad = 18;
+$reservas = 11;
+$libres = $capacidad - $reservas;
+$nombre = 'Cerámica & color';
+$completo = $libres === 0;
 ?>
-<h1><?= htmlspecialchars($nom, ENT_QUOTES, 'UTF-8') ?></h1>
-<p>Places lliures: <?= $lliures ?></p>
-<p><?= $complet ? 'Sense places' : 'Inscripció oberta' ?></p>
+<h1><?= htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') ?></h1>
+<p>Plazas libres: <?= $libres ?></p>
+<p><?= $completo ? 'Sin plazas' : 'Inscripción abierta' ?></p>
 ```
 
-### Raonament pas a pas
+### Razonamiento paso a paso
 
-1. PHP associa 18 i 11 a dues variables enteres.
-2. Resta les reserves de la capacitat: `18 - 11 = 7`.
-3. La comparació `7 === 0` és falsa; `$complet` val `false`.
-4. El ternari `condicio ? valor_si : valor_no` tria el text «Inscripció oberta».
-5. `htmlspecialchars` transforma els caràcters especials per a inserir text en HTML. L'ampersand es codifica en el codi font i el navegador mostra `&`.
+1. PHP asocia 18 y 11 a dos variables enteras.
+2. Resta las reservas de la capacidad: `18 - 11 = 7`.
+3. La comparación `7 === 0` es falsa; `$completo` vale `false`.
+4. El ternario `condicion ? valor_si : valor_no` elige el texto «Inscripción abierta».
+5. `htmlspecialchars` transforma los caracteres especiales para insertar texto en HTML. El ampersand se codifica en el código fuente y el navegador muestra `&`.
 
-**Resultat visible:** «Ceràmica & color», «Places lliures: 7» i «Inscripció oberta». Si reserves 18 places, veuràs 0 i «Sense places». Si poses 20 reserves, apareix un nombre negatiu: el programa necessita una regla de validació; la resta, tota sola, no garanteix dades coherents.
+**Resultado visible:** «Cerámica & color», «Plazas libres: 7» e «Inscripción abierta». Si reservas 18 plazas, verás 0 y «Sin plazas». Si pones 20 reservas, aparece un número negativo: el programa necesita una regla de validación; la resta, por sí sola, no garantiza datos coherentes.
 
-## Operadors que faràs servir
+## Operadores que utilizarás
 
-`+`, `-`, `*`, `/` i `%` calculen. `&&`, `||` i `!` combinen o neguen condicions. `??` aporta un valor alternatiu quan una dada no existeix o és `null`, com en `$_GET['sala'] ?? ''`. No valida que la dada siga correcta.
+`+`, `-`, `*`, `/` y `%` calculan. `&&`, `||` y `!` combinan o niegan condiciones. `??` aporta un valor alternativo cuando un dato no existe o es `null`, como en `$_GET['sala'] ?? ''`. No valida que el dato sea correcto.
 
-Un array indexat usa posicions: `$sales = ['Blava', 'Verda'];` i `$sales[0]` dona `Blava`. Un array associatiu usa claus: `$sala = ['nom' => 'Blava', 'capacitat' => 18];`. Accedeixes amb `$sala['capacitat']`. Si la clau no existeix, comprova-la o usa `??`.
+Un array indexado utiliza posiciones: `$salas = ['Azul', 'Verde'];` y `$salas[0]` devuelve `Azul`. Un array asociativo utiliza claves: `$sala = ['nombre' => 'Azul', 'capacidad' => 18];`. Accedes con `$sala['capacidad']`. Si la clave no existe, compruébala o utiliza `??`.
 
-| Error | Causa i solució |
+| Error | Causa y solución |
 | --- | --- |
-| `Undefined variable` | Revisa nom i assignació abans d'usar-la. |
-| `Parse error` | Mira `;`, cometes i claus, també en la línia anterior. |
-| Es mostra codi PHP | Estàs obrint el fitxer directament o el servidor no el processa. |
-| Text d'usuari es converteix en HTML | Escapa'l en el punt on generes HTML. |
+| `Undefined variable` | Revisa el nombre y la asignación antes de usarla. |
+| `Parse error` | Mira `;`, comillas y llaves, también en la línea anterior. |
+| Se muestra código PHP | Abres el archivo directamente o el servidor no lo procesa. |
+| El texto del usuario se convierte en HTML | Escápalo en el punto donde generas HTML. |
 
-!!! success "Per a repassar"
-    Primer es calculen les dades; després es genera la resposta. Validar dades i escapar HTML són operacions diferents.
+!!! success "Para repasar"
+    Primero se calculan los datos; después se genera la respuesta. Validar datos y escapar HTML son operaciones diferentes.
 
 ---
 
-Font del temari: [apunts originals de UT2](https://victoria-nr.github.io/iaw-alumnos/UT2/apuntes/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de UT2](https://victoria-nr.github.io/iaw-alumnos/UT2/apuntes/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

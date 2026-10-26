@@ -1,73 +1,73 @@
-# UT1 · 4. Fitxers, tuberies, filtres i expressions regulars
+# UT1 · 4. Archivos, tuberías, filtros y expresiones regulares
 
-## Connectar ordres
+## Conectar comandos
 
-Una ordre disposa d'entrada estàndard, eixida estàndard i eixida d'error. `>` crea o sobreescriu; `>>` afegeix; `2>` redirigeix errors; `|` envia stdout a l'entrada de l'ordre següent. L'error no entra automàticament en la tuberia.
+Un comando dispone de entrada estándar, salida estándar y salida de error. `>` crea o sobrescribe; `>>` añade; `2>` redirige errores; `|` envía stdout a la entrada del siguiente comando. El error no entra automáticamente en la tubería.
 
-`grep` selecciona línies, `cut` extrau camps, `sort` ordena, `uniq` agrupa repeticions consecutives i `wc` compta. `awk` treballa bé amb camps i `sed` amb transformacions de text. `find` busca entrades del sistema de fitxers segons nom, tipus o altres propietats.
+`grep` selecciona líneas, `cut` extrae campos, `sort` ordena, `uniq` agrupa repeticiones consecutivas y `wc` cuenta. `awk` trabaja bien con campos y `sed` con transformaciones de texto. `find` busca entradas del sistema de archivos según nombre, tipo u otras propiedades.
 
-## Cas resolt: resum d'incidències d'un taller
+## Caso resuelto: resumen de incidencias de un taller
 
-Crea un fitxer de prova `taller.log`:
+Crea un archivo de prueba `taller.log`:
 
 ```text
-INFO|fusta|arribada
+INFO|madera|llegada
 ERROR|pintura|falta material
-ERROR|fusta|peça trencada
-INFO|pintura|revisió
-ERROR|pintura|ventilació
+ERROR|madera|pieza rota
+INFO|pintura|revisión
+ERROR|pintura|ventilación
 ```
 
-**Objectiu nou:** comptar errors per zona.
+**Objetivo propio:** contar errores por zona.
 
 ```bash
 grep '^ERROR|' taller.log | cut -d'|' -f2 | sort | uniq -c
 ```
 
-### Què passa en cada tram?
+### ¿Qué ocurre en cada tramo?
 
-1. `grep` conserva tres línies que comencen per `ERROR|`. En aquest patró bàsic, `|` és un caràcter literal.
-2. `cut` obté el segon camp: pintura, fusta, pintura.
-3. `sort` junta les dues aparicions de pintura.
-4. `uniq -c` compta cada grup: un error de fusta i dos de pintura. L'ordre i els espais de la presentació poden dependre de la configuració regional.
+1. `grep` conserva tres líneas que comienzan por `ERROR|`. En este patrón básico, `|` es un carácter literal.
+2. `cut` obtiene el segundo campo: pintura, madera, pintura.
+3. `sort` junta las dos apariciones de pintura.
+4. `uniq -c` cuenta cada grupo: un error de madera y dos de pintura. El orden y los espacios de presentación pueden depender de la configuración regional.
 
-Sense ordenar, les dues línies de pintura no serien consecutives i no formarien un únic grup.
+Sin ordenar, las dos líneas de pintura no serían consecutivas y no formarían un único grupo.
 
-Per a guardar el resum sense esborrar el log:
+Para guardar el resumen sin borrar el log:
 
 ```bash
-grep '^ERROR|' taller.log | cut -d'|' -f2 | sort | uniq -c > resum.txt
+grep '^ERROR|' taller.log | cut -d'|' -f2 | sort | uniq -c > resumen.txt
 ```
 
-`resum.txt` és l'eixida. No uses el mateix fitxer com a entrada i com a destinació de `>`: es podria buidar abans de llegir-lo.
+`resumen.txt` es la salida. No utilices el mismo archivo como entrada y como destino de `>`: podría vaciarse antes de leerlo.
 
-## Altres maneres de preguntar sobre el mateix fitxer
+## Otras formas de preguntar sobre el mismo archivo
 
 ```bash
 awk -F'|' '$1 == "ERROR" {print $2 ": " $3}' taller.log
-sed 's/^INFO|/AVIS|/' taller.log
+sed 's/^INFO|/AVISO|/' taller.log
 wc -l < taller.log
 ```
 
-`awk` selecciona segons el primer camp i mostra els altres dos. `sed` imprimeix una versió transformada, sense modificar el fitxer perquè no usa `-i`. `wc` dona 5 línies si el fitxer té el salt de línia final.
+`awk` selecciona según el primer campo y muestra los otros dos. `sed` imprime una versión transformada, sin modificar el archivo porque no utiliza `-i`. `wc` devuelve 5 líneas si el archivo tiene el salto de línea final.
 
-## Patró de nom o expressió regular?
+## ¿Patrón de nombre o expresión regular?
 
-`find . -type f -name '*.log'` busca noms amb un patró de shell; les cometes eviten que la shell l'expanda abans. `grep -E '^(ERROR|AVIS)\|' fitxer` usa una expressió regular estesa: l'alternança és `|` i la barra amb `\|` busca el separador literal.
+`find . -type f -name '*.log'` busca nombres con un patrón de shell; las comillas evitan que la shell lo expanda antes. `grep -E '^(ERROR|AVISO)\|' archivo` utiliza una expresión regular extendida: la alternancia es `|` y la barra con `\|` busca el separador literal.
 
-| Element d'una expressió regular | Lectura |
+| Elemento de una expresión regular | Lectura |
 | --- | --- |
-| `^` / `$` | Inici / final de línia |
-| `[0-9]` | Una xifra |
-| `.` | Un caràcter qualsevol |
-| `\.` | Un punt literal |
-| `+` amb `-E` | Una o més repeticions |
+| `^` / `$` | Inicio / final de línea |
+| `[0-9]` | Una cifra |
+| `.` | Un carácter cualquiera |
+| `\.` | Un punto literal |
+| `+` con `-E` | Una o más repeticiones |
 
-Un patró amb quatre grups d'una a tres xifres detecta la **forma** d'una IPv4, però no garanteix que cada octet estiga entre 0 i 255. No confundisques reconéixer una forma amb validar tot el significat.
+Un patrón con cuatro grupos de una a tres cifras detecta la **forma** de una IPv4, pero no garantiza que cada octeto esté entre 0 y 255. No confundas reconocer una forma con validar todo su significado.
 
-!!! success "Per a repassar"
-    Prova cada tram de la tuberia per separat. Si el resultat és incorrecte, localitza el primer tram on les dades deixen de ser les esperades.
+!!! success "Para repasar"
+    Prueba cada tramo de la tubería por separado. Si el resultado es incorrecto, localiza el primer tramo donde los datos dejan de ser los esperados.
 
 ---
 
-Font del temari: [apunts originals d’ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

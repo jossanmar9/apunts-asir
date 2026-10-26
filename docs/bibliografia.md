@@ -1,8 +1,6 @@
-# Bibliografia
+# Bibliografía complementaria
 
-Per als resums organitzats per mòdul, consulta les [fonts de classe i la cobertura](classe.md). La llista següent correspon al material complementari del repositori.
-
-Estos apunts estan escrits a partir de l'estudi dels materials següents. Els textos i els exemples d'esta web són propis; si vols aprofundir, els originals són molt recomanables.
+Para los resúmenes organizados por módulo, consulta las [fuentes de clase y la cobertura](classe.md). Esta bibliografía corresponde al material complementario anterior, conservado en valenciano.
 
 ## Bash
 

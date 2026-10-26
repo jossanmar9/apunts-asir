@@ -1,55 +1,59 @@
-# Apunts ASIR
+# Apuntes ASIR
 
-Resums dels apunts de classe d’**IAW, ASO i Python**, organitzats per mòdul, unitat i tema, amb explicacions des de zero i exemples propis resolts pas a pas. Serveixen per a estudiar i com a guia mentre es fan els treballs.
+Resúmenes en **castellano** de los apuntes de clase de **IAW, ASO y Python**, organizados por módulo, unidad y tema, con explicaciones desde cero y ejemplos propios resueltos paso a paso. **Git y GitHub tiene una sección independiente.** Sirven para estudiar y como guía mientras haces los trabajos.
 
-🌐 **[Web d’Apunts ASIR](https://jossanmar9.github.io/apunts-asir/)**
+🌐 **[Web de Apuntes ASIR](https://jossanmar9.github.io/apunts-asir/)**
 
-## Estudiar des del repositori
+## Estudiar desde el repositorio
 
-| Mòdul | Unitats amb resum | Apunts |
+| Sección | Contenido | Apuntes |
 | --- | --- | --- |
-| IAW · Implantació d’aplicacions web | UT1: entorn web · UT2: programació PHP | [Índex d’IAW](docs/iaw/index.md) |
-| ASO · Administració de sistemes operatius | UT0: Git · UT1: Bash | [Índex d’ASO](docs/aso/index.md) |
-| Introducció a Python | UT1: entorn i dades · UT2: objectes i cadenes · UT3: control i biblioteques | [Índex de Python](docs/python-classe/index.md) |
-| Com estudiar | Mètode d’estudi i consells per a aprendre | [Com estudiar](docs/estudiar/index.md) |
+| IAW · Implantación de aplicaciones web | UT1: entorno web · UT2: programación PHP | [Índice de IAW](docs/iaw/index.md) |
+| ASO · Administración de sistemas operativos | UT1: Bash | [Índice de ASO](docs/aso/index.md) |
+| Introducción a Python | UT1: entorno y datos · UT2: objetos y cadenas · UT3: control y bibliotecas | [Índice de Python](docs/python-classe/index.md) |
+| Git y GitHub | Tema independiente: repositorios, commits, remoto y SSH | [Git y GitHub](docs/git-github/index.md) |
+| Cómo estudiar | Método de estudio y consejos para aprender | [Cómo estudiar](docs/estudiar/index.md) |
 
-Cada tema inclou teoria explicada, exemples nous amb el raonament i el resultat esperat, errors habituals i un resum de repàs. Els casos didàctics **no són els exercicis de classe per a practicar o entregar**, ni versions amb només noms o xifres canviats.
+Cada tema incluye teoría explicada, ejemplos propios con el razonamiento y el resultado esperado, errores habituales y un resumen de repaso. Los casos didácticos **no son los ejercicios de clase para practicar o entregar**, ni versiones con solo los nombres o los datos cambiados.
 
-## Fonts i criteri d’actualització
+## Fuentes y criterio de actualización
 
 - [IAW — victoria-nr](https://victoria-nr.github.io/iaw-alumnos/)
 - [ASO — angelabserrano](https://angelabserrano.github.io/aso/)
-- [Introducció a Python — victoria-nr](https://victoria-nr.github.io/python-intro-alumnos/)
+- [Introducción a Python — victoria-nr](https://victoria-nr.github.io/python-intro-alumnos/)
 
-Última consulta: **26/10/2026**. Consulta la [cobertura per unitats](docs/classe.md). Els resums i exemples són redacció pròpia; les fonts de teoria s’enllacen en cada tema.
+Última consulta: **26/10/2026**. Traducción al castellano: **27/10/2026**. Consulta la [cobertura por unidades](docs/classe.md). Los resúmenes y ejemplos son de redacción propia; las fuentes de teoría se enlazan en cada tema.
 
-**Actualització manual, quan ho demane l’estudiant.** Quan s’anuncien materials nous:
+**Actualización manual, cuando lo solicite el estudiante.** Cuando se anuncien materiales nuevos:
 
-1. Revisa la teoria i els enunciats nous per identificar conceptes i evitar resoldre els exercicis assignats.
-2. Actualitza el mòdul i la unitat corresponents amb explicacions clares i casos didàctics diferents, no simples canvis de noms o dades.
-3. Explica entrada, passos, resultat i errors. Distingeix el que està publicat del que només està planificat.
-4. Comprova els exemples executables i la compilació; actualitza fonts, data i cobertura.
+1. Revisa la teoría y los enunciados nuevos para identificar conceptos y evitar resolver los ejercicios asignados.
+2. Actualiza el módulo y la unidad correspondientes con explicaciones claras en castellano y casos didácticos diferentes, no simples cambios de nombres o datos.
+3. Explica entrada, pasos, resultado y errores. Distingue lo publicado de lo que solo está planificado.
+4. Comprueba los ejemplos ejecutables y la compilación; actualiza fuentes, fecha y cobertura.
 
-No hi ha sincronització automàtica amb els webs de classe.
+No hay sincronización automática con las webs de clase. Los apuntes anteriores se conservan en **Complementos (valenciano)**.
 
 ## Estructura
 
 ```text
 docs/
-├── index.md          portada per mòduls
-├── iaw/              UT1 i UT2, amb 8 temes
-├── aso/              UT0 i UT1, amb 6 temes
-├── python-classe/    UT1 a UT3, amb 8 temes
-├── estudiar/         mètode i consells d’estudi
-├── classe.md         fonts i cobertura del temari
+├── index.md          portada por módulos y temas independientes
+├── iaw/              UT1 y UT2, con 8 temas
+├── aso/              UT1 Bash, con 5 temas
+├── git-github/       tema independiente de Git y GitHub
+├── python-classe/    UT1 a UT3, con 8 temas
+├── estudiar/         método y consejos de estudio en castellano
+├── classe.md         fuentes y cobertura del temario
 ├── bash/, python/, powershell/, git/, docker/, php/
-│                     apunts anteriors, accessibles en Complements
-├── xuletes/          resums de consulta ràpida
-└── bibliografia.md   bibliografia complementària
-mkdocs.yml            configuració i menú de la web
+│                     apuntes anteriores en valenciano
+├── xuletes/          resúmenes anteriores de consulta rápida
+└── bibliografia.md   bibliografía complementaria
+mkdocs.yml            configuración y menú de la web
 ```
 
-## Treballar en local
+La antigua página de Git en ASO conserva un enlace a la nueva sección para que los enlaces publicados sigan siendo útiles.
+
+## Trabajar en local
 
 ```bash
 python3 -m venv .venv
@@ -58,8 +62,8 @@ pip install -r requirements.txt
 mkdocs serve
 ```
 
-Obri `http://127.0.0.1:8000`. Per comprovar la compilació: `mkdocs build --strict`.
+Abre `http://127.0.0.1:8000`. Para comprobar la compilación: `mkdocs build --strict`.
 
-## Publicar canvis
+## Publicar cambios
 
-Edita els `.md` dins de `docs/` i registra qualsevol pàgina nova en `nav:` de `mkdocs.yml`. Després de revisar i provar, un commit enviat a `main` activa l’Action que publica la web en GitHub Pages.
+Edita los `.md` dentro de `docs/` y registra cualquier página nueva en `nav:` de `mkdocs.yml`. Después de revisar y probar, un commit enviado a `main` activa la Action que publica la web en GitHub Pages.

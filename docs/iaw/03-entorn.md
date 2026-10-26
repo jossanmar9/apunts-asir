@@ -1,14 +1,14 @@
-# UT1 · 3. Docker Compose i un entorn que pots reconstruir
+# UT1 · 3. Docker Compose y un entorno que puedes reconstruir
 
-## Conceptes abans de copiar configuracions
+## Conceptos antes de copiar configuraciones
 
-Una **imatge** és la base amb què es crea un contenidor. Un **contenidor** és una instància d'eixa imatge, que pot estar parada o executant-se. Un **servei de Compose** descriu com crear-lo: imatge, configuració, xarxa, muntatges i ports.
+Una **imagen** es la base con la que se crea un contenedor. Un **contenedor** es una instancia de esa imagen, que puede estar detenida o en ejecución. Un **servicio de Compose** describe cómo crearlo: imagen, configuración, red, montajes y puertos.
 
-Un muntatge de carpeta (*bind mount*) connecta una ruta del teu equip amb una del contenidor. Un volum amb nom és emmagatzematge gestionat per Docker; és adequat per a dades que han de sobreviure a la substitució del contenidor.
+Un montaje de carpeta (*bind mount*) conecta una ruta de tu equipo con una del contenedor. Un volumen con nombre es almacenamiento gestionado por Docker; resulta apropiado para datos que deben sobrevivir a la sustitución del contenedor.
 
-## Laboratori resolt: cartellera d'un cineclub
+## Laboratorio resuelto: cartelera de un cineclub
 
-Aquest exemple nou aïlla la comunicació Nginx–PHP, sense reproduir la pràctica de desplegament de classe. Necessites Docker amb Compose. Crea una carpeta de proves amb aquesta estructura:
+Este ejemplo propio aísla la comunicación Nginx–PHP, sin reproducir la práctica de despliegue de clase. Necesitas Docker con Compose. Crea una carpeta de pruebas con esta estructura:
 
 ```text
 cineclub/
@@ -25,7 +25,7 @@ cineclub/
 
 ```yaml
 services:
-  cartellera:
+  cartelera:
     image: nginx:stable-alpine
     ports:
       - "127.0.0.1:${WEB_PORT:-8092}:80"
@@ -63,13 +63,13 @@ server {
 
 ```php
 <?php
-$titol = 'Sessió de curtmetratges';
+$titulo = 'Sesión de cortometrajes';
 ?>
-<h1><?= htmlspecialchars($titol, ENT_QUOTES, 'UTF-8') ?></h1>
-<p>El motor PHP ha generat aquesta cartellera.</p>
+<h1><?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?></h1>
+<p>El motor PHP ha generado esta cartelera.</p>
 ```
 
-`.env.example` i la còpia local `.env`:
+`.env.example` y su copia local `.env`:
 
 ```dotenv
 WEB_PORT=8092
@@ -81,17 +81,17 @@ WEB_PORT=8092
 .env
 ```
 
-### Per què funciona?
+### ¿Por qué funciona?
 
-1. El navegador connecta al port **8092 de l'amfitrió**, publicat cap al **80 de Nginx**. El prefix `127.0.0.1` limita l'accés al mateix equip.
-2. Nginx busca `index.php` a `/srv/cineclub`.
-3. `motor` és el nom DNS del servei PHP dins de la xarxa de Compose. Des de Nginx, `localhost` seria el contenidor de Nginx, no PHP.
-4. Els dos contenidors veuen el mateix codi en la mateixa ruta; PHP pot obrir el fitxer que Nginx li indica.
-5. `:ro` permet llegir el muntatge, però impedeix escriure-hi des del contenidor.
+1. El navegador conecta al puerto **8092 del anfitrión**, publicado hacia el **80 de Nginx**. El prefijo `127.0.0.1` limita el acceso al propio equipo.
+2. Nginx busca `index.php` en `/srv/cineclub`.
+3. `motor` es el nombre DNS del servicio PHP dentro de la red de Compose. Desde Nginx, `localhost` sería el contenedor de Nginx, no PHP.
+4. Los dos contenedores ven el mismo código en la misma ruta; PHP puede abrir el archivo que le indica Nginx.
+5. `:ro` permite leer el montaje, pero impide escribir en él desde el contenedor.
 
-### Ordres i comprovació
+### Comandos y comprobación
 
-Des de la carpeta `cineclub`:
+Desde la carpeta `cineclub`:
 
 ```bash
 cp .env.example .env
@@ -99,35 +99,35 @@ docker compose config
 docker compose up -d
 docker compose ps
 curl -i http://localhost:8092/
-docker compose logs --tail=30 cartellera motor
+docker compose logs --tail=30 cartelera motor
 docker compose down
 ```
 
-**Resultat esperat:** estat HTTP 200 i una cartellera amb «Sessió de curtmetratges». `config` comprova i resol la configuració; `ps` mostra l'estat; `logs` ajuda a investigar. `down` elimina els contenidors i la xarxa del projecte. `depends_on` ordena l'arrancada, però amb aquesta forma no garanteix que una aplicació estiga preparada per a atendre peticions.
+**Resultado esperado:** estado HTTP 200 y una cartelera con «Sesión de cortometrajes». `config` comprueba y resuelve la configuración; `ps` muestra el estado; `logs` ayuda a investigar. `down` elimina los contenedores y la red del proyecto. `depends_on` ordena el arranque, pero con esta forma no garantiza que una aplicación esté preparada para atender peticiones.
 
-## I si afegim una base de dades?
+## ¿Y si añadimos una base de datos?
 
-MariaDB seria un altre servei, per exemple `arxiu`. PHP connectaria a `arxiu:3306`, no al port de l'amfitrió. Un volum com `dades_arxiu:/var/lib/mysql` conservaria la informació. Els scripts de `/docker-entrypoint-initdb.d/` s'apliquen en la inicialització d'un directori de dades buit; no es tornen a executar simplement perquè edites el SQL.
+MariaDB sería otro servicio, por ejemplo `archivo`. PHP conectaría a `archivo:3306`, no al puerto del anfitrión. Un volumen como `datos_archivo:/var/lib/mysql` conservaría la información. Los scripts de `/docker-entrypoint-initdb.d/` se aplican al inicializar un directorio de datos vacío; no vuelven a ejecutarse simplemente porque edites el SQL.
 
-Un Dockerfile permet derivar una imatge, per exemple amb `FROM php:8.3-fpm-alpine` i `RUN docker-php-ext-install pdo_mysql` per a disposar del controlador PDO de MySQL/MariaDB. Després Compose usa `build:` i cal reconstruir la imatge. La connexió i les consultes es treballen als [apunts complementaris de PDO](../php/05-pdo.md).
+Un Dockerfile permite derivar una imagen, por ejemplo con `FROM php:8.3-fpm-alpine` y `RUN docker-php-ext-install pdo_mysql` para disponer del controlador PDO de MySQL/MariaDB. Después Compose utiliza `build:` y hay que reconstruir la imagen. La conexión y las consultas se trabajan en los [apuntes complementarios de PDO](../php/05-pdo.md).
 
-## `.env`, `environment` i `env_file`
+## `.env`, `environment` y `env_file`
 
-Compose pot llegir `.env` per a substituir `${WEB_PORT}` en el YAML. Això **no introdueix automàticament totes les variables dins de PHP**. `environment:` passa variables concretes al servei; `env_file:` carrega un fitxer de variables dins del contenidor. Un `.env.example` documenta els noms amb valors de prova; les credencials reals no han d'anar al repositori.
+Compose puede leer `.env` para sustituir `${WEB_PORT}` en el YAML. Esto **no introduce automáticamente todas las variables dentro de PHP**. `environment:` pasa variables concretas al servicio; `env_file:` carga un archivo de variables dentro del contenedor. Un `.env.example` documenta los nombres con valores de prueba; las credenciales reales no deben ir al repositorio.
 
-Les etiquetes d'imatge d'aquest exemple són mòbils. Per a repetir exactament una versió cal registrar-ne una versió immutable o el digest, a més del procediment.
+Las etiquetas de imagen de este ejemplo son móviles. Para repetir exactamente una versión debes registrar una versión inmutable o el digest, además del procedimiento.
 
-| Símptoma | Què revises primer |
+| Síntoma | Qué revisas primero |
 | --- | --- |
-| Port ocupat | Canvia `WEB_PORT` i recrea el servei. |
-| 404 | Fitxer, `root`, ruta del muntatge i URL. |
-| 502 | Estat de `motor`, nom DNS i port FastCGI. |
-| PHP no veu una variable | `environment` o `env_file`, no només `.env`. |
-| Dades desaparegudes | Volum usat i si s'ha eliminat. `down -v` elimina volums. |
+| Puerto ocupado | Cambia `WEB_PORT` y recrea el servicio. |
+| 404 | Archivo, `root`, ruta del montaje y URL. |
+| 502 | Estado de `motor`, nombre DNS y puerto FastCGI. |
+| PHP no ve una variable | `environment` o `env_file`, no solo `.env`. |
+| Los datos han desaparecido | Volumen utilizado y si se ha eliminado. `down -v` elimina volúmenes. |
 
-!!! success "Per a repassar"
-    Explica cada costat d'un port i d'un muntatge. Per a reconstruir el projecte necessites codi, configuració, variables documentades i passos de verificació.
+!!! success "Para repasar"
+    Explica cada lado de un puerto y de un montaje. Para reconstruir el proyecto necesitas código, configuración, variables documentadas y pasos de verificación.
 
 ---
 
-Font del temari: [apunts originals de UT1](https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de UT1](https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

@@ -1,166 +1,164 @@
-# Consells de programadors
+# Consejos de programación
 
-Una selecció d'idees del llibre *100 cosas que todo programador debería saber* (inspirat en *97 Things Every Programmer Should Know*), explicades amb paraules nostres i aplicades a scripts de Bash, Python, PowerShell i PHP. Entre parèntesis, la persona a qui el llibre atribuïx cada idea.
+Una selección de ideas sobre programación clara, práctica y mantenimiento del código, aplicada a Bash, Python, PowerShell y PHP. Conserva los temas de la sección anterior del repositorio, con explicaciones en castellano. Las referencias entre paréntesis recogen las atribuciones utilizadas en aquella selección.
 
-## 1. El codi es llig molt més que s'escriu (Guido van Rossum)
+## 1. El código se lee mucho más de lo que se escribe (Guido van Rossum)
 
-Passes molt més temps **llegint** codi (el teu de la setmana passada, el d'un company) que escrivint-lo. Escriu pensant en qui l'haurà de llegir: tu d'ací a uns mesos.
+Pasas tiempo leyendo código propio y ajeno. Escribe pensando también en quien tenga que entenderlo dentro de unos meses.
 
 ```bash
-# ❌ Què és $a? Què fa?
+# ❌ Nombres poco claros y división incorrecta de nombres con espacios
 for a in $(ls /home); do du -sh /home/$a; done
 
-# ✅ S'entén llegint-lo
-for usuari in /home/*/; do
-    du -sh "$usuari"
+# ✅ El recorrido y la intención se entienden mejor
+for usuario in /home/*/; do
+    du -sh "$usuario"
 done
 ```
 
-**La prova**: llig-lo en veu alta. Si sona com una frase que s'entén, està bé.
+Léelo en voz alta: ¿puedes explicar qué recorre y qué hace con cada elemento?
 
-## 2. Els noms expliquen la intenció (Robert C. Martin)
+## 2. Los nombres explican la intención (Robert C. Martin)
 
-Un bon nom estalvia un comentari.
+Un nombre preciso puede ahorrar un comentario. Estos fragmentos son esquemas: las colecciones y las funciones tendrían que definirse en el programa completo.
 
 ```python
-# ❌
+# ❌ Poco contexto
 d = 7
 for f in fs:
-    if edat(f) > d: ...
+    if edad(f) > d: ...
 
-# ✅
-DIES_A_CONSERVAR = 7
-for copia in copies:
-    if dies_des_de(copia) > DIES_A_CONSERVAR: ...
+# ✅ La regla queda visible
+DIAS_A_CONSERVAR = 7
+for copia in copias:
+    if dias_desde(copia) > DIAS_A_CONSERVAR: ...
 ```
 
-- Variables: el **què** (`total_alumnes`, `fitxer_log`). Funcions: un **verb** (`crear_usuari`, `comprova_disc`).
-- En PowerShell, la convenció ja t'ajuda: `Verb-Nom` (`Get-Service`, `New-LocalUser`).
+Usa nombres de datos para las variables, como `total_alumnos` o `archivo_log`, y acciones para las funciones, como `crear_usuario` o `comprobar_disco`. En PowerShell, los cmdlets siguen la forma `Verbo-Sustantivo`, como `Get-Service`.
 
-## 3. Una funció fa una sola cosa (Robert C. Martin)
+## 3. Una función tiene una responsabilidad clara (Robert C. Martin)
 
-Si una funció valida, calcula, escriu un fitxer i envia un correu, és difícil de provar i d'arreglar. Divideix-la: la funció principal es llig com un índex.
+Si valida, calcula, escribe archivos y envía mensajes, resulta difícil probarla. Divide responsabilidades para que el flujo principal se lea como un índice. Este ejemplo es pseudocódigo de shell con funciones todavía por implementar:
 
 ```bash
 main() {
-    comprova_permisos
-    crea_carpeta_copies
-    fes_copia "/home"
-    esborra_copies_velles 7
+    comprobar_permisos
+    crear_carpeta_copias
+    hacer_copia "/home"
+    borrar_copias_antiguas 7
 }
 ```
 
-## 4. Divideix el problema fins que cada part siga trivial (Edsger W. Dijkstra)
+## 4. Divide el problema en partes manejables (Edsger W. Dijkstra)
 
-Un problema difícil és un conjunt de problemes fàcils que encara no has separat. Abans d'escriure codi, escriu els passos en paraules (o en comentaris) i resol-los un a un, **provant cada pas**. Vegeu [el mètode](../bash/metode.md).
+Antes de programar, escribe los pasos y resuélvelos uno a uno, **probando cada paso**. Consulta el [método complementario](../bash/metode.md).
 
-## 5. Fes que funcione, després fes-ho bé (Kent Beck)
+## 5. Haz que funcione y después mejóralo (Kent Beck)
 
-L'ordre és: **que funcione** → **que estiga ben fet** (noms, funcions, sense repetir) → **que vaja ràpid** (només si cal). No intentes fer-ho perfecte a la primera: primer una versió senzilla que funcione, i després la millores.
+Empieza por una versión sencilla que cumpla el objetivo. Después mejora nombres, funciones y duplicaciones. Optimiza cuando exista una necesidad concreta y puedas medirla.
 
-## 6. La simplicitat és la base de la fiabilitat (Dijkstra)
+## 6. La sencillez ayuda a mantener la fiabilidad (Dijkstra)
 
-El codi més senzill és el que menys falla. Si hi ha una forma clara i una d'«enginyosa», tria la clara. Depurar és més difícil que escriure el codi (Brian Kernighan): si l'escrius al límit de la teua intel·ligència, no seràs capaç de depurar-lo.
+Elige una solución que puedas explicar y depurar. Una expresión compacta no es necesariamente más clara.
 
 ```python
-# ❌ «Enginyós»
-r=[x*2 for x in l if not x%2]
+numeros = [1, 2, 3, 4]
 
-# ✅ Clar
-parells = [n for n in numeros if n % 2 == 0]
-dobles = [n * 2 for n in parells]
+# ❌ La intención cuesta más de leer
+r = [x * 2 for x in numeros if not x % 2]
+
+# ✅ Dos pasos con nombres descriptivos
+pares = [n for n in numeros if n % 2 == 0]
+dobles = [n * 2 for n in pares]
+print(dobles)  # [4, 8]
 ```
 
-## 7. Explícit millor que implícit (Guido van Rossum)
+## 7. Haz explícitas las decisiones (Guido van Rossum)
 
-Que el codi diga el que fa, sense haver d'endevinar.
+El programa debe mostrar qué presupone y cómo actúa. Opciones como `set -u` o `pipefail` ayudan, pero debes entender sus efectos y tratar los fallos esperables.
 
 ```bash
-set -euo pipefail                 # que l'script s'ature si alguna cosa falla
-rm -rf -- "${CARPETA:?no definida}"/*   # si $CARPETA està buida, s'atura (i no esborra /*)
-```
-
-```powershell
-Remove-Item -Path $Carpeta -Recurse -WhatIf      # primer, mira què faria
-```
-
-## 8. El millor error és el que s'explica sol (Evan Czaplicki)
-
-Quan el teu script falla, que diga **què** ha passat i **com** arreglar-ho.
-
-```bash
-# ❌
-[[ -f "$1" ]] || exit 1
-
-# ✅
-if [[ ! -f "$1" ]]; then
-    echo "Error: no trobe el fitxer '$1'." >&2
-    echo "Ús: $0 fitxer_usuaris.txt" >&2
+# Comprobar una ruta antes de trabajar con ella
+if [[ -z "${CARPETA_TRABAJO:-}" ]]; then
+    printf 'Falta definir CARPETA_TRABAJO\n' >&2
     exit 1
 fi
 ```
 
-## 9. Per a arreglar un error, primer reproduïx-lo (Julia Evans)
+En PowerShell, muchas operaciones admiten `-WhatIf` para consultar qué harían antes de ejecutarlas:
 
-No canvies coses a l'atzar esperant que funcione. Observa → fes una hipòtesi → **fes que falle sempre igual** → arregla → comprova. Si un error «a vegades passa», encara no l'entens.
-
-## 10. Si ho fas tres vegades, automatitza-ho (Jeff Atwood)
-
-La primera vegada aprens, la segona confirmes, la tercera és hora d'un script. És el sentit de saber Bash, PowerShell, Python, Docker Compose o Ansible.
-
-## 11. Git és la teua màquina del temps (Julia Evans, Linus Torvalds)
-
-Un missatge de commit és l'única explicació que tindràs d'ací a uns mesos de **per què** vas canviar alguna cosa.
-
-```bash
-# ❌
-git commit -m "fix"
-git commit -m "canvis"
-
-# ✅
-git commit -m "Corregix la còpia quan la carpeta té espais"
-git commit -m "Afig la validació del correu al formulari de contacte"
+```powershell
+Remove-Item -Path $Carpeta -Recurse -WhatIf
 ```
 
-- Commits **menuts** i amb una sola idea.
-- Titular curt (unes 50 lletres), en present: *Afig*, *Corregix*, *Esborra*.
-- Vegeu [Git](../git/index.md).
+## 8. El mensaje de error debe ayudar (Evan Czaplicki)
 
-## 12. La terminal és el teu superpoder (Jessie Frazelle)
+Explica qué ha ocurrido y cómo continuar.
 
-Tot el que fas amb el ratolí es pot fer, repetir i automatitzar des del terminal. Com més còmode estigues en Bash i PowerShell, més ràpid treballaràs. I els **contenidors** permeten provar programes sense embrutar el teu sistema: `docker run --rm -it ubuntu bash`.
+```bash
+if [[ ! -f "${1:-}" ]]; then
+    printf 'Error: indica un archivo existente.\n' >&2
+    printf 'Uso: %s archivo_usuarios.txt\n' "$0" >&2
+    exit 1
+fi
+```
 
-## 13. La seguretat comença en el codi (Parisa Tabriz)
+## 9. Para corregir un fallo, reprodúcelo primero (Julia Evans)
 
-Les tres regles que eviten la majoria de problemes en una aplicació web ([PHP](../php/index.md)):
+Observa, formula una hipótesis, consigue reproducir el fallo, corrige y vuelve a comprobar. Cambiar cosas al azar puede ocultar el problema sin entenderlo.
 
-1. **Valida** el que arriba de l'usuari.
-2. **Escapa** el que mostres (`htmlspecialchars`).
-3. **Prepara** les consultes a la base de dades (mai concatenar).
+## 10. Si lo repites, considera automatizarlo (Jeff Atwood)
 
-I mai contrasenyes dins del codi ni en Git.
+La repetición revela oportunidades para practicar scripts y ahorrar pasos. Antes de automatizar, entiende el procedimiento manual y cómo detectar sus errores.
 
-## 14. El codi de la IA s'ha de revisar (Andrej Karpathy)
+## 11. Git conserva el motivo de los cambios (Julia Evans, Linus Torvalds)
 
-La IA genera codi que «funciona» però que pot ser insegur o incorrecte (SQL concatenat, dades sense escapar, claus d'exemple que pareixen reals). És una ajuda molt bona, però **tu** has d'entendre i revisar cada línia, i provar-la. Les bases que aprens en el cicle són el que et permet saber si el que proposa és bo.
+Un mensaje útil explica por qué cambió el proyecto.
 
-## 15. No reinventes la roda (Kent C. Dodds)
+```bash
+# ❌ Poco informativo
+git commit -m "fix"
 
-Abans de fer un script de 100 línies, mira si ja hi ha una ordre o un mòdul que ho fa (`rsync`, `find -mtime`, `pathlib`, `Get-ChildItem -Recurse`). Excepte si l'estàs fent **per a aprendre**: aleshores, fes-la!
+# ✅ Cambio concreto
+git commit -m "Corrige la copia de carpetas con espacios"
+git commit -m "Añade la validación del correo al formulario"
+```
 
-## 16. Aprén fent, i aprén en públic (Limor Fried, Cassidy Williams)
+Haz commits pequeños y coherentes, con un título breve en presente: «Añade», «Corrige» o «Elimina». Consulta el [tema independiente de Git y GitHub](../git-github/index.md).
 
-- La millor manera d'aprendre és **construir** alguna cosa teua: un script que t'estalvie feina, una web en Docker, un CRUD en PHP.
-- Comparteix el que aprens (un README en el teu GitHub, explicar-ho a un company): explicar-ho t'obliga a entendre-ho, i reps correccions.
-- No cal ser expert per a ensenyar: només cal saber una cosa que algú altre encara no sap.
+## 12. El terminal permite repetir procesos (Jessie Frazelle)
 
-## 17. Pregunta el que no saps, encara que semble obvi (Julia Evans)
+Conocer el terminal ayuda a repetir tareas y automatizarlas. Los contenedores permiten probar programas en entornos separados; por ejemplo, `docker run --rm -it ubuntu bash` abre una shell en un contenedor temporal, si Docker está disponible.
 
-Tothom té dubtes «bàsics». Pregunta de manera **concreta** («Què passa exactament quan escric `ls` i prem Intro?») i apunta el que aprens.
+## 13. La seguridad empieza al escribir el código (Parisa Tabriz)
 
-## 18. Cuida la teua salut (Cassidy Williams)
+Tres hábitos para aplicaciones web:
 
-Cremar-se no demostra que treballes molt: demostra que alguna cosa no va bé. Descansa, dorm, i no medeixes el teu valor per les hores davant de la pantalla.
+1. **Valida** lo que llega del usuario.
+2. **Escapa** los datos al insertarlos en el contexto de salida correspondiente.
+3. **Prepara** las consultas a la base de datos en lugar de concatenar entradas.
 
-!!! success "En una frase"
-    Codi **clar** (bons noms, funcions menudes, errors que s'expliquen), fet **pas a pas** i provant, guardat en **Git** amb bons missatges, **segur** per defecte, i aprenent **fent**.
+Mantén las credenciales reales fuera del código y del historial de Git.
+
+## 14. Revisa el código generado por IA (Andrej Karpathy)
+
+Una respuesta puede parecer correcta y contener un fallo lógico o de seguridad. Entiende las decisiones, revisa los datos que recibe y prueba casos correctos e incorrectos. Las bases que estudias te permiten valorar la propuesta.
+
+## 15. Comprueba si ya existe una herramienta (Kent C. Dodds)
+
+Antes de escribir un script largo, revisa comandos o módulos como `rsync`, `find`, `pathlib` o `Get-ChildItem`. Si el objetivo es aprender a implementar algo, construir una versión propia también puede ser un buen ejercicio.
+
+## 16. Aprende construyendo y explicando (Limor Fried, Cassidy Williams)
+
+Crea algo útil a pequeña escala: un script, una web local o una aplicación sencilla. Documenta lo aprendido y explícalo; las preguntas de otra persona pueden revelar detalles que no habías entendido.
+
+## 17. Pregunta lo que no sepas (Julia Evans)
+
+Formula dudas concretas: «¿Qué ocurre cuando escribo `ls` y pulso Intro?». Anota la respuesta y prepara una prueba que te permita comprobarla.
+
+## 18. Cuida tu salud (Cassidy Williams)
+
+Descansa y organiza un ritmo sostenible. Tu aprendizaje no se mide solo por las horas delante de la pantalla.
+
+!!! success "Para repasar"
+    Código claro, responsabilidades pequeñas, pruebas paso a paso, mensajes útiles y cambios guardados en Git. Aprende haciendo y revisando lo que haces.

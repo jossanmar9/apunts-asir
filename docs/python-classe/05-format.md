@@ -1,61 +1,61 @@
-# UT2 · 2. F-strings, formats i Unicode
+# UT2 · 2. F-strings, formatos y Unicode
 
-## El valor i la seua presentació són coses diferents
+## El valor y su presentación son cosas diferentes
 
-Una f-string transforma expressions en text. El format `:.2f` mostra dues xifres decimals; `:03d` mostra un enter amb almenys tres xifres i zeros a l'esquerra. El valor numèric original no canvia perquè el mostres amb un format.
+Una f-string transforma expresiones en texto. El formato `:.2f` muestra dos cifras decimales; `:03d` muestra un entero con al menos tres cifras y ceros a la izquierda. El valor numérico original no cambia porque lo muestres con un formato.
 
-## Exemple resolt: targeta d'una mostra mineral
+## Ejemplo resuelto: tarjeta de una muestra mineral
 
 ```python
-codi = 7
-massa = 12.375
-mineral = "quars"
-print(f"M-{codi:03d} | {mineral.upper()} | {massa:.2f} g")
-print(f"{massa=}")
-print(f"Etiqueta literal: {{M-{codi:03d}}}")
+codigo = 7
+masa = 12.375
+mineral = "cuarzo"
+print(f"M-{codigo:03d} | {mineral.upper()} | {masa:.2f} g")
+print(f"{masa=}")
+print(f"Etiqueta literal: {{M-{codigo:03d}}}")
 ```
 
-**Eixida esperada:**
+**Salida esperada:**
 
 ```text
-M-007 | QUARS | 12.38 g
-massa=12.375
+M-007 | CUARZO | 12.38 g
+masa=12.375
 Etiqueta literal: {M-007}
 ```
 
-1. `:03d` no altera el codi 7; crea la representació `007`.
-2. `:.2f` arredoneix la representació per a mostrar-la. No converteix `massa` en 12.38.
-3. `{massa=}` mostra el nom de l'expressió i el seu valor; és útil en depuració.
-4. `{{` i `}}` permeten escriure claus literals dins d'una f-string.
+1. `:03d` no altera el código 7; crea la representación `007`.
+2. `:.2f` redondea la representación para mostrarla. No convierte `masa` en 12.38.
+3. `{masa=}` muestra el nombre de la expresión y su valor; resulta útil al depurar.
+4. `{{` y `}}` permiten escribir llaves literales dentro de una f-string.
 
-També pots usar `:d` per a enters, `:f` per a decimals i `:s` per a cadenes. Un format incompatible amb el tipus produeix error. `str(codi).zfill(3)` és una alternativa per a obtindre `007` com a text.
+También puedes utilizar `:d` para enteros, `:f` para decimales y `:s` para cadenas. Un formato incompatible con el tipo produce un error. `str(codigo).zfill(3)` es una alternativa para obtener `007` como texto.
 
-## Unicode i comparació
+## Unicode y comparación
 
-Python representa text amb Unicode. `ord(caracter)` obté el punt de codi i `chr(numero)` fa el recorregut invers:
+Python representa texto con Unicode. `ord(caracter)` obtiene el punto de código y `chr(numero)` hace el recorrido inverso:
 
 ```python
-print(ord("Ω"))        # 937
-print(chr(937))        # Ω
-print("Z" < "a")       # True
-print("Quars" == "quars")  # False
+print(ord("Ω"))           # 937
+print(chr(937))           # Ω
+print("Z" < "a")          # True
+print("Cuarzo" == "cuarzo")  # False
 ```
 
-La comparació de cadenes és lexicogràfica per punts de codi, no una ordenació alfabètica adaptada a la llengua. Si l'usuari ha d'escriure una ordre independentment de majúscules, normalitza amb `strip().lower()` o `casefold()` segons el cas. Passar a minúscules no elimina accents ni converteix automàticament dos textos Unicode visualment iguals en la mateixa seqüència de caràcters.
+La comparación de cadenas es lexicográfica por puntos de código, no una ordenación alfabética adaptada a la lengua. Si el usuario debe escribir una orden independientemente de las mayúsculas, normaliza con `strip().lower()` o `casefold()` según el caso. Pasar a minúsculas no elimina acentos ni convierte automáticamente dos textos Unicode visualmente iguales en la misma secuencia de caracteres.
 
-## Cas resolt: per què falla un filtre?
+## Caso resuelto: ¿por qué falla un filtro?
 
-**Situació:** esperes `"quars"`, però reps `" Quars "`. La igualtat directa és falsa. Primer neteja els extrems amb `strip()` i després converteix el cas amb `lower()`; el resultat és `"quars"`. Si reps `"quars blau"`, continuarà sent un text diferent: normalitzar no significa ignorar qualsevol diferència.
+**Situación:** esperas `"cuarzo"`, pero recibes `" Cuarzo "`. La igualdad directa es falsa. Primero limpia los extremos con `strip()` y después convierte el caso con `lower()`; el resultado es `"cuarzo"`. Si recibes `"cuarzo azul"`, seguirá siendo un texto diferente: normalizar no significa ignorar cualquier diferencia.
 
-| Error | Comprovació |
+| Error | Comprobación |
 | --- | --- |
-| Claus sense substituir | Falta `f` al principi. |
-| `ValueError` amb format `d` | El valor no és un enter compatible amb el format. |
-| Comparació sorprenent | Mira majúscules, espais i representació amb `repr`. |
+| Llaves sin sustituir | Falta `f` al principio. |
+| `ValueError` con formato `d` | El valor no es un entero compatible con el formato. |
+| Comparación sorprendente | Mira mayúsculas, espacios y representación con `repr`. |
 
-!!! success "Per a repassar"
-    Separa el càlcul del format. Per a comprovar text, defineix primer quines diferències vols acceptar.
+!!! success "Para repasar"
+    Separa el cálculo del formato. Para comprobar texto, define primero qué diferencias quieres aceptar.
 
 ---
 
-Fonts del temari: [03-formateo-fstrings-unicode](https://victoria-nr.github.io/python-intro-alumnos/unidades/u02-objetos-cadenas/teoria/03-formateo-fstrings-unicode/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [03-formateo-fstrings-unicode](https://victoria-nr.github.io/python-intro-alumnos/unidades/u02-objetos-cadenas/teoria/03-formateo-fstrings-unicode/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

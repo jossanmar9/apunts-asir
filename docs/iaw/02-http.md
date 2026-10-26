@@ -1,13 +1,13 @@
-# UT1 · 2. HTTP: peticions, respostes i diagnòstic
+# UT1 · 2. HTTP: peticiones, respuestas y diagnóstico
 
-## Què viatja per la xarxa
+## Qué viaja por la red
 
-HTTP defineix com un client demana una acció i com un servidor contesta. HTTPS protegeix eixa comunicació amb TLS. Una petició inclou un mètode, una ruta, capçaleres i, de vegades, un cos. La resposta inclou un estat, capçaleres i, habitualment, un cos.
+HTTP define cómo un cliente solicita una acción y cómo contesta un servidor. HTTPS protege esa comunicación mediante TLS. Una petición incluye un método, una ruta, cabeceras y, a veces, un cuerpo. La respuesta incluye un estado, cabeceras y, habitualmente, un cuerpo.
 
-Exemple didàctic d'una API de préstec de material audiovisual:
+Ejemplo didáctico de una API de préstamo de material audiovisual:
 
 ```http
-GET /api/prestecs/73 HTTP/1.1
+GET /api/prestamos/73 HTTP/1.1
 Host: material.example
 Accept: application/json
 ```
@@ -16,56 +16,56 @@ Accept: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
-{"codi":73,"material":"Projector","estat":"reservat"}
+{"codigo":73,"material":"Proyector","estado":"reservado"}
 ```
 
-`GET` és l'acció, `/api/prestecs/73` és el recurs i `Accept` indica què accepta el client. `Content-Type` descriu el contingut que realment retorna el servidor. La línia en blanc separa capçaleres i cos. `.example` s'usa ací com a domini fictici; aquesta resposta és il·lustrativa.
+`GET` es la acción, `/api/prestamos/73` es el recurso y `Accept` indica qué acepta el cliente. `Content-Type` describe el contenido que realmente devuelve el servidor. La línea en blanco separa cabeceras y cuerpo. `.example` se utiliza como dominio ficticio; esta respuesta es ilustrativa.
 
-## Quin mètode trie?
+## ¿Qué método elijo?
 
-| Mètode | Intenció habitual | Exemple del magatzem |
+| Método | Intención habitual | Ejemplo del almacén |
 | --- | --- | --- |
-| GET | Consultar sense modificar l'estat del servidor | Veure un préstec |
-| POST | Enviar dades per a processar-les o crear un recurs | Demanar un préstec |
-| PUT | Substituir la representació d'un recurs | Canviar una fitxa completa |
-| PATCH | Modificar alguns camps | Canviar només la data de retorn |
-| DELETE | Eliminar un recurs | Eliminar una reserva |
+| GET | Consultar sin modificar el estado del servidor | Ver un préstamo |
+| POST | Enviar datos para procesarlos o crear un recurso | Solicitar un préstamo |
+| PUT | Sustituir la representación de un recurso | Cambiar una ficha completa |
+| PATCH | Modificar algunos campos | Cambiar solo la fecha de devolución |
+| DELETE | Eliminar un recurso | Eliminar una reserva |
 
-POST no xifra les dades: la protecció en trànsit depén d'HTTPS. GET posa els paràmetres d'un formulari en la URL; POST els envia habitualment al cos. Les capçaleres `Cookie`, `Authorization` i `Content-Type` tenen funcions diferents: estat del navegador, autenticació i format de dades, respectivament.
+POST no cifra los datos: la protección en tránsito depende de HTTPS. GET coloca los parámetros de un formulario en la URL; POST los envía habitualmente en el cuerpo. Las cabeceras `Cookie`, `Authorization` y `Content-Type` tienen funciones diferentes: estado del navegador, autenticación y formato de los datos, respectivamente.
 
-## Cas resolt: la petició arriba, però què falla?
+## Caso resuelto: la petición llega, pero ¿qué falla?
 
-**Situació:** una consulta al servei de préstecs retorna `404`; una altra petició a PHP retorna `502`.
+**Situación:** una consulta al servicio de préstamos devuelve `404`; otra petición a PHP devuelve `502`.
 
-1. Un `404` és una resposta HTTP: has contactat amb un servidor. Revisa la ruta, el fitxer, l'identificador i la configuració que resol les rutes.
-2. Un `502` de Nginx apunta a un problema en la comunicació amb el servei que té darrere. Revisa si PHP-FPM està actiu i si `fastcgi_pass` usa el nom i el port correctes. No demostra per si sol que el codi PHP siga incorrecte.
-3. Si `curl` diu que no es pot connectar, encara no hi ha resposta HTTP: revisa servei, port publicat i adreça.
+1. Un `404` es una respuesta HTTP: has contactado con un servidor. Revisa la ruta, el archivo, el identificador y la configuración que resuelve las rutas.
+2. Un `502` de Nginx apunta a un problema de comunicación con el servicio que tiene detrás. Revisa si PHP-FPM está activo y si `fastcgi_pass` utiliza el nombre y el puerto correctos. No demuestra por sí solo que el código PHP sea incorrecto.
+3. Si `curl` indica que no se puede conectar, todavía no hay respuesta HTTP: revisa servicio, puerto publicado y dirección.
 
-En el laboratori del tema següent pots observar les respostes amb:
+En el laboratorio del siguiente tema puedes observar las respuestas con:
 
 ```bash
 curl -i http://localhost:8092/
 curl -I http://localhost:8092/
 ```
 
-`-i` mostra capçaleres i cos. `-I` demana només capçaleres amb HEAD; una aplicació pot tractar HEAD de manera diferent. Amb F12 → Xarxa → recarregar, el navegador permet inspeccionar també mètodes, redireccions i recursos secundaris.
+`-i` muestra cabeceras y cuerpo. `-I` solicita solo cabeceras mediante HEAD; una aplicación puede tratar HEAD de forma distinta. Con F12 → Red → recargar, el navegador también permite inspeccionar métodos, redirecciones y recursos secundarios.
 
-## Els estats que necessites reconéixer
+## Los estados que necesitas reconocer
 
-| Estat | Lectura útil |
+| Estado | Lectura útil |
 | --- | --- |
-| 200 / 201 | Operació correcta / recurs creat |
-| 301 / 302 / 303 | Redirecció; mira `Location` |
-| 400 | Petició que l'aplicació considera incorrecta |
-| 401 | Cal autenticar-se correctament |
-| 403 | Accés rebutjat |
-| 404 | Recurs no trobat |
-| 500 | Fallada interna; revisa els logs |
-| 502 / 503 | Problema amb el servei posterior / servei no disponible |
+| 200 / 201 | Operación correcta / recurso creado |
+| 301 / 302 / 303 | Redirección; consulta `Location` |
+| 400 | Petición que la aplicación considera incorrecta |
+| 401 | Hay que autenticarse correctamente |
+| 403 | Acceso rechazado |
+| 404 | Recurso no encontrado |
+| 500 | Fallo interno; revisa los logs |
+| 502 / 503 | Problema con el servicio posterior / servicio no disponible |
 
-!!! success "Per a repassar"
-    Separa mètode, ruta, capçaleres, cos i estat. Un codi HTTP orienta el diagnòstic, però cal contrastar-lo amb la petició i els logs.
+!!! success "Para repasar"
+    Separa método, ruta, cabeceras, cuerpo y estado. Un código HTTP orienta el diagnóstico, pero debes contrastarlo con la petición y los logs.
 
 ---
 
-Font del temari: [apunts originals de UT1](https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de UT1](https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

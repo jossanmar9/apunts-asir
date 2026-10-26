@@ -1,148 +1,147 @@
-# Com estudiar i aprendre més ràpid
+# Cómo estudiar y aprender más rápido
 
-Programar (Bash, PowerShell, Python, PHP) i usar eines com Git o Docker **no s'aprén llegint**: s'aprén **fent**. Esta pàgina és un mètode senzill per a estudiar menys hores i recordar més.
+Programar (Bash, PowerShell, Python, PHP) y utilizar herramientas como Git o Docker **se aprende haciendo**. Esta página propone un método sencillo para aprovechar mejor las horas de estudio y recordar más.
 
-## 1. Fes, no llegisques
+## 1. Haz, no te limites a leer
 
-Llegir uns apunts dona la sensació que ho entens. Però fins que no ho escrius tu, no ho saps.
+Leer unos apuntes puede dar la sensación de entenderlos. Escribir y probar por tu cuenta permite comprobarlo.
 
-| ❌ Estudiar «passiu» | ✅ Estudiar «actiu» |
-| -------------------- | ------------------- |
-| Rellegir els apunts tres vegades | Llegir **un** exemple i escriure'l tu en el terminal |
-| Subratllar | Canviar l'exemple i veure què passa |
-| Veure vídeos un darrere l'altre | Fer un exercici **sense mirar** la solució |
-| Copiar la solució | Intentar-ho 15 minuts, i només després mirar-la |
+| ❌ Estudio pasivo | ✅ Estudio activo |
+| --- | --- |
+| Releer los apuntes tres veces | Leer **un** ejemplo y escribirlo en el terminal |
+| Subrayar | Cambiar el ejemplo y observar qué ocurre |
+| Ver vídeos uno detrás de otro | Hacer un ejercicio **sin mirar** la solución |
+| Copiar la solución | Intentarlo 15 minutos y consultarla después |
 
-!!! tip "La regla dels 15 minuts"
-    Quan comences un tema, els primers 15 minuts han de ser **fent** alguna cosa que funcione (un `hola.sh`, un `docker run hello-world`), no llegint teoria. Si funciona prompte, et quedes amb ganes de continuar.
+!!! tip "La regla de los 15 minutos"
+    Al empezar un tema, dedica los primeros 15 minutos a **hacer** algo que funcione: un `hola.sh` o un `docker run hello-world`. Una comprobación temprana ayuda a continuar con un objetivo concreto.
 
-**La trampa dels tutorials**: veure tutorial rere tutorial sense fer res teu és procrastinar disfressat d'estudiar. Després de cada tutorial, fes **alguna cosa diferent** amb el que has vist.
+**La trampa de los tutoriales:** ver tutorial tras tutorial sin crear nada propio retrasa la práctica. Después de cada tutorial, haz **algo diferente** con lo que has aprendido.
 
-## 2. Una sessió d'estudi de 50 minuts
-
-```text
- 5 min   Recordar SENSE mirar: què vaig fer l'última vegada? (escriu-ho en un paper)
-25 min   Fer: llegir un apartat i provar CADA exemple en el terminal
- 5 min   Descans (lluny de la pantalla)
-10 min   Un exercici sense mirar la solució
- 5 min   Apuntar en la teua xuleta el que has après i els errors que t'han eixit
-```
-
-- **Màquina virtual** per a practicar: si la trenques, no passa res. Fes una **instantània** abans de provar coses perilloses.
-- **El mòbil fora** de la taula. Cada interrupció costa uns minuts de tornar a concentrar-se.
-
-## 3. Recordar, no rellegir (*active recall*)
-
-El cervell aprén quan ha de **traure** la informació, no quan la torna a veure.
-
-- Abans d'obrir els apunts, pregunta't: *«Com era el bucle `for` en Bash?»* Intenta escriure'l. Després comprova-ho.
-- Tapa la solució dels exercicis i fes-los de nou uns dies després.
-- Fes-te **targetes** (paper o una app com Anki): per davant la pregunta, per darrere la resposta.
-
-| Davant | Darrere |
-| ------ | ------- |
-| Bash: comprovar si existix un fitxer | `if [[ -f "$fitxer" ]]; then ...` |
-| Git: desfer l'últim commit sense perdre els canvis | `git reset --soft HEAD~1` |
-| Docker: veure els contenidors parats | `docker ps -a` |
-| PHP: evitar XSS | `htmlspecialchars($x)` |
-
-## 4. Repetir espaiat
-
-Repassar **poc i sovint** és molt millor que molt el dia abans de l'examen.
+## 2. Una sesión de estudio de 50 minutos
 
 ```text
-Dia 0: aprens el tema      Dia 1: repàs ràpid (10 min)      Dia 3: repàs
-Dia 7: repàs               Dia 15: exercici del tema sense mirar
+ 5 min   Recordar SIN mirar: ¿qué hice la última vez? Escríbelo.
+25 min   Hacer: leer un apartado y probar CADA ejemplo en el terminal.
+ 5 min   Descansar lejos de la pantalla.
+10 min   Resolver un ejercicio sin mirar la solución.
+ 5 min   Anotar en tu chuleta lo aprendido y los errores encontrados.
 ```
 
-Cada vegada costa menys. Si una cosa ja la saps, l'espaies més; si l'has oblidada, tornes a començar.
+- Utiliza una **máquina virtual** para practicar y toma una **instantánea** antes de probar cambios importantes.
+- Deja el **móvil fuera** de la mesa. Las interrupciones dificultan mantener la concentración.
 
-## 5. Explica-ho amb paraules senzilles (tècnica Feynman)
+## 3. Recordar sin mirar: recuperación activa
 
-Si no ho saps explicar de manera senzilla, encara no ho entens del tot.
+Intenta recuperar la información antes de volver a leerla. Así puedes distinguir lo que recuerdas de lo que solo reconoces al verlo.
 
-1. Tria un concepte: *«Què és un volum de Docker?»*
-2. Explica-ho en veu alta (o per escrit) com si parlares amb algú que no sap res d'informàtica.
-3. On t'entrebanques o necessites paraules tècniques, **ahí hi ha el forat**.
-4. Torna als apunts per a eixe trosset i tornar-ho a explicar.
+- Antes de abrir los apuntes, pregúntate: *«¿Cómo era el bucle `for` en Bash?»*. Intenta escribirlo y compruébalo después.
+- Tapa la solución de los ejercicios y vuelve a resolverlos unos días más tarde.
+- Prepara **tarjetas** en papel o en una aplicación: pregunta delante y respuesta detrás.
 
-Explicar-ho a un company (o fer-li les preguntes) és el millor repàs que hi ha.
+| Delante | Detrás |
+| --- | --- |
+| Bash: comprobar si existe un archivo | `if [[ -f "$archivo" ]]; then ...` |
+| Git: deshacer el último commit local sin perder los cambios | `git reset --soft HEAD~1` |
+| Docker: ver también los contenedores detenidos | `docker ps -a` |
+| PHP: escapar texto al insertarlo en HTML | `htmlspecialchars($x, ENT_QUOTES, 'UTF-8')` |
 
-## 6. Els errors són la millor classe
+## 4. Repetición espaciada
 
-Quan alguna cosa falla:
+Distribuye los repasos a lo largo de los días, en lugar de concentrarlos todos antes del examen.
 
-1. **Llig el missatge d'error sencer**, sense por. Quasi sempre diu què passa i on (la línia).
-2. **Reprodueix-lo**: fes que torne a fallar de la mateixa manera. Si «a vegades falla», encara no saps per què.
-3. **Divideix**: comenta la meitat del codi o prova cada ordre per separat fins a trobar la que falla.
-4. **Busca** el missatge exacte (entre cometes) en el buscador.
-5. **Apunta'l** en la teua xuleta: error → causa → solució. Cada tema d'estos apunts acaba amb una taula d'**errors típics** per això.
+```text
+Día 0: aprender el tema       Día 1: repaso rápido de 10 minutos
+Día 3: repasar                Día 7: repasar
+Día 15: resolver un ejercicio del tema sin mirar
+```
 
-| Eina | Per a què |
-| ---- | --------- |
-| `bash -x script.sh` | veure cada línia que s'executa |
-| [ShellCheck](https://www.shellcheck.net/) | trobar errors en scripts de Bash |
-| `print()` / `echo` / `Write-Host` | veure el valor de les variables en un punt |
-| `php -l fitxer.php` | comprovar la sintaxi de PHP |
-| `git status` | saber en quin estat està el repositori **sempre** |
-| `docker logs nom` | per què ha fallat un contenidor |
+Es una pauta de partida, no un calendario obligatorio. Si recuerdas bien un concepto, separa más los repasos; si lo has olvidado, vuelve a practicarlo antes.
 
-## 7. Problemes grans → problemes menuts
+## 5. Explícalo con palabras sencillas
 
-Un exercici difícil és només un grapat d'exercicis fàcils que encara no has separat.
+Si no consigues explicar un concepto con claridad, revisa qué parte te falta comprender.
 
-!!! example "«Fes un script que faça una còpia de seguretat de /home cada nit i esborre les de més de 7 dies»"
-    1. Fer un `tar` de `/home` a mà, en el terminal. ✔️
-    2. Posar-li la data en el nom (`$(date +%F)`). ✔️
-    3. Ficar-ho en un script i executar-lo. ✔️
-    4. Esborrar les còpies velles amb `find -mtime +7 -delete` (provant-ho primer **sense** `-delete`). ✔️
-    5. Programar-lo amb `cron`. ✔️
+1. Elige un concepto: *«¿Qué es un volumen de Docker?»*.
+2. Explícalo en voz alta o por escrito a alguien que empieza.
+3. Localiza dónde te atascas o necesitas una palabra técnica que tampoco puedes explicar.
+4. Vuelve a ese apartado y repite la explicación.
 
-    Cada pas es prova abans de passar al següent. Vegeu el [mètode per a resoldre problemes](../bash/metode.md).
+Explicárselo a un compañero y responder a sus preguntas ayuda a detectar lagunas.
 
-## 8. La teua xuleta
+## 6. Aprovecha los errores
 
-Fes una xuleta **pròpia** de cada llenguatge, d'una o dues pàgines, i ves-la completant. Escriure-la ja és estudiar. Les [xuletes d'esta web](../xuletes/index.md) són un punt de partida.
+Cuando algo falla:
 
-Un truc: tin un repositori de Git amb els teus exercicis i scripts. Fes **commits** amb missatges clars cada vegada que acabes un exercici. Al final del curs tindràs tot el que has fet, i practicaràs Git sense adonar-te'n.
+1. **Lee el mensaje completo.** Busca qué operación falla y dónde.
+2. **Reprodúcelo:** intenta que falle de la misma manera.
+3. **Divide:** prueba cada comando o parte del programa hasta localizar el fallo.
+4. **Busca** el mensaje exacto entre comillas si necesitas más contexto.
+5. **Anótalo:** error → causa → solución.
 
-## 9. Pregunta (i pregunta bé)
+| Herramienta | Para qué sirve |
+| --- | --- |
+| `bash -x script.sh` | Ver cada comando mientras se ejecuta |
+| [ShellCheck](https://www.shellcheck.net/) | Detectar problemas habituales en Bash |
+| `print()` / `echo` / `Write-Host` | Inspeccionar variables en un punto |
+| `php -l archivo.php` | Comprobar la sintaxis de PHP |
+| `git status` | Conocer el estado del repositorio |
+| `docker logs nombre` | Investigar qué ha ocurrido en un contenedor |
 
-No hi ha preguntes tontes. Però sí preguntes **concretes**, que tenen resposta:
+## 7. Problemas grandes → pasos pequeños
+
+Un ejercicio difícil suele contener varias tareas que puedes abordar por separado.
+
+!!! example "Preparar una copia de seguridad diaria y conservar siete días"
+    1. Crear un archivo `tar` de una carpeta de prueba desde el terminal.
+    2. Añadir la fecha al nombre con `$(date +%F)`.
+    3. Guardar los comandos en un script y ejecutarlo.
+    4. Localizar copias antiguas con `find -mtime +7`, revisando la selección antes de añadir `-delete`.
+    5. Programar la ejecución con `cron`.
+
+    Prueba cada paso antes de pasar al siguiente. El [método complementario para resolver problemas](../bash/metode.md) desarrolla esta idea.
+
+## 8. Tu chuleta
+
+Prepara una chuleta **propia** de una o dos páginas por lenguaje y complétala conforme practiques. Elegir qué anotar ya exige ordenar lo que sabes. Las [chuletas del repositorio](../xuletes/index.md) pueden servir como punto de partida.
+
+Guarda tus ejercicios y scripts en un repositorio Git. Haz commits con mensajes claros al terminar cada cambio coherente. Practicarás Git y conservarás un historial de tu aprendizaje.
+
+## 9. Pregunta con datos concretos
 
 | ❌ Pregunta vaga | ✅ Pregunta concreta |
-| ---------------- | -------------------- |
-| «No em va Docker» | «`docker run -p 80:80 nginx` dona `port is already allocated`. Què vol dir?» |
-| «Com funciona Git?» | «Què passa exactament quan faig `git commit`? On es guarda?» |
-| «El meu script no funciona» | «Este `if` sempre entra per l'`else` encara que el fitxer existix. Ací està el codi i l'eixida.» |
+| --- | --- |
+| «No me funciona Docker» | «`docker run -p 80:80 nginx` devuelve `port is already allocated`. ¿Qué significa?» |
+| «¿Cómo funciona Git?» | «¿Qué ocurre al hacer `git commit` y dónde se guarda?» |
+| «Mi script no funciona» | «Este `if` entra por `else` aunque el archivo existe. Este es el código y esta es la salida». |
 
-Quan preguntes, posa: **què vols fer**, **què has fet** (el codi o l'ordre), **què esperaves** i **què ha passat** (l'error exacte). Moltes vegades, en escriure-ho, ja trobes la solució tu.
+Incluye **qué quieres hacer**, **qué has probado**, **qué esperabas** y **qué ocurrió**. Muchas veces, al escribirlo, ya encuentras una pista.
 
-## 10. Usar la IA sense que t'impedisca aprendre
+## 10. Utilizar la IA para aprender
 
-La IA (ChatGPT, Claude, Copilot...) és una gran ajuda, però si fa ella els exercicis, tu no aprens, i en l'examen no la tindràs.
+La IA puede explicar errores y proponer práctica. Para aprender, necesitas seguir entendiendo las decisiones y comprobando los resultados por tu cuenta.
 
-- ✅ Demana-li que t'**explique** un error o una ordre, o que et pose **exercicis** nous.
-- ✅ Fes l'exercici tu i després demana-li que te'l **revise**.
-- ❌ No copies codi que no entens: llig-lo línia a línia. Si no saps explicar què fa cada línia, no l'has entés.
-- ⚠️ La IA s'equivoca, i sovint genera codi **insegur** que «funciona»: SQL concatenat (injecció SQL), HTML sense escapar (XSS), contrasenyes escrites dins del codi. **Revisa-ho sempre**, i prova-ho.
+- Pide que te **explique** un error o un comando, o que proponga **ejemplos nuevos**.
+- Resuelve tú el ejercicio y pide después una **revisión**.
+- Lee el código línea a línea: debes poder explicar qué hace y por qué.
+- Revisa y prueba las respuestas. Pueden contener errores o patrones inseguros, como SQL concatenado, HTML sin escapar o credenciales incrustadas.
 
-## 11. Prepara l'examen pràctic
+## 11. Prepara el examen práctico
 
-- Fes els exercicis **en el temps** de l'examen i **sense** mirar res.
-- Fes-los en una **màquina neta**, com la de l'examen.
-- Aprén a usar l'**ajuda** que sí que tindràs: `man ordre`, `ordre --help`, `Get-Help`, `help()` en Python, `docker ... --help`, `git help`.
-- El dia d'abans: repàs ràpid de les xuletes i **dormir**. Dormir és quan el cervell guarda el que has après.
+- Practica con el tiempo disponible en el examen y con las ayudas que permitan sus normas.
+- Usa un entorno limpio, parecido al del examen.
+- Aprende a consultar `man comando`, `comando --help`, `Get-Help`, `help()` de Python y la ayuda de Git o Docker.
+- El día anterior, prioriza un repaso manejable y dormir lo suficiente.
 
-## 12. Automatitza el que repetixes
+## 12. Automatiza lo que repites
 
-Si fas una cosa **tres vegades** a mà, fes un script. És la millor manera de practicar Bash, PowerShell o Python: amb problemes **teus** (organitzar les fotos, fer còpies, crear usuaris de prova en la màquina virtual).
+Si repites una tarea varias veces, plantéate convertirla en un script. Practica con problemas propios: ordenar archivos de prueba, preparar copias o crear usuarios de laboratorio en una máquina virtual.
 
-## 13. Cuida't
+## 13. Cuida el ritmo
 
-Estudiar moltes hores seguides, de nit i sense descans, cansa i s'aprén menys. Millor **una hora cada dia** que set hores el diumenge. Si un dia no et funciona res, deixa-ho i torna-hi demà: moltes vegades la solució apareix sola després de descansar.
+Distribuye el trabajo y descansa. Una sesión breve y regular puede resultar más sostenible que una jornada agotadora al final de la semana. Si te bloqueas, anota lo que has probado y vuelve después de una pausa.
 
-!!! success "En resum"
-    1. **Fes**, no llegisques. 2. **Recorda** sense mirar. 3. Repassa **poc i sovint**. 4. **Explica-ho** senzill. 5. Els **errors** s'apunten. 6. Problemes grans en **trossos**. 7. Una **xuleta** pròpia i un **repositori** amb els teus exercicis.
+!!! success "Para repasar"
+    Practica, recuerda sin mirar, reparte los repasos, explica con claridad, anota los errores, divide los problemas y conserva tus ejercicios en Git.
 
-Més idees sobre com escriure bon codi: [Consells de programadors](consells.md).
+Más ideas sobre cómo escribir buen código: [Consejos de programación](consells.md).

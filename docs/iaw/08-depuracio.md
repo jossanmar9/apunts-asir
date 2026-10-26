@@ -1,35 +1,35 @@
-# UT2 · 5. Depurar una aplicació sense provar a l'atzar
+# UT2 · 5. Depurar una aplicación sin probar al azar
 
-## Segueix el recorregut de la petició
+## Sigue el recorrido de la petición
 
-Quan una pàgina no fa el que esperes, separa tres preguntes: **ha arribat la petició?**, **què ha rebut PHP?** i **quina resposta ha generat?**. Un formulari que no conserva un valor no es diagnostica igual que un contenidor que no arranca.
+Cuando una página no hace lo que esperas, separa tres preguntas: **¿ha llegado la petición?**, **¿qué ha recibido PHP?** y **¿qué respuesta ha generado?**. Un formulario que no conserva un valor no se diagnostica igual que un contenedor que no arranca.
 
-## Cas resolt: no apareix la duració del torn
+## Caso resuelto: no aparece la duración del turno
 
-**Situació nova:** en un formulari de visita guiada el control diu `name="duracio"`, però el receptor llig `$_POST['temps']`. En enviar 25, el resum apareix buit.
+**Situación propia:** en un formulario de visita guiada el control dice `name="duracion"`, pero el receptor lee `$_POST['tiempo']`. Al enviar 25, el resumen aparece vacío.
 
-1. En Xarxa del navegador, obri la petició POST. El cos conté `duracio=25`: el navegador envia bé la dada.
-2. En desenvolupament local, inspecciona el receptor amb `var_dump($_POST);`. La clau és `duracio`, no `temps`.
-3. Corregeix la lectura a `$_POST['duracio'] ?? ''` i valida el resultat abans de calcular.
-4. Torna a provar 25, un camp absent i un text no numèric.
-5. Retira la impressió de depuració. Si la deixes abans d'un `header()`, pot impedir la redirecció.
+1. En Red del navegador, abre la petición POST. El cuerpo contiene `duracion=25`: el navegador envía bien el dato.
+2. En desarrollo local, inspecciona el receptor con `var_dump($_POST);`. La clave es `duracion`, no `tiempo`.
+3. Corrige la lectura a `$_POST['duracion'] ?? ''` y valida el resultado antes de calcular.
+4. Vuelve a probar 25, un campo ausente y un texto no numérico.
+5. Retira la impresión de depuración. Si la dejas antes de un `header()`, puede impedir la redirección.
 
-**Conclusió del cas:** el problema era el contracte entre el nom del camp i la clau que esperava PHP. Afegir CSS, reiniciar MariaDB o canviar de navegador no corregeix eixe desacord.
+**Conclusión del caso:** el problema era el acuerdo entre el nombre del campo y la clave que esperaba PHP. Añadir CSS, reiniciar MariaDB o cambiar de navegador no corrige ese desacuerdo.
 
-## On mirar segons el símptoma
+## Dónde mirar según el síntoma
 
-| Símptoma | Comprovació concreta |
+| Síntoma | Comprobación concreta |
 | --- | --- |
-| No connecta | `docker compose ps`, port i URL |
-| Nginx retorna 502 | `docker compose logs --tail=40 motor cartellera` en el laboratori d'UT1 |
-| Error de sintaxi PHP | `php -l public/torn.php` si tens PHP local |
-| Camp absent | `action`, `method`, `name` i cos del POST |
-| `Undefined array key` | Clau real i lectura amb valor alternatiu |
-| `headers already sent` | HTML, espais o `echo` anteriors a la capçalera |
-| Sessió buida | `session_start()`, cookie i perfil del navegador |
-| Resultat numèric incorrecte | Valors d'entrada, tipus i fórmula |
+| No conecta | `docker compose ps`, puerto y URL |
+| Nginx devuelve 502 | `docker compose logs --tail=40 motor cartelera` en el laboratorio de UT1 |
+| Error de sintaxis PHP | `php -l public/turno.php` si tienes PHP local |
+| Campo ausente | `action`, `method`, `name` y cuerpo del POST |
+| `Undefined array key` | Clave real y lectura con valor alternativo |
+| `headers already sent` | HTML, espacios o `echo` anteriores a la cabecera |
+| Sesión vacía | `session_start()`, cookie y perfil del navegador |
+| Resultado numérico incorrecto | Valores de entrada, tipos y fórmula |
 
-Per a veure errors només en un entorn local de desenvolupament:
+Para ver errores solo en un entorno local de desarrollo:
 
 ```php
 <?php
@@ -37,17 +37,17 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ```
 
-En un servidor publicat, els detalls han d'anar als logs i la resposta a l'usuari ha de ser adequada. No mostres credencials, tokens ni dades personals en les captures de diagnòstic.
+En un servidor publicado, los detalles deben ir a los logs y la respuesta al usuario debe ser adecuada. No muestres credenciales, tokens ni datos personales en las capturas de diagnóstico.
 
-## Una comprovació útil abans de donar per acabat un tema
+## Una comprobación útil antes de dar por terminado un tema
 
-Prepara una taula amb cas normal, límit inferior, límit superior, dada absent i dada incorrecta. Per al telescopi, per exemple, 5 i 40 són vàlids, però 4 i 41 no. Si només proves 15, no has comprovat els límits.
+Prepara una tabla con caso normal, límite inferior, límite superior, dato ausente y dato incorrecto. Para el telescopio, por ejemplo, 5 y 40 son válidos, pero 4 y 41 no. Si solo pruebas 15, no has comprobado los límites.
 
-En Git, registra una correcció coherent amb `git add fitxer.php`, `git diff --cached` i `git commit -m "Valida la duració del torn"`. El commit documenta el canvi; no substitueix la prova de funcionament.
+En Git, registra una corrección coherente con `git add archivo.php`, `git diff --cached` y `git commit -m "Valida la duración del turno"`. El commit documenta el cambio; no sustituye la prueba de funcionamiento.
 
-!!! success "Per a repassar"
-    Reprodueix, observa, explica una causa, corregeix i repeteix el cas que fallava. Canviar moltes coses alhora fa més difícil saber quina resolia el problema.
+!!! success "Para repasar"
+    Reproduce, observa, explica una causa, corrige y repite el caso que fallaba. Cambiar muchas cosas a la vez dificulta saber cuál resolvía el problema.
 
 ---
 
-Font del temari: [apunts originals de UT2](https://victoria-nr.github.io/iaw-alumnos/UT2/apuntes/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de UT2](https://victoria-nr.github.io/iaw-alumnos/UT2/apuntes/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

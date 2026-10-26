@@ -1,34 +1,34 @@
-# UT1 · 1. Programar i preparar l'entorn
+# UT1 · 1. Programar y preparar el entorno
 
-## Programar és concretar una seqüència
+## Programar es concretar una secuencia
 
-Un programa expressa passos sense ambigüitats. Abans del codi, defineix què entra, què cal transformar i què ha d'eixir. Python és un llenguatge d'alt nivell: permet representar eixos passos sense escriure directament instruccions de la CPU.
+Un programa expresa pasos sin ambigüedades. Antes del código, define qué entra, qué hay que transformar y qué debe salir. Python es un lenguaje de alto nivel: permite representar esos pasos sin escribir directamente instrucciones de la CPU.
 
-En l'ús habitual amb CPython, el codi font `.py` es transforma en bytecode i s'executa en la màquina virtual de Python. L'editor on escrius no és l'intèrpret que executa. Un comentari amb `#` explica el motiu d'una decisió; Python no l'executa.
+En el uso habitual con CPython, el código fuente `.py` se transforma en bytecode y se ejecuta en la máquina virtual de Python. El editor donde escribes no es el intérprete que ejecuta. Un comentario con `#` explica el motivo de una decisión; Python no lo ejecuta.
 
-## Exemple resolt: estimar una lectura d'àudio
+## Ejemplo resuelto: estimar una lectura de audio
 
-**Problema nou:** una gravació conté 840 paraules i es llig a 140 paraules per minut. Volem estimar-ne la duració.
+**Problema propio:** una grabación contiene 840 palabras y se lee a 140 palabras por minuto. Queremos estimar su duración.
 
-1. Entrada: quantitat de paraules i ritme de lectura.
-2. Transformació: dividir paraules entre paraules per minut.
-3. Eixida: duració estimada en minuts.
+1. Entrada: cantidad de palabras y ritmo de lectura.
+2. Transformación: dividir palabras entre palabras por minuto.
+3. Salida: duración estimada en minutos.
 
-Desa `audio.py`:
+Guarda `audio.py`:
 
 ```python
-paraules = 840
-ritme = 140
-# Suposem un ritme constant, sense pauses addicionals.
-minuts = paraules / ritme
-print(f"Duració estimada: {minuts:.1f} minuts")
+palabras = 840
+ritmo = 140
+# Suponemos un ritmo constante, sin pausas adicionales.
+minutos = palabras / ritmo
+print(f"Duración estimada: {minutos:.1f} minutos")
 ```
 
-Executa `python3 audio.py` en Linux o `py audio.py` en un Windows amb el llançador instal·lat. **Resultat esperat:** `Duració estimada: 6.0 minuts`. Si dobles les paraules i mantens el ritme, la duració també es dobla. És una comprovació de sentit, a més de comprovar que el programa no falla.
+Ejecuta `python3 audio.py` en Linux o `py audio.py` en un Windows con el lanzador instalado. **Resultado esperado:** `Duración estimada: 6.0 minutos`. Si duplicas las palabras y mantienes el ritmo, la duración también se duplica. Es una comprobación de sentido, además de comprobar que el programa no falla.
 
-## Entorn de treball pas a pas
+## Entorno de trabajo paso a paso
 
-En Linux, dins d'una carpeta nova:
+En Linux, dentro de una carpeta nueva:
 
 ```bash
 python3 --version
@@ -39,36 +39,36 @@ python -m pip --version
 deactivate
 ```
 
-En PowerShell, l'activació corresponent és `.\.venv\Scripts\Activate.ps1`. Pot estar condicionada per la política d'execució del teu equip. A VS Code selecciona l'intèrpret del projecte amb **Python: Select Interpreter**. Si el terminal funciona i el botó d'execució no, comprova que tots dos usen el mateix intèrpret.
+En PowerShell, la activación correspondiente es `.\.venv\Scripts\Activate.ps1`. Puede estar condicionada por la política de ejecución de tu equipo. En VS Code selecciona el intérprete del proyecto con **Python: Select Interpreter**. Si el terminal funciona y el botón de ejecución no, comprueba que ambos utilizan el mismo intérprete.
 
-Un entorn virtual aïlla paquets del projecte, però no és una màquina virtual. `python -m pip install NOM_PAQUET` instal·la amb el Python que has triat; no necessites instal·lar res per als exemples d'aquesta secció, que usen la biblioteca estàndard.
+Un entorno virtual aísla paquetes del proyecto, pero no es una máquina virtual. `python -m pip install NOMBRE_PAQUETE` instala con el Python que has elegido; no necesitas instalar nada para los ejemplos de esta sección, que utilizan la biblioteca estándar.
 
-## Què és cada eina?
+## ¿Qué es cada herramienta?
 
-| Eina | Funció |
+| Herramienta | Función |
 | --- | --- |
-| VS Code | Editor ampliable amb execució i depuració |
-| Thonny / PyCharm | Entorns de desenvolupament de Python amb diferents enfocaments |
-| Jupyter | Quaderns amb text, codi i resultats |
-| Anaconda | Distribució i eines molt utilitzades en treball científic |
-| pip | Instal·lació de paquets |
-| uv | Eina alternativa per a gestionar projectes, paquets i entorns |
-| pyenv | Gestió de versions de Python |
+| VS Code | Editor ampliable con ejecución y depuración |
+| Thonny / PyCharm | Entornos de desarrollo de Python con distintos enfoques |
+| Jupyter | Cuadernos con texto, código y resultados |
+| Anaconda | Distribución y herramientas muy utilizadas en trabajo científico |
+| pip | Instalación de paquetes |
+| uv | Herramienta alternativa para gestionar proyectos, paquetes y entornos |
+| pyenv | Gestión de versiones de Python |
 | pdb | Depurador de terminal |
 
-## Depurar és observar
+## Depurar es observar
 
-Posa un punt d'interrupció en `minuts = ...` i executa el depurador. Abans de la línia, existeixen `paraules` i `ritme`; després, també `minuts`. El ressaltat sol indicar la pròxima instrucció, no una instrucció ja executada. Mira VARIABLES i vigila `paraules / ritme` en WATCH.
+Pon un punto de interrupción en `minutos = ...` y ejecuta el depurador. Antes de la línea, existen `palabras` y `ritmo`; después, también `minutos`. El resaltado suele indicar la próxima instrucción, no una instrucción ya ejecutada. Mira VARIABLES y vigila `palabras / ritmo` en WATCH.
 
-| Error | Revisió |
+| Error | Revisión |
 | --- | --- |
-| No es troba `audio.py` | Carpeta de treball i nom del fitxer. |
-| `NameError` amb `Print` | Python distingeix majúscules; és `print`. |
-| Paquet instal·lat però no importable | Intèrpret de l'editor i del terminal. |
+| No se encuentra `audio.py` | Carpeta de trabajo y nombre del archivo. |
+| `NameError` con `Print` | Python distingue mayúsculas; es `print`. |
+| Paquete instalado pero no importable | Intérprete del editor y del terminal. |
 
-!!! success "Per a repassar"
-    Explica entrada, transformació i eixida abans del codi. Després identifica quin programa edita i quin programa executa.
+!!! success "Para repasar"
+    Explica entrada, transformación y salida antes del código. Después identifica qué programa edita y qué programa ejecuta.
 
 ---
 
-Fonts del temari: [01-introduccion-python](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/01-introduccion-python/), [02-entorno-vscode](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/02-entorno-vscode/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [01-introduccion-python](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/01-introduccion-python/), [02-entorno-vscode](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/02-entorno-vscode/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

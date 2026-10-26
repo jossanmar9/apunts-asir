@@ -1,45 +1,45 @@
-# UT1 · 2. Variables, tipus i operadors
+# UT1 · 2. Variables, tipos y operadores
 
-## Un nom apunta a un objecte
+## Un nombre apunta a un objeto
 
-En `mostres = 12`, Python avalua primer el costat dret i associa el nom `mostres` amb el resultat. El tipus pertany a l'objecte: `type(mostres)` indica `int`. Un objecte té tipus, valor i identitat; `id()` permet consultar-ne un identificador durant la seua vida, no un número estable que hages de memoritzar.
+En `muestras = 12`, Python evalúa primero el lado derecho y asocia el nombre `muestras` con el resultado. El tipo pertenece al objeto: `type(muestras)` indica `int`. Un objeto tiene tipo, valor e identidad; `id()` permite consultar un identificador durante su vida, no un número estable que debas memorizar.
 
-| Tipus | Exemple | Operacions habituals |
+| Tipo | Ejemplo | Operaciones habituales |
 | --- | --- | --- |
-| int | `12` | Comptar, dividir amb quocient i residu |
-| float | `1.75` | Càlculs aproximats amb decimals |
-| str | `"etiqueta"` | Concatenar, extraure, buscar |
-| bool | `True` | Condicions |
-| complex | `2 + 3j` | Càlculs amb part real i imaginària |
+| int | `12` | Contar, dividir con cociente y resto |
+| float | `1.75` | Cálculos aproximados con decimales |
+| str | `"etiqueta"` | Concatenar, extraer, buscar |
+| bool | `True` | Condiciones |
+| complex | `2 + 3j` | Cálculos con parte real e imaginaria |
 
-Usa noms com `mostres_per_caixa`, sense espais ni guions. No poden començar per xifra ni ser paraules reservades. Evita ocultar funcions amb noms com `str` o `input`. Les constants en majúscules, com `CAPACITAT = 8`, són una convenció, no una prohibició de canviar el valor.
+Utiliza nombres como `muestras_por_caja`, sin espacios ni guiones. No pueden comenzar por una cifra ni ser palabras reservadas. Evita ocultar funciones con nombres como `str` o `input`. Las constantes en mayúsculas, como `CAPACIDAD = 8`, son una convención, no una prohibición de cambiar el valor.
 
-## Exemple resolt: empaquetar mostres de ceràmica
+## Ejemplo resuelto: empaquetar muestras de cerámica
 
-**Problema nou:** tenim 29 mostres i cada estoig n'admet 8. Quants estoigs plens podem fer, quantes mostres queden i quants estoigs necessitem en total?
+**Problema propio:** tenemos 29 muestras y cada estuche admite 8. ¿Cuántos estuches llenos podemos preparar, cuántas muestras sobran y cuántos estuches necesitamos en total?
 
 ```python
-mostres = 29
-capacitat = 8
-plens = mostres // capacitat
-sobrants = mostres % capacitat
-necessaris = (mostres + capacitat - 1) // capacitat
-print(f"Plens: {plens}; sobrants: {sobrants}; necessaris: {necessaris}")
+muestras = 29
+capacidad = 8
+llenos = muestras // capacidad
+sobrantes = muestras % capacidad
+necesarios = (muestras + capacidad - 1) // capacidad
+print(f"Llenos: {llenos}; sobrantes: {sobrantes}; necesarios: {necesarios}")
 ```
 
-**Resultat esperat:** `Plens: 3; sobrants: 5; necessaris: 4`.
+**Resultado esperado:** `Llenos: 3; sobrantes: 5; necesarios: 4`.
 
-1. `29 // 8` dona 3: tres estoigs complets.
-2. `29 % 8` dona 5: mostres que no caben en eixos tres.
-3. La fórmula `(n + capacitat - 1) // capacitat` arrodoneix cap amunt per a enters no negatius i capacitat positiva. El quart estoig conté cinc mostres.
+1. `29 // 8` devuelve 3: tres estuches completos.
+2. `29 % 8` devuelve 5: muestras que no caben en esos tres.
+3. La fórmula `(n + capacidad - 1) // capacidad` redondea hacia arriba para enteros no negativos y capacidad positiva. El cuarto estuche contiene cinco muestras.
 
-No uses aquesta fórmula sense comprovar les seues condicions quan l'entrada vinga de l'usuari.
+No utilices esta fórmula sin comprobar sus condiciones cuando la entrada proceda del usuario.
 
-## Operadors i representació de nombres
+## Operadores y representación de números
 
-`/` fa divisió i retorna habitualment `float`; `//` arrodoneix el quocient cap a menys infinit; `%` dona el residu; `**` és la potència. Els parèntesis fan explícita la prioritat: `(2 + 3) * 4` dona 20, mentre que `2 + 3 * 4` dona 14.
+`/` hace división y devuelve habitualmente `float`; `//` redondea el cociente hacia menos infinito; `%` devuelve el resto; `**` es la potencia. Los paréntesis hacen explícita la prioridad: `(2 + 3) * 4` devuelve 20, mientras que `2 + 3 * 4` devuelve 14.
 
-`==`, `!=`, `<`, `<=`, `>` i `>=` comparen. `and`, `or` i `not` combinen condicions. `=` assigna. En context numèric els booleans es comporten com 1 i 0, però una condició clara és millor que un truc difícil de llegir.
+`==`, `!=`, `<`, `<=`, `>` y `>=` comparan. `and`, `or` y `not` combinan condiciones. `=` asigna. En contexto numérico, los booleanos se comportan como 1 y 0, pero una condición clara es mejor que un truco difícil de leer.
 
 ```python
 print(0b1100, 0o14, 0xC)  # 12 12 12
@@ -47,26 +47,26 @@ print(1.5e3)              # 1500.0
 print(0.1 + 0.2 == 0.3)   # False
 ```
 
-Les bases canvien la notació, no el valor. Molts decimals no tenen representació binària exacta; mostrar dos decimals no elimina l'aproximació interna. Per a diners amb requisits exactes, usa cèntims enters o eines decimals adequades.
+Las bases cambian la notación, no el valor. Muchos decimales no tienen representación binaria exacta; mostrar dos decimales no elimina la aproximación interna. Para dinero con requisitos exactos, utiliza céntimos enteros o herramientas decimales adecuadas.
 
-## Mutabilitat: canviar un objecte o canviar de referència
+## Mutabilidad: cambiar un objeto o cambiar de referencia
 
 ```python
-etiquetes = ["roig"]
-altra_referencia = etiquetes
-altra_referencia.append("blau")
-print(etiquetes)  # ['roig', 'blau']
+etiquetas = ["rojo"]
+otra_referencia = etiquetas
+otra_referencia.append("azul")
+print(etiquetas)  # ['rojo', 'azul']
 
-text = "roig"
-text_nou = text.upper()
-print(text, text_nou)  # roig ROIG
+texto = "rojo"
+texto_nuevo = texto.upper()
+print(texto, texto_nuevo)  # rojo ROJO
 ```
 
-La llista és mutable i els dos noms apunten a la mateixa llista. La cadena és immutable: `upper()` crea un resultat nou. `is` compara identitat i `==` compara igualtat de valors; per a comparar textos usa `==`. Pots explorar operacions amb `help(str)`.
+La lista es mutable y los dos nombres apuntan a la misma lista. La cadena es inmutable: `upper()` crea un resultado nuevo. `is` compara identidad y `==` compara igualdad de valores; para comparar textos utiliza `==`. Puedes explorar operaciones con `help(str)`.
 
-!!! success "Per a repassar"
-    Abans d'una operació, identifica els tipus. El text `"8"` i l'enter `8` tenen significats diferents encara que s'assemblen en pantalla.
+!!! success "Para repasar"
+    Antes de una operación, identifica los tipos. El texto `"8"` y el entero `8` tienen significados diferentes aunque se parezcan en pantalla.
 
 ---
 
-Fonts del temari: [03-datos-variables](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/03-datos-variables/), [04-numeros-operadores](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/04-numeros-operadores/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [03-datos-variables](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/03-datos-variables/), [04-numeros-operadores](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/04-numeros-operadores/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

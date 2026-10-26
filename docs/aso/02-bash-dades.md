@@ -1,72 +1,72 @@
-# UT1 · 1. Bash: scripts, variables, entrada i paràmetres
+# UT1 · 1. Bash: scripts, variables, entrada y parámetros
 
-## Què executa Bash?
+## ¿Qué ejecuta Bash?
 
-Una shell interpreta ordres. Un script guarda ordres en un fitxer perquè pugues repetir el procés. La primera línia `#!/usr/bin/env bash` indica l'intèrpret quan l'executes directament. Amb `bash nom.sh` tries Bash explícitament; amb `./nom.sh` necessites permís d'execució, que pots donar amb `chmod u+x nom.sh`.
+Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea `#!/usr/bin/env bash` indica el intérprete cuando lo ejecutas directamente. Con `bash nombre.sh` eliges Bash explícitamente; con `./nombre.sh` necesitas permiso de ejecución, que puedes dar con `chmod u+x nombre.sh`.
 
-En Bash, `nom=valor` assigna i `$nom` expandeix el valor. No poses espais al voltant de `=`. Les cometes dobles conserven els espais d'una dada però expandeixen variables; les simples tracten el contingut literalment. Els comentaris comencen amb `#`.
+En Bash, `nombre=valor` asigna y `$nombre` expande el valor. No pongas espacios alrededor de `=`. Las comillas dobles conservan los espacios de un dato, pero expanden variables; las simples tratan el contenido literalmente. Los comentarios comienzan con `#`.
 
-## Exemple resolt: etiqueta d'una mostra de laboratori
+## Ejemplo resuelto: etiqueta de una muestra de laboratorio
 
-Desa `etiqueta.sh`:
+Guarda `etiqueta.sh`:
 
 ```bash
 #!/usr/bin/env bash
 if (( $# != 2 )); then
-    printf 'Ús: bash etiqueta.sh mostra responsable\n' >&2
+    printf 'Uso: bash etiqueta.sh muestra responsable\n' >&2
     exit 1
 fi
-mostra=$1
+muestra=$1
 responsable=$2
-read -r -p 'Ubicació de la mostra: ' ubicacio
-printf 'Mostra: %s\nResponsable: %s\nUbicació: %s\n' \
-    "$mostra" "$responsable" "$ubicacio"
+read -r -p 'Ubicación de la muestra: ' ubicacion
+printf 'Muestra: %s\nResponsable: %s\nUbicación: %s\n' \
+    "$muestra" "$responsable" "$ubicacion"
 ```
 
-Executa `bash etiqueta.sh "Roca volcànica" "Laia Ferrer"` i escriu `Armari blau`.
+Ejecuta `bash etiqueta.sh "Roca volcánica" "Laia Ferrer"` y escribe `Armario azul`.
 
-**Resultat esperat:** tres línies amb la mostra, el nom complet i la ubicació. Les cometes fan que cada frase siga un argument. Sense cometes, el nombre d'arguments canviaria i el script mostraria l'ajuda.
+**Resultado esperado:** tres líneas con la muestra, el nombre completo y la ubicación. Las comillas hacen que cada frase sea un argumento. Sin ellas, el número de argumentos cambiaría y el script mostraría la ayuda.
 
-### Pas a pas
+### Paso a paso
 
-1. `$#` compta arguments. Si no són dos, el missatge va a l'eixida d'error amb `>&2` i el codi final és 1.
-2. `$1` i `$2` són les dades de la crida. `$0` és el nom amb què s'ha invocat el script.
-3. `read -r` llig una línia sense tractar les barres invertides com a escapes.
-4. `printf` usa un format fix i dades separades. `%s` substitueix text i `\n` salta de línia.
+1. `$#` cuenta argumentos. Si no son dos, el mensaje va a la salida de error con `>&2` y el código final es 1.
+2. `$1` y `$2` son los datos de la llamada. `$0` es el nombre con el que se ha invocado el script.
+3. `read -r` lee una línea sin tratar las barras invertidas como escapes.
+4. `printf` utiliza un formato fijo y datos separados. `%s` sustituye texto y `\n` introduce un salto de línea.
 
-## Variables que convé reconéixer
+## Variables que conviene reconocer
 
-| Expressió | Significat |
+| Expresión | Significado |
 | --- | --- |
-| `"$@"` | Tots els arguments, preservant cadascun |
-| `$?` | Codi de l'última ordre, que canvia en executar la següent |
-| `$$` | Identificador del procés de la shell |
-| `${nom:-alternativa}` | Alternativa si no existeix o està buit |
-| `$(ordre)` | Captura l'eixida estàndard de l'ordre |
+| `"$@"` | Todos los argumentos, conservando cada uno |
+| `$?` | Código del último comando, que cambia al ejecutar el siguiente |
+| `$$` | Identificador del proceso de la shell |
+| `${nombre:-alternativa}` | Alternativa si no existe o está vacío |
+| `$(comando)` | Captura la salida estándar del comando |
 
-Una variable de shell no passa necessàriament als processos fills. `export COLOR_FITXA=blau` la incorpora a l'entorn dels nous processos. `printenv COLOR_FITXA` la consulta. Usa noms propis del teu script: no sobreescrigues `PATH` amb una ruta de treball, perquè deixaries de localitzar ordres.
+Una variable de shell no pasa necesariamente a los procesos hijos. `export COLOR_FICHA=azul` la incorpora al entorno de los nuevos procesos. `printenv COLOR_FICHA` la consulta. Utiliza nombres propios del script: no sobrescribas `PATH` con una ruta de trabajo, porque dejarías de localizar comandos.
 
-## Transformar text i guardar col·leccions
+## Transformar texto y guardar colecciones
 
 ```bash
 #!/usr/bin/env bash
-fitxer='mostra.versio.txt'
-printf '%s\n' "${fitxer%.txt}" "${fitxer:0:6}"
-sales=('Sala blau cel' 'Sala grisa')
-printf '%s\n' "${sales[0]}" "${#sales[@]}"
+archivo='muestra.version.txt'
+printf '%s\n' "${archivo%.txt}" "${archivo:0:7}"
+salas=('Sala azul cielo' 'Sala gris')
+printf '%s\n' "${salas[0]}" "${#salas[@]}"
 ```
 
-El primer bloc mostra `mostra.versio` i `mostra`. `%` elimina el sufix que coincideix amb el patró; `${text#patro}` elimina un prefix; les versions dobles `%%` i `##` eliminen la coincidència més llarga. `${text:inici:longitud}` extrau una subcadena. Els arrays indexats comencen en zero i `"${sales[@]}"` conserva cada element.
+El primer bloque muestra `muestra.version` y `muestra`. `%` elimina el sufijo que coincide con el patrón; `${texto#patron}` elimina un prefijo; las versiones dobles `%%` y `##` eliminan la coincidencia más larga. `${texto:inicio:longitud}` extrae una subcadena. Los arrays indexados comienzan en cero y `"${salas[@]}"` conserva cada elemento.
 
-| Error | Solució |
+| Error | Solución |
 | --- | --- |
-| `nom = valor` | Escriu `nom=valor`. |
-| Nom amb espais es parteix | Usa `"$nom"` en passar-lo a una ordre. |
-| Arguments buits o desplaçats | Revisa les cometes en la crida i `$#`. |
+| `nombre = valor` | Escribe `nombre=valor`. |
+| Un nombre con espacios se divide | Utiliza `"$nombre"` al pasarlo a un comando. |
+| Argumentos vacíos o desplazados | Revisa las comillas en la llamada y `$#`. |
 
-!!! success "Per a repassar"
-    Diferencia una variable, un argument i una entrada per teclat. Segueix sempre com arriben les dades al programa.
+!!! success "Para repasar"
+    Diferencia una variable, un argumento y una entrada por teclado. Sigue siempre cómo llegan los datos al programa.
 
 ---
 
-Font del temari: [apunts originals d’ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

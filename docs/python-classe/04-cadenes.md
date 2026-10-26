@@ -1,66 +1,66 @@
-# UT2 · 1. Objectes, mètodes i tractament de cadenes
+# UT2 · 1. Objetos, métodos y tratamiento de cadenas
 
-## Funció i mètode
+## Función y método
 
-Una funció es crida com `len(text)`. Un mètode es crida sobre l'objecte: `text.upper()`. Els parèntesis executen l'operació; `text.upper` només obté una referència al mètode. Les cadenes són immutables: has de conservar el valor retornat si vols continuar usant la transformació.
+Una función se llama como `len(texto)`. Un método se llama sobre el objeto: `texto.upper()`. Los paréntesis ejecutan la operación; `texto.upper` solo obtiene una referencia al método. Las cadenas son inmutables: debes conservar el valor devuelto si quieres seguir utilizando la transformación.
 
-## Exemple resolt: interpretar una etiqueta d'arxiu sonor
+## Ejemplo resuelto: interpretar una etiqueta de archivo sonoro
 
-**Problema nou:** de l'etiqueta `"  jazz:directe:flac  "`, obtindre l'estil, el tipus de gravació i el format. Els dos separadors estan garantits en aquest primer exemple.
+**Problema propio:** de la etiqueta `"  jazz:directo:flac  "`, obtener el estilo, el tipo de grabación y el formato. Los dos separadores están garantizados en este primer ejemplo.
 
 ```python
-original = "  jazz:directe:flac  "
+original = "  jazz:directo:flac  "
 etiqueta = original.strip()
-primer = etiqueta.find(":")
-ultim = etiqueta.rfind(":")
-estil = etiqueta[:primer]
-gravacio = etiqueta[primer + 1:ultim]
-format_audio = etiqueta[ultim + 1:]
-print(estil.title(), gravacio, format_audio.upper(), sep=" | ")
+primero = etiqueta.find(":")
+ultimo = etiqueta.rfind(":")
+estilo = etiqueta[:primero]
+grabacion = etiqueta[primero + 1:ultimo]
+formato_audio = etiqueta[ultimo + 1:]
+print(estilo.title(), grabacion, formato_audio.upper(), sep=" | ")
 print(etiqueta.count(":"))
 print(etiqueta.startswith("jazz:"), etiqueta.endswith(":flac"))
 ```
 
-**Resultat esperat:** `Jazz | directe | FLAC`, després `2` i `True True`.
+**Resultado esperado:** `Jazz | directo | FLAC`, después `2` y `True True`.
 
-### Segueix els índexs
+### Sigue los índices
 
-La cadena neta és `jazz:directe:flac`. El primer `:` està en la posició 4 i l'últim en la 12. `[:4]` pren les posicions 0 a 3. `[5:12]` pren `directe`. `[13:]` pren fins al final. El límit dret del tall queda exclòs.
+La cadena limpia es `jazz:directo:flac`. El primer `:` está en la posición 4 y el último en la 12. `[:4]` toma las posiciones 0 a 3. `[5:12]` toma `directo`. `[13:]` toma hasta el final. El límite derecho del corte queda excluido.
 
-`find()` retorna -1 quan no troba la subcadena; `index()` llança `ValueError`. Si els separadors no estan garantits, comprova'ls abans d'extraure: un tall amb -1 podria donar un resultat aparentment correcte però equivocat.
+`find()` devuelve -1 cuando no encuentra la subcadena; `index()` lanza `ValueError`. Si los separadores no están garantizados, compruébalos antes de extraer: un corte con -1 podría dar un resultado aparentemente correcto, pero equivocado.
 
-## Operacions que convé tindre a mà
+## Operaciones que conviene tener a mano
 
-| Operació | Exemple i lectura |
+| Operación | Ejemplo y lectura |
 | --- | --- |
-| `strip`, `lstrip`, `rstrip` | Llevar espais dels dos extrems, esquerra o dreta |
-| `lower`, `upper` | Passar a minúscules o majúscules |
-| `capitalize`, `title` | Primera lletra de la frase o inicis de paraula |
-| `replace('a', 'b', 1)` | Substituir només la primera coincidència |
-| `count(':')` | Comptar aparicions |
-| `isalpha`, `isalnum` | Només lletres / lletres o nombres |
-| `isdigit`, `isupper`, `islower` | Comprovar el contingut o les lletres amb cas |
+| `strip`, `lstrip`, `rstrip` | Quitar espacios de ambos extremos, izquierda o derecha |
+| `lower`, `upper` | Pasar a minúsculas o mayúsculas |
+| `capitalize`, `title` | Primera letra de la frase o inicios de palabra |
+| `replace('a', 'b', 1)` | Sustituir solo la primera coincidencia |
+| `count(':')` | Contar apariciones |
+| `isalpha`, `isalnum` | Solo letras / letras o números |
+| `isdigit`, `isupper`, `islower` | Comprobar el contenido o las letras con distinción de caso |
 
-`isdigit()` inclou determinats caràcters Unicode que no admet `int()`; no és un validador universal de nombres. Tampoc accepta signe negatiu o punt decimal. Per a una entrada ASCII restringida pots comprovar explícitament els caràcters admesos.
+`isdigit()` incluye determinados caracteres Unicode que no admite `int()`; no es un validador universal de números. Tampoco acepta signo negativo o punto decimal. Para una entrada ASCII restringida puedes comprobar explícitamente los caracteres admitidos.
 
 ```python
-so = "violi"
-print(so[0], so[-1])  # v i
-print(so[::2])       # vii
-print(so[::-1])      # iloiv
-print("ol" in so)    # True
-print("-" * 4)       # ----
+sonido = "violin"
+print(sonido[0], sonido[-1])  # v n
+print(sonido[::2])           # voi
+print(sonido[::-1])          # niloiv
+print("ol" in sonido)        # True
+print("-" * 4)              # ----
 ```
 
-Accedir a `so[99]` produeix `IndexError`, però un tall com `so[:99]` s'ajusta al final disponible. `strip()` no lleva espais interns. `replace()` no valida si el significat del resultat és correcte.
+Acceder a `sonido[99]` produce `IndexError`, pero un corte como `sonido[:99]` se ajusta al final disponible. `strip()` no quita espacios internos. `replace()` no valida si el significado del resultado es correcto.
 
-## Funcions de biblioteca i aleatorietat
+## Funciones de biblioteca y aleatoriedad
 
-`string.ascii_letters` i `string.digits` proporcionen alfabets útils. `random.choice(sequencia)` selecciona un element i `random.randint(a, b)` inclou tots dos extrems. Per a demostrar una selecció de mostra pots fer `random.choice("ABC")`; el resultat varia. Les contrasenyes o tokens reals necessiten una font adequada com `secrets`, no l'aleatorietat de simulació de `random`.
+`string.ascii_letters` y `string.digits` proporcionan alfabetos útiles. `random.choice(secuencia)` selecciona un elemento y `random.randint(a, b)` incluye ambos extremos. Para demostrar una selección de muestra puedes hacer `random.choice("ABC")`; el resultado varía. Las contraseñas o tokens reales necesitan una fuente adecuada como `secrets`, no la aleatoriedad de simulación de `random`.
 
-!!! success "Per a repassar"
-    Escriu els índexs sota la cadena abans de tallar-la. Comprova sempre què passa si falta el separador que esperes.
+!!! success "Para repasar"
+    Escribe los índices bajo la cadena antes de cortarla. Comprueba siempre qué ocurre si falta el separador que esperas.
 
 ---
 
-Fonts del temari: [01-objetos-predefinidos](https://victoria-nr.github.io/python-intro-alumnos/unidades/u02-objetos-cadenas/teoria/01-objetos-predefinidos/), [02-metodos-cadenas](https://victoria-nr.github.io/python-intro-alumnos/unidades/u02-objetos-cadenas/teoria/02-metodos-cadenas/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [01-objetos-predefinidos](https://victoria-nr.github.io/python-intro-alumnos/unidades/u02-objetos-cadenas/teoria/01-objetos-predefinidos/), [02-metodos-cadenas](https://victoria-nr.github.io/python-intro-alumnos/unidades/u02-objetos-cadenas/teoria/02-metodos-cadenas/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

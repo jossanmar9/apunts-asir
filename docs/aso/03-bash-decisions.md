@@ -1,78 +1,78 @@
-# UT1 · 2. Càlculs, comprovacions i decisions en Bash
+# UT1 · 2. Cálculos, comprobaciones y decisiones en Bash
 
-## Tres tipus de comprovació
+## Tres tipos de comprobación
 
-Per a enters, `(( expressio ))` permet calcular i comparar. Per a text i fitxers, `[[ condicio ]]` és còmode en Bash. La forma clàssica `[ condicio ]` també existeix i exigeix espais al voltant dels claudàtors i operands ben separats.
+Para enteros, `(( expresion ))` permite calcular y comparar. Para texto y archivos, `[[ condicion ]]` resulta cómodo en Bash. La forma clásica `[ condicion ]` también existe y exige espacios alrededor de los corchetes y operandos bien separados.
 
-| Necessitat | Expressió de Bash |
+| Necesidad | Expresión de Bash |
 | --- | --- |
-| Fitxer ordinari | `[[ -f "$ruta" ]]` |
-| Directori | `[[ -d "$ruta" ]]` |
-| Existeix una entrada | `[[ -e "$ruta" ]]` |
-| Enllaç simbòlic | `[[ -L "$ruta" ]]` |
-| Text buit / no buit | `[[ -z "$text" ]]` / `[[ -n "$text" ]]` |
-| Text igual | `[[ "$text" == "obert" ]]` |
-| Enter almenys 3 | `(( quantitat >= 3 ))` |
+| Archivo ordinario | `[[ -f "$ruta" ]]` |
+| Directorio | `[[ -d "$ruta" ]]` |
+| Existe una entrada | `[[ -e "$ruta" ]]` |
+| Enlace simbólico | `[[ -L "$ruta" ]]` |
+| Texto vacío / no vacío | `[[ -z "$texto" ]]` / `[[ -n "$texto" ]]` |
+| Texto igual | `[[ "$texto" == "abierto" ]]` |
+| Entero de al menos 3 | `(( cantidad >= 3 ))` |
 
-`-e` pot ser fals en un enllaç trencat: usa també `-L` si vols detectar qualsevol enllaç. `&&` significa «i», `||` significa «o» i `!` nega una condició. Una ordre amb codi 0 es considera correcta o certa en un `if`.
+`-e` puede ser falso en un enlace roto: utiliza también `-L` si quieres detectar cualquier enlace. `&&` significa «y», `||` significa «o» y `!` niega una condición. Un comando con código 0 se considera correcto o verdadero en un `if`.
 
-## Exemple resolt: comprovar una reserva de butaques
+## Ejemplo resuelto: comprobar una reserva de butacas
 
-**Problema nou:** una sala de prova té 12 butaques lliures. El script accepta una quantitat entre 1 i 12, escrita amb una o dues xifres sense zeros inicials.
+**Problema propio:** una sala de prueba tiene 12 butacas libres. El script acepta una cantidad entre 1 y 12, escrita con una o dos cifras sin ceros iniciales.
 
 ```bash
 #!/usr/bin/env bash
-peticio=${1:-}
-if [[ ! "$peticio" =~ ^[1-9][0-9]?$ ]]; then
-    printf 'Escriu una quantitat d’una o dues xifres, sense zero inicial.\n' >&2
+peticion=${1:-}
+if [[ ! "$peticion" =~ ^[1-9][0-9]?$ ]]; then
+    printf 'Escribe una cantidad de una o dos cifras, sin cero inicial.\n' >&2
     exit 1
 fi
-lliures=12
-if (( peticio > lliures )); then
-    printf 'No hi ha prou butaques.\n'
-elif (( peticio == lliures )); then
+libres=12
+if (( peticion > libres )); then
+    printf 'No hay suficientes butacas.\n'
+elif (( peticion == libres )); then
     printf 'La sala queda completa.\n'
 else
-    resten=$((lliures - peticio))
-    printf 'Reserva acceptada. Queden %s butaques.\n' "$resten"
+    quedan=$((libres - peticion))
+    printf 'Reserva aceptada. Quedan %s butacas.\n' "$quedan"
 fi
 ```
 
-### Segueix tres entrades
+### Sigue tres entradas
 
-| Crida | Condició | Eixida esperada |
+| Llamada | Condición | Salida esperada |
 | --- | --- | --- |
-| `bash butaques.sh 5` | 5 < 12 | Queden 7 butaques |
-| `bash butaques.sh 12` | 12 = 12 | Sala completa |
-| `bash butaques.sh 13` | 13 > 12 | No hi ha prou butaques |
-| `bash butaques.sh cinc` | No passa el patró | Missatge d'entrada incorrecta |
+| `bash butacas.sh 5` | 5 < 12 | Quedan 7 butacas |
+| `bash butacas.sh 12` | 12 = 12 | Sala completa |
+| `bash butacas.sh 13` | 13 > 12 | No hay suficientes butacas |
+| `bash butacas.sh cinco` | No cumple el patrón | Mensaje de entrada incorrecta |
 
-La validació es fa **abans** de l'aritmètica. `^` i `$` ancoren tot el text; `[1-9]` és la primera xifra i `[0-9]?` permet una segona opcional. El patró sense cometes a la dreta de `=~` és una expressió regular, no text literal.
+La validación se hace **antes** de la aritmética. `^` y `$` anclan todo el texto; `[1-9]` es la primera cifra y `[0-9]?` permite una segunda opcional. El patrón sin comillas a la derecha de `=~` es una expresión regular, no texto literal.
 
-## Aritmètica i opcions de menú
+## Aritmética y opciones de menú
 
-`$((7 / 2))` dona 3: l'aritmètica ordinària de Bash és entera. `%` calcula el residu. Per a decimals pots usar `bc`, si està instal·lat:
+`$((7 / 2))` devuelve 3: la aritmética ordinaria de Bash es entera. `%` calcula el resto. Para decimales puedes utilizar `bc`, si está instalado:
 
 ```bash
 printf 'scale=2; 7 / 2\n' | bc
 ```
 
-Resultat: `3.50`. `scale` controla decimals en la divisió; no és una regla universal d'arrodoniment monetari. `expr` i `let` apareixen en scripts antics, però `$((...))` acostuma a ser més llegible.
+Resultado: `3.50`. `scale` controla los decimales en la división; no es una regla universal de redondeo monetario. `expr` y `let` aparecen en scripts antiguos, pero `$((...))` suele ser más legible.
 
-Per a opcions concretes, `case` evita cadenes llargues d'igualtats:
+Para opciones concretas, `case` evita cadenas largas de igualdades:
 
 ```bash
-accio=${1:-ajuda}
-case "$accio" in
-    resum) printf 'Mostra el resum de la sala\n' ;;
-    ajuda) printf 'Opcions: resum, ajuda\n' ;;
-    *) printf 'Opció desconeguda\n' >&2; exit 1 ;;
+accion=${1:-ayuda}
+case "$accion" in
+    resumen) printf 'Muestra el resumen de la sala\n' ;;
+    ayuda) printf 'Opciones: resumen, ayuda\n' ;;
+    *) printf 'Opción desconocida\n' >&2; exit 1 ;;
 esac
 ```
 
-!!! success "Per a repassar"
-    Primer comprova la forma de la dada; després fes càlculs o decisions. No confongues `=` d'assignació, igualtat de text i comparació numèrica.
+!!! success "Para repasar"
+    Primero comprueba la forma del dato; después realiza cálculos o decisiones. No confundas `=` de asignación, igualdad de texto y comparación numérica.
 
 ---
 
-Font del temari: [apunts originals d’ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

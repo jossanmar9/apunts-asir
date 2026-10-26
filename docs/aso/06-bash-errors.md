@@ -1,64 +1,64 @@
-# UT1 · 5. Errors, depuració i scripts d'administració
+# UT1 · 5. Errores, depuración y scripts de administración
 
-## L'estat d'una ordre és informació
+## El estado de un comando es información
 
-En shell, 0 indica èxit i altres valors indiquen altres resultats. `grep` retorna 1 quan no troba coincidències: no sempre representa una avaria. `$?` canvia amb la següent ordre; sovint és més clar escriure `if ordre; then ...`.
+En shell, 0 indica éxito y otros valores indican otros resultados. `grep` devuelve 1 cuando no encuentra coincidencias: no siempre representa una avería. `$?` cambia con el siguiente comando; a menudo resulta más claro escribir `if comando; then ...`.
 
-`set -u` detecta variables no definides. `set -e` pot aturar el script davant determinades fallades, però té excepcions en condicionals i altres construccions. `set -o pipefail` fa visible una fallada en una tuberia que acabaria amb una última ordre correcta. Cap opció substitueix tractar els errors esperables.
+`set -u` detecta variables no definidas. `set -e` puede detener el script ante determinados fallos, pero tiene excepciones en condicionales y otras construcciones. `set -o pipefail` hace visible un fallo en una tubería que terminaría con un último comando correcto. Ninguna opción sustituye el tratamiento de los errores esperables.
 
-## Exemple resolt: informe de línies d'un document
+## Ejemplo resuelto: informe de líneas de un documento
 
-**Problema nou:** rebre un fitxer de text i mostrar quantes línies té, inclòs un nom amb espais. No copia fitxers ni crea usuaris.
+**Problema propio:** recibir un archivo de texto y mostrar cuántas líneas tiene, incluido un nombre con espacios. No copia archivos ni crea usuarios.
 
 ```bash
 #!/usr/bin/env bash
 set -u
 if (( $# != 1 )); then
-    printf 'Ús: bash informe.sh fitxer\n' >&2
+    printf 'Uso: bash informe.sh archivo\n' >&2
     exit 1
 fi
-fitxer=$1
-if [[ ! -f "$fitxer" || ! -r "$fitxer" ]]; then
-    printf 'Cal un fitxer ordinari que es puga llegir.\n' >&2
+archivo=$1
+if [[ ! -f "$archivo" || ! -r "$archivo" ]]; then
+    printf 'Se necesita un archivo ordinario que se pueda leer.\n' >&2
     exit 2
 fi
-if linies=$(wc -l < "$fitxer"); then
-    printf 'Document: %s\nLínies: %s\n' "$fitxer" "$linies"
+if lineas=$(wc -l < "$archivo"); then
+    printf 'Documento: %s\nLíneas: %s\n' "$archivo" "$lineas"
 else
-    printf 'No s’ha pogut completar el recompte.\n' >&2
+    printf 'No se ha podido completar el recuento.\n' >&2
     exit 3
 fi
 ```
 
-### Prova guiada
+### Prueba guiada
 
-Crea `text curt.txt` amb `printf 'primera\nsegona\n' > "text curt.txt"`.
+Crea `texto corto.txt` con `printf 'primera\nsegunda\n' > "texto corto.txt"`.
 
-| Crida | Resultat esperat |
+| Llamada | Resultado esperado |
 | --- | --- |
-| `bash informe.sh "text curt.txt"` | 2 línies; estat 0 |
-| `bash informe.sh absent.txt` | Avís de fitxer; estat 2 |
-| `bash informe.sh` | Ajuda; estat 1 |
+| `bash informe.sh "texto corto.txt"` | 2 líneas; estado 0 |
+| `bash informe.sh ausente.txt` | Aviso de archivo; estado 2 |
+| `bash informe.sh` | Ayuda; estado 1 |
 
-`wc -l` compta salts de línia. Un últim fragment sense salt final no augmenta el recompte. Eixa distinció pot explicar una aparent diferència amb el que veus en un editor.
+`wc -l` cuenta saltos de línea. Un último fragmento sin salto final no aumenta el recuento. Esa diferencia puede explicar una aparente discrepancia con lo que ves en un editor.
 
-El segon `if` contempla que l'ordre falle encara que la comprovació prèvia haja passat: entre comprovar i llegir, l'estat del fitxer podria canviar.
+El segundo `if` contempla que el comando falle aunque se haya superado la comprobación previa: entre comprobar y leer, el estado del archivo podría cambiar.
 
-## Com depurar-lo
+## Cómo depurarlo
 
-`bash -n informe.sh` comprova sintaxi sense executar el contingut. `bash -x informe.sh "text curt.txt"` mostra les ordres expandides mentre les executa; evita usar traces sobre secrets. Si tens ShellCheck, `shellcheck informe.sh` ajuda a detectar problemes habituals.
+`bash -n informe.sh` comprueba la sintaxis sin ejecutar el contenido. `bash -x informe.sh "texto corto.txt"` muestra los comandos expandidos mientras los ejecuta; evita utilizar trazas sobre secretos. Si tienes ShellCheck, `shellcheck informe.sh` ayuda a detectar problemas habituales.
 
-`trap 'printf "Fi del laboratori\n" >&2' EXIT` executa una acció en eixir. També pots capturar senyals o `ERR` segons el cas. Usa `trap` per a neteja i diagnòstic conscient, no per a ocultar una fallada.
+`trap 'printf "Fin del laboratorio\n" >&2' EXIT` ejecuta una acción al salir. También puedes capturar señales o `ERR` según el caso. Utiliza `trap` para limpieza y diagnóstico conscientes, no para ocultar un fallo.
 
-## Aplicació a tasques d'administració
+## Aplicación a tareas de administración
 
-Un script de còpies combina comprovació d'origen, ordre d'arxivat, estat i log. Un lector de CSV ha de separar camps sense partir els espais, per exemple amb `while IFS=';' read -r nom zona; do ...; done < dades.csv` per a un format simple sense cometes internes. Un format CSV general requereix un lector adequat.
+Un script de copias combina comprobación del origen, comando de archivado, estado y log. Un lector de CSV debe separar campos sin dividir los espacios, por ejemplo con `while IFS=';' read -r nombre zona; do ...; done < datos.csv` para un formato simple sin comillas internas. Un formato CSV general requiere un lector adecuado.
 
-En gestió d'usuaris o serveis, separa **consultar**, **decidir** i **modificar**. Prova primer la lògica amb dades de laboratori i missatges del que faria. No cal executar altes massives per a entendre un `if`. Per a interpretar un sondeig, recorda també que una IP que no respon a ping no queda demostrada com a lliure: pot filtrar ICMP.
+En gestión de usuarios o servicios, separa **consultar**, **decidir** y **modificar**. Prueba primero la lógica con datos de laboratorio y mensajes de lo que haría. No necesitas ejecutar altas masivas para entender un `if`. Al interpretar un sondeo, recuerda también que una IP que no responde a ping no queda demostrada como libre: puede filtrar ICMP.
 
-!!! success "Per a repassar"
-    Una comprovació ha de produir una decisió i una fallada ha de quedar visible. Abans d'executar un script, identifica què modifica i què necessita per a funcionar.
+!!! success "Para repasar"
+    Una comprobación debe producir una decisión y un fallo debe quedar visible. Antes de ejecutar un script, identifica qué modifica y qué necesita para funcionar.
 
 ---
 
-Font del temari: [apunts originals d’ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de ASO](https://angelabserrano.github.io/aso/linux/bash/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

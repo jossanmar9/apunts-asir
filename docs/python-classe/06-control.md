@@ -1,101 +1,101 @@
-# UT3 · 1. Condicionals i bucles amb seguiment de valors
+# UT3 · 1. Condicionales y bucles con seguimiento de valores
 
-## Decidir amb `if`
+## Decidir con `if`
 
-Un bloc comença amb `:` i es delimita amb sagnat coherent. `if/elif/else` prova les condicions en ordre i executa el primer bloc que correspon. No és el mateix que diversos `if` independents, que poden executar més d'un bloc.
+Un bloque comienza con `:` y se delimita con una indentación coherente. `if/elif/else` prueba las condiciones en orden y ejecuta el primer bloque que corresponde. No es lo mismo que varios `if` independientes, que pueden ejecutar más de un bloque.
 
-## Exemple resolt: estat d'una cua d'impressió
+## Ejemplo resuelto: estado de una cola de impresión
 
-**Problema nou:** amb 0 documents la cua està buida; d'1 a 4, és curta; a partir de 5, és llarga. Una quantitat negativa és incoherent.
+**Problema propio:** con 0 documentos la cola está vacía; de 1 a 4, es corta; a partir de 5, es larga. Una cantidad negativa es incoherente.
 
 ```python
-documents = 4
-if documents < 0:
-    estat = "Dada incorrecta"
-elif documents == 0:
-    estat = "Buida"
-elif documents <= 4:
-    estat = "Curta"
+documentos = 4
+if documentos < 0:
+    estado = "Dato incorrecto"
+elif documentos == 0:
+    estado = "Vacía"
+elif documentos <= 4:
+    estado = "Corta"
 else:
-    estat = "Llarga"
-print(estat)
+    estado = "Larga"
+print(estado)
 ```
 
-**Resultat:** `Curta`. Prova -1, 0, 1, 4 i 5 per a cobrir errors i límits. En arribar a `documents <= 4`, ja saps que no és negatiu ni zero: les condicions anteriors també aporten informació.
+**Resultado:** `Corta`. Prueba -1, 0, 1, 4 y 5 para cubrir errores y límites. Al llegar a `documentos <= 4`, ya sabes que no es negativo ni cero: las condiciones anteriores también aportan información.
 
-## Repetir amb `while`: exemple resolt de tallar una cinta
+## Repetir con `while`: ejemplo resuelto de cortar una cinta
 
-Tenim 17 cm i volem fragments complets de 5 cm:
+Tenemos 17 cm y queremos fragmentos completos de 5 cm:
 
 ```python
-restant = 17
-fragments = 0
-while restant >= 5:
-    restant -= 5
-    fragments += 1
-print(f"Fragments: {fragments}; restant: {restant} cm")
+restante = 17
+fragmentos = 0
+while restante >= 5:
+    restante -= 5
+    fragmentos += 1
+print(f"Fragmentos: {fragmentos}; restante: {restante} cm")
 ```
 
-| Volta | Restant abans | Restant després | Fragments |
+| Vuelta | Restante antes | Restante después | Fragmentos |
 | --- | --- | --- | --- |
 | 1 | 17 | 12 | 1 |
 | 2 | 12 | 7 | 2 |
 | 3 | 7 | 2 | 3 |
 
-La quarta comprovació és falsa; l'eixida és `Fragments: 3; restant: 2 cm`. La variable que controla la parada canvia en cada volta.
+La cuarta comprobación es falsa; la salida es `Fragmentos: 3; restante: 2 cm`. La variable que controla la parada cambia en cada vuelta.
 
-Un `while` també pot repetir una entrada fins que siga vàlida. Per a un catàleg de dues opcions:
+Un `while` también puede repetir una entrada hasta que sea válida. Para un catálogo de dos opciones:
 
 ```python
-opcio = input("Material: paper o tela? ").strip().lower()
-while opcio not in ("paper", "tela"):
-    opcio = input("Escriu paper o tela: ").strip().lower()
-print(f"Material triat: {opcio}")
+opcion = input("¿Material: papel o tela? ").strip().lower()
+while opcion not in ("papel", "tela"):
+    opcion = input("Escribe papel o tela: ").strip().lower()
+print(f"Material elegido: {opcion}")
 ```
 
-## Repetir amb `for` i `range`
+## Repetir con `for` y `range`
 
-`for` recorre un iterable. `range(inici, fi, pas)` exclou `fi`; el pas no pot ser zero. `range` no crea una llista sencera: pots convertir-lo amb `list()` si la necessites.
+`for` recorre un iterable. `range(inicio, fin, paso)` excluye `fin`; el paso no puede ser cero. `range` no crea una lista entera: puedes convertirlo con `list()` si la necesitas.
 
 ```python
 for pagina in range(2, 9, 3):
-    print(pagina)  # 2, 5, 8 en línies separades
-for compte in range(3, 0, -1):
-    print(compte)  # 3, 2, 1
+    print(pagina)  # 2, 5, 8 en líneas separadas
+for cuenta in range(3, 0, -1):
+    print(cuenta)  # 3, 2, 1
 ```
 
-Per a numerar elements, `enumerate` evita gestionar un índex manual:
+Para numerar elementos, `enumerate` evita gestionar un índice manual:
 
 ```python
-for posicio, color in enumerate(["ocre", "blau", "gris"], start=1):
-    print(posicio, color)
+for posicion, color in enumerate(["ocre", "azul", "gris"], start=1):
+    print(posicion, color)
 ```
 
-Mostra `1 ocre`, `2 blau` i `3 gris`. Usa `_` com a nom de variable per conveni quan només vols repetir i no necessites el valor, com en `for _ in range(2): print("marca")`.
+Muestra `1 ocre`, `2 azul` y `3 gris`. Utiliza `_` como nombre de variable por convenio cuando solo quieres repetir y no necesitas el valor, como en `for _ in range(2): print("marca")`.
 
-## `break`, `continue` i `else` d'un bucle
+## `break`, `continue` y `else` de un bucle
 
-Exemple nou: buscar una etiqueta urgent entre notes:
+Ejemplo propio: buscar una etiqueta urgente entre notas:
 
 ```python
-notes = ["pendent", "urgent", "resolt"]
-for nota in notes:
-    if nota == "resolt":
+notas = ["pendiente", "urgente", "resuelto"]
+for nota in notas:
+    if nota == "resuelto":
         continue
-    if nota == "urgent":
-        print("Hi ha una nota urgent")
+    if nota == "urgente":
+        print("Hay una nota urgente")
         break
 else:
-    print("No hi ha notes urgents")
+    print("No hay notas urgentes")
 ```
 
-`break` acaba el bucle i evita el seu `else`. Si elimines `urgent` de les dades, el recorregut acaba normalment i executa l'`else`. En un `while`, la regla és la mateixa: `else` s'executa quan acaba sense `break`, fins i tot si no ha entrat mai al cos.
+`break` termina el bucle y evita su `else`. Si eliminas `urgente` de los datos, el recorrido termina normalmente y ejecuta el `else`. En un `while`, la regla es la misma: `else` se ejecuta cuando termina sin `break`, incluso si nunca ha entrado en el cuerpo.
 
-Els bucles anidats multipliquen recorreguts: dos colors per tres mides produeixen sis combinacions. Abans d'anidar, calcula quantes voltes faràs.
+Los bucles anidados multiplican recorridos: dos colores por tres tamaños producen seis combinaciones. Antes de anidar, calcula cuántas vueltas darás.
 
-!!! success "Per a repassar"
-    Escriu la condició, què canvia i quan acaba. En un recorregut, separa «ometre aquest element» de «deixar de buscar».
+!!! success "Para repasar"
+    Escribe la condición, qué cambia y cuándo termina. En un recorrido, separa «omitir este elemento» de «dejar de buscar».
 
 ---
 
-Fonts del temari: [01-condicionales](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/01-condicionales/), [02-while](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/02-while/), [03-for-range](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/03-for-range/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [01-condicionales](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/01-condicionales/), [02-while](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/02-while/), [03-for-range](https://victoria-nr.github.io/python-intro-alumnos/unidades/u03-control-flujo-sysadmin/teoria/03-for-range/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

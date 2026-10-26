@@ -1,41 +1,42 @@
-# Fonts, cobertura i actualitzacions
+# Fuentes, cobertura y actualizaciones
 
-Aquesta web ofereix **resums propis**, separats per mòdul, unitat i tema. Els enllaços originals permeten contrastar la teoria i consultar les indicacions del professorat.
+Esta web ofrece **resúmenes propios**, separados por módulo, unidad y tema, y una sección independiente de **Git y GitHub**. Los enlaces originales permiten contrastar la teoría y consultar las indicaciones del profesorado.
 
-## Materials consultats
+## Materiales consultados
 
-| Mòdul | Font original | Resums disponibles |
+| Módulo | Fuente original | Resúmenes disponibles |
 | --- | --- | --- |
-| IAW | [victoria-nr · iaw-alumnos](https://victoria-nr.github.io/iaw-alumnos/) | [UT1 i UT2](iaw/index.md) |
-| ASO | [angelabserrano · aso](https://angelabserrano.github.io/aso/) | [UT0 i UT1](aso/index.md) |
-| Python | [victoria-nr · python-intro-alumnos](https://victoria-nr.github.io/python-intro-alumnos/) | [UT1, UT2 i UT3](python-classe/index.md) |
+| IAW | [victoria-nr · iaw-alumnos](https://victoria-nr.github.io/iaw-alumnos/) | [UT1 y UT2](iaw/index.md) |
+| ASO | [angelabserrano · aso](https://angelabserrano.github.io/aso/) | [UT1 · Bash](aso/index.md) |
+| Python | [victoria-nr · python-intro-alumnos](https://victoria-nr.github.io/python-intro-alumnos/) | [UT1, UT2 y UT3](python-classe/index.md) |
+| Git y GitHub | [UT0 de ASO](https://angelabserrano.github.io/aso/git/introduccion/) | [Tema independiente](git-github/index.md) |
 
-**Data de consulta: 26/10/2026.** Cada tema enllaça la teoria concreta utilitzada. Els enunciats de pràctiques s’han consultat per a diferenciar els exemples propis de les tasques assignades; no se’n reprodueixen les solucions.
+**Consulta de fuentes: 26/10/2026. Traducción al castellano: 27/10/2026.** Cada tema enlaza la teoría concreta utilizada. Los enunciados de prácticas se han consultado para diferenciar los ejemplos propios de las tareas asignadas; no se reproducen sus soluciones.
 
 ## Cobertura detallada
 
-| Mòdul i unitat | Conceptes coberts |
+| Módulo y unidad | Conceptos cubiertos |
 | --- | --- |
-| IAW · UT1 | Estàtic i dinàmic, components, HTTP, LAMP i altres stacks, Git, Docker, Compose, ports, muntatges, variables, PHP-FPM, MariaDB, logs i configuració bàsica |
-| IAW · UT2 | PHP i HTML, variables i operadors, arrays, decisions, bucles, funcions, formularis, validació, cookies, sessions, autenticació, aïllament i depuració |
-| ASO · UT0 | Git local i remot, preparació i commits, GitHub, autenticació SSH i errors habituals |
-| ASO · UT1 | Scripts, entorn, entrada, arguments, arrays, aritmètica, text, proves de fitxers, decisions, bucles, funcions, filtres, expressions regulars, estats i depuració |
-| Python · UT1 | Programació, intèrpret i bytecode, editor i entorn virtual, objectes, variables, tipus, operadors, conversions i entrada/eixida |
-| Python · UT2 | Funcions i mètodes, immutabilitat, índexs, talls, cerca i transformació de text, formats i Unicode |
-| Python · UT3 | Condicionals, while, for, range, enumerate, break/continue/else, depuració, nocions d’excepcions i biblioteques de sysadmin |
+| IAW · UT1 | Estático y dinámico, componentes, HTTP, LAMP y otros stacks, Git, Docker, Compose, puertos, montajes, variables, PHP-FPM, MariaDB, logs y configuración básica |
+| IAW · UT2 | PHP y HTML, variables y operadores, arrays, decisiones, bucles, funciones, formularios, validación, cookies, sesiones, autenticación, aislamiento y depuración |
+| Git y GitHub · transversal | Git local y remoto, preparación y commits, GitHub, autenticación SSH y errores habituales |
+| ASO · UT1 | Scripts, entorno, entrada, argumentos, arrays, aritmética, texto, comprobaciones de archivos, decisiones, bucles, funciones, filtros, expresiones regulares, estados y depuración |
+| Python · UT1 | Programación, intérprete y bytecode, editor y entorno virtual, objetos, variables, tipos, operadores, conversiones y entrada/salida |
+| Python · UT2 | Funciones y métodos, inmutabilidad, índices, cortes, búsqueda y transformación de texto, formatos y Unicode |
+| Python · UT3 | Condicionales, while, for, range, enumerate, break/continue/else, depuración, nociones de excepciones y bibliotecas de sysadmin |
 
-## Què falta en les fonts consultades?
+## ¿Qué falta en las fuentes consultadas?
 
-- **IAW:** UT3 a UT7 apareixen en la planificació, sense pàgines de teoria en el menú consultat.
-- **ASO:** des d’UT2 fins a UT8, incloses les subdivisions de directori, Samba i PowerShell, les pàgines indiquen «Próximamente».
-- **Python:** UT4 a UT6 consten en la planificació, sense teoria en el menú consultat; UT4 està prevista en empresa.
+- **IAW:** UT3 a UT7 aparecen en la planificación, sin páginas de teoría en el menú consultado.
+- **ASO:** desde UT2 hasta UT8, incluidas las subdivisiones de directorio, Samba y PowerShell, las páginas indican «Próximamente».
+- **Python:** UT4 a UT6 constan en la planificación, sin teoría en el menú consultado; UT4 está prevista en empresa.
 
-Els apunts antics accessibles en **Complements** poden avançar alguns conceptes, però no es presenten com un resum d’unitats encara no publicades.
+Los apuntes antiguos accesibles en **Complementos (valenciano)** pueden adelantar algunos conceptos, pero no se presentan como resumen de unidades todavía no publicadas.
 
-## Com són els exemples resolts?
+## ¿Cómo son los ejemplos resueltos?
 
-Cada cas nou explica el problema, les dades, les decisions, el codi quan cal i el resultat esperat. Els exemples tenen un context i un procediment propis: no són les activitats per a practicar o entregar amb altres noms o xifres. Es poden consultar mentre es treballa per a entendre la tècnica i aplicar-la a un altre enunciat.
+Cada caso propio explica el problema, los datos, las decisiones, el código cuando hace falta y el resultado esperado. Los ejemplos tienen un contexto y un procedimiento propios: no son las actividades para practicar o entregar con otros nombres o cifras. Se pueden consultar mientras trabajas para entender la técnica y aplicarla a otro enunciado.
 
-## Quan s’actualitza?
+## ¿Cuándo se actualiza?
 
-**Quan l’estudiant ho indique.** En cada revisió es consultaran els materials nous, s’afegiran o corregiran els resums afectats i es comprovarà que els casos didàctics continuen sent diferents dels exercicis assignats. No es descarreguen ni incorporen novetats automàticament.
+**Cuando lo indique el estudiante.** En cada revisión se consultarán los materiales nuevos, se añadirán o corregirán los resúmenes afectados y se comprobará que los casos didácticos siguen siendo diferentes de los ejercicios asignados. No se descargan ni incorporan novedades automáticamente.

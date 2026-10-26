@@ -1,31 +1,29 @@
-# ASO · Administració de sistemes operatius
+# ASO · Administración de sistemas operativos
 
-Resums per a estudiar i consultar mentre fas els treballs. Cada tema explica les idees amb casos nous resolts, seguiment de valors i comprovacions. Els exemples ensenyen la teoria; no són les solucions dels exercicis de pràctica o entrega.
-
-## UT0 · Git i GitHub
-
-| Tema | Resum i exemples |
-| --- | --- |
-| 1 | [Git i GitHub](01-git.md) |
+Resúmenes para estudiar y consultar mientras haces los trabajos. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
 
 ## UT1 · Bash
 
-| Tema | Resum i exemples |
+| Tema | Resumen y ejemplos |
 | --- | --- |
-| 1 | [Scripts, variables i paràmetres](02-bash-dades.md) |
-| 2 | [Càlculs i decisions](03-bash-decisions.md) |
-| 3 | [Bucles i funcions](04-bash-bucles.md) |
-| 4 | [Fitxers, filtres i expressions regulars](05-bash-text.md) |
-| 5 | [Errors i scripts d’administració](06-bash-errors.md) |
+| 1 | [Scripts, variables y parámetros](02-bash-dades.md) |
+| 2 | [Cálculos y decisiones](03-bash-decisions.md) |
+| 3 | [Bucles y funciones](04-bash-bucles.md) |
+| 4 | [Archivos, filtros y expresiones regulares](05-bash-text.md) |
+| 5 | [Errores y scripts de administración](06-bash-errors.md) |
 
-## Material pendent de publicar
+## Herramienta transversal: Git y GitHub
 
-UT2 (processos), UT3 (accés remot), UT4 (Ansible), UT5.1 (directori Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directori Actiu), UT7.2 (PowerShell i directori) i UT8 (monitorització) apareixen com a «Próximamente». Els apunts complementaris que ja tenim no es presenten com a resum d’eixa teoria encara pendent.
+La introducción que corresponde a UT0 está en el [tema independiente de Git y GitHub](../git-github/index.md), accesible desde su propia pestaña del menú.
 
-## Com usar aquests resums
+## Material pendiente de publicar
 
-Llig la idea principal, segueix el cas resolt i prediu el resultat abans de provar-lo. Durant un treball, busca el concepte que necessites i aplica’l al teu enunciat. Si el cas és diferent, adapta el raonament, les dades i les validacions.
+UT2 (procesos), UT3 (acceso remoto), UT4 (Ansible), UT5.1 (directorio Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directorio Activo), UT7.2 (PowerShell y directorio) y UT8 (monitorización) aparecen como «Próximamente». Los apuntes complementarios anteriores no se presentan como resumen de esa teoría todavía pendiente.
 
-Consulta també [Com estudiar](../estudiar/index.md) i la [cobertura i les fonts](../classe.md).
+## Cómo utilizar estos resúmenes
 
-Última revisió dels materials: **26/10/2026**. Actualització manual quan ho demane l’estudiant.
+Lee la idea principal, sigue el caso resuelto y predice el resultado antes de probarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.
+
+Consulta también [Cómo estudiar](../estudiar/index.md), [Git y GitHub](../git-github/index.md) y las [fuentes y la cobertura](../classe.md).
+
+Última consulta de los materiales: **26/10/2026**. Traducción al castellano: **27/10/2026**. Actualización manual cuando lo solicite el estudiante.

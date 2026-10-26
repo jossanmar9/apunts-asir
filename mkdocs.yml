@@ -1,6 +1,6 @@
-site_name: Apunts ASIR
-site_description: "Resums per mòdul i tema d’IAW, ASO i Python, amb exemples propis resolts, guia de consulta i consells per a estudiar ASIR"
-# El teu usuari de GitHub
+site_name: Apuntes ASIR
+site_description: "Resúmenes por módulo y tema de IAW, ASO y Python, Git y GitHub, ejemplos propios resueltos y consejos para estudiar ASIR"
+# Tu usuario de GitHub
 site_url: https://jossanmar9.github.io/apunts-asir/
 repo_url: https://github.com/jossanmar9/apunts-asir
 repo_name: apunts-asir
@@ -8,7 +8,7 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  language: ca
+  language: es
   icon:
     logo: material/server-network
     repo: fontawesome/brands/github
@@ -19,23 +19,23 @@ theme:
       accent: amber
       toggle:
         icon: material/weather-night
-        name: Mode fosc
+        name: Modo oscuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
       accent: amber
       toggle:
         icon: material/weather-sunny
-        name: Mode clar
+        name: Modo claro
   features:
-    - navigation.tabs          # una pestanya per mòdul
+    - navigation.tabs          # una pestaña por módulo
     - navigation.sections
-    - navigation.indexes       # la pàgina index.md de cada carpeta és la portada del mòdul
+    - navigation.indexes       # index.md es la portada de cada módulo
     - navigation.top
-    - navigation.footer        # botons Anterior / Següent
+    - navigation.footer        # botones Anterior / Siguiente
     - search.suggest
     - search.highlight
-    - content.code.copy        # botó de copiar als blocs de codi
+    - content.code.copy        # botón para copiar bloques de código
     - content.code.annotate
     - content.tabs.link
     - content.action.edit
@@ -75,131 +75,131 @@ extra_css:
   - assets/stylesheets/extra.css
 
 nav:
-  - "Inici": index.md
+  - "Inicio": index.md
   - "IAW":
       - iaw/index.md
-      - "UT1 · Entorn d’implantació web":
-          - "Arquitectura i components": iaw/01-arquitectura.md
-          - "HTTP i diagnòstic": iaw/02-http.md
-          - "Docker Compose i entorn reproduïble": iaw/03-entorn.md
-      - "UT2 · Programació web en servidor":
-          - "PHP i tipus de dades": iaw/04-php.md
-          - "Control de flux, arrays i funcions": iaw/05-control-funcions.md
-          - "Formularis i validació": iaw/06-formularis.md
-          - "Cookies, sessions i autenticació": iaw/07-estat.md
-          - "Depuració i comprovacions": iaw/08-depuracio.md
+      - "UT1 · Entorno de implantación web":
+          - "Arquitectura y componentes": iaw/01-arquitectura.md
+          - "HTTP y diagnóstico": iaw/02-http.md
+          - "Docker Compose y entorno reproducible": iaw/03-entorn.md
+      - "UT2 · Programación web en servidor":
+          - "PHP y tipos de datos": iaw/04-php.md
+          - "Control de flujo, arrays y funciones": iaw/05-control-funcions.md
+          - "Formularios y validación": iaw/06-formularis.md
+          - "Cookies, sesiones y autenticación": iaw/07-estat.md
+          - "Depuración y comprobaciones": iaw/08-depuracio.md
   - "ASO":
       - aso/index.md
-      - "UT0 · Git i GitHub":
-          - "Git i GitHub": aso/01-git.md
       - "UT1 · Bash":
-          - "Scripts, variables i paràmetres": aso/02-bash-dades.md
-          - "Càlculs i decisions": aso/03-bash-decisions.md
-          - "Bucles i funcions": aso/04-bash-bucles.md
-          - "Fitxers, filtres i expressions regulars": aso/05-bash-text.md
-          - "Errors i scripts d’administració": aso/06-bash-errors.md
+          - "Scripts, variables y parámetros": aso/02-bash-dades.md
+          - "Cálculos y decisiones": aso/03-bash-decisions.md
+          - "Bucles y funciones": aso/04-bash-bucles.md
+          - "Archivos, filtros y expresiones regulares": aso/05-bash-text.md
+          - "Errores y scripts de administración": aso/06-bash-errors.md
   - "Python":
       - python-classe/index.md
-      - "UT1 · Introducció, entorn i tipus de dades":
-          - "Programació i entorn": python-classe/01-entorn.md
-          - "Variables, tipus i operadors": python-classe/02-dades.md
-          - "Entrada i eixida": python-classe/03-entrada.md
-      - "UT2 · Objectes predefinits i cadenes":
-          - "Objectes i mètodes de cadenes": python-classe/04-cadenes.md
-          - "F-strings i Unicode": python-classe/05-format.md
-      - "UT3 · Control de flux i biblioteques sysadmin":
-          - "Condicionals i bucles": python-classe/06-control.md
-          - "Errors i depuració": python-classe/07-errors.md
-          - "Biblioteques d’administració": python-classe/08-biblioteques.md
-  - "Com estudiar":
+      - "UT1 · Introducción, entorno y tipos de datos":
+          - "Programación y entorno": python-classe/01-entorn.md
+          - "Variables, tipos y operadores": python-classe/02-dades.md
+          - "Entrada y salida": python-classe/03-entrada.md
+      - "UT2 · Objetos predefinidos y cadenas":
+          - "Objetos y métodos de cadenas": python-classe/04-cadenes.md
+          - "F-strings y Unicode": python-classe/05-format.md
+      - "UT3 · Control de flujo y bibliotecas sysadmin":
+          - "Condicionales y bucles": python-classe/06-control.md
+          - "Errores y depuración": python-classe/07-errors.md
+          - "Bibliotecas de administración": python-classe/08-biblioteques.md
+  - "Git y GitHub":
+      - git-github/index.md
+  - "Cómo estudiar":
       - estudiar/index.md
-      - "Consells de programadors": estudiar/consells.md
-  - "Complements":
+      - "Consejos de programación": estudiar/consells.md
+  - "Complementos (valenciano)":
       - "Bash":
           - bash/index.md
           - "1. Primer script": bash/01-primer-script.md
-          - "2. Variables i paràmetres": bash/02-variables.md
-          - "3. Aritmètica i comparacions": bash/03-expressions.md
-          - "4. Condicionals": bash/04-condicionals.md
+          - "2. Variables y parámetros": bash/02-variables.md
+          - "3. Aritmética y comparaciones": bash/03-expressions.md
+          - "4. Condicionales": bash/04-condicionals.md
           - "5. Bucles": bash/05-bucles.md
-          - "6. Funcions": bash/06-funcions.md
-          - "7. Redireccions i tuberies": bash/07-redireccions.md
-          - "8. Llegir dades": bash/08-lectura.md
+          - "6. Funciones": bash/06-funcions.md
+          - "7. Redirecciones y tuberías": bash/07-redireccions.md
+          - "8. Leer datos": bash/08-lectura.md
           - "9. Arrays": bash/09-arrays.md
-          - "10. Processar text": bash/10-text.md
-          - "11. find, grep i xargs": bash/11-find-grep-xargs.md
+          - "10. Procesar texto": bash/10-text.md
+          - "11. find, grep y xargs": bash/11-find-grep-xargs.md
           - "12. Scripts robustos": bash/12-robustesa.md
-          - "Com resoldre un problema": bash/metode.md
-          - "Problemes resolts": bash/problemes.md
+          - "Cómo resolver un problema": bash/metode.md
+          - "Problemas resueltos": bash/problemes.md
       - "PowerShell":
           - powershell/index.md
-          - "1. Primers passos": powershell/01-primers-passos.md
-          - "2. Variables i tipus": powershell/02-variables.md
-          - "3. Operadors": powershell/03-operadors.md
-          - "4. Condicionals": powershell/04-condicionals.md
+          - "1. Primeros pasos": powershell/01-primers-passos.md
+          - "2. Variables y tipos": powershell/02-variables.md
+          - "3. Operadores": powershell/03-operadors.md
+          - "4. Condicionales": powershell/04-condicionals.md
           - "5. Bucles": powershell/05-bucles.md
-          - "6. Arrays i taules hash": powershell/06-arrays.md
-          - "7. Tuberies i objectes": powershell/07-tuberies.md
-          - "8. Funcions i paràmetres": powershell/08-funcions.md
-          - "9. Fitxers i errors": powershell/09-fitxers.md
-          - "10. PowerShell per a sysadmin": powershell/10-sysadmin.md
-          - "Exercicis resolts": powershell/exercicis.md
+          - "6. Arrays y tablas hash": powershell/06-arrays.md
+          - "7. Tuberías y objetos": powershell/07-tuberies.md
+          - "8. Funciones y parámetros": powershell/08-funcions.md
+          - "9. Archivos y errores": powershell/09-fitxers.md
+          - "10. PowerShell para sysadmin": powershell/10-sysadmin.md
+          - "Ejercicios resueltos": powershell/exercicis.md
       - "Python":
           - python/index.md
-          - "1. Entorn de treball": python/01-entorn.md
-          - "2. Tipus i variables": python/02-tipus.md
-          - "3. Cadenes": python/03-cadenes.md
-          - "4. Control de flux": python/04-control.md
-          - "5. Estructures de dades": python/05-estructures.md
-          - "6. Funcions i mòduls": python/06-funcions.md
-          - "7. Fitxers, pathlib i glob": python/07-fitxers.md
-          - "8. Excepcions": python/08-excepcions.md
-          - "9. Python per a sysadmin": python/09-sysadmin.md
-          - "10. Classes i objectes": python/10-poo.md
-          - "Exercicis resolts": python/exercicis.md
+          - "1. Entorno de trabajo": python/01-entorn.md
+          - "2. Tipos y variables": python/02-tipus.md
+          - "3. Cadenas": python/03-cadenes.md
+          - "4. Control de flujo": python/04-control.md
+          - "5. Estructuras de datos": python/05-estructures.md
+          - "6. Funciones y módulos": python/06-funcions.md
+          - "7. Archivos, pathlib y glob": python/07-fitxers.md
+          - "8. Excepciones": python/08-excepcions.md
+          - "9. Python para sysadmin": python/09-sysadmin.md
+          - "10. Clases y objetos": python/10-poo.md
+          - "Ejercicios resueltos": python/exercicis.md
       - "Git":
           - git/index.md
-          - "1. Conceptes i configuració": git/01-configuracio.md
-          - "2. El treball diari": git/02-treball-diari.md
+          - "1. Conceptos y configuración": git/01-configuracio.md
+          - "2. El trabajo diario": git/02-treball-diari.md
           - "3. GitHub": git/03-github.md
-          - "4. Branques": git/04-branques.md
+          - "4. Ramas": git/04-branques.md
           - "5. Pull Requests": git/05-pull-requests.md
-          - "6. Desfer canvis": git/06-desfer.md
-          - "Casos pràctics": git/casos.md
+          - "6. Deshacer cambios": git/06-desfer.md
+          - "Casos prácticos": git/casos.md
       - "Docker":
           - docker/index.md
-          - "1. Instal·lació": docker/01-installacio.md
-          - "2. Contenidors": docker/02-contenidors.md
-          - "3. Imatges": docker/03-imatges.md
-          - "4. Emmagatzematge": docker/04-emmagatzematge.md
-          - "5. Xarxes": docker/05-xarxes.md
+          - "1. Instalación": docker/01-installacio.md
+          - "2. Contenedores": docker/02-contenidors.md
+          - "3. Imágenes": docker/03-imatges.md
+          - "4. Almacenamiento": docker/04-emmagatzematge.md
+          - "5. Redes": docker/05-xarxes.md
           - "6. Docker Compose": docker/06-compose.md
-          - "7. Crear imatges (Dockerfile)": docker/07-dockerfile.md
-          - "Exercicis resolts": docker/exercicis.md
+          - "7. Crear imágenes (Dockerfile)": docker/07-dockerfile.md
+          - "Ejercicios resueltos": docker/exercicis.md
       - "PHP":
           - php/index.md
-          - "1. Què és PHP": php/01-introduccio.md
-          - "2. El llenguatge": php/02-llenguatge.md
-          - "3. Formularis": php/03-formularis.md
-          - "4. Sessions i usuaris": php/04-sessions.md
-          - "5. Bases de dades amb PDO": php/05-pdo.md
-          - "6. Una aplicació CRUD": php/06-crud.md
-          - "7. Desplegar aplicacions": php/07-desplegament.md
-          - "Exercicis resolts": php/exercicis.md
-      - "Xuletes":
+          - "1. Qué es PHP": php/01-introduccio.md
+          - "2. El lenguaje": php/02-llenguatge.md
+          - "3. Formularios": php/03-formularis.md
+          - "4. Sesiones y usuarios": php/04-sessions.md
+          - "5. Bases de datos con PDO": php/05-pdo.md
+          - "6. Una aplicación CRUD": php/06-crud.md
+          - "7. Desplegar aplicaciones": php/07-desplegament.md
+          - "Ejercicios resueltos": php/exercicis.md
+      - "Chuletas":
           - xuletes/index.md
           - "Bash": xuletes/bash.md
           - "Docker": xuletes/docker.md
           - "Git": xuletes/git.md
-          - "Ordres de Linux": xuletes/linux.md
+          - "Comandos de Linux": xuletes/linux.md
           - "PHP": xuletes/php.md
           - "PowerShell": xuletes/powershell.md
           - "Python": xuletes/python.md
-      - "Glossari": glossari.md
-      - "Bibliografia": bibliografia.md
-  - "Fonts i cobertura": classe.md
+      - "Glosario": glossari.md
+      - "Bibliografía": bibliografia.md
+  - "Fuentes y cobertura": classe.md
 
-copyright: Apunts ASIR
+copyright: Apuntes ASIR
 
 validation:
   links:

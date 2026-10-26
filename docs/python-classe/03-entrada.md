@@ -1,59 +1,59 @@
-# UT1 · 3. Llegir dades i mostrar resultats
+# UT1 · 3. Leer datos y mostrar resultados
 
-## `input()` sempre retorna text
+## `input()` siempre devuelve texto
 
-Si l'usuari escriu `12`, `input()` retorna `"12"`. Per a calcular has de convertir-lo amb `int()` o `float()`. Convertir no és el mateix que validar totes les regles del problema: un enter negatiu continua sent un enter, però pot ser inadmissible com a quantitat de mostres.
+Si el usuario escribe `12`, `input()` devuelve `"12"`. Para calcular debes convertirlo con `int()` o `float()`. Convertir no es lo mismo que validar todas las reglas del problema: un entero negativo sigue siendo un entero, pero puede ser inadmisible como cantidad de muestras.
 
-`print()` pot separar arguments amb `sep` i triar el final amb `end`. Les f-strings insereixen expressions entre claus. Un `\n` representa un salt de línia i `\t` una tabulació. Les cometes triples permeten text de diverses línies.
+`print()` puede separar argumentos con `sep` y elegir el final con `end`. Las f-strings insertan expresiones entre llaves. Un `\n` representa un salto de línea y `\t` una tabulación. Las comillas triples permiten escribir texto de varias líneas.
 
-## Exemple resolt: consum d'una impressora 3D
+## Ejemplo resuelto: consumo de una impresora 3D
 
-**Problema nou:** estimar quants metres de filament consumeix una sessió segons hores i metres per hora. Suposem entrades positives i decimals amb punt; la validació s'introdueix en UT3.
-
-```python
-hores = float(input("Hores de treball: "))
-metres_hora = float(input("Metres de filament per hora: "))
-consum = hores * metres_hora
-print(f"Filament estimat: {consum:.2f} m")
-print("Unitat", "metres", sep=": ")
-```
-
-### Prova amb dades conegudes
-
-Escriu `2.5` i `1.2`.
-
-1. Les dues entrades són inicialment text.
-2. `float` les converteix a valors decimals.
-3. `2.5 * 1.2` és 3.0 metres.
-4. `:.2f` mostra dues xifres decimals: `Filament estimat: 3.00 m`.
-5. El segon `print` mostra `Unitat: metres`.
-
-Si escrius `dues`, la conversió produeix `ValueError`. Si escrius `2,5`, també falla amb aquest programa: el separador decimal que espera `float` és el punt. No anuncies que el programa accepta qualsevol entrada si encara no la valides.
-
-## Una altra prova de tipus
+**Problema propio:** estimar cuántos metros de filamento consume una sesión según las horas y los metros por hora. Suponemos entradas positivas y decimales con punto; la validación se introduce en UT3.
 
 ```python
-text = "6"
-print(text * 3)       # 666
-print(int(text) * 3)  # 18
-print(str(18) + " m") # 18 m
+horas = float(input("Horas de trabajo: "))
+metros_hora = float(input("Metros de filamento por hora: "))
+consumo = horas * metros_hora
+print(f"Filamento estimado: {consumo:.2f} m")
+print("Unidad", "metros", sep=": ")
 ```
 
-La mateixa sintaxi `*` té significats diferents segons els tipus. `"6" + 3` falla perquè no hi ha una concatenació automàtica de cadena i enter. Una f-string com `f"{3} m"` resol la presentació sense alterar el tipus de la variable original.
+### Prueba con datos conocidos
 
-## Com estudiar un programa d'entrada i eixida
+Escribe `2.5` y `1.2`.
 
-Fes una taula amb el text introduït, el tipus després de la conversió, la fórmula i l'eixida. Després prova un valor simple que pugues calcular mentalment. Si un càlcul de consum amb zero hores dona una quantitat positiva, hi ha un error de lògica encara que Python no mostre cap excepció.
+1. Las dos entradas son inicialmente texto.
+2. `float` las convierte a valores decimales.
+3. `2.5 * 1.2` son 3.0 metros.
+4. `:.2f` muestra dos cifras decimales: `Filamento estimado: 3.00 m`.
+5. El segundo `print` muestra `Unidad: metros`.
 
-| Símptoma | Causa habitual |
+Si escribes `dos`, la conversión produce `ValueError`. Si escribes `2,5`, también falla con este programa: el separador decimal que espera `float` es el punto. No anuncies que el programa acepta cualquier entrada si todavía no la validas.
+
+## Otra prueba de tipos
+
+```python
+texto = "6"
+print(texto * 3)       # 666
+print(int(texto) * 3)  # 18
+print(str(18) + " m")  # 18 m
+```
+
+La misma sintaxis `*` tiene significados diferentes según los tipos. `"6" + 3` falla porque no hay una concatenación automática de cadena y entero. Una f-string como `f"{3} m"` resuelve la presentación sin alterar el tipo de la variable original.
+
+## Cómo estudiar un programa de entrada y salida
+
+Haz una tabla con el texto introducido, el tipo después de la conversión, la fórmula y la salida. Después prueba un valor sencillo que puedas calcular mentalmente. Si un cálculo de consumo con cero horas devuelve una cantidad positiva, hay un error de lógica aunque Python no muestre ninguna excepción.
+
+| Síntoma | Causa habitual |
 | --- | --- |
-| `TypeError` en sumar | S'estan barrejant text i números. |
-| Es veuen `{consum}` literalment | Falta la `f` abans de les cometes. |
-| Apareixen massa decimals | Aplica un format de presentació; no és una validació. |
+| `TypeError` al sumar | Se están mezclando texto y números. |
+| Se ve `{consumo}` literalmente | Falta la `f` antes de las comillas. |
+| Aparecen demasiados decimales | Aplica un formato de presentación; no es una validación. |
 
-!!! success "Per a repassar"
-    Llig text, converteix quan cal i mostra amb un format comprensible. Identifica en quin pas pot fallar cada entrada.
+!!! success "Para repasar"
+    Lee texto, convierte cuando haga falta y muestra un formato comprensible. Identifica en qué paso puede fallar cada entrada.
 
 ---
 
-Fonts del temari: [05-cadenas-entrada-salida](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/05-cadenas-entrada-salida/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuentes del temario: [05-cadenas-entrada-salida](https://victoria-nr.github.io/python-intro-alumnos/unidades/u01-introduccion-python/teoria/05-cadenas-entrada-salida/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

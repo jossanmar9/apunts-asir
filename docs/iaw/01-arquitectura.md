@@ -1,63 +1,63 @@
-# UT1 · 1. Com funciona una aplicació web
+# UT1 · 1. Cómo funciona una aplicación web
 
-## La idea que has d'entendre
+## La idea que debes entender
 
-Una aplicació web atén peticions d'un client. El navegador demana un recurs, el servidor prepara una resposta i el navegador la representa. Una URL és una adreça d'accés, no una carpeta que el navegador execute dins del servidor.
+Una aplicación web atiende peticiones de un cliente. El navegador solicita un recurso, el servidor prepara una respuesta y el navegador la representa. Una URL es una dirección de acceso, no una carpeta cuyo contenido ejecute el navegador dentro del servidor.
 
-**Estàtic** significa que el servidor entrega un fitxer ja preparat. **Dinàmic** significa que algun programa calcula la resposta en aquell moment. Una pàgina estàtica també pot executar JavaScript i demanar dades a una API: en eixe cas intervenen les dues formes de treballar.
+**Estático** significa que el servidor entrega un archivo ya preparado. **Dinámico** significa que un programa calcula la respuesta en ese momento. Una página estática también puede ejecutar JavaScript y pedir datos a una API: en ese caso intervienen ambas formas de trabajar.
 
-## Les peces, explicades amb un museu
+## Las piezas, explicadas con un museo
 
-Imaginem un web per a consultar peces d'un museu:
+Imagina una web para consultar piezas de un museo:
 
-| Peça | Què fa | Què no li correspon |
+| Componente | Qué hace | Qué no le corresponde |
 | --- | --- | --- |
-| Navegador | Demana la fitxa i mostra HTML, CSS i imatges | Executar el PHP del servidor |
-| Nginx | Rep HTTP, entrega fitxers i deriva les peticions PHP | Guardar la col·lecció en taules |
-| PHP-FPM | Executa PHP i genera la fitxa | Mostrar visualment el resultat a la pantalla |
-| MariaDB | Conserva les dades de les peces | Interpretar HTML |
+| Navegador | Solicita la ficha y muestra HTML, CSS e imágenes | Ejecutar el PHP del servidor |
+| Nginx | Recibe HTTP, entrega archivos y deriva las peticiones PHP | Guardar la colección en tablas |
+| PHP-FPM | Ejecuta PHP y genera la ficha | Representar visualmente el resultado en pantalla |
+| MariaDB | Conserva los datos de las piezas | Interpretar HTML |
 
-PHP és el llenguatge i el seu intèrpret; **PHP-FPM** és el servei que gestiona processos de PHP i rep treball mitjançant FastCGI. Nginx parla HTTP amb el navegador, però delega a PHP-FPM amb FastCGI. El port 9000 de PHP-FPM no és una web per a obrir-la al navegador.
+PHP es el lenguaje y su intérprete; **PHP-FPM** es el servicio que gestiona procesos de PHP y recibe trabajo mediante FastCGI. Nginx habla HTTP con el navegador, pero delega en PHP-FPM mediante FastCGI. El puerto 9000 de PHP-FPM no es una web que puedas abrir en el navegador.
 
 ```mermaid
 flowchart LR
     N[Navegador] -->|HTTP| W[Nginx]
-    W -->|Fitxer estàtic| N
+    W -->|Archivo estático| N
     W -->|FastCGI| P[PHP-FPM]
-    P -->|Consulta SQL si cal| D[(MariaDB)]
+    P -->|Consulta SQL si hace falta| D[(MariaDB)]
     D --> P
     P --> W
 ```
 
-## Cas resolt: una sala i el seu cartell
+## Caso resuelto: una sala y su cartel
 
-**Situació:** `/cartells/sala-blava.svg` és una imatge guardada; `/peca.php?codi=47` consulta una peça; `/ajuda.php` genera HTML sense consultar dades.
+**Situación:** `/carteles/sala-azul.svg` es una imagen guardada; `/pieza.php?codigo=47` consulta una pieza; `/ayuda.php` genera HTML sin consultar datos.
 
-1. El cartell passa del navegador a Nginx i torna com a fitxer. PHP i MariaDB no intervenen.
-2. La fitxa passa per Nginx, PHP-FPM i MariaDB. La consulta retorna dades; PHP crea HTML; Nginx l'envia al client.
-3. L'ajuda passa per Nginx i PHP-FPM. Ser dinàmica **no obliga** a tindre una base de dades.
+1. El cartel pasa del navegador a Nginx y vuelve como archivo. PHP y MariaDB no intervienen.
+2. La ficha pasa por Nginx, PHP-FPM y MariaDB. La consulta devuelve datos; PHP crea HTML; Nginx lo envía al cliente.
+3. La ayuda pasa por Nginx y PHP-FPM. Ser dinámica **no obliga** a tener una base de datos.
 
-**Resultat:** el navegador rep una imatge o HTML, segons el recurs. No rep les instruccions PHP ni la contrasenya usada per a connectar a la base de dades.
+**Resultado:** el navegador recibe una imagen o HTML, según el recurso. No recibe las instrucciones PHP ni la contraseña utilizada para conectar con la base de datos.
 
-**Com aplicar-ho als treballs:** abans d'escriure ordres, dibuixa les peces i anota qui parla amb qui. Si falla una consulta SQL, canviar el CSS no resol el problema: has de seguir el recorregut fins a PHP i la base de dades.
+**Cómo aplicarlo a los trabajos:** antes de escribir comandos, dibuja las piezas y anota quién se comunica con quién. Si falla una consulta SQL, cambiar el CSS no resuelve el problema: debes seguir el recorrido hasta PHP y la base de datos.
 
-## Del LAMP clàssic als entorns reproduïbles
+## Del LAMP clásico a los entornos reproducibles
 
-LAMP combina Linux, Apache, MySQL/MariaDB i PHP instal·lats habitualment al sistema. Altres combinacions usen Nginx, PostgreSQL o runtimes com Node.js, Gunicorn/Uvicorn i Tomcat. Són peces amb funcions diferents, no substituts tots de tots.
+LAMP combina Linux, Apache, MySQL/MariaDB y PHP, instalados habitualmente en el sistema. Otras combinaciones usan Nginx, PostgreSQL o runtimes como Node.js, Gunicorn/Uvicorn y Tomcat. Son piezas con funciones distintas, no herramientas intercambiables en todos los casos.
 
-Un entorn reproduïble guarda la configuració, les versions i els passos d'arrancada. Git registra aquests fitxers; Docker executa serveis aïllats; Compose descriu com treballen junts. Un contenidor comparteix el nucli del sistema on s'executa: no equival a una màquina virtual amb un sistema operatiu complet.
+Un entorno reproducible guarda la configuración, las versiones y los pasos de arranque. Git registra esos archivos; Docker ejecuta servicios aislados; Compose describe cómo trabajan juntos. Un contenedor comparte el núcleo del sistema donde se ejecuta: no equivale a una máquina virtual con un sistema operativo completo.
 
-## Errors típics
+## Errores típicos
 
-| Confusió | Explicació correcta |
+| Confusión | Explicación correcta |
 | --- | --- |
-| «Nginx executa PHP» | En aquest stack, deriva el treball a PHP-FPM. |
-| «Tota pàgina dinàmica consulta SQL» | Pot calcular una resposta sense base de dades. |
-| «La imatge Docker guarda les dades noves» | Els canvis d'execució i la persistència són qüestions diferents. |
+| «Nginx ejecuta PHP» | En este stack, deriva el trabajo a PHP-FPM. |
+| «Toda página dinámica consulta SQL» | Puede calcular una respuesta sin base de datos. |
+| «La imagen Docker guarda los datos nuevos» | Los cambios durante la ejecución y la persistencia son cuestiones distintas. |
 
-!!! success "Per a repassar"
-    Identifica client, servidor web, runtime i persistència. Després explica el viatge d'una petició estàtica i d'una dinàmica amb les teues paraules.
+!!! success "Para repasar"
+    Identifica cliente, servidor web, runtime y persistencia. Después explica con tus palabras el recorrido de una petición estática y de una dinámica.
 
 ---
 
-Font del temari: [apunts originals de UT1](https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de UT1](https://victoria-nr.github.io/iaw-alumnos/UT1/apuntes/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

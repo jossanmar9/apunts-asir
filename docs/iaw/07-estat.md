@@ -1,27 +1,27 @@
-# UT2 · 4. Cookies, sessions i accés privat
+# UT2 · 4. Cookies, sesiones y acceso privado
 
-## Per què una variable no recorda la visita anterior?
+## ¿Por qué una variable no recuerda la visita anterior?
 
-Cada petició executa de nou el programa. Una variable com `$seccio = 'mapes';` no recorda una selecció feta en una petició anterior. HTTP no incorpora per si mateix una memòria d'usuari: l'aplicació ha de construir-la.
+Cada petición ejecuta de nuevo el programa. Una variable como `$seccion = 'mapas';` no recuerda una selección hecha en una petición anterior. HTTP no incorpora por sí mismo una memoria de usuario: la aplicación debe construirla.
 
-| Mecanisme | On queda la informació | Exemple |
+| Mecanismo | Dónde queda la información | Ejemplo |
 | --- | --- | --- |
-| Variable normal | Durant l'execució de la petició | Resultat d'un càlcul |
-| Cookie | Al navegador, que l'envia en peticions posteriors | Preferència de vista |
-| Sessió | Habitualment al servidor; el navegador conserva l'identificador | Usuari autenticat |
+| Variable normal | Durante la ejecución de la petición | Resultado de un cálculo |
+| Cookie | En el navegador, que la envía en peticiones posteriores | Preferencia de vista |
+| Sesión | Habitualmente en el servidor; el navegador conserva el identificador | Usuario autenticado |
 
-Les cookies poden ser modificades pel client. No les uses com a prova de permisos. Una sessió també necessita controls d'accés al servidor.
+El cliente puede modificar las cookies. No las uses como prueba de permisos. Una sesión también necesita controles de acceso en el servidor.
 
-## Exemple resolt: recordar la vista d'un catàleg
+## Ejemplo resuelto: recordar la vista de un catálogo
 
-Desa `vista.php`:
+Guarda `vista.php`:
 
 ```php
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vista = $_POST['vista'] ?? '';
-    if (is_string($vista) && in_array($vista, ['graella', 'llista'], true)) {
-        setcookie('vista_catalog', $vista, [
+    if (is_string($vista) && in_array($vista, ['cuadricula', 'lista'], true)) {
+        setcookie('vista_catalogo', $vista, [
             'expires' => time() + 86400 * 7,
             'path' => '/',
             'httponly' => true,
@@ -31,78 +31,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-$vista = $_COOKIE['vista_catalog'] ?? 'graella';
-if (!is_string($vista) || !in_array($vista, ['graella', 'llista'], true)) {
-    $vista = 'graella';
+$vista = $_COOKIE['vista_catalogo'] ?? 'cuadricula';
+if (!is_string($vista) || !in_array($vista, ['cuadricula', 'lista'], true)) {
+    $vista = 'cuadricula';
 }
 ?>
 <p>Vista: <?= htmlspecialchars($vista, ENT_QUOTES, 'UTF-8') ?></p>
 <form method="post" action="vista.php">
-    <button name="vista" value="graella">Graella</button>
-    <button name="vista" value="llista">Llista</button>
+    <button name="vista" value="cuadricula">Cuadrícula</button>
+    <button name="vista" value="lista">Lista</button>
 </form>
 ```
 
-**Seguiment:** la primera visita mostra graella. El botó envia POST; PHP envia `Set-Cookie` i una redirecció 303; el navegador fa un nou GET amb la cookie i mostra llista. `$_COOKIE` no s'actualitza automàticament amb el valor que acabes d'enviar: es llig de la petició rebuda. En HTTPS afegeix `'secure' => true` a les opcions de la cookie.
+**Seguimiento:** la primera visita muestra cuadrícula. El botón envía POST; PHP envía `Set-Cookie` y una redirección 303; el navegador hace un nuevo GET con la cookie y muestra lista. `$_COOKIE` no se actualiza automáticamente con el valor que acabas de enviar: se lee de la petición recibida. En HTTPS añade `'secure' => true` a las opciones de la cookie.
 
-`setcookie`, `session_start` i `header` han d'anar abans de qualsevol eixida. Després d'una redirecció, `exit` atura el programa. És el patró POST–Redirect–GET: recarregar la pàgina final repeteix el GET.
+`setcookie`, `session_start` y `header` deben ir antes de cualquier salida. Después de una redirección, `exit` detiene el programa. Es el patrón POST–Redirect–GET: recargar la página final repite el GET.
 
-## Autenticació: comprovar qui entra
+## Autenticación: comprobar quién entra
 
-La idea és **formulari → verificar credencials → renovar identificador → guardar identitat → comprovar identitat en cada ruta privada**. Autoritzar és decidir què pot fer eixa identitat; autenticar i autoritzar són decisions diferents.
+La idea es **formulario → verificar credenciales → renovar identificador → guardar identidad → comprobar identidad en cada ruta privada**. Autorizar es decidir qué puede hacer esa identidad; autenticar y autorizar son decisiones diferentes.
 
-Mini laboratori independent d'una biblioteca de partitures. Genera un hash amb `php -r 'echo password_hash("Partitura!47", PASSWORD_DEFAULT), PHP_EOL;'`. Copia el resultat en un fitxer local `usuaris.php`:
+Minilaboratorio independiente de una biblioteca de partituras. Genera un hash con `php -r 'echo password_hash("Partitura!47", PASSWORD_DEFAULT), PHP_EOL;'`. Copia el resultado en un archivo local `usuarios.php`:
 
 ```php
 <?php
-return ['arxiver' => 'ENGANXA_ACI_EL_HASH_GENERAT'];
+return ['archivero' => 'PEGA_AQUI_EL_HASH_GENERADO'];
 ```
 
-`acces.php` conté el formulari i el processament:
+`acceso.php` contiene el formulario y el procesamiento:
 
 ```php
 <?php
 session_start();
-$usuaris = require __DIR__ . '/usuaris.php';
+$usuarios = require __DIR__ . '/usuarios.php';
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuari = $_POST['usuari'] ?? '';
-    $clau = $_POST['clau'] ?? '';
-    if (is_string($usuari) && is_string($clau)
-        && isset($usuaris[$usuari])
-        && password_verify($clau, $usuaris[$usuari])) {
+    $usuario = $_POST['usuario'] ?? '';
+    $clave = $_POST['clave'] ?? '';
+    if (is_string($usuario) && is_string($clave)
+        && isset($usuarios[$usuario])
+        && password_verify($clave, $usuarios[$usuario])) {
         session_regenerate_id(true);
-        $_SESSION['identitat'] = $usuari;
-        header('Location: arxiu.php', true, 303);
+        $_SESSION['identidad'] = $usuario;
+        header('Location: archivo.php', true, 303);
         exit;
     }
-    $error = 'No s’ha pogut validar l’accés.';
+    $error = 'No se ha podido validar el acceso.';
 }
 ?>
 <p><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
-<form action="acces.php" method="post">
-    <label>Usuari <input name="usuari" required></label>
-    <label>Clau <input name="clau" type="password" required></label>
+<form action="acceso.php" method="post">
+    <label>Usuario <input name="usuario" required></label>
+    <label>Clave <input name="clave" type="password" required></label>
     <button>Entrar</button>
 </form>
 ```
 
-`arxiu.php` comprova l'accés abans d'enviar HTML:
+`archivo.php` comprueba el acceso antes de enviar HTML:
 
 ```php
 <?php
 session_start();
-if (!isset($_SESSION['identitat'])) {
-    header('Location: acces.php');
+if (!isset($_SESSION['identidad'])) {
+    header('Location: acceso.php');
     exit;
 }
 ?>
-<h1>Arxiu de partitures</h1>
-<p>Identitat: <?= htmlspecialchars($_SESSION['identitat'], ENT_QUOTES, 'UTF-8') ?></p>
-<form action="eixir.php" method="post"><button>Eixir</button></form>
+<h1>Archivo de partituras</h1>
+<p>Identidad: <?= htmlspecialchars($_SESSION['identidad'], ENT_QUOTES, 'UTF-8') ?></p>
+<form action="salir.php" method="post"><button>Salir</button></form>
 ```
 
-`eixir.php` tanca la sessió:
+`salir.php` cierra la sesión:
 
 ```php
 <?php
@@ -121,21 +121,21 @@ if (ini_get('session.use_cookies')) {
     ]);
 }
 session_destroy();
-header('Location: acces.php', true, 303);
+header('Location: acceso.php', true, 303);
 exit;
 ```
 
-**Resultat esperat:** l'accés directe a `arxiu.php` redirigeix; les credencials del laboratori permeten entrar; després d'eixir, l'accés directe torna a redirigir. El hash és una representació per a verificar la clau, no una clau xifrada que es desxifra. Les credencials mostrades són només de prova.
+**Resultado esperado:** el acceso directo a `archivo.php` redirige; las credenciales del laboratorio permiten entrar; después de salir, el acceso directo vuelve a redirigir. El hash es una representación para verificar la clave, no una clave cifrada que se descifra. Las credenciales mostradas son solo de prueba.
 
-Aquest exemple explica el mecanisme. Una aplicació publicada també necessita HTTPS, configuració segura de sessió, protecció CSRF i controls contra intents repetits.
+Este ejemplo explica el mecanismo. Una aplicación publicada también necesita HTTPS, configuración segura de sesión, protección CSRF y controles contra intentos repetidos.
 
-## Comprovar l'aïllament
+## Comprobar el aislamiento
 
-Entra en una finestra normal i obri `arxiu.php` en una finestra privada: la segona ha de demanar accés. Dues pestanyes del mateix perfil solen compartir cookies i sessió; no serveixen per a simular dos usuaris independents.
+Entra en una ventana normal y abre `archivo.php` en una ventana privada: la segunda debe pedir acceso. Dos pestañas del mismo perfil suelen compartir cookies y sesión; no sirven para simular dos usuarios independientes.
 
-!!! success "Per a repassar"
-    Amagar un enllaç no protegeix una ruta. La comprovació ha d'executar-se al servidor abans de qualsevol contingut privat.
+!!! success "Para repasar"
+    Ocultar un enlace no protege una ruta. La comprobación debe ejecutarse en el servidor antes de cualquier contenido privado.
 
 ---
 
-Font del temari: [apunts originals de UT2](https://victoria-nr.github.io/iaw-alumnos/UT2/apuntes/). Explicació i casos didàctics propis. Consulta: 26/10/2026.
+Fuente del temario: [apuntes originales de UT2](https://victoria-nr.github.io/iaw-alumnos/UT2/apuntes/). Explicación y casos didácticos propios. Consulta: 26/10/2026.

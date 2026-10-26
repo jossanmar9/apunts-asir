@@ -1,38 +1,38 @@
-# Python · Introducció a la programació
+# Python · Introducción a la programación
 
-Resums per a estudiar i consultar mentre fas els treballs. Cada tema explica les idees amb casos nous resolts, seguiment de valors i comprovacions. Els exemples ensenyen la teoria; no són les solucions dels exercicis de pràctica o entrega.
+Resúmenes para estudiar y consultar mientras haces los trabajos. Cada tema explica las ideas con casos propios resueltos, seguimiento de valores y comprobaciones. Los ejemplos enseñan la teoría; no son las soluciones de los ejercicios de práctica o entrega.
 
-## UT1 · Introducció, entorn i tipus de dades
+## UT1 · Introducción, entorno y tipos de datos
 
-| Tema | Resum i exemples |
+| Tema | Resumen y ejemplos |
 | --- | --- |
-| 1 | [Programació i entorn](01-entorn.md) |
-| 2 | [Variables, tipus i operadors](02-dades.md) |
-| 3 | [Entrada i eixida](03-entrada.md) |
+| 1 | [Programación y entorno](01-entorn.md) |
+| 2 | [Variables, tipos y operadores](02-dades.md) |
+| 3 | [Entrada y salida](03-entrada.md) |
 
-## UT2 · Objectes predefinits i cadenes
+## UT2 · Objetos predefinidos y cadenas
 
-| Tema | Resum i exemples |
+| Tema | Resumen y ejemplos |
 | --- | --- |
-| 1 | [Objectes i mètodes de cadenes](04-cadenes.md) |
-| 2 | [F-strings i Unicode](05-format.md) |
+| 1 | [Objetos y métodos de cadenas](04-cadenes.md) |
+| 2 | [F-strings y Unicode](05-format.md) |
 
-## UT3 · Control de flux i biblioteques sysadmin
+## UT3 · Control de flujo y bibliotecas sysadmin
 
-| Tema | Resum i exemples |
+| Tema | Resumen y ejemplos |
 | --- | --- |
-| 1 | [Condicionals i bucles](06-control.md) |
-| 2 | [Errors i depuració](07-errors.md) |
-| 3 | [Biblioteques d’administració](08-biblioteques.md) |
+| 1 | [Condicionales y bucles](06-control.md) |
+| 2 | [Errores y depuración](07-errors.md) |
+| 3 | [Bibliotecas de administración](08-biblioteques.md) |
 
-## Material pendent de publicar
+## Material pendiente de publicar
 
-UT4 (POO, prevista en empresa), UT5 (estructures de dades) i UT6 (funcions, mòduls i fitxers) apareixen en la planificació, però no tenen teoria en el menú consultat. Els materials anteriors d’aquest repositori sobre eixos temes continuen disponibles com a complement.
+UT4 (POO, prevista en empresa), UT5 (estructuras de datos) y UT6 (funciones, módulos y archivos) aparecen en la planificación, pero no tienen teoría en el menú consultado. Los materiales anteriores del repositorio sobre esos temas siguen disponibles como complemento.
 
-## Com usar aquests resums
+## Cómo utilizar estos resúmenes
 
-Llig la idea principal, segueix el cas resolt i prediu el resultat abans de provar-lo. Durant un treball, busca el concepte que necessites i aplica’l al teu enunciat. Si el cas és diferent, adapta el raonament, les dades i les validacions.
+Lee la idea principal, sigue el caso resuelto y predice el resultado antes de probarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.
 
-Consulta també [Com estudiar](../estudiar/index.md) i la [cobertura i les fonts](../classe.md).
+Consulta también [Cómo estudiar](../estudiar/index.md), [Git y GitHub](../git-github/index.md) y las [fuentes y la cobertura](../classe.md).
 
-Última revisió dels materials: **26/10/2026**. Actualització manual quan ho demane l’estudiant.
+Última consulta de los materiales: **26/10/2026**. Traducción al castellano: **27/10/2026**. Actualización manual cuando lo solicite el estudiante.
