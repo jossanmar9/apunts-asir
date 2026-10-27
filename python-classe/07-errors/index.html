@@ -1812,6 +1812,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-corrige-un-nombre-incoherente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Corrige un nombre incoherente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-separa-un-error-de-conversion-de-uno-de-rango" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Separa un error de conversión de uno de rango
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-repara-un-acumulador-que-se-reinicia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Repara un acumulador que se reinicia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2222,6 +2272,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-corrige-un-nombre-incoherente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Corrige un nombre incoherente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-separa-un-error-de-conversion-de-uno-de-rango" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Separa un error de conversión de uno de rango
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-repara-un-acumulador-que-se-reinicia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Repara un acumulador que se reinicia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2363,6 +2463,58 @@
 </code></pre></div>
 <p>Con las entradas <code>muchas</code>, <code>0</code> y <code>4</code>, aparecen el aviso de conversión, el aviso de rango y finalmente <code>Piezas aceptadas: 4</code>. <code>continue</code> vuelve a pedir después de la conversión fallida. No captures cualquier error con <code>except:</code>: podrías esconder un fallo de programación o impedir una interrupción que el usuario pretendía realizar.</p>
 <p>Este patrón amplía la explicación de excepciones de la teoría; si una actividad todavía no permite utilizarlas, sigue su método de validación indicado.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-corrige-un-nombre-incoherente">1. Corrige un nombre incoherente<a class="headerlink" href="#1-corrige-un-nombre-incoherente" title="Permanent link">&para;</a></h3>
+<p>El programa asigna <code>paginas = 8</code> y después intenta <code>print(pagina + 1)</code>. Identifica el tipo de error que cabe esperar, corrige la línea y explica por qué no hace falta envolverla en un <code>try/except</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Comprueba qué nombres existen realmente antes de la impresión.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">paginas</span> <span class="o">=</span> <span class="mi">8</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">paginas</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>La salida correcta es 9. El nombre <code>pagina</code> no se había definido y provocaría <code>NameError</code>. Es un error de escritura del programa: corregirlo es mejor que ocultarlo capturando una excepción.</p>
+</details>
+<h3 id="2-separa-un-error-de-conversion-de-uno-de-rango">2. Separa un error de conversión de uno de rango<a class="headerlink" href="#2-separa-un-error-de-conversion-de-uno-de-rango" title="Permanent link">&para;</a></h3>
+<p>Lee un entero para un turno de 1 a 4. Si no puede convertirse, muestra <code>Escribe un entero</code>. Si se convierte pero queda fuera del rango, muestra <code>Turno fuera de rango</code>. Para uno válido, muestra <code>Turno aceptado</code>. Basta una lectura, sin repetir.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Captura <code>ValueError</code> de la conversión y utiliza <code>else</code> para las comprobaciones posteriores.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">texto</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Turno: "</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">turno</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Escribe un entero"</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">turno</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Turno aceptado"</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Turno fuera de rango"</span><span class="p">)</span>
+</code></pre></div>
+<p><code>dos</code> toma el camino de conversión fallida; <code>5</code> se convierte y falla el rango; <code>3</code> se acepta. El rango no se evalúa con una variable que no haya podido obtenerse.</p>
+</details>
+<h3 id="3-repara-un-acumulador-que-se-reinicia">3. Repara un acumulador que se reinicia<a class="headerlink" href="#3-repara-un-acumulador-que-se-reinicia" title="Permanent link">&para;</a></h3>
+<p>Quieres sumar <code>[2, 4, 3]</code>, pero tu programa pone <code>total = 0</code> dentro del <code>for</code>, justo antes de añadir cada elemento. Predice qué obtiene al final y corrígelo. Explica por qué no aparece necesariamente una excepción.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El total debe conservar lo anterior entre vueltas, no volver a cero cada vez.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">cantidades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">for</span> <span class="n">cantidad</span> <span class="ow">in</span> <span class="n">cantidades</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">total</span> <span class="o">+=</span> <span class="n">cantidad</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<p>El programa defectuoso termina con 3, porque borra el progreso en cada vuelta. El corregido muestra 9. Es un error lógico: las instrucciones son válidas, pero la inicialización estaba en un lugar que no respondía al objetivo.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

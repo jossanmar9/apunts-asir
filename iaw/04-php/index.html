@@ -954,6 +954,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-calcula-el-material-que-falta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Calcula el material que falta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comprueba-cuando-se-calcula-un-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comprueba cuándo se calcula un valor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-une-texto-sin-ejecutar-etiquetas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Une texto sin ejecutar etiquetas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2265,6 +2315,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-calcula-el-material-que-falta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Calcula el material que falta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comprueba-cuando-se-calcula-un-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comprueba cuándo se calcula un valor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-une-texto-sin-ejecutar-etiquetas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Une texto sin ejecutar etiquetas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2444,6 +2544,71 @@
 <p><strong>Salida esperada:</strong> <code>SALA AZUL</code> y <code>sala verde</code>. <code>trim</code> limpia los extremos, no los espacios interiores. <code>strtoupper</code> es suficiente para este texto ASCII; el tratamiento completo de mayúsculas Unicode requiere herramientas multibyte apropiadas.</p>
 <h3 id="diagnostico-de-tipos">Diagnóstico de tipos<a class="headerlink" href="#diagnostico-de-tipos" title="Permanent link">&para;</a></h3>
 <p><code>var_dump($valor)</code> muestra tipo y contenido. Esto ayuda a explicar por qué <code>3 === '3'</code> es falso: uno es entero y otro es texto. No conviertas entradas a ciegas para hacer desaparecer el error; define primero qué representación admite el programa y valida antes del cálculo.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-calcula-el-material-que-falta">1. Calcula el material que falta<a class="headerlink" href="#1-calcula-el-material-que-falta" title="Permanent link">&para;</a></h3>
+<p>Guarda 30 como cantidad necesaria de hojas y 22 como cantidad disponible. Escribe un programa PHP que calcule lo que falta y muestre una frase. Calcula primero el número y construye después el mensaje.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Utiliza una resta y concatena el resultado con texto.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$necesarias</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">$disponibles</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">$faltan</span> <span class="o">=</span> <span class="nv">$necesarias</span> <span class="o">-</span> <span class="nv">$disponibles</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">echo</span> <span class="s1">'Faltan '</span> <span class="o">.</span> <span class="nv">$faltan</span> <span class="o">.</span> <span class="s2">" hojas</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s2">"</span><span class="p">;</span>
+</code></pre></div>
+<ol>
+<li>Restamos las disponibles a las necesarias.</li>
+<li>Guardamos 8 en <code>$faltan</code>.</li>
+<li>Mostramos <code>Faltan 8 hojas</code>. El texto no se suma: se concatena con <code>.</code>.</li>
+</ol>
+</details>
+<h3 id="2-comprueba-cuando-se-calcula-un-valor">2. Comprueba cuándo se calcula un valor<a class="headerlink" href="#2-comprueba-cuando-se-calcula-un-valor" title="Permanent link">&para;</a></h3>
+<p>Sin ejecutarlo primero, predice las dos líneas de este programa. Después compruébalo y explica por qué <code>$b</code> no cambia al asignar 10 a <code>$a</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">$a</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">echo</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">echo</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div>
+<details class="tip">
+<summary>Pista</summary>
+<p>Una asignación guarda el resultado de ese momento, no una fórmula que se actualice sola.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>Las líneas son 7 y 11.</p>
+<ol>
+<li>La primera asignación a <code>$b</code> calcula <code>6 + 1</code>.</li>
+<li>Cambiar <code>$a</code> a 10 no vuelve a ejecutar esa suma.</li>
+<li>La segunda asignación a <code>$b</code> sí calcula con el nuevo valor: <code>10 + 1</code>.</li>
+</ol>
+<p>Para comprobarlo, guarda el programa en un archivo y ejecútalo con PHP.</p>
+</details>
+<h3 id="3-une-texto-sin-ejecutar-etiquetas">3. Une texto sin ejecutar etiquetas<a class="headerlink" href="#3-une-texto-sin-ejecutar-etiquetas" title="Permanent link">&para;</a></h3>
+<p>La variable <code>$titulo</code> contiene <code>&lt;em&gt;Rutas del barrio&lt;/em&gt;</code>. Genera un párrafo HTML que muestre ese contenido como texto, sin que se convierta en cursiva. No sustituyas manualmente cada carácter.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>La transformación corresponde al momento de presentar el texto en HTML.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">$titulo</span> <span class="o">=</span> <span class="s1">'&lt;em&gt;Rutas del barrio&lt;/em&gt;'</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">echo</span> <span class="s1">'&lt;p&gt;'</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$titulo</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">'UTF-8'</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'&lt;/p&gt;'</span><span class="p">;</span>
+</code></pre></div>
+<ol>
+<li>Las etiquetas del párrafo son parte de nuestra presentación.</li>
+<li>El contenido de <code>$titulo</code> se escapa antes de insertarlo.</li>
+<li>El navegador muestra literalmente <code>&lt;em&gt;Rutas del barrio&lt;/em&gt;</code> dentro del párrafo.</li>
+</ol>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -1663,6 +1663,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-muestra-el-avance-de-una-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Muestra el avance de una revisión
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comprueba-si-el-formato-modifica-el-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comprueba si el formato modifica el valor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-alinea-dos-columnas-sencillas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Alinea dos columnas sencillas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2178,6 +2228,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-muestra-el-avance-de-una-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Muestra el avance de una revisión
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comprueba-si-el-formato-modifica-el-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comprueba si el formato modifica el valor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-alinea-dos-columnas-sencillas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Alinea dos columnas sencillas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2296,6 +2396,50 @@
 </code></pre></div>
 <p><code>&lt;10</code> reserva al menos diez posiciones y alinea el nombre a la izquierda; <code>&gt;4d</code> alinea el entero a la derecha en al menos cuatro posiciones. Verás dos filas con las cantidades alineadas. El ancho mínimo no recorta textos más largos.</p>
 <p>Esto ayuda a construir informes de terminal. Para intercambiar datos con otro programa, elige un formato estructurado como JSON o CSV en lugar de obligarlo a reconstruir columnas visuales.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-muestra-el-avance-de-una-revision">1. Muestra el avance de una revisión<a class="headerlink" href="#1-muestra-el-avance-de-una-revision" title="Permanent link">&para;</a></h3>
+<p>Se han revisado 3 de 8 páginas. Calcula la fracción revisada y muéstrala como porcentaje con un decimal usando el formato de una f-string. No multipliques por cien antes de utilizar el formato <code>%</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El formato de porcentaje ya transforma una fracción en su representación porcentual.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">revisadas</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">total</span> <span class="o">=</span> <span class="mi">8</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">fraccion</span> <span class="o">=</span> <span class="n">revisadas</span> <span class="o">/</span> <span class="n">total</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Avance: </span><span class="si">{</span><span class="n">fraccion</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>La salida es <code>Avance: 37.5%</code>. La variable conserva 0.375; solo cambia la presentación. Multiplicar antes por cien haría que el formato lo volviera a multiplicar.</p>
+</details>
+<h3 id="2-comprueba-si-el-formato-modifica-el-valor">2. Comprueba si el formato modifica el valor<a class="headerlink" href="#2-comprueba-si-el-formato-modifica-el-valor" title="Permanent link">&para;</a></h3>
+<p>Guarda <code>distancia=2.71828</code>. Muéstrala con dos decimales y después vuelve a mostrar la variable sin ese formato. Escribe las dos salidas y explica si el primer <code>print</code> redondea permanentemente la variable.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Una representación de salida no es una nueva asignación a la variable.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">distancia</span> <span class="o">=</span> <span class="mf">2.71828</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">distancia</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">distancia</span><span class="p">)</span>
+</code></pre></div>
+<p>Las líneas son <code>2.72</code> y <code>2.71828</code>. El primer formato redondea el texto presentado; no cambia el valor que se utiliza en la segunda impresión.</p>
+</details>
+<h3 id="3-alinea-dos-columnas-sencillas">3. Alinea dos columnas sencillas<a class="headerlink" href="#3-alinea-dos-columnas-sencillas" title="Permanent link">&para;</a></h3>
+<p>Presenta <code>Caja</code> con cantidad 4 y <code>Sobre</code> con cantidad 15. Reserva ocho posiciones para el nombre alineado a la izquierda y tres para el entero alineado a la derecha. Escribe dos <code>print</code>; aquí no necesitas un bucle.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Los formatos se aplican a cada campo: <code>&lt;8</code> para el nombre y <code>&gt;3d</code> para el entero.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Caja'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}{</span><span class="mi">4</span><span class="si">:</span><span class="s2">&gt;3d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Sobre'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}{</span><span class="mi">15</span><span class="si">:</span><span class="s2">&gt;3d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Las cantidades quedan alineadas a la derecha. Los espacios completan el ancho mínimo, pero no recortan un nombre largo. Cada fila tiene once posiciones con estos datos.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

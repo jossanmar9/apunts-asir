@@ -1532,6 +1532,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-calcula-el-espacio-libre-de-una-tarjeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Calcula el espacio libre de una tarjeta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-construye-una-condicion-de-permiso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Construye una condición de permiso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distingue-un-codigo-de-una-cantidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distingue un código de una cantidad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2222,6 +2272,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-calcula-el-espacio-libre-de-una-tarjeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Calcula el espacio libre de una tarjeta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-construye-una-condicion-de-permiso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Construye una condición de permiso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distingue-un-codigo-de-una-cantidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distingue un código de una cantidad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2401,6 +2501,56 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">copia</span><span class="p">)</span>
 </code></pre></div>
 <p>La salida es <code>['azul', 'gris']</code> y <code>['azul', 'gris', 'ocre']</code>. <code>copy()</code> crea otra lista y añadir un elemento ya no modifica la primera. Es una copia superficial: si hubiera objetos mutables anidados, seguirían compartidos. El tema de estructuras de datos desarrollará esa diferencia; aquí sirve para entender nombres, identidad y mutabilidad.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-calcula-el-espacio-libre-de-una-tarjeta">1. Calcula el espacio libre de una tarjeta<a class="headerlink" href="#1-calcula-el-espacio-libre-de-una-tarjeta" title="Permanent link">&para;</a></h3>
+<p>Una tarjeta de laboratorio tiene capacidad para 64 unidades y contiene 19 unidades de fotos y 8 de audio. Guarda cada cantidad por separado, calcula el espacio libre y muestra el resultado. No uses <code>input</code> ni condiciones todavía.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Primero reúne lo ocupado y después réstalo a la capacidad.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">capacidad</span> <span class="o">=</span> <span class="mi">64</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">fotos</span> <span class="o">=</span> <span class="mi">19</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">audio</span> <span class="o">=</span> <span class="mi">8</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">ocupado</span> <span class="o">=</span> <span class="n">fotos</span> <span class="o">+</span> <span class="n">audio</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">libre</span> <span class="o">=</span> <span class="n">capacidad</span> <span class="o">-</span> <span class="n">ocupado</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Espacio libre: </span><span class="si">{</span><span class="n">libre</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Lo ocupado es 27 y lo libre es 37. La salida es <code>Espacio libre: 37</code>. Cada variable representa una cantidad distinta; no se mezclan unidades diferentes.</p>
+</details>
+<h3 id="2-construye-una-condicion-de-permiso">2. Construye una condición de permiso<a class="headerlink" href="#2-construye-una-condicion-de-permiso" title="Permanent link">&para;</a></h3>
+<p>Con <code>abierto=True</code> y <code>mantenimiento=False</code>, calcula el booleano <code>puede_usarse</code>: el equipo puede usarse solo si está abierto y no está en mantenimiento. Muestra el booleano, sin escribir un <code>if</code>. Prueba después activando mantenimiento.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Combina <code>and</code> con <code>not</code>; no escribas las palabras True y False entre comillas.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">abierto</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">mantenimiento</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">puede_usarse</span> <span class="o">=</span> <span class="n">abierto</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">mantenimiento</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">puede_usarse</span><span class="p">)</span>
+</code></pre></div>
+<p>La primera salida es <code>True</code>. Si cambias mantenimiento a <code>True</code> y vuelves a ejecutar, sale <code>False</code>. Se calcula un valor lógico; no se elige todavía entre bloques de instrucciones.</p>
+</details>
+<h3 id="3-distingue-un-codigo-de-una-cantidad">3. Distingue un código de una cantidad<a class="headerlink" href="#3-distingue-un-codigo-de-una-cantidad" title="Permanent link">&para;</a></h3>
+<p>Tienes el código de taquilla <code>"007"</code> y la cantidad de llaves <code>"3"</code>. Decide cuál conservar como texto y cuál convertir si vas a añadir dos llaves. Escribe las dos salidas sin perder los ceros del código.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Que un dato tenga cifras no significa que tenga sentido sumarlo.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">codigo</span> <span class="o">=</span> <span class="s2">"007"</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">llaves</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"3"</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">llaves</span> <span class="o">=</span> <span class="n">llaves</span> <span class="o">+</span> <span class="mi">2</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Taquilla: </span><span class="si">{</span><span class="n">codigo</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Llaves: </span><span class="si">{</span><span class="n">llaves</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Las salidas son <code>Taquilla: 007</code> y <code>Llaves: 5</code>. El identificador conserva sus ceros; la cantidad se convierte para poder hacer aritmética.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

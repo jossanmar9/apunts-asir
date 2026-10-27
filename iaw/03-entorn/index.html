@@ -873,6 +873,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-relaciona-anfitrion-y-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Relaciona anfitrión y contenedor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-corrige-una-ruta-compartida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Corrige una ruta compartida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-decide-que-hay-que-reconstruir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Decide qué hay que reconstruir
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2309,6 +2359,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-relaciona-anfitrion-y-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Relaciona anfitrión y contenedor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-corrige-una-ruta-compartida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Corrige una ruta compartida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-decide-que-hay-que-reconstruir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Decide qué hay que reconstruir
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2531,6 +2631,52 @@
 <p>Un <em>bind mount</em> muestra una carpeta del anfitrión; un volumen con nombre separa los datos del ciclo de vida del contenedor. <code>down</code> conserva los volúmenes con nombre salvo que solicites eliminarlos; una copia del YAML no es una copia de los datos del volumen.</p>
 <p>Un <code>healthcheck</code> comprueba una condición de salud. La forma larga de <code>depends_on</code> puede esperar a <code>condition: service_healthy</code> si el servicio dependiente define esa comprobación. Esto permite distinguir «el proceso arrancó» de «la base de datos ya atiende conexiones». No sustituye gestionar una caída posterior desde la aplicación.</p>
 <p>Docker usa el núcleo del sistema donde corre su motor; en algunos equipos ese motor vive en una máquina virtual. Una distribución Linux es el conjunto de sistema y herramientas; una imagen de usuario no incorpora por sí sola un núcleo independiente. La ruta donde se monta un disco pertenece al sistema de archivos y no debe confundirse con publicar un puerto de red.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-relaciona-anfitrion-y-contenedor">1. Relaciona anfitrión y contenedor<a class="headerlink" href="#1-relaciona-anfitrion-y-contenedor" title="Permanent link">&para;</a></h3>
+<p>Un servicio declara <code>"127.0.0.1:8098:80"</code>. Indica qué dirección abres desde el mismo equipo, en qué puerto escucha el servidor dentro del contenedor y si has publicado acceso directo a PHP-FPM.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Lee la publicación como dirección del anfitrión, puerto exterior y puerto interior.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>Desde ese equipo abriría <code>http://localhost:8098</code>.</li>
+<li>El servidor del contenedor escucha en el puerto 80.</li>
+<li>Esa publicación no abre PHP-FPM. Solo conecta el puerto indicado del anfitrión con el 80 de este servicio.</li>
+</ol>
+</details>
+<h3 id="2-corrige-una-ruta-compartida">2. Corrige una ruta compartida<a class="headerlink" href="#2-corrige-una-ruta-compartida" title="Permanent link">&para;</a></h3>
+<p>Nginx tiene <code>root /srv/demo;</code> y anuncia a PHP <code>/srv/demo/index.php</code>. El servicio PHP monta <code>./public:/app</code>. El archivo existe en <code>public/index.php</code>. Explica la incompatibilidad y escribe el montaje que pondrías en PHP para que ambos vean la misma ruta.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>La ruta enviada a PHP debe existir dentro de su contenedor.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>El archivo está en <code>/app/index.php</code> dentro de PHP, pero Nginx le solicita <code>/srv/demo/index.php</code>.</p>
+<p>Cambiaría el montaje de PHP a:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./public:/srv/demo:ro</span>
+</code></pre></div>
+<p>Así ambos servicios pueden referirse a la misma ruta. Después aplicaría el cambio con <code>docker compose up -d</code> y volvería a comprobar la página.</p>
+</details>
+<h3 id="3-decide-que-hay-que-reconstruir">3. Decide qué hay que reconstruir<a class="headerlink" href="#3-decide-que-hay-que-reconstruir" title="Permanent link">&para;</a></h3>
+<p>Tienes código PHP en un bind mount y un Dockerfile que instala extensiones. En el primer cambio solo editas un texto PHP. En el segundo añades una extensión al Dockerfile. Explica qué diferencia hay y qué orden usarías en el segundo caso.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Distingue un archivo montado del contenido construido en la imagen.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>El archivo montado se lee desde el anfitrión; cambiar ese texto no exige construir otra imagen.</li>
+<li>Una extensión instalada durante la construcción forma parte de la imagen.</li>
+<li>Después de editar el Dockerfile usaría <code>docker compose up -d --build</code> y comprobaría el resultado.</li>
+</ol>
+<p>Reiniciar sin reconstruir no instala por sí solo la extensión nueva.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

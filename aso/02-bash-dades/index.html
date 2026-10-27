@@ -1239,6 +1239,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conserva-cada-argumento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conserva cada argumento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-genera-un-nombre-sin-tocar-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Genera un nombre sin tocar archivos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-anade-y-consulta-una-coleccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Añade y consulta una colección
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2262,6 +2312,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conserva-cada-argumento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conserva cada argumento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-genera-un-nombre-sin-tocar-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Genera un nombre sin tocar archivos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-anade-y-consulta-una-coleccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Añade y consulta una colección
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2455,6 +2555,58 @@
 </code></pre></div>
 <p>La salida tiene tres líneas: <code>0: Azul cielo</code>, <code>1: Gris perla</code> y <code>2: Verde musgo</code>. <code>+=</code> añade sin sustituir lo anterior; <code>${!salas[@]}</code> recorre los índices existentes. Las comillas conservan cada nombre completo. <code>unset 'salas[1]'</code> eliminaría ese elemento, pero no renumeraría automáticamente los demás.</p>
 <p>Para cargar un archivo de una entrada por línea, utiliza <code>mapfile -t salas &lt; salas.txt</code> en una versión de Bash que disponga de <code>mapfile</code>. Es más seguro para espacios que <code>salas=($(cat salas.txt))</code>. Los arrays asociativos necesitan <code>declare -A</code> y permiten acceder por clave, como <code>capacidad[azul]=18</code>.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-conserva-cada-argumento">1. Conserva cada argumento<a class="headerlink" href="#1-conserva-cada-argumento" title="Permanent link">&para;</a></h3>
+<p>Escribe <code>argumentos.sh</code> para mostrar cuántos argumentos recibe y después imprimir cada uno entre <code>&lt;</code> y <code>&gt;</code>, en su propia línea. Prueba <code>bash argumentos.sh azul "gris claro"</code>. No utilices <code>read</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p><code>$#</code> cuenta argumentos y <code>"$@"</code> conserva sus límites.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Argumentos: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$#</span><span class="s2">"</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div>
+<p>La salida es <code>Argumentos: 2</code>, <code>&lt;azul&gt;</code> y <code>&lt;gris claro&gt;</code>. Las comillas de la llamada agrupan el segundo argumento y las de <code>"$@"</code> mantienen esa agrupación al reenviarlo.</p>
+</details>
+<h3 id="2-genera-un-nombre-sin-tocar-archivos">2. Genera un nombre sin tocar archivos<a class="headerlink" href="#2-genera-un-nombre-sin-tocar-archivos" title="Permanent link">&para;</a></h3>
+<p>Recibe como único argumento un nombre terminado en <code>.csv</code>. Supón que el sufijo es correcto. Quita ese sufijo y construye el nombre acabado en <code>_revisado.csv</code>. Imprime el resultado sin crear ni renombrar ningún archivo. Prueba con <code>lista del club.csv</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Puedes quitar el sufijo con <code>${nombre%.csv}</code> y delimitar la variable al añadir texto.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash nombre.sh archivo.csv\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">fi</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">nombre</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">base</span><span class="o">=</span><span class="si">${</span><span class="nv">nombre</span><span class="p">%.csv</span><span class="si">}</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">base</span><span class="si">}</span><span class="s2">_revisado.csv"</span>
+</code></pre></div>
+<p>El resultado es <code>lista del club_revisado.csv</code>. Primero validamos el número de argumentos; después transformamos texto. No hay ninguna operación de escritura sobre el sistema de archivos.</p>
+</details>
+<h3 id="3-anade-y-consulta-una-coleccion">3. Añade y consulta una colección<a class="headerlink" href="#3-anade-y-consulta-una-coleccion" title="Permanent link">&para;</a></h3>
+<p>Crea un array con <code>lunes</code> y <code>martes</code>, añade <code>jueves</code> y cambia el segundo elemento por <code>miércoles</code>. Muestra solo el último elemento y el número de elementos. No copies manualmente toda la lista otra vez.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Los índices empiezan en cero. Añadir utiliza <code>+=</code> y cambiar un elemento utiliza su índice.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">dias</span><span class="o">=(</span>lunes<span class="w"> </span>martes<span class="o">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">dias</span><span class="o">+=(</span>jueves<span class="o">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>dias<span class="o">[</span><span class="m">1</span><span class="o">]=</span><span class="s1">'miércoles'</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Último: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">dias</span><span class="p">[2]</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Cantidad: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${#</span><span class="nv">dias</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>La salida es <code>Último: jueves</code> y <code>Cantidad: 3</code>. Cambiar una posición no aumenta el tamaño; añadir un elemento sí.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

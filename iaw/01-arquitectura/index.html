@@ -772,6 +772,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dibuja-una-consulta-sin-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Dibuja una consulta sin base de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-encuentra-la-pieza-que-falta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Encuentra la pieza que falta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-la-pagina-carga-pero-no-su-estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. La página carga, pero no su estilo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2219,6 +2269,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dibuja-una-consulta-sin-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Dibuja una consulta sin base de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-encuentra-la-pieza-que-falta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Encuentra la pieza que falta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-la-pagina-carga-pero-no-su-estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. La página carga, pero no su estilo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2368,6 +2468,53 @@
 <h2 id="persistencia-que-anade-un-sgbd">Persistencia: qué añade un SGBD<a class="headerlink" href="#persistencia-que-anade-un-sgbd" title="Permanent link">&para;</a></h2>
 <p>Un sistema gestor de bases de datos (SGBD), como MariaDB, administra datos persistentes. En una base relacional, una tabla contiene filas y columnas. SQL permite definir y consultar esos datos. Una clave primaria identifica una fila; una clave foránea relaciona esa fila con otra tabla.</p>
 <p>Conectar componentes no equivale a implementar un CRUD: crear, leer, actualizar y eliminar son operaciones de la aplicación. En UT1 interesa entender dónde vive cada responsabilidad. Los JOIN, índices y transacciones se desarrollarán con el tema de acceso a bases de datos, sin presentar esa unidad como publicada antes de tiempo.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-dibuja-una-consulta-sin-base-de-datos">1. Dibuja una consulta sin base de datos<a class="headerlink" href="#1-dibuja-una-consulta-sin-base-de-datos" title="Permanent link">&para;</a></h3>
+<p>Una web muestra el resultado de una suma realizada con PHP, pero no guarda resultados. Dibuja el recorrido desde el navegador hasta la respuesta y explica si necesita MariaDB. No escribas código.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Distingue ejecutar una operación de conservar información.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>El navegador envía la petición a Nginx.</li>
+<li>Nginx deriva el archivo PHP a PHP-FPM.</li>
+<li>PHP calcula la suma y devuelve el resultado a Nginx, que lo entrega al navegador.</li>
+</ol>
+<p>No necesita MariaDB: calcular una respuesta dinámica no obliga a guardarla. El recorrido es navegador → Nginx → PHP-FPM → Nginx → navegador.</p>
+</details>
+<h3 id="2-encuentra-la-pieza-que-falta">2. Encuentra la pieza que falta<a class="headerlink" href="#2-encuentra-la-pieza-que-falta" title="Permanent link">&para;</a></h3>
+<p>Un compañero propone guardar las inscripciones de un club en una variable PHP. Al abrir otra vez la página, desaparecen. Explica qué confunde y qué responsabilidad falta en su diseño.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Piensa cuánto dura una variable de una petición y cuánto debe durar una inscripción.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>La variable pertenece a una ejecución del programa.</li>
+<li>Otra petición no recupera automáticamente ese valor.</li>
+<li>Hace falta almacenamiento persistente, por ejemplo una base de datos gestionada por MariaDB.</li>
+</ol>
+<p>PHP validaría y guardaría la inscripción. Nginx seguiría atendiendo HTTP; no se convertiría en el almacén de inscripciones.</p>
+</details>
+<h3 id="3-la-pagina-carga-pero-no-su-estilo">3. La página carga, pero no su estilo<a class="headerlink" href="#3-la-pagina-carga-pero-no-su-estilo" title="Permanent link">&para;</a></h3>
+<p>El texto de una web aparece, pero sus colores y márgenes no. El navegador pide <code>/estilos.css</code> y recibe 404. Indica qué comprobarías primero y explica por qué cambiar una tabla SQL no es la primera medida.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Relaciona el recurso que falla con quien lo sirve.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>Revisaría la ruta del enlace al CSS en el HTML.</li>
+<li>Comprobaría que el archivo exista dentro de la carpeta que sirve Nginx y que su nombre coincida.</li>
+<li>Volvería a pedir ese recurso y comprobaría su estado HTTP.</li>
+</ol>
+<p>El fallo observado está en un recurso estático. No hay ninguna prueba de que una tabla SQL intervenga en su entrega.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

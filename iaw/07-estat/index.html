@@ -1021,6 +1021,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-elige-donde-recordar-cada-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Elige dónde recordar cada dato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-revisa-dos-navegadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Revisa dos navegadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distingue-entrar-de-tener-permiso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distingue entrar de tener permiso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2231,6 +2281,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-elige-donde-recordar-cada-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Elige dónde recordar cada dato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-revisa-dos-navegadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Revisa dos navegadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distingue-entrar-de-tener-permiso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distingue entrar de tener permiso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2456,6 +2556,48 @@
 </code></pre></div>
 <p>En este fragmento no se fija el rol desde un formulario: presupone que el proceso de acceso lo ha guardado desde datos fiables. Sin sesión o con otro rol devuelve 403; con rol <code>archivo</code>, permite continuar. Es una comprobación de autorización, distinta del acceso por contraseña.</p>
 <p>El botón «atrás» puede mostrar una representación en caché después de salir. La prueba importante es solicitar de nuevo la ruta privada y comprobar que el servidor deniega el acceso. En contenido sensible puedes usar una política de caché como <code>Cache-Control: no-store</code>.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-elige-donde-recordar-cada-dato">1. Elige dónde recordar cada dato<a class="headerlink" href="#1-elige-donde-recordar-cada-dato" title="Permanent link">&para;</a></h3>
+<p>Para un visor de partituras debes guardar una preferencia de tamaño de letra y, por separado, la identidad del usuario que ha entrado. Explica qué dato podrías guardar como cookie de preferencia y cuál mantendrías en la sesión del servidor.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Una preferencia modificable no cumple el mismo papel que una identidad verificada.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>El tamaño puede guardarse como cookie, validando sus opciones al leerlo. La identidad verificada debe mantenerse como estado de sesión en el servidor.</p>
+<p>El navegador puede conservar un identificador de sesión. No utilizaría una cookie con el nombre escrito por el usuario como prueba de que ha iniciado sesión.</p>
+</details>
+<h3 id="2-revisa-dos-navegadores">2. Revisa dos navegadores<a class="headerlink" href="#2-revisa-dos-navegadores" title="Permanent link">&para;</a></h3>
+<p>Has iniciado sesión en un perfil y la zona privada funciona. En otro perfil limpio, la misma URL solicita acceso. ¿Es necesariamente un fallo? Explica la diferencia entre este caso y dos pestañas del primer perfil.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Los perfiles tienen almacenes de cookies independientes.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>No es necesariamente un fallo: el perfil limpio no dispone de la cookie identificadora de la primera sesión.</p>
+<p>Dos pestañas del mismo perfil normalmente comparten cookies. Por eso no equivalen a dos usuarios independientes. Para comprobar aislamiento, los perfiles separados son una prueba más apropiada.</p>
+</details>
+<h3 id="3-distingue-entrar-de-tener-permiso">3. Distingue entrar de tener permiso<a class="headerlink" href="#3-distingue-entrar-de-tener-permiso" title="Permanent link">&para;</a></h3>
+<p>Un usuario ha iniciado sesión, pero solo el rol <code>editor</code> puede modificar una ficha. Escribe el control PHP de esa operación suponiendo que <code>$_SESSION['rol']</code> se asignó desde datos fiables durante el acceso. Devuelve 403 si no corresponde.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Una identidad válida no concede todos los permisos.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">session_start</span><span class="p">();</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">if</span> <span class="p">((</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">'editor'</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">403</span><span class="p">);</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="k">exit</span><span class="p">(</span><span class="s1">'No puedes modificar esta ficha'</span><span class="p">);</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">echo</span> <span class="s1">'Puedes continuar con la modificación'</span><span class="p">;</span>
+</code></pre></div>
+<p>La comparación se hace antes de modificar nada. Un rol ausente también se rechaza. No se toma el permiso de un campo editable del formulario.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

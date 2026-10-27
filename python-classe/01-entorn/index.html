@@ -1504,6 +1504,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crea-y-ejecuta-un-archivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Crea y ejecuta un archivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-localiza-el-archivo-antes-de-ejecutarlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Localiza el archivo antes de ejecutarlo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-detecta-una-confusion-de-interpretes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Detecta una confusión de intérpretes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2222,6 +2272,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crea-y-ejecuta-un-archivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Crea y ejecuta un archivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-localiza-el-archivo-antes-de-ejecutarlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Localiza el archivo antes de ejecutarlo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-detecta-una-confusion-de-interpretes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Detecta una confusión de intérpretes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2381,6 +2481,56 @@
 <p><code>python3</code> sin un archivo abre normalmente la consola interactiva: escribes una expresión y ves su resultado. <code>python3 audio.py</code> ejecuta un archivo. No copies el prompt <code>&gt;&gt;&gt;</code> dentro del programa: es la marca de la consola, no código Python.</p>
 <p>El directorio de trabajo es la carpeta desde la que se resuelven las rutas relativas. Abrir un archivo en el editor no cambia necesariamente el directorio del terminal. Esto explica muchos errores de «archivo no encontrado».</p>
 <p>En Windows, PowerShell es una shell cuyos comandos propios se llaman cmdlets, como <code>Get-Command</code>. Su política de ejecución puede afectar al script de activación del entorno virtual; no es un sistema que sustituya a los permisos ni al control de seguridad del equipo. Si no puedes activar el entorno, puedes seleccionar directamente su intérprete en VS Code o ejecutar <code>.\.venv\Scripts\python.exe audio.py</code>.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-crea-y-ejecuta-un-archivo">1. Crea y ejecuta un archivo<a class="headerlink" href="#1-crea-y-ejecuta-un-archivo" title="Permanent link">&para;</a></h3>
+<p>Crea <code>arranque.py</code> con dos instrucciones que muestren, en este orden y en líneas separadas, <code>Preparando la revisión</code> y <code>Revisión preparada</code>. Ejecútalo desde el terminal e indica qué parte corresponde al editor y cuál al intérprete.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Guardar texto en el editor y ejecutar el archivo son acciones distintas.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Preparando la revisión"</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Revisión preparada"</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>El editor guarda esas instrucciones en <code>arranque.py</code>.</li>
+<li>Desde su carpeta ejecutas <code>python3 arranque.py</code> en Linux, o el comando de Python de tu equipo.</li>
+<li>El intérprete ejecuta los dos <code>print</code> en orden. No escribas el prompt <code>&gt;&gt;&gt;</code> en el archivo.</li>
+</ol>
+</details>
+<h3 id="2-localiza-el-archivo-antes-de-ejecutarlo">2. Localiza el archivo antes de ejecutarlo<a class="headerlink" href="#2-localiza-el-archivo-antes-de-ejecutarlo" title="Permanent link">&para;</a></h3>
+<p>El archivo está en <code>proyecto/pruebas/inicio.py</code>, pero tu terminal está en <code>proyecto</code>. Escribe una forma de ejecutarlo sin moverlo y otra cambiando primero de carpeta. No copies el archivo a una ubicación nueva.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Una ruta relativa parte de la carpeta actual del terminal.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>Desde <code>proyecto</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python3<span class="w"> </span>pruebas/inicio.py
+</code></pre></div>
+<p>O, partiendo también de <code>proyecto</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>pruebas
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>python3<span class="w"> </span>inicio.py
+</code></pre></div>
+<p>Las dos formas apuntan al mismo archivo. La segunda cambia el directorio de trabajo; eso también puede afectar a otras rutas relativas que utilice el programa.</p>
+</details>
+<h3 id="3-detecta-una-confusion-de-interpretes">3. Detecta una confusión de intérpretes<a class="headerlink" href="#3-detecta-una-confusion-de-interpretes" title="Permanent link">&para;</a></h3>
+<p>Instalas un paquete dentro de <code>.venv</code>, pero VS Code no lo encuentra al ejecutar el programa. El terminal sí puede utilizarlo. Escribe dos comprobaciones antes de volver a instalarlo.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El editor y el terminal pueden estar ejecutando Pythons distintos.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>En VS Code revisaría <strong>Python: Select Interpreter</strong> y seleccionaría el Python de <code>.venv</code>.</li>
+<li>En el terminal comprobaría <code>python -m pip --version</code> para ver a qué entorno está asociado el instalador.</li>
+</ol>
+<p>Después repetiría la ejecución con el mismo intérprete. Instalar una y otra vez no corrige una selección equivocada de entorno.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

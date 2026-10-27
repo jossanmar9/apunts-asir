@@ -1345,6 +1345,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-revisa-una-dependencia-antes-de-usarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Revisa una dependencia antes de usarla
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conserva-el-codigo-de-una-operacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Conserva el código de una operación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-organiza-una-investigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Organiza una investigación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2250,6 +2300,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-revisa-una-dependencia-antes-de-usarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Revisa una dependencia antes de usarla
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-conserva-el-codigo-de-una-operacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Conserva el código de una operación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-organiza-una-investigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Organiza una investigación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2376,6 +2476,58 @@
 <p>Un proceso es un programa en ejecución; su PID permite identificarlo. Una señal comunica un evento al proceso: SIGTERM solicita terminar y SIGKILL fuerza la terminación sin permitir limpieza. <code>trap</code> puede tratar determinadas señales, pero no SIGKILL.</p>
 <p>Los permisos <code>r</code>, <code>w</code> y <code>x</code> significan lectura, escritura y ejecución; en directorios, <code>x</code> permite atravesarlos. <code>chmod u+x informe.sh</code> añade ejecución al propietario. <code>root</code> es la cuenta administradora y <code>sudo</code> ejecuta una orden con la identidad autorizada por su configuración; no necesitas elevar permisos para practicar sobre tus propios archivos.</p>
 <p>Esto aporta contexto a Bash; el desarrollo completo de procesos, servicios y administración de directorio se incorporará cuando exista el material de esas unidades.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-revisa-una-dependencia-antes-de-usarla">1. Revisa una dependencia antes de usarla<a class="headerlink" href="#1-revisa-una-dependencia-antes-de-usarla" title="Permanent link">&para;</a></h3>
+<p>Escribe un script que compruebe si <code>wc</code> está disponible. Si lo está, muestra <code>Herramienta disponible</code>; si no, escribe un error por stderr y termina con código 2. No instales nada desde el script.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p><code>command -v</code> proporciona un estado que puede utilizar directamente el <code>if</code>.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>wc<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Herramienta disponible\n'</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">else</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Falta la herramienta wc\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">fi</span>
+</code></pre></div>
+<p>Con <code>wc</code> disponible termina normalmente con estado cero. El otro camino informa por el canal de errores y utiliza un código que permite al programa que llama reconocer el fallo.</p>
+</details>
+<h3 id="2-conserva-el-codigo-de-una-operacion">2. Conserva el código de una operación<a class="headerlink" href="#2-conserva-el-codigo-de-una-operacion" title="Permanent link">&para;</a></h3>
+<p>Una comprobación falla y después haces <code>printf 'Comprobado
+'</code>. Al consultar <code>$?</code>, obtienes 0. Escribe una secuencia que guarde el estado de <code>false</code> antes del mensaje y muestre después ese estado guardado. No uses <code>set -e</code> en esta prueba.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Cada orden actualiza <code>$?</code>; la asignación debe hacerse inmediatamente después de la que interesa.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">false</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">estado</span><span class="o">=</span><span class="nv">$?</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Comprobado\n'</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Estado de la prueba: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$estado</span><span class="s2">"</span>
+</code></pre></div>
+<p>El estado mostrado es 1. El <code>printf</code> intermedio no modifica la variable <code>estado</code>, aunque sí cambia el significado del <code>$?</code> que consultarías después.</p>
+</details>
+<h3 id="3-organiza-una-investigacion">3. Organiza una investigación<a class="headerlink" href="#3-organiza-una-investigacion" title="Permanent link">&para;</a></h3>
+<p>Un script debe procesar dos nombres con espacios, pero recibe cuatro palabras. Explica qué revisarías en la llamada, cómo comprobarías el número de argumentos y qué prueba repetirías después de corregirlo. No cambies el formato de los nombres para ocultar el error.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Distingue los datos de cómo la shell los separa antes de ejecutar el script.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>Revisaría si cada nombre completo está entre comillas al llamar al script.</li>
+<li>Observaría <code>$#</code> y cada argumento mediante <code>printf '&lt;%s&gt;
+' "$@"</code>.</li>
+<li>Repetiría la misma llamada con los nombres entrecomillados y comprobaría que hay exactamente dos argumentos completos.</li>
+</ol>
+<p>Cambiar nombres para quitarles espacios evita la prueba, pero no corrige el tratamiento de datos válidos con espacios.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

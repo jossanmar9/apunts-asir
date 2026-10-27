@@ -1245,6 +1245,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reconoce-un-formato-de-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Reconoce un formato de documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comprueba-dos-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comprueba dos requisitos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-corrige-una-comparacion-de-cantidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Corrige una comparación de cantidades
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2218,6 +2268,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reconoce-un-formato-de-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Reconoce un formato de documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comprueba-dos-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comprueba dos requisitos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-corrige-una-comparacion-de-cantidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Corrige una comparación de cantidades
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2435,6 +2535,68 @@
 </tbody>
 </table>
 <p>En la prueba de patrón <code>*.txt</code>, dejar el patrón sin comillas permite interpretarlo como patrón; la variable sigue protegida. Diferencia este caso de pasar argumentos a una orden externa, donde normalmente debes entrecomillar las expansiones.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-reconoce-un-formato-de-documento">1. Reconoce un formato de documento<a class="headerlink" href="#1-reconoce-un-formato-de-documento" title="Permanent link">&para;</a></h3>
+<p>Recibe un nombre como primer argumento. Muestra <code>Documento</code> si acaba en <code>.pdf</code> o <code>.odt</code>, y <code>Otro formato</code> en cualquier otro caso. Utiliza <code>case</code>. Si falta el argumento, muestra un mensaje de uso y termina con error.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Un caso puede reunir dos patrones separados por <code>|</code>.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash formato.sh nombre\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">fi</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span>*.pdf<span class="p">|</span>*.odt<span class="o">)</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Documento\n'</span><span class="w"> </span><span class="p">;;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span>*<span class="o">)</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Otro formato\n'</span><span class="w"> </span><span class="p">;;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">esac</span>
+</code></pre></div>
+<p><code>guia.pdf</code> y <code>acta.odt</code> muestran <code>Documento</code>; <code>foto.png</code> muestra <code>Otro formato</code>. La comprobación distingue mayúsculas: <code>.PDF</code> no coincide con los patrones escritos.</p>
+</details>
+<h3 id="2-comprueba-dos-requisitos">2. Comprueba dos requisitos<a class="headerlink" href="#2-comprueba-dos-requisitos" title="Permanent link">&para;</a></h3>
+<p>Recibe una ruta y acepta solo un archivo ordinario no vacío. No basta con que exista una carpeta con ese nombre. Muestra <code>Preparado</code> si cumple ambos requisitos y <code>No válido</code> si no los cumple. No modifiques la ruta.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Combina la prueba de archivo ordinario y la de tamaño no nulo.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash comprobar.sh ruta\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">fi</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Preparado\n'</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">else</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'No válido\n'</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">fi</span>
+</code></pre></div>
+<p>Un archivo con una línea es válido. Uno vacío o una carpeta no lo son. Se comprueba el tipo y después que tenga contenido; no se calcula un número a partir del nombre.</p>
+</details>
+<h3 id="3-corrige-una-comparacion-de-cantidades">3. Corrige una comparación de cantidades<a class="headerlink" href="#3-corrige-una-comparacion-de-cantidades" title="Permanent link">&para;</a></h3>
+<p>Con <code>disponibles=12</code> y <code>solicitadas=3</code>, alguien compara los textos mediante <code>[[ "$disponibles" &gt; "$solicitadas" ]]</code>. Quiere saber si la primera cantidad es mayor. Elige una comparación numérica y muestra un mensaje para cada camino. No cambies los números para que el fallo deje de verse.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El orden textual de las cifras no equivale a comparar sus valores enteros.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">disponibles</span><span class="o">=</span><span class="m">12</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">solicitadas</span><span class="o">=</span><span class="m">3</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>disponibles<span class="w"> </span>&gt;<span class="w"> </span>solicitadas<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Hay más unidades disponibles que solicitadas\n'</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">else</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'No hay una cantidad mayor disponible\n'</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">fi</span>
+</code></pre></div>
+<p>Se muestra el primer mensaje porque 12 es mayor que 3. La comparación anterior era textual: trataba los valores como cadenas. Aquí ya tenemos enteros fijados; si proceden del usuario, habría que validarlos primero.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -998,6 +998,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-encuentra-por-que-no-llega-el-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Encuentra por qué no llega el campo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-valida-una-opcion-de-formato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Valida una opción de formato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conserva-una-nota-despues-de-un-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Conserva una nota después de un error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2241,6 +2291,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-encuentra-por-que-no-llega-el-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Encuentra por qué no llega el campo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-valida-una-opcion-de-formato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Valida una opción de formato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conserva-una-nota-despues-de-un-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Conserva una nota después de un error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2464,6 +2564,63 @@
 <h2 id="adjuntos-entender-el-recorrido-antes-de-implementarlos">Adjuntos: entender el recorrido antes de implementarlos<a class="headerlink" href="#adjuntos-entender-el-recorrido-antes-de-implementarlos" title="Permanent link">&para;</a></h2>
 <p>Un formulario con archivos necesita <code>enctype="multipart/form-data"</code>. PHP deja un temporal y describe nombre, tamaño, ruta temporal y error en <code>$_FILES</code>. Comprueba primero <code>UPLOAD_ERR_OK</code>, después los límites y el tipo real; <code>accept</code> en HTML solo ayuda a elegir, no valida en el servidor.</p>
 <p>La carpeta de destino y la política de ejecución son parte del diseño: un archivo recibido no debe convertirse accidentalmente en código ejecutable. El nombre del usuario no es un destino fiable. En este tema se explica el mecanismo; el laboratorio del telescopio no necesita adjuntos.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-encuentra-por-que-no-llega-el-campo">1. Encuentra por qué no llega el campo<a class="headerlink" href="#1-encuentra-por-que-no-llega-el-campo" title="Permanent link">&para;</a></h3>
+<p>El formulario usa <code>&lt;input id="asunto"&gt;</code> y <code>method="post"</code>. PHP espera <code>$_POST['asunto']</code>. Explica qué falta y escribe el control corregido. Después indica cómo comprobarías el envío en el navegador.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El nombre utilizado para enviar un campo no es su <code>id</code>.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>El control necesita <code>name</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"asunto"</span> <span class="na">name</span><span class="o">=</span><span class="s">"asunto"</span><span class="p">&gt;</span>
+</code></pre></div>
+<ol>
+<li><code>id</code> identifica el elemento en la página.</li>
+<li><code>name="asunto"</code> identifica el campo enviado.</li>
+<li>En Red del navegador, abriría la petición POST y buscaría <code>asunto</code> en sus datos.</li>
+</ol>
+</details>
+<h3 id="2-valida-una-opcion-de-formato">2. Valida una opción de formato<a class="headerlink" href="#2-valida-una-opcion-de-formato" title="Permanent link">&para;</a></h3>
+<p>En un receptor PHP debes aceptar solo <code>pdf</code> o <code>texto</code> en <code>$_POST['formato']</code>. Escribe la comprobación y un mensaje para cualquier otra entrada. Rechaza también un array inesperado. El código se ejecuta cuando ya has recibido un POST.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Comprueba primero la estructura y después la lista de valores permitidos.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$formato</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'formato'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$formato</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$formato</span><span class="p">,</span> <span class="p">[</span><span class="s1">'pdf'</span><span class="p">,</span> <span class="s1">'texto'</span><span class="p">],</span> <span class="k">true</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="k">echo</span> <span class="s1">'Elige pdf o texto'</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">echo</span> <span class="s1">'Formato aceptado'</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Un campo ausente toma <code>''</code> y se rechaza.</li>
+<li><code>is_string</code> impide tratar un array como una opción de texto.</li>
+<li><code>in_array</code> limita la respuesta a los dos valores admitidos. Prueba <code>pdf</code>, <code>imagen</code>, campo ausente y array.</li>
+</ol>
+</details>
+<h3 id="3-conserva-una-nota-despues-de-un-error">3. Conserva una nota después de un error<a class="headerlink" href="#3-conserva-una-nota-despues-de-un-error" title="Permanent link">&para;</a></h3>
+<p>Ya tienes en <code>$nota</code> el texto leído y validado como cadena. Escribe un <code>textarea</code> que conserve ese texto al volver a mostrar el formulario. Explica por qué no va en un atributo <code>value</code> y cómo evitas interpretarlo como HTML.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El contenido de un textarea se coloca entre sus etiquetas.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">&lt;textarea name="nota"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$nota</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">'UTF-8'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;</span>
+</code></pre></div>
+<ol>
+<li>La cadena se coloca entre apertura y cierre de <code>textarea</code>.</li>
+<li><code>name</code> permite enviarla de nuevo.</li>
+<li>El escape impide que el texto recibido cierre o altere el marcado de la página. Un <code>textarea</code> no se rellena como un <code>input value="..."</code>.</li>
+</ol>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

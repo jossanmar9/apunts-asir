@@ -1663,6 +1663,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-limpia-una-linea-de-opciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Limpia una línea de opciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reconstruye-una-lista-con-otro-separador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reconstruye una lista con otro separador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cambia-solo-la-primera-coincidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cambia solo la primera coincidencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2234,6 +2284,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-limpia-una-linea-de-opciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Limpia una línea de opciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reconstruye-una-lista-con-otro-separador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reconstruye una lista con otro separador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cambia-solo-la-primera-coincidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cambia solo la primera coincidencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2379,6 +2479,53 @@
 </code></pre></div>
 <p>La salida es <code>['azul', '18', 'abierta']</code> y <code>azul | 18 | abierta</code>. Separar no convierte <code>18</code> a entero ni valida que existan exactamente tres campos. Antes de extraer posiciones o convertir, comprueba la estructura que espera el problema.</p>
 <p><code>split()</code> sin argumentos agrupa espacios en blanco y descarta los de los extremos. <code>split(' ')</code> utiliza exactamente un espacio y puede crear elementos vacíos. Elige según lo que significa el formato, no solo por cuál parece funcionar con un ejemplo.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-limpia-una-linea-de-opciones">1. Limpia una línea de opciones<a class="headerlink" href="#1-limpia-una-linea-de-opciones" title="Permanent link">&para;</a></h3>
+<p>A partir de <code>"  sonido=SI  "</code>, obtiene la cadena <code>"sonido=si"</code> y comprueba si termina en <code>"=si"</code>. Muestra tanto el resultado como el booleano. No uses bucles ni condicionales.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Puedes encadenar métodos, guardando el resultado de la transformación.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">linea</span> <span class="o">=</span> <span class="s2">"  sonido=SI  "</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">limpia</span> <span class="o">=</span> <span class="n">linea</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">limpia</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">limpia</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"=si"</span><span class="p">))</span>
+</code></pre></div>
+<p>La salida es <code>sonido=si</code> y <code>True</code>. Primero se limpian los extremos y después el caso de las letras. La comprobación no modifica la cadena.</p>
+</details>
+<h3 id="2-reconstruye-una-lista-con-otro-separador">2. Reconstruye una lista con otro separador<a class="headerlink" href="#2-reconstruye-una-lista-con-otro-separador" title="Permanent link">&para;</a></h3>
+<p>Recibes <code>"rojo,verde,azul"</code>. Conviértelo en una lista con <code>split</code> y produce una sola línea <code>"rojo / verde / azul"</code> con <code>join</code>. No escribas los colores otra vez en el resultado.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El separador con el que unes puede ser distinto del que se utilizó al recibir los datos.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">colores</span> <span class="o">=</span> <span class="s2">"rojo,verde,azul"</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">partes</span> <span class="o">=</span> <span class="n">colores</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">resultado</span> <span class="o">=</span> <span class="s2">" / "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">partes</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</code></pre></div>
+<p><code>split</code> obtiene tres cadenas. <code>join</code> las reúne con el nuevo separador y la salida es <code>rojo / verde / azul</code>. No se calcula ninguna posición manualmente.</p>
+</details>
+<h3 id="3-cambia-solo-la-primera-coincidencia">3. Cambia solo la primera coincidencia<a class="headerlink" href="#3-cambia-solo-la-primera-coincidencia" title="Permanent link">&para;</a></h3>
+<p>En <code>"borrador - borrador - final"</code>, sustituye solo el primer <code>borrador</code> por <code>revisado</code>. Conserva la cadena original y muestra ambas. No utilices una sustitución global.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p><code>replace</code> admite un tercer argumento que limita el número de cambios.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">original</span> <span class="o">=</span> <span class="s2">"borrador - borrador - final"</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">revisado</span> <span class="o">=</span> <span class="n">original</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"borrador"</span><span class="p">,</span> <span class="s2">"revisado"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">revisado</span><span class="p">)</span>
+</code></pre></div>
+<p>La segunda línea es <code>revisado - borrador - final</code>. La primera conserva el texto inicial porque la transformación devuelve otra cadena.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

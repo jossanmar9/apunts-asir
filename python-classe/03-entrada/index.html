@@ -1555,6 +1555,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepara-una-orden-de-impresion-como-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prepara una orden de impresión como texto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cuenta-los-billetes-que-siguen-validos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cuenta los billetes que siguen válidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-explica-una-entrada-vacia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Explica una entrada vacía
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2212,6 +2262,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepara-una-orden-de-impresion-como-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prepara una orden de impresión como texto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cuenta-los-billetes-que-siguen-validos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cuenta los billetes que siguen válidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-explica-una-entrada-vacia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Explica una entrada vacía
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2328,6 +2428,48 @@
 </code></pre></div>
 <p>Las dos primeras instrucciones producen una sola línea: <code>azul / gris -&gt; fin</code>. <code>end</code> cambia el final de la primera impresión. <code>repr</code> muestra una representación que conserva visibles las comillas y los espacios: <code>'  12  '</code>. Es útil al comprobar por qué dos entradas no son iguales.</p>
 <p>Distingue los datos del mensaje que pide esos datos. En <code>float(input('Horas: '))</code>, <code>Horas:</code> es la indicación al usuario; el texto que escribe se convierte después. Si falla, inspecciona primero el texto recibido antes de cambiar la fórmula.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-prepara-una-orden-de-impresion-como-texto">1. Prepara una orden de impresión como texto<a class="headerlink" href="#1-prepara-una-orden-de-impresion-como-texto" title="Permanent link">&para;</a></h3>
+<p>Pide un nombre de documento y una impresora. Construye y muestra <code>Documento: NOMBRE -&gt; impresora IMPRESORA</code>. El programa solo presenta la solicitud; no debe ejecutar comandos ni imprimir realmente un archivo.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Las dos respuestas son texto y pueden insertarse en una f-string.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">documento</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Documento: "</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">impresora</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Impresora: "</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Documento: </span><span class="si">{</span><span class="n">documento</span><span class="si">}</span><span class="s2"> -&gt; impresora </span><span class="si">{</span><span class="n">impresora</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Con <code>guia.pdf</code> y <code>recepcion</code>, muestra <code>Documento: guia.pdf -&gt; impresora recepcion</code>. No hay conversión numérica ni ejecución de otra aplicación.</p>
+</details>
+<h3 id="2-cuenta-los-billetes-que-siguen-validos">2. Cuenta los billetes que siguen válidos<a class="headerlink" href="#2-cuenta-los-billetes-que-siguen-validos" title="Permanent link">&para;</a></h3>
+<p>Pregunta cuántos billetes se emitieron y cuántos se anularon. Convierte ambas respuestas a entero y muestra cuántos siguen válidos. En este ejercicio supone cantidades enteras coherentes: las anulaciones no superan las emisiones.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Separa lectura, conversión y resta. Explica qué tipo devuelve <code>input</code>.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">emitidos</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Billetes emitidos: "</span><span class="p">))</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">anulados</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Billetes anulados: "</span><span class="p">))</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">validos</span> <span class="o">=</span> <span class="n">emitidos</span> <span class="o">-</span> <span class="n">anulados</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Billetes válidos: </span><span class="si">{</span><span class="n">validos</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Con 12 y 3, el resultado es 9. <code>input</code> devuelve texto y <code>int</code> construye las cantidades antes de restarlas. La comprobación de entradas incoherentes corresponde a un ejercicio posterior de condiciones.</p>
+</details>
+<h3 id="3-explica-una-entrada-vacia">3. Explica una entrada vacía<a class="headerlink" href="#3-explica-una-entrada-vacia" title="Permanent link">&para;</a></h3>
+<p>Un programa hace <code>unidades = int(input("Unidades: "))</code>. Pulsas Intro sin escribir nada. Predice si se guarda cero o si aparece un error. Explica por qué no debes tratar la ausencia de respuesta como un número sin decidirlo.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>La cadena vacía no es la representación textual de cero.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>Aparece <code>ValueError</code>: <code>int('')</code> no obtiene un entero. No se guarda automáticamente cero.</p>
+<p>El programa necesitaría una regla explícita: pedir de nuevo, rechazar la entrada o definir un valor por defecto. Esa elección depende del problema; la conversión no la adivina.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

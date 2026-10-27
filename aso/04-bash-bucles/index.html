@@ -1261,6 +1261,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-detente-al-llegar-a-una-marca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Detente al llegar a una marca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cuenta-respuestas-afirmativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cuenta respuestas afirmativas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-devuelve-texto-desde-una-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Devuelve texto desde una función
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2194,6 +2244,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-detente-al-llegar-a-una-marca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Detente al llegar a una marca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cuenta-respuestas-afirmativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cuenta respuestas afirmativas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-devuelve-texto-desde-una-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Devuelve texto desde una función
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2370,6 +2470,62 @@
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">done</span>
 </code></pre></div>
 <p>Con las entradas <code>ver</code>, <code>otra</code> y <code>salir</code>, se muestran el mensaje de consulta y el aviso de opción incorrecta; la tercera termina el bucle. La comprobación de <code>read</code> también permite salir si se cierra la entrada. Si quieres un menú numerado, <code>select</code> lo genera; <code>REPLY</code> contiene la respuesta escrita y la variable elegida contiene el texto de la opción.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-detente-al-llegar-a-una-marca">1. Detente al llegar a una marca<a class="headerlink" href="#1-detente-al-llegar-a-una-marca" title="Permanent link">&para;</a></h3>
+<p>Recorre <code>inicio medio FIN extra</code>. Imprime los elementos anteriores a <code>FIN</code> y termina el recorrido al encontrar la marca. No debe aparecer ni <code>FIN</code> ni <code>extra</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>La marca termina la búsqueda; no significa saltar solo una vuelta.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">for</span><span class="w"> </span>palabra<span class="w"> </span><span class="k">in</span><span class="w"> </span>inicio<span class="w"> </span>medio<span class="w"> </span>FIN<span class="w"> </span>extra<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$palabra</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'FIN'</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="k">break</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$palabra</span><span class="s2">"</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">done</span>
+</code></pre></div>
+<p>La salida tiene dos líneas: <code>inicio</code> y <code>medio</code>. La comprobación se hace antes de imprimir. Con <code>continue</code>, <code>extra</code> todavía se procesaría, por lo que no resolvería este enunciado.</p>
+</details>
+<h3 id="2-cuenta-respuestas-afirmativas">2. Cuenta respuestas afirmativas<a class="headerlink" href="#2-cuenta-respuestas-afirmativas" title="Permanent link">&para;</a></h3>
+<p>Recorre las respuestas <code>si no si si no</code> y cuenta únicamente cuántas son exactamente <code>si</code>. Presenta un solo resultado al terminar. No escribas el número final directamente.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El contador empieza antes del bucle y aumenta dentro de una condición.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">contador</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">for</span><span class="w"> </span>respuesta<span class="w"> </span><span class="k">in</span><span class="w"> </span>si<span class="w"> </span>no<span class="w"> </span>si<span class="w"> </span>si<span class="w"> </span>no<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$respuesta</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'si'</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nv">contador</span><span class="o">=</span><span class="k">$((</span><span class="nv">contador</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">done</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Respuestas afirmativas: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$contador</span><span class="s2">"</span>
+</code></pre></div>
+<p>El resultado es 3. Reiniciar el contador dentro perdería el progreso; imprimir dentro mostraría resultados parciales en lugar de una única respuesta final.</p>
+</details>
+<h3 id="3-devuelve-texto-desde-una-funcion">3. Devuelve texto desde una función<a class="headerlink" href="#3-devuelve-texto-desde-una-funcion" title="Permanent link">&para;</a></h3>
+<p>Crea <code>enmarcar</code> para recibir una frase y producirla entre corchetes. Captura su salida en una variable y muestra después <code>Resultado: ...</code>. Prueba con <code>Revisión pendiente</code>. No uses <code>return</code> para entregar el texto.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>La función escribe el dato por stdout y quien la llama lo captura con <code>$()</code>.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>enmarcar<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'[%s]\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="o">}</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">resultado</span><span class="o">=</span><span class="k">$(</span>enmarcar<span class="w"> </span><span class="s1">'Revisión pendiente'</span><span class="k">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Resultado: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$resultado</span><span class="s2">"</span>
+</code></pre></div>
+<p>La salida final es <code>Resultado: [Revisión pendiente]</code>. La función produce texto y la llamada lo conserva. <code>return</code> serviría para un código de estado, no para esa frase.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

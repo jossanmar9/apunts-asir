@@ -2138,6 +2138,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-guarda-solo-uno-de-dos-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Guarda solo uno de dos cambios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ignora-un-archivo-que-todavia-no-se-ha-registrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ignora un archivo que todavía no se ha registrado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-revisa-antes-de-integrar-una-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Revisa antes de integrar una rama
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2393,6 +2443,57 @@
 </tr>
 </tbody>
 </table>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-guarda-solo-uno-de-dos-cambios">1. Guarda solo uno de dos cambios<a class="headerlink" href="#1-guarda-solo-uno-de-dos-cambios" title="Permanent link">&para;</a></h3>
+<p>En un repositorio de laboratorio con un primer commit, tienes <code>manual.txt</code> y <code>tareas.txt</code> ya registrados. Edita ambos, prepara solo <code>manual.txt</code> y revisa el estado y los dos tipos de diff. Explica qué archivo cambiaría en el próximo commit y qué ocurriría con la otra edición.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El área de preparación permite seleccionar archivos distintos, sin obligarte a guardar toda la carpeta.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>Después del commit inicial, puedes realizar esta prueba:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Manual revisado\n'</span><span class="w"> </span>&gt;<span class="w"> </span>manual.txt
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Tarea pendiente\n'</span><span class="w"> </span>&gt;<span class="w"> </span>tareas.txt
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git<span class="w"> </span>add<span class="w"> </span>manual.txt
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>git<span class="w"> </span>status<span class="w"> </span>--short
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>git<span class="w"> </span>diff
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>git<span class="w"> </span>diff<span class="w"> </span>--cached
+</code></pre></div>
+<p><code>manual.txt</code> está preparado y aparecerá en el diff con <code>--cached</code>. <code>tareas.txt</code> tiene una edición sin preparar y aparece en el diff normal. El siguiente commit guardaría el cambio del manual; la tarea seguiría editada en la carpeta, sin perderse y sin entrar en ese commit.</p>
+</details>
+<h3 id="2-ignora-un-archivo-que-todavia-no-se-ha-registrado">2. Ignora un archivo que todavía no se ha registrado<a class="headerlink" href="#2-ignora-un-archivo-que-todavia-no-se-ha-registrado" title="Permanent link">&para;</a></h3>
+<p>En un repositorio de laboratorio, crea <code>borrador.tmp</code> sin añadirlo a Git. Añade la regla <code>*.tmp</code> a un <code>.gitignore</code> y comprueba el estado. Explica si el archivo desaparece del disco y si ahora es necesario ejecutar <code>git rm</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Ignorar archivos nuevos no equivale a borrarlos ni a retirar archivos que ya tienen historial.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Notas temporales\n'</span><span class="w"> </span>&gt;<span class="w"> </span>borrador.tmp
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'*.tmp\n'</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>status<span class="w"> </span>--short
+</code></pre></div>
+<p>El borrador no aparece entre los archivos nuevos que Git propone registrar, pero sigue en disco. <code>.gitignore</code> sí puede aparecer como nuevo. No hace falta <code>git rm</code>: el borrador nunca se había registrado. Si ya tuviera historial, la regla sola no lo retiraría.</p>
+</details>
+<h3 id="3-revisa-antes-de-integrar-una-rama">3. Revisa antes de integrar una rama<a class="headerlink" href="#3-revisa-antes-de-integrar-una-rama" title="Permanent link">&para;</a></h3>
+<p>En un repositorio de laboratorio con un primer commit, crea una rama <code>instrucciones</code>, añade <code>uso.txt</code> con una línea y haz commit en esa rama. Vuelve a la rama anterior y revisa los commits de todas las ramas. Comprueba que todavía no has integrado el archivo. No hagas <code>push</code> ni abras una PR.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Crear un commit en otra rama no significa fusionarlo en la rama de partida.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>instrucciones
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Leer antes de empezar\n'</span><span class="w"> </span>&gt;<span class="w"> </span>uso.txt
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git<span class="w"> </span>add<span class="w"> </span>uso.txt
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Documenta el uso del laboratorio"</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>git<span class="w"> </span>switch<span class="w"> </span>-
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
+</code></pre></div>
+<p>El commit queda en <code>instrucciones</code>. Al volver a la rama anterior, <code>uso.txt</code> no forma parte de su versión registrada. El historial con <code>--all</code> permite ver ambas referencias. Falta una decisión posterior de integración; crear la rama no la realiza automáticamente.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

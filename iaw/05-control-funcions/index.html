@@ -987,6 +987,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-muestra-solo-tareas-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Muestra solo tareas pendientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-una-funcion-que-responde-una-pregunta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Una función que responde una pregunta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-suma-solo-las-cantidades-positivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Suma solo las cantidades positivas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2275,6 +2325,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-muestra-solo-tareas-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Muestra solo tareas pendientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-una-funcion-que-responde-una-pregunta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Una función que responde una pregunta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-suma-solo-las-cantidades-positivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Suma solo las cantidades positivas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2478,6 +2578,66 @@
 </code></pre></div>
 <p>Resultado esperado: <code>Sala: Azul</code> y <code>Zona: Azul</code>. El segundo parámetro tiene un valor predeterminado, pero puede sustituirse. <code>$nombre</code> y <code>$prefijo</code> son locales a la llamada; <code>return</code> entrega el texto a quien la llamó.</p>
 <p>Para archivos que solo contienen funciones PHP, suele ser práctico omitir la etiqueta de cierre <code>?&gt;</code>: reduces el riesgo de introducir espacios que se envíen accidentalmente antes de una cabecera HTTP.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-muestra-solo-tareas-pendientes">1. Muestra solo tareas pendientes<a class="headerlink" href="#1-muestra-solo-tareas-pendientes" title="Permanent link">&para;</a></h3>
+<p>Crea el array <code>['pendiente', 'terminada', 'pendiente']</code>. Recórrelo y muestra únicamente los elementos iguales a <code>pendiente</code>. Deben aparecer dos líneas, sin escribir dos <code>echo</code> repetidos.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Combina <code>foreach</code> con una comparación estricta dentro del recorrido.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">$tareas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pendiente'</span><span class="p">,</span> <span class="s1">'terminada'</span><span class="p">,</span> <span class="s1">'pendiente'</span><span class="p">];</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$tareas</span> <span class="k">as</span> <span class="nv">$estado</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$estado</span> <span class="o">===</span> <span class="s1">'pendiente'</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="k">echo</span> <span class="nv">$estado</span> <span class="o">.</span> <span class="s2">"</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="p">}</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+</code></pre></div>
+<p>En cada vuelta se comprueba un estado. La segunda no imprime nada porque no cumple la condición. Las otras dos muestran <code>pendiente</code>.</p>
+</details>
+<h3 id="2-una-funcion-que-responde-una-pregunta">2. Una función que responde una pregunta<a class="headerlink" href="#2-una-funcion-que-responde-una-pregunta" title="Permanent link">&para;</a></h3>
+<p>Escribe <code>necesitaRevision($paginas)</code> para devolver <code>true</code> si la cantidad es mayor de 20 y <code>false</code> en otro caso. Supón enteros no negativos. Prueba con 20 y 21. La función no debe imprimir.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Una comparación ya produce el booleano que necesitas devolver.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">function</span> <span class="nf">necesitaRevision</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$paginas</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">return</span> <span class="nv">$paginas</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">}</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nx">necesitaRevision</span><span class="p">(</span><span class="mi">20</span><span class="p">));</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nx">necesitaRevision</span><span class="p">(</span><span class="mi">21</span><span class="p">));</span>
+</code></pre></div>
+<p>Las salidas son <code>bool(false)</code> y <code>bool(true)</code>. El límite 20 no cumple «mayor de 20». <code>return</code> entrega el dato; las llamadas a <code>var_dump</code> permiten comprobarlo fuera de la función.</p>
+</details>
+<h3 id="3-suma-solo-las-cantidades-positivas">3. Suma solo las cantidades positivas<a class="headerlink" href="#3-suma-solo-las-cantidades-positivas" title="Permanent link">&para;</a></h3>
+<p>Con <code>[-2, 4, 0, 3]</code>, calcula mediante un bucle el total de las cantidades estrictamente positivas. No modifiques el array ni sumes los valores negativos.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Inicializa el acumulador antes del bucle y actualízalo solo en el camino correcto.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">$cantidades</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">$total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$cantidades</span> <span class="k">as</span> <span class="nv">$cantidad</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$cantidad</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="nv">$total</span> <span class="o">+=</span> <span class="nv">$cantidad</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="p">}</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">echo</span> <span class="nv">$total</span> <span class="o">.</span> <span class="s2">"</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s2">"</span><span class="p">;</span>
+</code></pre></div>
+<p>El total avanza de 0 a 4 y después a 7. El cero y -2 no lo cambian. El acumulador se prepara una vez, no en cada vuelta.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -1862,6 +1862,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-construye-una-ruta-sin-crear-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Construye una ruta sin crear archivos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-calcula-una-devolucion-con-calendario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Calcula una devolución con calendario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-lee-una-lista-sin-perder-su-orden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Lee una lista sin perder su orden
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2266,6 +2316,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-construye-una-ruta-sin-crear-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Construye una ruta sin crear archivos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-calcula-una-devolucion-con-calendario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Calcula una devolución con calendario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-lee-una-lista-sin-perder-su-orden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Lee una lista sin perder su orden
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2457,6 +2557,55 @@
 </code></pre></div>
 <p>Guárdalo como <code>opciones.py</code>. <code>python opciones.py fichas --limite 5</code> muestra <code>Carpeta: fichas; límite: 5</code>. <code>--limite muchas</code> produce un error de argumentos. El programa aún no inspecciona la carpeta: solo demuestra cómo interpretar la llamada.</p>
 <p>Para ejecutar otro programa, <code>subprocess.run</code> acepta una lista con el comando y cada argumento por separado. <code>capture_output=True</code> captura stdout y stderr, <code>text=True</code> devuelve texto y <code>returncode</code> permite revisar el estado. Evita construir una orden de shell concatenando datos externos. El módulo <code>re</code> proporciona <code>search</code>, <code>findall</code> y patrones compilados; recuerda diferenciar una coincidencia de formato de una validación completa del dato.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-construye-una-ruta-sin-crear-archivos">1. Construye una ruta sin crear archivos<a class="headerlink" href="#1-construye-una-ruta-sin-crear-archivos" title="Permanent link">&para;</a></h3>
+<p>Construye con <code>Path</code> la ruta relativa <code>material/sonidos/aviso.wav</code>. Muestra por separado su nombre, su sufijo y el nombre de su carpeta padre. El programa debe funcionar aunque esa ruta todavía no exista.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Construir una ruta y consultar sus componentes no exige abrir el recurso.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">ruta</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"material"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"sonidos"</span> <span class="o">/</span> <span class="s2">"aviso.wav"</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">ruta</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">ruta</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ruta</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>Las salidas son <code>aviso.wav</code>, <code>.wav</code> y <code>sonidos</code>. No se ha creado ninguna carpeta ni comprobado que exista el archivo: solo se han interpretado componentes de su dirección.</p>
+</details>
+<h3 id="2-calcula-una-devolucion-con-calendario">2. Calcula una devolución con calendario<a class="headerlink" href="#2-calcula-una-devolucion-con-calendario" title="Permanent link">&para;</a></h3>
+<p>Una herramienta se presta el 30 de abril de 2026 durante tres días. Calcula con <code>date</code> y <code>timedelta</code> la fecha de devolución y muéstrala como día/mes/año. No calcules el cambio de mes manualmente.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Suma una duración al objeto de fecha, no al texto que lo representa.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">prestamo</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">devolucion</span> <span class="o">=</span> <span class="n">prestamo</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Devolución: </span><span class="si">{</span><span class="n">devolucion</span><span class="si">:</span><span class="s2">%d/%m/%Y</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>La salida es <code>Devolución: 03/05/2026</code>. El objeto de calendario realiza el cambio de mes y el formato decide cómo presentarlo.</p>
+</details>
+<h3 id="3-lee-una-lista-sin-perder-su-orden">3. Lee una lista sin perder su orden<a class="headerlink" href="#3-lee-una-lista-sin-perder-su-orden" title="Permanent link">&para;</a></h3>
+<p>Crea <code>recordatorios.txt</code> en una carpeta de pruebas con dos líneas: <code>revisar batería</code> y <code>guardar cables</code>. Léelo con <code>with</code>, numera las líneas desde 1 y muestra cada recordatorio sin añadir líneas vacías entre ellos. No escribas los recordatorios dentro del programa lector.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El archivo se cierra al salir de <code>with</code>; <code>enumerate</code> permite numerar el recorrido.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">ruta</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"recordatorios.txt"</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">with</span> <span class="n">ruta</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">for</span> <span class="n">numero</span><span class="p">,</span> <span class="n">linea</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">numero</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">linea</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Se muestran <code>1. revisar batería</code> y <code>2. guardar cables</code>. <code>rstrip</code> elimina el salto ya leído antes de que <code>print</code> añada el suyo. En este formato no se necesitan espacios al final de las notas.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

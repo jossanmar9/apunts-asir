@@ -795,6 +795,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lee-una-respuesta-de-una-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Lee una respuesta de una API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-elige-como-enviar-un-filtro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Elige cómo enviar un filtro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distingue-fallo-http-y-fallo-de-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distingue fallo HTTP y fallo de conexión
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2209,6 +2259,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lee-una-respuesta-de-una-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Lee una respuesta de una API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-elige-como-enviar-un-filtro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Elige cómo enviar un filtro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-distingue-fallo-http-y-fallo-de-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Distingue fallo HTTP y fallo de conexión
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2373,6 +2473,49 @@
 <h3 id="problema-explicado-paso-a-paso-seguir-una-redireccion">Problema explicado paso a paso: seguir una redirección<a class="headerlink" href="#problema-explicado-paso-a-paso-seguir-una-redireccion" title="Permanent link">&para;</a></h3>
 <p>Cuando el ejemplo de cookies guarda una preferencia, responde con 303 y <code>Location: vista.php</code>. La primera respuesta no contiene necesariamente la vista final. El navegador solicita después esa dirección con GET.</p>
 <p>Para verlo con <code>curl</code>, usa <code>-i</code> para inspeccionar la respuesta original y <code>-L</code> para seguir la redirección. Si hay cookies, <code>-c cookies.txt -b cookies.txt</code> permite conservarlas entre peticiones. Sin un almacén de cookies, dos llamadas separadas no simulan necesariamente una misma sesión de navegador.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-lee-una-respuesta-de-una-api">1. Lee una respuesta de una API<a class="headerlink" href="#1-lee-una-respuesta-de-una-api" title="Permanent link">&para;</a></h3>
+<p>Recibes <code>HTTP/1.1 201 Created</code>, <code>Content-Type: application/json</code> y el cuerpo <code>{"id":9,"estado":"creado"}</code>. Explica si se ha creado un recurso, qué formato tiene la respuesta y si necesariamente contiene una página HTML.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Separa la línea de estado, la cabecera y el cuerpo.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<ol>
+<li>El estado 201 indica que la operación ha creado un recurso.</li>
+<li><code>Content-Type</code> anuncia JSON, y el cuerpo contiene un objeto en ese formato.</li>
+<li>No es necesario que haya HTML. Un cliente puede leer estos datos y decidir cómo presentarlos.</li>
+</ol>
+</details>
+<h3 id="2-elige-como-enviar-un-filtro">2. Elige cómo enviar un filtro<a class="headerlink" href="#2-elige-como-enviar-un-filtro" title="Permanent link">&para;</a></h3>
+<p>Una biblioteca permite buscar títulos por autor. La búsqueda no cambia ningún dato y quieres copiar su dirección para repetirla. Elige GET o POST, escribe una ruta de ejemplo con el parámetro <code>autor</code> y explica tu elección.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Necesitas una consulta repetible y compartible.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>Usaría GET, por ejemplo <code>/buscar?autor=Cervantes</code>.</p>
+<ol>
+<li>Se consulta información sin modificar el catálogo.</li>
+<li>El filtro queda en la URL y puede compartirse.</li>
+<li>El servidor debe validar igualmente el parámetro recibido. Elegir GET no elimina esa comprobación.</li>
+</ol>
+</details>
+<h3 id="3-distingue-fallo-http-y-fallo-de-conexion">3. Distingue fallo HTTP y fallo de conexión<a class="headerlink" href="#3-distingue-fallo-http-y-fallo-de-conexion" title="Permanent link">&para;</a></h3>
+<p>En una prueba, el servidor devuelve 403. En otra, <code>curl</code> indica que no puede conectar al puerto. ¿Se ha recibido una respuesta HTTP en ambas? Escribe la primera comprobación de cada situación.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Un estado HTTP implica que algún servidor ha contestado.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<p>Con 403 sí hay respuesta HTTP: revisaría permisos o autorización de la ruta.</p>
+<p>En la segunda prueba todavía no hay respuesta HTTP: comprobaría dirección, puerto y si el servicio está iniciado.</p>
+<p>No intentaría corregir ambos casos cambiando la contraseña de la base de datos: esa causa no se deduce de lo observado.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -1312,6 +1312,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-limpia-una-configuracion-de-ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Limpia una configuración de ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sustituye-todas-las-marcas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sustituye todas las marcas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-localiza-documentos-vacios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Localiza documentos vacíos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2240,6 +2290,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ejercicios-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios para practicar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios para practicar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-limpia-una-configuracion-de-ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Limpia una configuración de ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sustituye-todas-las-marcas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sustituye todas las marcas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-localiza-documentos-vacios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Localiza documentos vacíos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#palabras-clave-de-este-tema" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2416,6 +2516,44 @@
 </tbody>
 </table>
 <p>Las opciones <code>-size</code>, <code>-mtime</code> y <code>-user</code> añaden criterios de tamaño, antigüedad y propietario. Revisa primero la selección con <code>-print</code> antes de asociarle una modificación.</p>
+<h2 id="ejercicios-para-practicar">Ejercicios para practicar<a class="headerlink" href="#ejercicios-para-practicar" title="Permanent link">&para;</a></h2>
+<p>Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.</p>
+<h3 id="1-limpia-una-configuracion-de-ejemplo">1. Limpia una configuración de ejemplo<a class="headerlink" href="#1-limpia-una-configuracion-de-ejemplo" title="Permanent link">&para;</a></h3>
+<p>Crea <code>opciones.txt</code> con estas líneas: <code># preferencias</code>, <code>vista=lista</code>, una línea vacía y <code>sonido=no</code>. Obtén una salida que omita comentarios que empiezan en la primera columna y líneas vacías, sin modificar el archivo.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Usa una expresión regular que reconozca el principio de comentario o una línea sin contenido.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">'^(#|$)'</span><span class="w"> </span>opciones.txt
+</code></pre></div>
+<p>La salida contiene <code>vista=lista</code> y <code>sonido=no</code>. <code>-E</code> permite la alternativa y <code>-v</code> conserva lo que no coincide. Este enunciado no pide reconocer comentarios precedidos de espacios.</p>
+</details>
+<h3 id="2-sustituye-todas-las-marcas">2. Sustituye todas las marcas<a class="headerlink" href="#2-sustituye-todas-las-marcas" title="Permanent link">&para;</a></h3>
+<p>En <code>pendiente pendiente listo</code>, sustituye las dos apariciones de <code>pendiente</code> por <code>hecho</code> usando <code>sed</code>. Genera una salida, sin editar archivos. Explica qué pasaría si omites <code>g</code>.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>La sustitución sin modificador afecta a la primera coincidencia de cada línea.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s1">'pendiente pendiente listo'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/pendiente/hecho/g'</span>
+</code></pre></div>
+<p>El resultado es <code>hecho hecho listo</code>. Sin <code>g</code>, sería <code>hecho pendiente listo</code>: solo cambiaría la primera aparición de la línea.</p>
+</details>
+<h3 id="3-localiza-documentos-vacios">3. Localiza documentos vacíos<a class="headerlink" href="#3-localiza-documentos-vacios" title="Permanent link">&para;</a></h3>
+<p>En una carpeta de prueba <code>documentos</code>, busca recursivamente solo archivos ordinarios vacíos cuyo nombre termine en <code>.txt</code>. Imprime sus rutas. No borres nada ni incluyas las carpetas vacías.</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Combina nombre, tipo y tamaño vacío en <code>find</code>.</p>
+</details>
+<details class="success">
+<summary>Solución paso a paso</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>find<span class="w"> </span>documentos<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.txt'</span><span class="w"> </span>-empty<span class="w"> </span>-print
+</code></pre></div>
+<p>Las condiciones se combinan: debe ser archivo, terminar en <code>.txt</code> y estar vacío. Un <code>.txt</code> con texto, un <code>.csv</code> vacío y un directorio vacío quedan fuera. Las comillas dejan que <code>find</code> reciba el patrón sin expansión previa de la shell.</p>
+</details>
 <h2 id="palabras-clave-de-este-tema">Palabras clave de este tema<a class="headerlink" href="#palabras-clave-de-este-tema" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
