@@ -25,6 +25,12 @@ Esta web ofrece **apuntes desarrollados**, separados por módulo, unidad y tema,
 | Python · UT2 | Funciones y métodos, inmutabilidad, índices, cortes, búsqueda y transformación de texto, formatos y Unicode |
 | Python · UT3 | Condicionales, while, for, range, enumerate, break/continue/else, depuración, nociones de excepciones y bibliotecas de sysadmin |
 
+## Sostenibilidad: PDF facilitado
+
+Se incorporan los [seis temas de Sostenibilidad](sostenibilidad/index.md), siguiendo las unidades del libro de Juan Jesús García Navarro y Antonio Ramón Álvarez Sánchez, Editex, edición 2024. Cubren las páginas impresas 10–167: organizaciones y ASG, retos ambientales y sociales, los 17 ODS, economía verde y circular, actividades sostenibles y plan de sostenibilidad. La cobertura describe el documento recibido; no presupone qué unidades se han impartido en clase.
+
+Se han redactado resúmenes explicados y ejemplos nuevos, sin reproducir ni resolver sus actividades de evaluación o proyecto. Las referencias legales se presentan como contexto del temario de esa edición y se aclara la diferencia entre guía, certificación y etiquetado. Incorporación: **27/10/2026**.
+
 ## ¿Qué falta en las fuentes consultadas?
 
 - **IAW:** UT3 a UT7 aparecen en la planificación, sin páginas de teoría en el menú consultado.
@@ -48,7 +54,7 @@ Cada problema explica el problema, los datos, las decisiones, el código cuando 
 
 ## Ejercicios para practicar
 
-Los 22 temas incluyen tres ejercicios cada uno: **66 ejercicios** con pistas y soluciones paso a paso plegadas. Los enunciados son distintos de las demostraciones de teoría y de los ejercicios asignados en clase. Se han añadido el **27/10/2026**.
+Los 22 temas de programación y Git incluyen **66 ejercicios**. Los seis temas de Sostenibilidad añaden **18 ejercicios**: en total, los 28 temas incluyen tres ejercicios cada uno, **84 ejercicios** con pistas y soluciones paso a paso plegadas. Los enunciados son distintos de las demostraciones de teoría y de los ejercicios asignados en clase. Se han añadido el **27/10/2026**.
 
 ## ¿Cuándo se actualiza?
 

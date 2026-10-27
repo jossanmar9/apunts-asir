@@ -1,5 +1,5 @@
 site_name: Apuntes ASIR
-site_description: "Apuntes desarrollados de IAW, ASO, Python y Git y GitHub, con explicaciones desde cero y problemas fáciles paso a paso para estudiar ASIR"
+site_description: "Apuntes desarrollados de IAW, ASO, Python, Sostenibilidad y Git y GitHub, con explicaciones desde cero y problemas fáciles paso a paso para estudiar ASIR"
 # Tu usuario de GitHub
 site_url: https://jossanmar9.github.io/apunts-asir/
 repo_url: https://github.com/jossanmar9/apunts-asir
@@ -111,6 +111,14 @@ nav:
           - "Bibliotecas de administración": python-classe/08-biblioteques.md
   - "Git y GitHub":
       - git-github/index.md
+  - "Sostenibilidad":
+      - sostenibilidad/index.md
+      - "1 · Sostenibilidad en las organizaciones": sostenibilidad/01-organizaciones.md
+      - "2 · Retos ambientales y sociales": sostenibilidad/02-retos.md
+      - "3 · ODS en el desempeño profesional": sostenibilidad/03-ods.md
+      - "4 · Economía verde y circular": sostenibilidad/04-economia-circular.md
+      - "5 · Actividades sostenibles y medioambiente": sostenibilidad/05-actividades.md
+      - "6 · El plan de sostenibilidad": sostenibilidad/06-plan.md
   - "Cómo estudiar":
       - estudiar/index.md
       - "Consejos de programación": estudiar/consells.md

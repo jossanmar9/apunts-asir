@@ -381,7 +381,7 @@ def check_site(site):
             assert target.exists(),(file,link)
             if parsed.fragment and target in pages:
                 assert urllib.parse.unquote(parsed.fragment) in pages[target].ids,(file,link)
-    assert COUNTS['soluciones']==66 and COUNTS['pistas']==66,COUNTS
+    assert COUNTS['soluciones']==84 and COUNTS['pistas']==84,COUNTS
     for old in ['archivo','bash','python','git','docker','php','powershell','xuletes','glossari']:
         assert not (site/old).exists(),old
     search=json.loads((site/'search/search_index.json').read_text())

@@ -1,6 +1,6 @@
 # Apuntes ASIR
 
-Apuntes desarrollados en **castellano** de los apuntes de clase de **IAW, ASO y Python**, organizados por módulo, unidad y tema, con explicaciones desde cero y ejemplos propios resueltos paso a paso. **Git y GitHub tiene una sección independiente.** Sirven para preparar los exámenes y como guía mientras haces ejercicios. Las tablas y el repaso complementan la explicación; no la sustituyen.
+Apuntes desarrollados en **castellano** de los apuntes de clase de **IAW, ASO, Python y Sostenibilidad**, organizados por módulo, unidad y tema, con explicaciones desde cero y ejemplos propios resueltos paso a paso. **Git y GitHub tiene una sección independiente.** Sirven para preparar los exámenes y como guía mientras haces ejercicios. Las tablas y el repaso complementan la explicación; no la sustituyen.
 
 🌐 **[Web de Apuntes ASIR](https://jossanmar9.github.io/apunts-asir/)**
 
@@ -12,9 +12,14 @@ Apuntes desarrollados en **castellano** de los apuntes de clase de **IAW, ASO y 
 | ASO · Administración de sistemas operativos | UT1: Bash | [Índice de ASO](docs/aso/index.md) |
 | Introducción a Python | UT1: entorno y datos · UT2: objetos y cadenas · UT3: control y bibliotecas | [Índice de Python](docs/python-classe/index.md) |
 | Git y GitHub | Tema independiente: repositorios, commits, remoto y SSH | [Git y GitHub](docs/git-github/index.md) |
+| Sostenibilidad aplicada al sistema productivo | Seis unidades del PDF: ASG, retos, ODS, economía circular, huellas y plan | [Índice de Sostenibilidad](docs/sostenibilidad/index.md) |
 | Cómo estudiar | Método de estudio y consejos para aprender | [Cómo estudiar](docs/estudiar/index.md) |
 
 Cada tema incluye explicaciones desde cero, instrucciones comentadas, problemas fáciles resueltos paso a paso, seguimiento de variables, resultados esperados y errores habituales. Cada tema tiene además tres ejercicios de práctica con pistas y soluciones plegadas. El vocabulario y el repaso quedan al final como consulta. Los casos didácticos **no son los ejercicios de clase para practicar o entregar**, ni versiones con solo los nombres o los datos cambiados.
+
+## Resúmenes de Sostenibilidad
+
+Se han añadido las seis unidades de *Sostenibilidad aplicada al sistema productivo* (Juan Jesús García Navarro y Antonio Ramón Álvarez Sánchez, Editex, edición 2024), a partir del PDF facilitado por el estudiante. Incluyen explicaciones en castellano, ejemplos nuevos paso a paso, vocabulario y **18 ejercicios nuevos** con pistas y soluciones plegadas. El PDF permanece como consulta local; el repositorio contiene los resúmenes, no una copia del libro. Consulta el [índice y alcance](docs/sostenibilidad/index.md).
 
 ## Material integrado
 
@@ -57,6 +62,7 @@ docs/
 ├── aso/              UT1 Bash, con 5 temas
 ├── git-github/       tema independiente de Git y GitHub
 ├── python-classe/    UT1 a UT3, con 8 temas
+├── sostenibilidad/   seis unidades del PDF, con resúmenes y ejercicios
 ├── estudiar/         método y consejos de estudio en castellano
 ├── classe.md         fuentes y cobertura del temario
 └── assets/           estilos de la web

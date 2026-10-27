@@ -42,6 +42,14 @@ Apuntes desarrollados de clase, organizados por **módulo, unidad y tema**, para
 
     [:octicons-arrow-right-24: Estudia Git y GitHub](git-github/index.md)
 
+-   :material-leaf:{ .lg .middle } **Sostenibilidad**
+
+    ---
+
+    **Sostenibilidad aplicada al sistema productivo.** Seis temas: ASG, retos ambientales y sociales, ODS, economía circular, huellas y plan de sostenibilidad.
+
+    [:octicons-arrow-right-24: Estudia Sostenibilidad](sostenibilidad/index.md)
+
 -   :material-school:{ .lg .middle } **Cómo estudiar**
 
     ---
@@ -67,7 +75,7 @@ Cada tema reúne la teoría de clase, las ampliaciones útiles de nuestros apunt
 
 ## Fuentes y actualizaciones
 
-Apuntes preparados a partir de los materiales accesibles el **26/10/2026**, desarrollados y revisados en castellano el **27/10/2026**. La página de [fuentes y cobertura](classe.md) indica qué temas están desarrollados y cuáles están pendientes de publicar. Los actualizaremos **cuando lo solicites**, después de que aparezcan apuntes o ejercicios nuevos.
+Apuntes preparados a partir de los materiales accesibles el **26/10/2026**, desarrollados y revisados en castellano el **27/10/2026**. La página de [fuentes y cobertura](classe.md) indica qué temas están desarrollados y cuáles están pendientes de publicar. También se incluyen los [resúmenes de las seis unidades del PDF de Sostenibilidad](sostenibilidad/index.md), incorporados el **27/10/2026**. Los actualizaremos **cuando lo solicites**, después de que aparezcan apuntes o ejercicios nuevos.
 
 !!! tip "Busca mientras trabajas"
     Pulsa ++s++ o ++slash++ y busca un concepto como «POST», «while» o «cookie». La búsqueda incluye los temas publicados y la guía de estudio. Dentro de cada tema, el índice permite ir directamente a la explicación, al problema o al vocabulario que necesitas.
