@@ -75,7 +75,7 @@ Si añades mensajes de depuración por stdout, también acabarán dentro de `cod
 Queremos cuatro etiquetas, excepto la tercera, que está fuera de servicio. Una función crea cada etiqueta para que el formato esté en un único lugar.
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 etiqueta() {
     local numero=$1
     printf 'ESTANTERIA-%02d\n' "$numero"
@@ -98,7 +98,7 @@ done
 ## `while` y `until` con seguimiento
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 pendientes=3
 while (( pendientes > 0 )); do
     printf 'Cajas pendientes: %s\n' "$pendientes"
@@ -119,7 +119,7 @@ El `while` muestra 3, 2 y 1. El `until` muestra las revisiones 1 y 2: cuando la 
 Bash distingue **datos por stdout** y **estado por return**:
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 nombre_etiqueta() {
     printf 'CAJA-%s\n' "$1"
 }
@@ -147,7 +147,7 @@ Si separas funciones en un archivo propio, `source ./funciones.sh` las carga en 
 Este patrón de los apuntes anteriores es útil para procesar listados. Mantiene espacios, barras y la última línea aunque no termine con salto:
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 while IFS= read -r linea || [[ -n "$linea" ]]; do
     printf 'Recibido: [%s]\n' "$linea"
 done < notas.txt
@@ -160,7 +160,7 @@ En Bash, un bucle colocado después de una tubería suele ejecutarse en una subs
 ## Menú que se repite hasta terminar
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 while true; do
     read -r -p 'Escribe ver o salir: ' opcion || break
     case "$opcion" in
@@ -186,7 +186,7 @@ Recorre `inicio medio FIN extra`. Imprime los elementos anteriores a `FIN` y ter
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     for palabra in inicio medio FIN extra; do
         if [[ "$palabra" == 'FIN' ]]; then
             break
@@ -206,7 +206,7 @@ Recorre las respuestas `si no si si no` y cuenta únicamente cuántas son exacta
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     contador=0
     for respuesta in si no si si no; do
         if [[ "$respuesta" == 'si' ]]; then
@@ -227,7 +227,7 @@ Crea `enmarcar` para recibir una frase y producirla entre corchetes. Captura su 
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     enmarcar() {
         printf '[%s]\n' "$1"
     }

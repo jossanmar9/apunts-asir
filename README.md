@@ -22,6 +22,8 @@ Las tablas, explicaciones y técnicas de los apuntes anteriores se han incorpora
 
 ## Criterio de redacción
 
+En ASO se utiliza Bash con la cabecera `#!/bin/bash`, siguiendo el formato de clase. Mantén esta cabecera en los scripts y soluciones nuevos.
+
 - Desarrolla la explicación para un estudiante que empieza: qué significa cada concepto, cómo funciona y por qué se utiliza.
 - Incorpora el desarrollo útil del material anterior; no lo reduzcas a una tabla o a una mención.
 - Utiliza problemas sencillos y explícalos paso a paso, con la salida y el motivo de cada operación. Evita las etiquetas «problema propio» o «con datos conocidos».

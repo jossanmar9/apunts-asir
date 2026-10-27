@@ -47,7 +47,7 @@ Una tabla de seguimiento muestra el estado de variables importantes después de 
 Recibir un archivo de texto y mostrar cuántas líneas tiene, incluido un nombre con espacios. No copia archivos ni crea usuarios.
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 set -u
 if (( $# != 1 )); then
     printf 'Uso: bash informe.sh archivo\n' >&2
@@ -99,7 +99,7 @@ Antes de programar, escribe una llamada de ejemplo y su resultado esperado. Divi
 Una función de error evita repetir mensajes y salidas en scripts más largos:
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 error() {
     printf 'ERROR: %s\n' "$*" >&2
     exit 1
@@ -132,7 +132,7 @@ Escribe un script que compruebe si `wc` está disponible. Si lo está, muestra `
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     if command -v wc >/dev/null 2>&1; then
         printf 'Herramienta disponible\n'
     else

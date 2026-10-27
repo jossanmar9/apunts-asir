@@ -71,7 +71,7 @@ Si una operación falla, responde a la pregunta que realmente necesitabas compro
 Una sala de prueba tiene 12 butacas libres. El script acepta una cantidad entre 1 y 12, escrita con una o dos cifras sin ceros iniciales.
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 peticion=${1:-}
 if [[ ! "$peticion" =~ ^[1-9][0-9]?$ ]]; then
     printf 'Escribe una cantidad de una o dos cifras, sin cero inicial.\n' >&2
@@ -125,7 +125,7 @@ esac
 Una condición de shell también puede ser un comando: no necesitas capturar su texto y compararlo si ya proporciona un estado útil.
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 if command -v bash >/dev/null 2>&1; then
     printf 'Bash está disponible\n'
 else
@@ -163,7 +163,7 @@ Recibe un nombre como primer argumento. Muestra `Documento` si acaba en `.pdf` o
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     if (( $# != 1 )); then
         printf 'Uso: bash formato.sh nombre\n' >&2
         exit 1
@@ -185,7 +185,7 @@ Recibe una ruta y acepta solo un archivo ordinario no vacío. No basta con que e
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     if (( $# != 1 )); then
         printf 'Uso: bash comprobar.sh ruta\n' >&2
         exit 1
@@ -208,7 +208,7 @@ Con `disponibles=12` y `solicitadas=3`, alguien compara los textos mediante `[[ 
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     disponibles=12
     solicitadas=3
     if (( disponibles > solicitadas )); then

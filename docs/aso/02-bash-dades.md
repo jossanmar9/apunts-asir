@@ -2,7 +2,7 @@
 
 ## ¿Qué ejecuta Bash?
 
-Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea `#!/usr/bin/env bash` indica el intérprete cuando lo ejecutas directamente. Con `bash nombre.sh` eliges Bash explícitamente; con `./nombre.sh` necesitas permiso de ejecución, que puedes dar con `chmod u+x nombre.sh`.
+Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea `#!/bin/bash` indica que el script se ejecuta con Bash, situado en `/bin/bash`, como utilizamos en clase. Con `bash nombre.sh` eliges Bash explícitamente; con `./nombre.sh` necesitas permiso de ejecución, que puedes dar con `chmod u+x nombre.sh`.
 
 En Bash, `nombre=valor` asigna y `$nombre` expande el valor. No pongas espacios alrededor de `=`. Las comillas dobles conservan los espacios de un dato, pero expanden variables; las simples tratan el contenido literalmente. Los comentarios comienzan con `#`.
 
@@ -10,7 +10,7 @@ En Bash, `nombre=valor` asigna y `$nombre` expande el valor. No pongas espacios 
 
 Cuando escribes una orden en el terminal, Bash la interpreta en ese momento. Al guardar varias órdenes en un archivo no inventas un lenguaje distinto: preparas una secuencia para repetirla. El archivo no se ejecuta solo por terminar en `.sh`; necesitas indicar un intérprete o hacerlo ejecutable.
 
-Puedes crear `ficha.sh` en un editor de texto, escribir la primera línea `#!/usr/bin/env bash` y guardar. `bash ficha.sh` inicia Bash y le entrega el archivo. `chmod u+x ficha.sh` permite después invocarlo como `./ficha.sh`. El `./` significa «búscalo en esta carpeta»: la carpeta actual no tiene por qué estar en `PATH`.
+Puedes crear `ficha.sh` en un editor de texto, escribir la primera línea `#!/bin/bash` y guardar. `bash ficha.sh` inicia Bash y le entrega el archivo. `chmod u+x ficha.sh` permite después invocarlo como `./ficha.sh`. El `./` significa «búscalo en esta carpeta»: la carpeta actual no tiene por qué estar en `PATH`.
 
 Si estás en otra carpeta, `bash ficha.sh` no busca el archivo junto al que tienes abierto en el editor. Parte del directorio de trabajo. Compruébalo con `pwd` y utiliza una ruta relativa o absoluta que corresponda. Esta distinción evita confundir un problema de localización con un error del código.
 
@@ -68,7 +68,7 @@ Comprueba primero cuántos argumentos hay. Que una variable tenga texto no demue
 Guarda `etiqueta.sh`:
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 if (( $# != 2 )); then
     printf 'Uso: bash etiqueta.sh muestra responsable\n' >&2
     exit 1
@@ -106,7 +106,7 @@ Una variable de shell no pasa necesariamente a los procesos hijos. `export COLOR
 ## Transformar texto y guardar colecciones
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 archivo='muestra.version.txt'
 printf '%s\n' "${archivo%.txt}" "${archivo:0:7}"
 salas=('Sala azul cielo' 'Sala gris')
@@ -135,7 +135,7 @@ Si el enunciado dice «recibe una carpeta», la interfaz normal es `bash program
 ### Problema explicado paso a paso: conservar nombres con espacios en un array
 
 ```bash
-#!/usr/bin/env bash
+#!/bin/bash
 salas=('Azul cielo' 'Gris perla')
 salas+=('Verde musgo')
 for indice in "${!salas[@]}"; do
@@ -160,7 +160,7 @@ Escribe `argumentos.sh` para mostrar cuántos argumentos recibe y después impri
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     printf 'Argumentos: %s\n' "$#"
     printf '<%s>\n' "$@"
     ```
@@ -176,7 +176,7 @@ Recibe como único argumento un nombre terminado en `.csv`. Supón que el sufijo
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     if (( $# != 1 )); then
         printf 'Uso: bash nombre.sh archivo.csv\n' >&2
         exit 1
@@ -197,7 +197,7 @@ Crea un array con `lunes` y `martes`, añade `jueves` y cambia el segundo elemen
 
 ??? success "Solución paso a paso"
     ```bash
-    #!/usr/bin/env bash
+    #!/bin/bash
     dias=(lunes martes)
     dias+=(jueves)
     dias[1]='miércoles'
