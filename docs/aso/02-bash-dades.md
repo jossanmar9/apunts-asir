@@ -147,6 +147,66 @@ La salida tiene tres líneas: `0: Azul cielo`, `1: Gris perla` y `2: Verde musgo
 
 Para cargar un archivo de una entrada por línea, utiliza `mapfile -t salas < salas.txt` en una versión de Bash que disponga de `mapfile`. Es más seguro para espacios que `salas=($(cat salas.txt))`. Los arrays asociativos necesitan `declare -A` y permiten acceder por clave, como `capacidad[azul]=18`.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Conserva cada argumento
+
+Escribe `argumentos.sh` para mostrar cuántos argumentos recibe y después imprimir cada uno entre `<` y `>`, en su propia línea. Prueba `bash argumentos.sh azul "gris claro"`. No utilices `read`.
+
+??? tip "Pista"
+    `$#` cuenta argumentos y `"$@"` conserva sus límites.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    printf 'Argumentos: %s\n' "$#"
+    printf '<%s>\n' "$@"
+    ```
+
+    La salida es `Argumentos: 2`, `<azul>` y `<gris claro>`. Las comillas de la llamada agrupan el segundo argumento y las de `"$@"` mantienen esa agrupación al reenviarlo.
+
+### 2. Genera un nombre sin tocar archivos
+
+Recibe como único argumento un nombre terminado en `.csv`. Supón que el sufijo es correcto. Quita ese sufijo y construye el nombre acabado en `_revisado.csv`. Imprime el resultado sin crear ni renombrar ningún archivo. Prueba con `lista del club.csv`.
+
+??? tip "Pista"
+    Puedes quitar el sufijo con `${nombre%.csv}` y delimitar la variable al añadir texto.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    if (( $# != 1 )); then
+        printf 'Uso: bash nombre.sh archivo.csv\n' >&2
+        exit 1
+    fi
+    nombre=$1
+    base=${nombre%.csv}
+    printf '%s\n' "${base}_revisado.csv"
+    ```
+
+    El resultado es `lista del club_revisado.csv`. Primero validamos el número de argumentos; después transformamos texto. No hay ninguna operación de escritura sobre el sistema de archivos.
+
+### 3. Añade y consulta una colección
+
+Crea un array con `lunes` y `martes`, añade `jueves` y cambia el segundo elemento por `miércoles`. Muestra solo el último elemento y el número de elementos. No copies manualmente toda la lista otra vez.
+
+??? tip "Pista"
+    Los índices empiezan en cero. Añadir utiliza `+=` y cambiar un elemento utiliza su índice.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    dias=(lunes martes)
+    dias+=(jueves)
+    dias[1]='miércoles'
+    printf 'Último: %s\n' "${dias[2]}"
+    printf 'Cantidad: %s\n' "${#dias[@]}"
+    ```
+
+    La salida es `Último: jueves` y `Cantidad: 3`. Cambiar una posición no aumenta el tamaño; añadir un elemento sí.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

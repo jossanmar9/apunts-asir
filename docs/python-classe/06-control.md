@@ -150,6 +150,69 @@ Resultado: `Sesiones seleccionadas: 2; minutos: 15`. El contador no debe sumar l
 
 Como ampliación de los apuntes propios, Python también dispone de `match` para seleccionar casos desde Python 3.10. No necesitas introducirlo en un ejercicio que pide `if`: dominar el razonamiento y respetar las herramientas del enunciado es más importante que usar una sintaxis distinta.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Decide si se puede enviar un aviso
+
+Con `contacto_disponible=True` y `aviso_enviado=False`, muestra `Enviar` solo si hay contacto y el aviso aún no se ha enviado. En los demás casos muestra `No enviar`. Utiliza `if/else` y comprueba las cuatro combinaciones de booleanos.
+
+??? tip "Pista"
+    La condición debe exigir un requisito y negar el otro.
+
+??? success "Solución paso a paso"
+    ```python
+    contacto_disponible = True
+    aviso_enviado = False
+    if contacto_disponible and not aviso_enviado:
+        print("Enviar")
+    else:
+        print("No enviar")
+    ```
+
+    Solo la combinación contacto verdadero y aviso falso muestra `Enviar`. Las otras tres muestran `No enviar`. Es una decisión, no una modificación real ni un envío de mensajes.
+
+### 2. Cuenta letras sin contar espacios
+
+Recorre `"sol y mar"` con un `for` y cuenta los caracteres diferentes del espacio. No utilices `replace` para eliminar espacios ni escribas el número final como respuesta del programa.
+
+??? tip "Pista"
+    Inicializa un contador y aumenta solo cuando el carácter no sea un espacio.
+
+??? success "Solución paso a paso"
+    ```python
+    texto = "sol y mar"
+    contador = 0
+    for caracter in texto:
+        if caracter != " ":
+            contador += 1
+    print(contador)
+    ```
+
+    La salida es 7: tres letras de `sol`, una de `y` y tres de `mar`. Los dos espacios se recorren, pero no aumentan el contador.
+
+### 3. Cuenta hasta encontrar un bloqueo
+
+Recorre los estados `["pendiente", "hecho", "pendiente", "bloqueado", "pendiente"]`. Cuenta los pendientes anteriores al primer bloqueo y termina al encontrarlo. No cuentes la tarea posterior al bloqueo ni escribas directamente el resultado.
+
+??? tip "Pista"
+    Combina un contador con una condición de parada; la parada debe comprobarse antes de seguir acumulando.
+
+??? success "Solución paso a paso"
+    ```python
+    estados = ["pendiente", "hecho", "pendiente", "bloqueado", "pendiente"]
+    contador = 0
+    for estado in estados:
+        if estado == "bloqueado":
+            break
+        if estado == "pendiente":
+            contador += 1
+    print(f"Pendientes antes del bloqueo: {contador}")
+    ```
+
+    El resultado es 2. La última tarea no se procesa porque `break` termina el recorrido. Contar todos los pendientes sin comprobar la parada daría 3 y respondería a otra pregunta.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

@@ -107,6 +107,50 @@ Cuando el ejemplo de cookies guarda una preferencia, responde con 303 y `Locatio
 
 Para verlo con `curl`, usa `-i` para inspeccionar la respuesta original y `-L` para seguir la redirección. Si hay cookies, `-c cookies.txt -b cookies.txt` permite conservarlas entre peticiones. Sin un almacén de cookies, dos llamadas separadas no simulan necesariamente una misma sesión de navegador.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Lee una respuesta de una API
+
+Recibes `HTTP/1.1 201 Created`, `Content-Type: application/json` y el cuerpo `{"id":9,"estado":"creado"}`. Explica si se ha creado un recurso, qué formato tiene la respuesta y si necesariamente contiene una página HTML.
+
+??? tip "Pista"
+    Separa la línea de estado, la cabecera y el cuerpo.
+
+??? success "Solución paso a paso"
+    1. El estado 201 indica que la operación ha creado un recurso.
+    2. `Content-Type` anuncia JSON, y el cuerpo contiene un objeto en ese formato.
+    3. No es necesario que haya HTML. Un cliente puede leer estos datos y decidir cómo presentarlos.
+
+### 2. Elige cómo enviar un filtro
+
+Una biblioteca permite buscar títulos por autor. La búsqueda no cambia ningún dato y quieres copiar su dirección para repetirla. Elige GET o POST, escribe una ruta de ejemplo con el parámetro `autor` y explica tu elección.
+
+??? tip "Pista"
+    Necesitas una consulta repetible y compartible.
+
+??? success "Solución paso a paso"
+    Usaría GET, por ejemplo `/buscar?autor=Cervantes`.
+
+    1. Se consulta información sin modificar el catálogo.
+    2. El filtro queda en la URL y puede compartirse.
+    3. El servidor debe validar igualmente el parámetro recibido. Elegir GET no elimina esa comprobación.
+
+### 3. Distingue fallo HTTP y fallo de conexión
+
+En una prueba, el servidor devuelve 403. En otra, `curl` indica que no puede conectar al puerto. ¿Se ha recibido una respuesta HTTP en ambas? Escribe la primera comprobación de cada situación.
+
+??? tip "Pista"
+    Un estado HTTP implica que algún servidor ha contestado.
+
+??? success "Solución paso a paso"
+    Con 403 sí hay respuesta HTTP: revisaría permisos o autorización de la ruta.
+
+    En la segunda prueba todavía no hay respuesta HTTP: comprobaría dirección, puerto y si el servicio está iniciado.
+
+    No intentaría corregir ambos casos cambiando la contraseña de la base de datos: esa causa no se deduce de lo observado.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

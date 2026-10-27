@@ -104,6 +104,58 @@ for nombre, cantidad in [("Cuarzo", 7), ("Mica", 12)]:
 
 Esto ayuda a construir informes de terminal. Para intercambiar datos con otro programa, elige un formato estructurado como JSON o CSV en lugar de obligarlo a reconstruir columnas visuales.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Muestra el avance de una revisión
+
+Se han revisado 3 de 8 páginas. Calcula la fracción revisada y muéstrala como porcentaje con un decimal usando el formato de una f-string. No multipliques por cien antes de utilizar el formato `%`.
+
+??? tip "Pista"
+    El formato de porcentaje ya transforma una fracción en su representación porcentual.
+
+??? success "Solución paso a paso"
+    ```python
+    revisadas = 3
+    total = 8
+    fraccion = revisadas / total
+    print(f"Avance: {fraccion:.1%}")
+    ```
+
+    La salida es `Avance: 37.5%`. La variable conserva 0.375; solo cambia la presentación. Multiplicar antes por cien haría que el formato lo volviera a multiplicar.
+
+### 2. Comprueba si el formato modifica el valor
+
+Guarda `distancia=2.71828`. Muéstrala con dos decimales y después vuelve a mostrar la variable sin ese formato. Escribe las dos salidas y explica si el primer `print` redondea permanentemente la variable.
+
+??? tip "Pista"
+    Una representación de salida no es una nueva asignación a la variable.
+
+??? success "Solución paso a paso"
+    ```python
+    distancia = 2.71828
+    print(f"{distancia:.2f}")
+    print(distancia)
+    ```
+
+    Las líneas son `2.72` y `2.71828`. El primer formato redondea el texto presentado; no cambia el valor que se utiliza en la segunda impresión.
+
+### 3. Alinea dos columnas sencillas
+
+Presenta `Caja` con cantidad 4 y `Sobre` con cantidad 15. Reserva ocho posiciones para el nombre alineado a la izquierda y tres para el entero alineado a la derecha. Escribe dos `print`; aquí no necesitas un bucle.
+
+??? tip "Pista"
+    Los formatos se aplican a cada campo: `<8` para el nombre y `>3d` para el entero.
+
+??? success "Solución paso a paso"
+    ```python
+    print(f"{'Caja':<8}{4:>3d}")
+    print(f"{'Sobre':<8}{15:>3d}")
+    ```
+
+    Las cantidades quedan alineadas a la derecha. Los espacios completan el ancho mínimo, pero no recortan un nombre largo. Cada fila tiene once posiciones con estos datos.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

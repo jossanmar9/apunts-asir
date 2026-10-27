@@ -130,6 +130,66 @@ Con las entradas `muchas`, `0` y `4`, aparecen el aviso de conversión, el aviso
 
 Este patrón amplía la explicación de excepciones de la teoría; si una actividad todavía no permite utilizarlas, sigue su método de validación indicado.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Corrige un nombre incoherente
+
+El programa asigna `paginas = 8` y después intenta `print(pagina + 1)`. Identifica el tipo de error que cabe esperar, corrige la línea y explica por qué no hace falta envolverla en un `try/except`.
+
+??? tip "Pista"
+    Comprueba qué nombres existen realmente antes de la impresión.
+
+??? success "Solución paso a paso"
+    ```python
+    paginas = 8
+    print(paginas + 1)
+    ```
+
+    La salida correcta es 9. El nombre `pagina` no se había definido y provocaría `NameError`. Es un error de escritura del programa: corregirlo es mejor que ocultarlo capturando una excepción.
+
+### 2. Separa un error de conversión de uno de rango
+
+Lee un entero para un turno de 1 a 4. Si no puede convertirse, muestra `Escribe un entero`. Si se convierte pero queda fuera del rango, muestra `Turno fuera de rango`. Para uno válido, muestra `Turno aceptado`. Basta una lectura, sin repetir.
+
+??? tip "Pista"
+    Captura `ValueError` de la conversión y utiliza `else` para las comprobaciones posteriores.
+
+??? success "Solución paso a paso"
+    ```python
+    texto = input("Turno: ")
+    try:
+        turno = int(texto)
+    except ValueError:
+        print("Escribe un entero")
+    else:
+        if 1 <= turno <= 4:
+            print("Turno aceptado")
+        else:
+            print("Turno fuera de rango")
+    ```
+
+    `dos` toma el camino de conversión fallida; `5` se convierte y falla el rango; `3` se acepta. El rango no se evalúa con una variable que no haya podido obtenerse.
+
+### 3. Repara un acumulador que se reinicia
+
+Quieres sumar `[2, 4, 3]`, pero tu programa pone `total = 0` dentro del `for`, justo antes de añadir cada elemento. Predice qué obtiene al final y corrígelo. Explica por qué no aparece necesariamente una excepción.
+
+??? tip "Pista"
+    El total debe conservar lo anterior entre vueltas, no volver a cero cada vez.
+
+??? success "Solución paso a paso"
+    ```python
+    cantidades = [2, 4, 3]
+    total = 0
+    for cantidad in cantidades:
+        total += cantidad
+    print(total)
+    ```
+
+    El programa defectuoso termina con 3, porque borra el progreso en cada vuelta. El corregido muestra 9. Es un error lógico: las instrucciones son válidas, pero la inicialización estaba en un lugar que no respondía al objetivo.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

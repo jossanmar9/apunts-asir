@@ -151,6 +151,52 @@ Otra opción, con GNU `xargs`, es `find fichas -type f -name '*.txt' -print0 | x
 
 Las opciones `-size`, `-mtime` y `-user` añaden criterios de tamaño, antigüedad y propietario. Revisa primero la selección con `-print` antes de asociarle una modificación.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Limpia una configuración de ejemplo
+
+Crea `opciones.txt` con estas líneas: `# preferencias`, `vista=lista`, una línea vacía y `sonido=no`. Obtén una salida que omita comentarios que empiezan en la primera columna y líneas vacías, sin modificar el archivo.
+
+??? tip "Pista"
+    Usa una expresión regular que reconozca el principio de comentario o una línea sin contenido.
+
+??? success "Solución paso a paso"
+    ```bash
+    grep -Ev '^(#|$)' opciones.txt
+    ```
+
+    La salida contiene `vista=lista` y `sonido=no`. `-E` permite la alternativa y `-v` conserva lo que no coincide. Este enunciado no pide reconocer comentarios precedidos de espacios.
+
+### 2. Sustituye todas las marcas
+
+En `pendiente pendiente listo`, sustituye las dos apariciones de `pendiente` por `hecho` usando `sed`. Genera una salida, sin editar archivos. Explica qué pasaría si omites `g`.
+
+??? tip "Pista"
+    La sustitución sin modificador afecta a la primera coincidencia de cada línea.
+
+??? success "Solución paso a paso"
+    ```bash
+    printf '%s\n' 'pendiente pendiente listo' | sed 's/pendiente/hecho/g'
+    ```
+
+    El resultado es `hecho hecho listo`. Sin `g`, sería `hecho pendiente listo`: solo cambiaría la primera aparición de la línea.
+
+### 3. Localiza documentos vacíos
+
+En una carpeta de prueba `documentos`, busca recursivamente solo archivos ordinarios vacíos cuyo nombre termine en `.txt`. Imprime sus rutas. No borres nada ni incluyas las carpetas vacías.
+
+??? tip "Pista"
+    Combina nombre, tipo y tamaño vacío en `find`.
+
+??? success "Solución paso a paso"
+    ```bash
+    find documentos -type f -name '*.txt' -empty -print
+    ```
+
+    Las condiciones se combinan: debe ser archivo, terminar en `.txt` y estar vacío. Un `.txt` con texto, un `.csv` vacío y un directorio vacío quedan fuera. Las comillas dejan que `find` reciba el patrón sin expansión previa de la shell.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

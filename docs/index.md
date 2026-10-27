@@ -56,9 +56,10 @@ Apuntes desarrollados de clase, organizados por **módulo, unidad y tema**, para
 
 1. **Para estudiar:** sigue las unidades en orden. Lee la explicación completa y sigue los cambios de cada variable en los problemas. Intenta justificar cada paso antes de ejecutarlo.
 2. **Durante un trabajo:** busca el tema que necesitas y adapta el procedimiento a tu enunciado, comprobando entradas, límites y errores.
-3. **Para repasar:** consulta las tablas y el recuadro «Para repasar» de cada tema.
+3. **Para practicar:** resuelve los tres ejercicios al final de cada tema. Abre una pista si te atascas y comprueba la solución después.
+4. **Para repasar:** consulta las tablas y el recuadro «Para repasar» de cada tema.
 
-Los problemas se explican paso a paso para aprender a aplicar la teoría. Se utilizan enunciados diferentes de los ejercicios de clase para practicar o entregar.
+Los problemas de teoría se explican paso a paso para aprender a aplicarla. Los ejercicios de práctica tienen enunciados diferentes y la solución cerrada por defecto. Se utilizan enunciados diferentes de los ejercicios de clase para practicar o entregar.
 
 ## Una guía completa dentro de cada tema
 

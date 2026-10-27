@@ -14,7 +14,7 @@ Apuntes desarrollados en **castellano** de los apuntes de clase de **IAW, ASO y 
 | Git y GitHub | Tema independiente: repositorios, commits, remoto y SSH | [Git y GitHub](docs/git-github/index.md) |
 | Cómo estudiar | Método de estudio y consejos para aprender | [Cómo estudiar](docs/estudiar/index.md) |
 
-Cada tema incluye explicaciones desde cero, instrucciones comentadas, problemas fáciles resueltos paso a paso, seguimiento de variables, resultados esperados y errores habituales. El vocabulario y el repaso quedan al final como consulta. Los casos didácticos **no son los ejercicios de clase para practicar o entregar**, ni versiones con solo los nombres o los datos cambiados.
+Cada tema incluye explicaciones desde cero, instrucciones comentadas, problemas fáciles resueltos paso a paso, seguimiento de variables, resultados esperados y errores habituales. Cada tema tiene además tres ejercicios de práctica con pistas y soluciones plegadas. El vocabulario y el repaso quedan al final como consulta. Los casos didácticos **no son los ejercicios de clase para practicar o entregar**, ni versiones con solo los nombres o los datos cambiados.
 
 ## Material integrado
 
@@ -27,6 +27,7 @@ Las tablas, explicaciones y técnicas de los apuntes anteriores se han incorpora
 - Utiliza problemas sencillos y explícalos paso a paso, con la salida y el motivo de cada operación. Evita las etiquetas «problema propio» o «con datos conocidos».
 - Mantén enunciados distintos de los ejercicios de práctica o entrega de clase.
 - Sitúa vocabulario, tablas y repaso como apoyo a la explicación, sin sustituirla.
+- Incluye tres ejercicios sencillos de práctica en cada tema, distintos de las demostraciones de teoría y de las tareas de clase. Mantén pistas y soluciones paso a paso plegadas; comprueba las soluciones ejecutables.
 
 ## Fuentes y criterio de actualización
 

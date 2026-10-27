@@ -170,6 +170,66 @@ Un formulario con archivos necesita `enctype="multipart/form-data"`. PHP deja un
 
 La carpeta de destino y la política de ejecución son parte del diseño: un archivo recibido no debe convertirse accidentalmente en código ejecutable. El nombre del usuario no es un destino fiable. En este tema se explica el mecanismo; el laboratorio del telescopio no necesita adjuntos.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Encuentra por qué no llega el campo
+
+El formulario usa `<input id="asunto">` y `method="post"`. PHP espera `$_POST['asunto']`. Explica qué falta y escribe el control corregido. Después indica cómo comprobarías el envío en el navegador.
+
+??? tip "Pista"
+    El nombre utilizado para enviar un campo no es su `id`.
+
+??? success "Solución paso a paso"
+    El control necesita `name`:
+
+    ```html
+    <input id="asunto" name="asunto">
+    ```
+
+    1. `id` identifica el elemento en la página.
+    2. `name="asunto"` identifica el campo enviado.
+    3. En Red del navegador, abriría la petición POST y buscaría `asunto` en sus datos.
+
+### 2. Valida una opción de formato
+
+En un receptor PHP debes aceptar solo `pdf` o `texto` en `$_POST['formato']`. Escribe la comprobación y un mensaje para cualquier otra entrada. Rechaza también un array inesperado. El código se ejecuta cuando ya has recibido un POST.
+
+??? tip "Pista"
+    Comprueba primero la estructura y después la lista de valores permitidos.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    $formato = $_POST['formato'] ?? '';
+    if (!is_string($formato) || !in_array($formato, ['pdf', 'texto'], true)) {
+        echo 'Elige pdf o texto';
+    } else {
+        echo 'Formato aceptado';
+    }
+    ```
+
+    1. Un campo ausente toma `''` y se rechaza.
+    2. `is_string` impide tratar un array como una opción de texto.
+    3. `in_array` limita la respuesta a los dos valores admitidos. Prueba `pdf`, `imagen`, campo ausente y array.
+
+### 3. Conserva una nota después de un error
+
+Ya tienes en `$nota` el texto leído y validado como cadena. Escribe un `textarea` que conserve ese texto al volver a mostrar el formulario. Explica por qué no va en un atributo `value` y cómo evitas interpretarlo como HTML.
+
+??? tip "Pista"
+    El contenido de un textarea se coloca entre sus etiquetas.
+
+??? success "Solución paso a paso"
+    ```php
+    <textarea name="nota"><?= htmlspecialchars($nota, ENT_QUOTES, 'UTF-8') ?></textarea>
+    ```
+
+    1. La cadena se coloca entre apertura y cierre de `textarea`.
+    2. `name` permite enviarla de nuevo.
+    3. El escape impide que el texto recibido cierre o altere el marcado de la página. Un `textarea` no se rellena como un `input value="..."`.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

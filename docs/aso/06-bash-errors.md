@@ -119,6 +119,63 @@ Los permisos `r`, `w` y `x` significan lectura, escritura y ejecución; en direc
 
 Esto aporta contexto a Bash; el desarrollo completo de procesos, servicios y administración de directorio se incorporará cuando exista el material de esas unidades.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Revisa una dependencia antes de usarla
+
+Escribe un script que compruebe si `wc` está disponible. Si lo está, muestra `Herramienta disponible`; si no, escribe un error por stderr y termina con código 2. No instales nada desde el script.
+
+??? tip "Pista"
+    `command -v` proporciona un estado que puede utilizar directamente el `if`.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    if command -v wc >/dev/null 2>&1; then
+        printf 'Herramienta disponible\n'
+    else
+        printf 'Falta la herramienta wc\n' >&2
+        exit 2
+    fi
+    ```
+
+    Con `wc` disponible termina normalmente con estado cero. El otro camino informa por el canal de errores y utiliza un código que permite al programa que llama reconocer el fallo.
+
+### 2. Conserva el código de una operación
+
+Una comprobación falla y después haces `printf 'Comprobado
+'`. Al consultar `$?`, obtienes 0. Escribe una secuencia que guarde el estado de `false` antes del mensaje y muestre después ese estado guardado. No uses `set -e` en esta prueba.
+
+??? tip "Pista"
+    Cada orden actualiza `$?`; la asignación debe hacerse inmediatamente después de la que interesa.
+
+??? success "Solución paso a paso"
+    ```bash
+    false
+    estado=$?
+    printf 'Comprobado\n'
+    printf 'Estado de la prueba: %s\n' "$estado"
+    ```
+
+    El estado mostrado es 1. El `printf` intermedio no modifica la variable `estado`, aunque sí cambia el significado del `$?` que consultarías después.
+
+### 3. Organiza una investigación
+
+Un script debe procesar dos nombres con espacios, pero recibe cuatro palabras. Explica qué revisarías en la llamada, cómo comprobarías el número de argumentos y qué prueba repetirías después de corregirlo. No cambies el formato de los nombres para ocultar el error.
+
+??? tip "Pista"
+    Distingue los datos de cómo la shell los separa antes de ejecutar el script.
+
+??? success "Solución paso a paso"
+    1. Revisaría si cada nombre completo está entre comillas al llamar al script.
+    2. Observaría `$#` y cada argumento mediante `printf '<%s>
+    ' "$@"`.
+    3. Repetiría la misma llamada con los nombres entrecomillados y comprobaría que hay exactamente dos argumentos completos.
+
+    Cambiar nombres para quitarles espacios evita la prueba, pero no corrige el tratamiento de datos válidos con espacios.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

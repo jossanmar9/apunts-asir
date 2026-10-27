@@ -117,6 +117,63 @@ El directorio de trabajo es la carpeta desde la que se resuelven las rutas relat
 
 En Windows, PowerShell es una shell cuyos comandos propios se llaman cmdlets, como `Get-Command`. Su política de ejecución puede afectar al script de activación del entorno virtual; no es un sistema que sustituya a los permisos ni al control de seguridad del equipo. Si no puedes activar el entorno, puedes seleccionar directamente su intérprete en VS Code o ejecutar `.\.venv\Scripts\python.exe audio.py`.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Crea y ejecuta un archivo
+
+Crea `arranque.py` con dos instrucciones que muestren, en este orden y en líneas separadas, `Preparando la revisión` y `Revisión preparada`. Ejecútalo desde el terminal e indica qué parte corresponde al editor y cuál al intérprete.
+
+??? tip "Pista"
+    Guardar texto en el editor y ejecutar el archivo son acciones distintas.
+
+??? success "Solución paso a paso"
+    ```python
+    print("Preparando la revisión")
+    print("Revisión preparada")
+    ```
+
+    1. El editor guarda esas instrucciones en `arranque.py`.
+    2. Desde su carpeta ejecutas `python3 arranque.py` en Linux, o el comando de Python de tu equipo.
+    3. El intérprete ejecuta los dos `print` en orden. No escribas el prompt `>>>` en el archivo.
+
+### 2. Localiza el archivo antes de ejecutarlo
+
+El archivo está en `proyecto/pruebas/inicio.py`, pero tu terminal está en `proyecto`. Escribe una forma de ejecutarlo sin moverlo y otra cambiando primero de carpeta. No copies el archivo a una ubicación nueva.
+
+??? tip "Pista"
+    Una ruta relativa parte de la carpeta actual del terminal.
+
+??? success "Solución paso a paso"
+    Desde `proyecto`:
+
+    ```bash
+    python3 pruebas/inicio.py
+    ```
+
+    O, partiendo también de `proyecto`:
+
+    ```bash
+    cd pruebas
+    python3 inicio.py
+    ```
+
+    Las dos formas apuntan al mismo archivo. La segunda cambia el directorio de trabajo; eso también puede afectar a otras rutas relativas que utilice el programa.
+
+### 3. Detecta una confusión de intérpretes
+
+Instalas un paquete dentro de `.venv`, pero VS Code no lo encuentra al ejecutar el programa. El terminal sí puede utilizarlo. Escribe dos comprobaciones antes de volver a instalarlo.
+
+??? tip "Pista"
+    El editor y el terminal pueden estar ejecutando Pythons distintos.
+
+??? success "Solución paso a paso"
+    1. En VS Code revisaría **Python: Select Interpreter** y seleccionaría el Python de `.venv`.
+    2. En el terminal comprobaría `python -m pip --version` para ver a qué entorno está asociado el instalador.
+
+    Después repetiría la ejecución con el mismo intérprete. Instalar una y otra vez no corrige una selección equivocada de entorno.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

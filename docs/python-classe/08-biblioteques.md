@@ -163,6 +163,63 @@ Guárdalo como `opciones.py`. `python opciones.py fichas --limite 5` muestra `Ca
 
 Para ejecutar otro programa, `subprocess.run` acepta una lista con el comando y cada argumento por separado. `capture_output=True` captura stdout y stderr, `text=True` devuelve texto y `returncode` permite revisar el estado. Evita construir una orden de shell concatenando datos externos. El módulo `re` proporciona `search`, `findall` y patrones compilados; recuerda diferenciar una coincidencia de formato de una validación completa del dato.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Construye una ruta sin crear archivos
+
+Construye con `Path` la ruta relativa `material/sonidos/aviso.wav`. Muestra por separado su nombre, su sufijo y el nombre de su carpeta padre. El programa debe funcionar aunque esa ruta todavía no exista.
+
+??? tip "Pista"
+    Construir una ruta y consultar sus componentes no exige abrir el recurso.
+
+??? success "Solución paso a paso"
+    ```python
+    from pathlib import Path
+    ruta = Path("material") / "sonidos" / "aviso.wav"
+    print(ruta.name)
+    print(ruta.suffix)
+    print(ruta.parent.name)
+    ```
+
+    Las salidas son `aviso.wav`, `.wav` y `sonidos`. No se ha creado ninguna carpeta ni comprobado que exista el archivo: solo se han interpretado componentes de su dirección.
+
+### 2. Calcula una devolución con calendario
+
+Una herramienta se presta el 30 de abril de 2026 durante tres días. Calcula con `date` y `timedelta` la fecha de devolución y muéstrala como día/mes/año. No calcules el cambio de mes manualmente.
+
+??? tip "Pista"
+    Suma una duración al objeto de fecha, no al texto que lo representa.
+
+??? success "Solución paso a paso"
+    ```python
+    from datetime import date, timedelta
+    prestamo = date(2026, 4, 30)
+    devolucion = prestamo + timedelta(days=3)
+    print(f"Devolución: {devolucion:%d/%m/%Y}")
+    ```
+
+    La salida es `Devolución: 03/05/2026`. El objeto de calendario realiza el cambio de mes y el formato decide cómo presentarlo.
+
+### 3. Lee una lista sin perder su orden
+
+Crea `recordatorios.txt` en una carpeta de pruebas con dos líneas: `revisar batería` y `guardar cables`. Léelo con `with`, numera las líneas desde 1 y muestra cada recordatorio sin añadir líneas vacías entre ellos. No escribas los recordatorios dentro del programa lector.
+
+??? tip "Pista"
+    El archivo se cierra al salir de `with`; `enumerate` permite numerar el recorrido.
+
+??? success "Solución paso a paso"
+    ```python
+    from pathlib import Path
+    ruta = Path("recordatorios.txt")
+    with ruta.open(encoding="utf-8") as archivo:
+        for numero, linea in enumerate(archivo, start=1):
+            print(f"{numero}. {linea.rstrip()}")
+    ```
+
+    Se muestran `1. revisar batería` y `2. guardar cables`. `rstrip` elimina el salto ya leído antes de que `print` añada el suyo. En este formato no se necesitan espacios al final de las notas.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

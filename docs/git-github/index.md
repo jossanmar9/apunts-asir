@@ -201,6 +201,66 @@ Si `ubicacion.txt` está editado y preparado, pero no debe entrar aún en el pr�
 | La PR incluye otro trabajo | Rama de partida y commits incluidos antes de crearla |
 | El merge de GitHub no aparece localmente | Actualiza la rama local correspondiente |
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Guarda solo uno de dos cambios
+
+En un repositorio de laboratorio con un primer commit, tienes `manual.txt` y `tareas.txt` ya registrados. Edita ambos, prepara solo `manual.txt` y revisa el estado y los dos tipos de diff. Explica qué archivo cambiaría en el próximo commit y qué ocurriría con la otra edición.
+
+??? tip "Pista"
+    El área de preparación permite seleccionar archivos distintos, sin obligarte a guardar toda la carpeta.
+
+??? success "Solución paso a paso"
+    Después del commit inicial, puedes realizar esta prueba:
+
+    ```bash
+    printf 'Manual revisado\n' > manual.txt
+    printf 'Tarea pendiente\n' > tareas.txt
+    git add manual.txt
+    git status --short
+    git diff
+    git diff --cached
+    ```
+
+    `manual.txt` está preparado y aparecerá en el diff con `--cached`. `tareas.txt` tiene una edición sin preparar y aparece en el diff normal. El siguiente commit guardaría el cambio del manual; la tarea seguiría editada en la carpeta, sin perderse y sin entrar en ese commit.
+
+### 2. Ignora un archivo que todavía no se ha registrado
+
+En un repositorio de laboratorio, crea `borrador.tmp` sin añadirlo a Git. Añade la regla `*.tmp` a un `.gitignore` y comprueba el estado. Explica si el archivo desaparece del disco y si ahora es necesario ejecutar `git rm`.
+
+??? tip "Pista"
+    Ignorar archivos nuevos no equivale a borrarlos ni a retirar archivos que ya tienen historial.
+
+??? success "Solución paso a paso"
+    ```bash
+    printf 'Notas temporales\n' > borrador.tmp
+    printf '*.tmp\n' > .gitignore
+    git status --short
+    ```
+
+    El borrador no aparece entre los archivos nuevos que Git propone registrar, pero sigue en disco. `.gitignore` sí puede aparecer como nuevo. No hace falta `git rm`: el borrador nunca se había registrado. Si ya tuviera historial, la regla sola no lo retiraría.
+
+### 3. Revisa antes de integrar una rama
+
+En un repositorio de laboratorio con un primer commit, crea una rama `instrucciones`, añade `uso.txt` con una línea y haz commit en esa rama. Vuelve a la rama anterior y revisa los commits de todas las ramas. Comprueba que todavía no has integrado el archivo. No hagas `push` ni abras una PR.
+
+??? tip "Pista"
+    Crear un commit en otra rama no significa fusionarlo en la rama de partida.
+
+??? success "Solución paso a paso"
+    ```bash
+    git switch -c instrucciones
+    printf 'Leer antes de empezar\n' > uso.txt
+    git add uso.txt
+    git commit -m "Documenta el uso del laboratorio"
+    git switch -
+    git log --oneline --graph --all
+    ```
+
+    El commit queda en `instrucciones`. Al volver a la rama anterior, `uso.txt` no forma parte de su versión registrada. El historial con `--all` permite ver ambas referencias. Falta una decisión posterior de integración; crear la rama no la realiza automáticamente.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

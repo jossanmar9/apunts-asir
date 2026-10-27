@@ -173,6 +173,74 @@ Resultado esperado: `Sala: Azul` y `Zona: Azul`. El segundo parámetro tiene un 
 
 Para archivos que solo contienen funciones PHP, suele ser práctico omitir la etiqueta de cierre `?>`: reduces el riesgo de introducir espacios que se envíen accidentalmente antes de una cabecera HTTP.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Muestra solo tareas pendientes
+
+Crea el array `['pendiente', 'terminada', 'pendiente']`. Recórrelo y muestra únicamente los elementos iguales a `pendiente`. Deben aparecer dos líneas, sin escribir dos `echo` repetidos.
+
+??? tip "Pista"
+    Combina `foreach` con una comparación estricta dentro del recorrido.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    $tareas = ['pendiente', 'terminada', 'pendiente'];
+    foreach ($tareas as $estado) {
+        if ($estado === 'pendiente') {
+            echo $estado . "
+    ";
+        }
+    }
+    ```
+
+    En cada vuelta se comprueba un estado. La segunda no imprime nada porque no cumple la condición. Las otras dos muestran `pendiente`.
+
+### 2. Una función que responde una pregunta
+
+Escribe `necesitaRevision($paginas)` para devolver `true` si la cantidad es mayor de 20 y `false` en otro caso. Supón enteros no negativos. Prueba con 20 y 21. La función no debe imprimir.
+
+??? tip "Pista"
+    Una comparación ya produce el booleano que necesitas devolver.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    function necesitaRevision(int $paginas): bool
+    {
+        return $paginas > 20;
+    }
+    var_dump(necesitaRevision(20));
+    var_dump(necesitaRevision(21));
+    ```
+
+    Las salidas son `bool(false)` y `bool(true)`. El límite 20 no cumple «mayor de 20». `return` entrega el dato; las llamadas a `var_dump` permiten comprobarlo fuera de la función.
+
+### 3. Suma solo las cantidades positivas
+
+Con `[-2, 4, 0, 3]`, calcula mediante un bucle el total de las cantidades estrictamente positivas. No modifiques el array ni sumes los valores negativos.
+
+??? tip "Pista"
+    Inicializa el acumulador antes del bucle y actualízalo solo en el camino correcto.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    $cantidades = [-2, 4, 0, 3];
+    $total = 0;
+    foreach ($cantidades as $cantidad) {
+        if ($cantidad > 0) {
+            $total += $cantidad;
+        }
+    }
+    echo $total . "
+    ";
+    ```
+
+    El total avanza de 0 a 4 y después a 7. El cero y -2 no lo cambian. El acumulador se prepara una vez, no en cada vuelta.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

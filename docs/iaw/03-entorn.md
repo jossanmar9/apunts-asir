@@ -195,6 +195,55 @@ Un `healthcheck` comprueba una condición de salud. La forma larga de `depends_o
 
 Docker usa el núcleo del sistema donde corre su motor; en algunos equipos ese motor vive en una máquina virtual. Una distribución Linux es el conjunto de sistema y herramientas; una imagen de usuario no incorpora por sí sola un núcleo independiente. La ruta donde se monta un disco pertenece al sistema de archivos y no debe confundirse con publicar un puerto de red.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Relaciona anfitrión y contenedor
+
+Un servicio declara `"127.0.0.1:8098:80"`. Indica qué dirección abres desde el mismo equipo, en qué puerto escucha el servidor dentro del contenedor y si has publicado acceso directo a PHP-FPM.
+
+??? tip "Pista"
+    Lee la publicación como dirección del anfitrión, puerto exterior y puerto interior.
+
+??? success "Solución paso a paso"
+    1. Desde ese equipo abriría `http://localhost:8098`.
+    2. El servidor del contenedor escucha en el puerto 80.
+    3. Esa publicación no abre PHP-FPM. Solo conecta el puerto indicado del anfitrión con el 80 de este servicio.
+
+### 2. Corrige una ruta compartida
+
+Nginx tiene `root /srv/demo;` y anuncia a PHP `/srv/demo/index.php`. El servicio PHP monta `./public:/app`. El archivo existe en `public/index.php`. Explica la incompatibilidad y escribe el montaje que pondrías en PHP para que ambos vean la misma ruta.
+
+??? tip "Pista"
+    La ruta enviada a PHP debe existir dentro de su contenedor.
+
+??? success "Solución paso a paso"
+    El archivo está en `/app/index.php` dentro de PHP, pero Nginx le solicita `/srv/demo/index.php`.
+
+    Cambiaría el montaje de PHP a:
+
+    ```yaml
+    volumes:
+      - ./public:/srv/demo:ro
+    ```
+
+    Así ambos servicios pueden referirse a la misma ruta. Después aplicaría el cambio con `docker compose up -d` y volvería a comprobar la página.
+
+### 3. Decide qué hay que reconstruir
+
+Tienes código PHP en un bind mount y un Dockerfile que instala extensiones. En el primer cambio solo editas un texto PHP. En el segundo añades una extensión al Dockerfile. Explica qué diferencia hay y qué orden usarías en el segundo caso.
+
+??? tip "Pista"
+    Distingue un archivo montado del contenido construido en la imagen.
+
+??? success "Solución paso a paso"
+    1. El archivo montado se lee desde el anfitrión; cambiar ese texto no exige construir otra imagen.
+    2. Una extensión instalada durante la construcción forma parte de la imagen.
+    3. Después de editar el Dockerfile usaría `docker compose up -d --build` y comprobaría el resultado.
+
+    Reiniciar sin reconstruir no instala por sí solo la extensión nueva.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

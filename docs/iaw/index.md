@@ -24,6 +24,10 @@ Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con 
 
 UT3 (acceso a bases de datos), UT4–UT6 (CMS) y UT7 (aplicación ofimática web) aparecen en la planificación; no tienen teoría en el menú consultado. Se incorporarán los temas cuando haya material y lo indiques.
 
+## Práctica en cada tema
+
+Cada tema contiene tres ejercicios diferentes de los problemas de teoría. Inténtalos por tu cuenta y utiliza las pistas o la solución plegada cuando lo necesites. Las soluciones explican el razonamiento paso a paso.
+
 ## Cómo utilizar estos apuntes
 
 Lee la explicación del concepto y después sigue el problema paso a paso. Anota los valores de las variables y predice el resultado antes de ejecutarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.

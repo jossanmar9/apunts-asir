@@ -115,6 +115,52 @@ Un sistema gestor de bases de datos (SGBD), como MariaDB, administra datos persi
 
 Conectar componentes no equivale a implementar un CRUD: crear, leer, actualizar y eliminar son operaciones de la aplicación. En UT1 interesa entender dónde vive cada responsabilidad. Los JOIN, índices y transacciones se desarrollarán con el tema de acceso a bases de datos, sin presentar esa unidad como publicada antes de tiempo.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Dibuja una consulta sin base de datos
+
+Una web muestra el resultado de una suma realizada con PHP, pero no guarda resultados. Dibuja el recorrido desde el navegador hasta la respuesta y explica si necesita MariaDB. No escribas código.
+
+??? tip "Pista"
+    Distingue ejecutar una operación de conservar información.
+
+??? success "Solución paso a paso"
+    1. El navegador envía la petición a Nginx.
+    2. Nginx deriva el archivo PHP a PHP-FPM.
+    3. PHP calcula la suma y devuelve el resultado a Nginx, que lo entrega al navegador.
+
+    No necesita MariaDB: calcular una respuesta dinámica no obliga a guardarla. El recorrido es navegador → Nginx → PHP-FPM → Nginx → navegador.
+
+### 2. Encuentra la pieza que falta
+
+Un compañero propone guardar las inscripciones de un club en una variable PHP. Al abrir otra vez la página, desaparecen. Explica qué confunde y qué responsabilidad falta en su diseño.
+
+??? tip "Pista"
+    Piensa cuánto dura una variable de una petición y cuánto debe durar una inscripción.
+
+??? success "Solución paso a paso"
+    1. La variable pertenece a una ejecución del programa.
+    2. Otra petición no recupera automáticamente ese valor.
+    3. Hace falta almacenamiento persistente, por ejemplo una base de datos gestionada por MariaDB.
+
+    PHP validaría y guardaría la inscripción. Nginx seguiría atendiendo HTTP; no se convertiría en el almacén de inscripciones.
+
+### 3. La página carga, pero no su estilo
+
+El texto de una web aparece, pero sus colores y márgenes no. El navegador pide `/estilos.css` y recibe 404. Indica qué comprobarías primero y explica por qué cambiar una tabla SQL no es la primera medida.
+
+??? tip "Pista"
+    Relaciona el recurso que falla con quien lo sirve.
+
+??? success "Solución paso a paso"
+    1. Revisaría la ruta del enlace al CSS en el HTML.
+    2. Comprobaría que el archivo exista dentro de la carpeta que sirve Nginx y que su nombre coincida.
+    3. Volvería a pedir ese recurso y comprobaría su estado HTTP.
+
+    El fallo observado está en un recurso estático. No hay ninguna prueba de que una tabla SQL intervenga en su entrega.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

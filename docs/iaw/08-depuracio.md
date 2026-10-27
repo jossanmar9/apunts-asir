@@ -87,6 +87,63 @@ Para una validación de duraciones, separa los casos de **forma** (`muchos`), **
 
 En la salida de `docker compose logs`, identifica qué servicio escribe el mensaje. Un fallo DNS al conectar con MariaDB, una credencial rechazada y una tabla ausente requieren correcciones diferentes, aunque todos puedan terminar en una página de error.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Encuentra una clave mal escrita
+
+El navegador envía `categoria=musica`, pero PHP lee `$_POST['categoriaa'] ?? ''`. La página responde 200 y muestra la categoría vacía. Describe tres comprobaciones ordenadas para localizar el fallo.
+
+??? tip "Pista"
+    Que el HTTP sea correcto no garantiza que se haya leído el campo correcto.
+
+??? success "Solución paso a paso"
+    1. En Red comprobaría que el POST contiene `categoria=musica`.
+    2. Compararía el nombre enviado con la clave del receptor.
+    3. Corregiría la lectura a `$_POST['categoria'] ?? ''` y repetiría la petición.
+
+    La respuesta 200 solo confirma la atención HTTP; no corrige el error de nombre.
+
+### 2. Por qué falla una redirección
+
+Un archivo escribe `echo 'Guardado';` antes de `header('Location: lista.php');`. Explica el posible error y reordena el final del procesamiento para redirigir sin mostrar ese texto primero.
+
+??? tip "Pista"
+    Las cabeceras deben prepararse antes de enviar el cuerpo.
+
+??? success "Solución paso a paso"
+    Después de guardar correctamente:
+
+    ```php
+    <?php
+    header('Location: lista.php', true, 303);
+    exit;
+    ```
+
+    La redirección se envía antes de cualquier `echo` o HTML. El mensaje de confirmación puede mostrarse en el GET de destino. `exit` evita continuar generando contenido tras decidir la redirección.
+
+### 3. Diseña pruebas de un rango
+
+Un campo debe admitir enteros de 2 a 6, ambos incluidos. Escribe seis entradas que permitan comprobar los límites, un caso interior y una entrada no numérica. Anota qué debería aceptarse.
+
+??? tip "Pista"
+    Combina valores justo fuera, exactamente en los extremos y dentro.
+
+??? success "Solución paso a paso"
+    Una selección útil es:
+
+    | Entrada | Resultado |
+    | --- | --- |
+    | 1 | Rechazar |
+    | 2 | Aceptar |
+    | 4 | Aceptar |
+    | 6 | Aceptar |
+    | 7 | Rechazar |
+    | `varias` | Rechazar |
+
+    Los extremos detectan confusiones entre `<` y `<=`. La palabra comprueba que no solo se esté evaluando el rango de un dato supuesto válido.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

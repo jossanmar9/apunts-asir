@@ -131,6 +131,64 @@ print(copia)
 
 La salida es `['azul', 'gris']` y `['azul', 'gris', 'ocre']`. `copy()` crea otra lista y añadir un elemento ya no modifica la primera. Es una copia superficial: si hubiera objetos mutables anidados, seguirían compartidos. El tema de estructuras de datos desarrollará esa diferencia; aquí sirve para entender nombres, identidad y mutabilidad.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Calcula el espacio libre de una tarjeta
+
+Una tarjeta de laboratorio tiene capacidad para 64 unidades y contiene 19 unidades de fotos y 8 de audio. Guarda cada cantidad por separado, calcula el espacio libre y muestra el resultado. No uses `input` ni condiciones todavía.
+
+??? tip "Pista"
+    Primero reúne lo ocupado y después réstalo a la capacidad.
+
+??? success "Solución paso a paso"
+    ```python
+    capacidad = 64
+    fotos = 19
+    audio = 8
+    ocupado = fotos + audio
+    libre = capacidad - ocupado
+    print(f"Espacio libre: {libre}")
+    ```
+
+    Lo ocupado es 27 y lo libre es 37. La salida es `Espacio libre: 37`. Cada variable representa una cantidad distinta; no se mezclan unidades diferentes.
+
+### 2. Construye una condición de permiso
+
+Con `abierto=True` y `mantenimiento=False`, calcula el booleano `puede_usarse`: el equipo puede usarse solo si está abierto y no está en mantenimiento. Muestra el booleano, sin escribir un `if`. Prueba después activando mantenimiento.
+
+??? tip "Pista"
+    Combina `and` con `not`; no escribas las palabras True y False entre comillas.
+
+??? success "Solución paso a paso"
+    ```python
+    abierto = True
+    mantenimiento = False
+    puede_usarse = abierto and not mantenimiento
+    print(puede_usarse)
+    ```
+
+    La primera salida es `True`. Si cambias mantenimiento a `True` y vuelves a ejecutar, sale `False`. Se calcula un valor lógico; no se elige todavía entre bloques de instrucciones.
+
+### 3. Distingue un código de una cantidad
+
+Tienes el código de taquilla `"007"` y la cantidad de llaves `"3"`. Decide cuál conservar como texto y cuál convertir si vas a añadir dos llaves. Escribe las dos salidas sin perder los ceros del código.
+
+??? tip "Pista"
+    Que un dato tenga cifras no significa que tenga sentido sumarlo.
+
+??? success "Solución paso a paso"
+    ```python
+    codigo = "007"
+    llaves = int("3")
+    llaves = llaves + 2
+    print(f"Taquilla: {codigo}")
+    print(f"Llaves: {llaves}")
+    ```
+
+    Las salidas son `Taquilla: 007` y `Llaves: 5`. El identificador conserva sus ceros; la cantidad se convierte para poder hacer aritmética.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

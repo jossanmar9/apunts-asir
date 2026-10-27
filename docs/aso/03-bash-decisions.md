@@ -150,6 +150,76 @@ Las formas cortas `orden && siguiente` y `orden || alternativa` dependen del mis
 
 En la prueba de patrón `*.txt`, dejar el patrón sin comillas permite interpretarlo como patrón; la variable sigue protegida. Diferencia este caso de pasar argumentos a una orden externa, donde normalmente debes entrecomillar las expansiones.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Reconoce un formato de documento
+
+Recibe un nombre como primer argumento. Muestra `Documento` si acaba en `.pdf` o `.odt`, y `Otro formato` en cualquier otro caso. Utiliza `case`. Si falta el argumento, muestra un mensaje de uso y termina con error.
+
+??? tip "Pista"
+    Un caso puede reunir dos patrones separados por `|`.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    if (( $# != 1 )); then
+        printf 'Uso: bash formato.sh nombre\n' >&2
+        exit 1
+    fi
+    case "$1" in
+        *.pdf|*.odt) printf 'Documento\n' ;;
+        *) printf 'Otro formato\n' ;;
+    esac
+    ```
+
+    `guia.pdf` y `acta.odt` muestran `Documento`; `foto.png` muestra `Otro formato`. La comprobación distingue mayúsculas: `.PDF` no coincide con los patrones escritos.
+
+### 2. Comprueba dos requisitos
+
+Recibe una ruta y acepta solo un archivo ordinario no vacío. No basta con que exista una carpeta con ese nombre. Muestra `Preparado` si cumple ambos requisitos y `No válido` si no los cumple. No modifiques la ruta.
+
+??? tip "Pista"
+    Combina la prueba de archivo ordinario y la de tamaño no nulo.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    if (( $# != 1 )); then
+        printf 'Uso: bash comprobar.sh ruta\n' >&2
+        exit 1
+    fi
+    if [[ -f "$1" && -s "$1" ]]; then
+        printf 'Preparado\n'
+    else
+        printf 'No válido\n'
+    fi
+    ```
+
+    Un archivo con una línea es válido. Uno vacío o una carpeta no lo son. Se comprueba el tipo y después que tenga contenido; no se calcula un número a partir del nombre.
+
+### 3. Corrige una comparación de cantidades
+
+Con `disponibles=12` y `solicitadas=3`, alguien compara los textos mediante `[[ "$disponibles" > "$solicitadas" ]]`. Quiere saber si la primera cantidad es mayor. Elige una comparación numérica y muestra un mensaje para cada camino. No cambies los números para que el fallo deje de verse.
+
+??? tip "Pista"
+    El orden textual de las cifras no equivale a comparar sus valores enteros.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    disponibles=12
+    solicitadas=3
+    if (( disponibles > solicitadas )); then
+        printf 'Hay más unidades disponibles que solicitadas\n'
+    else
+        printf 'No hay una cantidad mayor disponible\n'
+    fi
+    ```
+
+    Se muestra el primer mensaje porque 12 es mayor que 3. La comparación anterior era textual: trataba los valores como cadenas. Aquí ya tenemos enteros fijados; si proceden del usuario, habría que validarlos primero.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

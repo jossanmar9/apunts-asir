@@ -136,6 +136,75 @@ echo str_replace('azul', 'verde', $limpio) . "\n";
 
 `var_dump($valor)` muestra tipo y contenido. Esto ayuda a explicar por qué `3 === '3'` es falso: uno es entero y otro es texto. No conviertas entradas a ciegas para hacer desaparecer el error; define primero qué representación admite el programa y valida antes del cálculo.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Calcula el material que falta
+
+Guarda 30 como cantidad necesaria de hojas y 22 como cantidad disponible. Escribe un programa PHP que calcule lo que falta y muestre una frase. Calcula primero el número y construye después el mensaje.
+
+??? tip "Pista"
+    Utiliza una resta y concatena el resultado con texto.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    $necesarias = 30;
+    $disponibles = 22;
+    $faltan = $necesarias - $disponibles;
+    echo 'Faltan ' . $faltan . " hojas
+    ";
+    ```
+
+    1. Restamos las disponibles a las necesarias.
+    2. Guardamos 8 en `$faltan`.
+    3. Mostramos `Faltan 8 hojas`. El texto no se suma: se concatena con `.`.
+
+### 2. Comprueba cuándo se calcula un valor
+
+Sin ejecutarlo primero, predice las dos líneas de este programa. Después compruébalo y explica por qué `$b` no cambia al asignar 10 a `$a`.
+
+```php
+<?php
+$a = 6;
+$b = $a + 1;
+$a = 10;
+echo $b . "\n";
+$b = $a + 1;
+echo $b . "\n";
+```
+
+??? tip "Pista"
+    Una asignación guarda el resultado de ese momento, no una fórmula que se actualice sola.
+
+??? success "Solución paso a paso"
+    Las líneas son 7 y 11.
+
+    1. La primera asignación a `$b` calcula `6 + 1`.
+    2. Cambiar `$a` a 10 no vuelve a ejecutar esa suma.
+    3. La segunda asignación a `$b` sí calcula con el nuevo valor: `10 + 1`.
+
+    Para comprobarlo, guarda el programa en un archivo y ejecútalo con PHP.
+
+### 3. Une texto sin ejecutar etiquetas
+
+La variable `$titulo` contiene `<em>Rutas del barrio</em>`. Genera un párrafo HTML que muestre ese contenido como texto, sin que se convierta en cursiva. No sustituyas manualmente cada carácter.
+
+??? tip "Pista"
+    La transformación corresponde al momento de presentar el texto en HTML.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    $titulo = '<em>Rutas del barrio</em>';
+    echo '<p>' . htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') . '</p>';
+    ```
+
+    1. Las etiquetas del párrafo son parte de nuestra presentación.
+    2. El contenido de `$titulo` se escapa antes de insertarlo.
+    3. El navegador muestra literalmente `<em>Rutas del barrio</em>` dentro del párrafo.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

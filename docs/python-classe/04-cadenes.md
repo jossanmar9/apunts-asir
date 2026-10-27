@@ -127,6 +127,61 @@ La salida es `['azul', '18', 'abierta']` y `azul | 18 | abierta`. Separar no con
 
 `split()` sin argumentos agrupa espacios en blanco y descarta los de los extremos. `split(' ')` utiliza exactamente un espacio y puede crear elementos vacíos. Elige según lo que significa el formato, no solo por cuál parece funcionar con un ejemplo.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Limpia una línea de opciones
+
+A partir de `"  sonido=SI  "`, obtiene la cadena `"sonido=si"` y comprueba si termina en `"=si"`. Muestra tanto el resultado como el booleano. No uses bucles ni condicionales.
+
+??? tip "Pista"
+    Puedes encadenar métodos, guardando el resultado de la transformación.
+
+??? success "Solución paso a paso"
+    ```python
+    linea = "  sonido=SI  "
+    limpia = linea.strip().lower()
+    print(limpia)
+    print(limpia.endswith("=si"))
+    ```
+
+    La salida es `sonido=si` y `True`. Primero se limpian los extremos y después el caso de las letras. La comprobación no modifica la cadena.
+
+### 2. Reconstruye una lista con otro separador
+
+Recibes `"rojo,verde,azul"`. Conviértelo en una lista con `split` y produce una sola línea `"rojo / verde / azul"` con `join`. No escribas los colores otra vez en el resultado.
+
+??? tip "Pista"
+    El separador con el que unes puede ser distinto del que se utilizó al recibir los datos.
+
+??? success "Solución paso a paso"
+    ```python
+    colores = "rojo,verde,azul"
+    partes = colores.split(",")
+    resultado = " / ".join(partes)
+    print(resultado)
+    ```
+
+    `split` obtiene tres cadenas. `join` las reúne con el nuevo separador y la salida es `rojo / verde / azul`. No se calcula ninguna posición manualmente.
+
+### 3. Cambia solo la primera coincidencia
+
+En `"borrador - borrador - final"`, sustituye solo el primer `borrador` por `revisado`. Conserva la cadena original y muestra ambas. No utilices una sustitución global.
+
+??? tip "Pista"
+    `replace` admite un tercer argumento que limita el número de cambios.
+
+??? success "Solución paso a paso"
+    ```python
+    original = "borrador - borrador - final"
+    revisado = original.replace("borrador", "revisado", 1)
+    print(original)
+    print(revisado)
+    ```
+
+    La segunda línea es `revisado - borrador - final`. La primera conserva el texto inicial porque la transformación devuelve otra cadena.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

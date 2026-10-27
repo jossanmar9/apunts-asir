@@ -173,6 +173,70 @@ done
 
 Con las entradas `ver`, `otra` y `salir`, se muestran el mensaje de consulta y el aviso de opción incorrecta; la tercera termina el bucle. La comprobación de `read` también permite salir si se cierra la entrada. Si quieres un menú numerado, `select` lo genera; `REPLY` contiene la respuesta escrita y la variable elegida contiene el texto de la opción.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Detente al llegar a una marca
+
+Recorre `inicio medio FIN extra`. Imprime los elementos anteriores a `FIN` y termina el recorrido al encontrar la marca. No debe aparecer ni `FIN` ni `extra`.
+
+??? tip "Pista"
+    La marca termina la búsqueda; no significa saltar solo una vuelta.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    for palabra in inicio medio FIN extra; do
+        if [[ "$palabra" == 'FIN' ]]; then
+            break
+        fi
+        printf '%s\n' "$palabra"
+    done
+    ```
+
+    La salida tiene dos líneas: `inicio` y `medio`. La comprobación se hace antes de imprimir. Con `continue`, `extra` todavía se procesaría, por lo que no resolvería este enunciado.
+
+### 2. Cuenta respuestas afirmativas
+
+Recorre las respuestas `si no si si no` y cuenta únicamente cuántas son exactamente `si`. Presenta un solo resultado al terminar. No escribas el número final directamente.
+
+??? tip "Pista"
+    El contador empieza antes del bucle y aumenta dentro de una condición.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    contador=0
+    for respuesta in si no si si no; do
+        if [[ "$respuesta" == 'si' ]]; then
+            contador=$((contador + 1))
+        fi
+    done
+    printf 'Respuestas afirmativas: %s\n' "$contador"
+    ```
+
+    El resultado es 3. Reiniciar el contador dentro perdería el progreso; imprimir dentro mostraría resultados parciales en lugar de una única respuesta final.
+
+### 3. Devuelve texto desde una función
+
+Crea `enmarcar` para recibir una frase y producirla entre corchetes. Captura su salida en una variable y muestra después `Resultado: ...`. Prueba con `Revisión pendiente`. No uses `return` para entregar el texto.
+
+??? tip "Pista"
+    La función escribe el dato por stdout y quien la llama lo captura con `$()`.
+
+??? success "Solución paso a paso"
+    ```bash
+    #!/usr/bin/env bash
+    enmarcar() {
+        printf '[%s]\n' "$1"
+    }
+    resultado=$(enmarcar 'Revisión pendiente')
+    printf 'Resultado: %s\n' "$resultado"
+    ```
+
+    La salida final es `Resultado: [Revisión pendiente]`. La función produce texto y la llamada lo conserva. `return` serviría para un código de estado, no para esa frase.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

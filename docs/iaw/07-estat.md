@@ -201,6 +201,54 @@ En este fragmento no se fija el rol desde un formulario: presupone que el proces
 
 El botón «atrás» puede mostrar una representación en caché después de salir. La prueba importante es solicitar de nuevo la ruta privada y comprobar que el servidor deniega el acceso. En contenido sensible puedes usar una política de caché como `Cache-Control: no-store`.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Elige dónde recordar cada dato
+
+Para un visor de partituras debes guardar una preferencia de tamaño de letra y, por separado, la identidad del usuario que ha entrado. Explica qué dato podrías guardar como cookie de preferencia y cuál mantendrías en la sesión del servidor.
+
+??? tip "Pista"
+    Una preferencia modificable no cumple el mismo papel que una identidad verificada.
+
+??? success "Solución paso a paso"
+    El tamaño puede guardarse como cookie, validando sus opciones al leerlo. La identidad verificada debe mantenerse como estado de sesión en el servidor.
+
+    El navegador puede conservar un identificador de sesión. No utilizaría una cookie con el nombre escrito por el usuario como prueba de que ha iniciado sesión.
+
+### 2. Revisa dos navegadores
+
+Has iniciado sesión en un perfil y la zona privada funciona. En otro perfil limpio, la misma URL solicita acceso. ¿Es necesariamente un fallo? Explica la diferencia entre este caso y dos pestañas del primer perfil.
+
+??? tip "Pista"
+    Los perfiles tienen almacenes de cookies independientes.
+
+??? success "Solución paso a paso"
+    No es necesariamente un fallo: el perfil limpio no dispone de la cookie identificadora de la primera sesión.
+
+    Dos pestañas del mismo perfil normalmente comparten cookies. Por eso no equivalen a dos usuarios independientes. Para comprobar aislamiento, los perfiles separados son una prueba más apropiada.
+
+### 3. Distingue entrar de tener permiso
+
+Un usuario ha iniciado sesión, pero solo el rol `editor` puede modificar una ficha. Escribe el control PHP de esa operación suponiendo que `$_SESSION['rol']` se asignó desde datos fiables durante el acceso. Devuelve 403 si no corresponde.
+
+??? tip "Pista"
+    Una identidad válida no concede todos los permisos.
+
+??? success "Solución paso a paso"
+    ```php
+    <?php
+    session_start();
+    if (($_SESSION['rol'] ?? '') !== 'editor') {
+        http_response_code(403);
+        exit('No puedes modificar esta ficha');
+    }
+    echo 'Puedes continuar con la modificación';
+    ```
+
+    La comparación se hace antes de modificar nada. Un rol ausente también se rechaza. No se toma el permiso de un campo editable del formulario.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

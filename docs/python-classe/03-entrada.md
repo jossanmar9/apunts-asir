@@ -101,6 +101,55 @@ Las dos primeras instrucciones producen una sola línea: `azul / gris -> fin`. `
 
 Distingue los datos del mensaje que pide esos datos. En `float(input('Horas: '))`, `Horas: ` es la indicación al usuario; el texto que escribe se convierte después. Si falla, inspecciona primero el texto recibido antes de cambiar la fórmula.
 
+## Ejercicios para practicar
+
+Intenta resolverlos antes de abrir la solución. Puedes consultar la teoría; después repite alguno sin mirar para comprobar qué recuerdas. Las pistas y soluciones están cerradas para que elijas cuándo verlas.
+
+### 1. Prepara una orden de impresión como texto
+
+Pide un nombre de documento y una impresora. Construye y muestra `Documento: NOMBRE -> impresora IMPRESORA`. El programa solo presenta la solicitud; no debe ejecutar comandos ni imprimir realmente un archivo.
+
+??? tip "Pista"
+    Las dos respuestas son texto y pueden insertarse en una f-string.
+
+??? success "Solución paso a paso"
+    ```python
+    documento = input("Documento: ")
+    impresora = input("Impresora: ")
+    print(f"Documento: {documento} -> impresora {impresora}")
+    ```
+
+    Con `guia.pdf` y `recepcion`, muestra `Documento: guia.pdf -> impresora recepcion`. No hay conversión numérica ni ejecución de otra aplicación.
+
+### 2. Cuenta los billetes que siguen válidos
+
+Pregunta cuántos billetes se emitieron y cuántos se anularon. Convierte ambas respuestas a entero y muestra cuántos siguen válidos. En este ejercicio supone cantidades enteras coherentes: las anulaciones no superan las emisiones.
+
+??? tip "Pista"
+    Separa lectura, conversión y resta. Explica qué tipo devuelve `input`.
+
+??? success "Solución paso a paso"
+    ```python
+    emitidos = int(input("Billetes emitidos: "))
+    anulados = int(input("Billetes anulados: "))
+    validos = emitidos - anulados
+    print(f"Billetes válidos: {validos}")
+    ```
+
+    Con 12 y 3, el resultado es 9. `input` devuelve texto y `int` construye las cantidades antes de restarlas. La comprobación de entradas incoherentes corresponde a un ejercicio posterior de condiciones.
+
+### 3. Explica una entrada vacía
+
+Un programa hace `unidades = int(input("Unidades: "))`. Pulsas Intro sin escribir nada. Predice si se guarda cero o si aparece un error. Explica por qué no debes tratar la ausencia de respuesta como un número sin decidirlo.
+
+??? tip "Pista"
+    La cadena vacía no es la representación textual de cero.
+
+??? success "Solución paso a paso"
+    Aparece `ValueError`: `int('')` no obtiene un entero. No se guarda automáticamente cero.
+
+    El programa necesitaría una regla explícita: pedir de nuevo, rechazar la entrada o definir un valor por defecto. Esa elección depende del problema; la conversión no la adivina.
+
 ## Palabras clave de este tema
 
 | Término | Significado en este tema |

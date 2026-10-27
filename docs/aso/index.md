@@ -20,6 +20,10 @@ La introducción que corresponde a UT0 está en el [tema independiente de Git y 
 
 UT2 (procesos), UT3 (acceso remoto), UT4 (Ansible), UT5.1 (directorio Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directorio Activo), UT7.2 (PowerShell y directorio) y UT8 (monitorización) aparecen como «Próximamente». Las ampliaciones incluidas en los temas actuales no se presentan como teoría de esas unidades pendientes.
 
+## Práctica en cada tema
+
+Cada tema contiene tres ejercicios diferentes de los problemas de teoría. Inténtalos por tu cuenta y utiliza las pistas o la solución plegada cuando lo necesites. Las soluciones explican el razonamiento paso a paso.
+
 ## Cómo utilizar estos apuntes
 
 Lee la explicación del concepto y después sigue el problema paso a paso. Anota los valores de las variables y predice el resultado antes de ejecutarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.

@@ -46,6 +46,10 @@ Integración revisada el **27/10/2026**. Se mantiene la fecha original de consul
 
 Cada problema explica el problema, los datos, las decisiones, el código cuando hace falta y el resultado esperado. Se empieza por situaciones sencillas y se explica el motivo de cada instrucción. Los enunciados son diferentes de las actividades de clase para practicar o entregar. Se pueden consultar mientras trabajas para entender la técnica y aplicarla a otro enunciado.
 
+## Ejercicios para practicar
+
+Los 22 temas incluyen tres ejercicios cada uno: **66 ejercicios** con pistas y soluciones paso a paso plegadas. Los enunciados son distintos de las demostraciones de teoría y de los ejercicios asignados en clase. Se han añadido el **27/10/2026**.
+
 ## ¿Cuándo se actualiza?
 
 **Cuando lo indique el estudiante.** En cada revisión se consultarán los materiales nuevos, se añadirán o corregirán los temas afectados y se comprobará que los casos didácticos siguen siendo diferentes de los ejercicios asignados. No se descargan ni incorporan novedades automáticamente.

@@ -29,6 +29,10 @@ Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con 
 
 UT4 (POO, prevista en empresa), UT5 (estructuras de datos) y UT6 (funciones, módulos y archivos) aparecen en la planificación, pero no tienen teoría en el menú consultado. Las nociones que se necesitan para entender los ejemplos actuales se explican dentro de su tema; estas unidades se desarrollarán cuando corresponda.
 
+## Práctica en cada tema
+
+Cada tema contiene tres ejercicios diferentes de los problemas de teoría. Inténtalos por tu cuenta y utiliza las pistas o la solución plegada cuando lo necesites. Las soluciones explican el razonamiento paso a paso.
+
 ## Cómo utilizar estos apuntes
 
 Lee la explicación del concepto y después sigue el problema paso a paso. Anota los valores de las variables y predice el resultado antes de ejecutarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.
