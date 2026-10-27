@@ -2409,7 +2409,7 @@
 <p>Una tabla de seguimiento muestra el estado de variables importantes después de cada paso. Si puedes reconstruirla a mano con datos pequeños, podrás explicar por qué funciona el script y detectar dónde diverge una ejecución real. Esa comprensión es lo que permite adaptar la técnica a un enunciado diferente, sin copiar una solución de clase.</p>
 <h2 id="problema-explicado-paso-a-paso-informe-de-lineas-de-un-documento">Problema explicado paso a paso: informe de líneas de un documento<a class="headerlink" href="#problema-explicado-paso-a-paso-informe-de-lineas-de-un-documento" title="Permanent link">&para;</a></h2>
 <p>Recibir un archivo de texto y mostrar cuántas líneas tiene, incluido un nombre con espacios. No copia archivos ni crea usuarios.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">set</span><span class="w"> </span>-u
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash informe.sh archivo\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
@@ -2462,7 +2462,7 @@
 <h2 id="metodo-de-trabajo-recuperado-de-los-apuntes-anteriores">Método de trabajo recuperado de los apuntes anteriores<a class="headerlink" href="#metodo-de-trabajo-recuperado-de-los-apuntes-anteriores" title="Permanent link">&para;</a></h2>
 <p>Antes de programar, escribe una llamada de ejemplo y su resultado esperado. Divide después el trabajo en leer, comprobar, transformar y presentar. Prueba cada parte por separado y añade las comprobaciones antes de conectarlas.</p>
 <p>Una función de error evita repetir mensajes y salidas en scripts más largos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>error<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'ERROR: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
@@ -2486,7 +2486,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>wc<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Herramienta disponible\n'</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">else</span>

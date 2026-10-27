@@ -2426,7 +2426,7 @@
 <p>Si una operación falla, responde a la pregunta que realmente necesitabas comprobar. Por ejemplo, antes de leer un documento puedes exigir que sea archivo ordinario y legible; no necesitas hacerlo ejecutable. Sobre un directorio, <code>x</code> significa poder atravesarlo, no que sea un programa.</p>
 <h2 id="problema-explicado-paso-a-paso-comprobar-una-reserva-de-butacas">Problema explicado paso a paso: comprobar una reserva de butacas<a class="headerlink" href="#problema-explicado-paso-a-paso-comprobar-una-reserva-de-butacas" title="Permanent link">&para;</a></h2>
 <p>Una sala de prueba tiene 12 butacas libres. El script acepta una cantidad entre 1 y 12, escrita con una o dos cifras sin ceros iniciales.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">peticion</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span><span class="s2">"</span><span class="nv">$peticion</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^<span class="o">[</span><span class="m">1</span>-9<span class="o">][</span><span class="m">0</span>-9<span class="o">]</span>?$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Escribe una cantidad de una o dos cifras, sin cero inicial.\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
@@ -2490,7 +2490,7 @@
 </code></pre></div>
 <h2 id="usar-directamente-el-resultado-de-un-comando">Usar directamente el resultado de un comando<a class="headerlink" href="#usar-directamente-el-resultado-de-un-comando" title="Permanent link">&para;</a></h2>
 <p>Una condición de shell también puede ser un comando: no necesitas capturar su texto y compararlo si ya proporciona un estado útil.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>bash<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Bash está disponible\n'</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">else</span>
@@ -2545,7 +2545,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash formato.sh nombre\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
@@ -2565,7 +2565,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash comprobar.sh ruta\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
@@ -2586,7 +2586,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">disponibles</span><span class="o">=</span><span class="m">12</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">solicitadas</span><span class="o">=</span><span class="m">3</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>disponibles<span class="w"> </span>&gt;<span class="w"> </span>solicitadas<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>

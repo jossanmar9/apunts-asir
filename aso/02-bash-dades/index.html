@@ -2399,11 +2399,11 @@
 
 <h1 id="ut1-1-bash-scripts-variables-entrada-y-parametros">UT1 · 1. Bash: scripts, variables, entrada y parámetros<a class="headerlink" href="#ut1-1-bash-scripts-variables-entrada-y-parametros" title="Permanent link">&para;</a></h1>
 <h2 id="que-ejecuta-bash">¿Qué ejecuta Bash?<a class="headerlink" href="#que-ejecuta-bash" title="Permanent link">&para;</a></h2>
-<p>Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea <code>#!/usr/bin/env bash</code> indica el intérprete cuando lo ejecutas directamente. Con <code>bash nombre.sh</code> eliges Bash explícitamente; con <code>./nombre.sh</code> necesitas permiso de ejecución, que puedes dar con <code>chmod u+x nombre.sh</code>.</p>
+<p>Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea <code>#!/bin/bash</code> indica que el script se ejecuta con Bash, situado en <code>/bin/bash</code>, como utilizamos en clase. Con <code>bash nombre.sh</code> eliges Bash explícitamente; con <code>./nombre.sh</code> necesitas permiso de ejecución, que puedes dar con <code>chmod u+x nombre.sh</code>.</p>
 <p>En Bash, <code>nombre=valor</code> asigna y <code>$nombre</code> expande el valor. No pongas espacios alrededor de <code>=</code>. Las comillas dobles conservan los espacios de un dato, pero expanden variables; las simples tratan el contenido literalmente. Los comentarios comienzan con <code>#</code>.</p>
 <h2 id="de-una-orden-a-un-script-que-cambia-realmente">De una orden a un script: qué cambia realmente<a class="headerlink" href="#de-una-orden-a-un-script-que-cambia-realmente" title="Permanent link">&para;</a></h2>
 <p>Cuando escribes una orden en el terminal, Bash la interpreta en ese momento. Al guardar varias órdenes en un archivo no inventas un lenguaje distinto: preparas una secuencia para repetirla. El archivo no se ejecuta solo por terminar en <code>.sh</code>; necesitas indicar un intérprete o hacerlo ejecutable.</p>
-<p>Puedes crear <code>ficha.sh</code> en un editor de texto, escribir la primera línea <code>#!/usr/bin/env bash</code> y guardar. <code>bash ficha.sh</code> inicia Bash y le entrega el archivo. <code>chmod u+x ficha.sh</code> permite después invocarlo como <code>./ficha.sh</code>. El <code>./</code> significa «búscalo en esta carpeta»: la carpeta actual no tiene por qué estar en <code>PATH</code>.</p>
+<p>Puedes crear <code>ficha.sh</code> en un editor de texto, escribir la primera línea <code>#!/bin/bash</code> y guardar. <code>bash ficha.sh</code> inicia Bash y le entrega el archivo. <code>chmod u+x ficha.sh</code> permite después invocarlo como <code>./ficha.sh</code>. El <code>./</code> significa «búscalo en esta carpeta»: la carpeta actual no tiene por qué estar en <code>PATH</code>.</p>
 <p>Si estás en otra carpeta, <code>bash ficha.sh</code> no busca el archivo junto al que tienes abierto en el editor. Parte del directorio de trabajo. Compruébalo con <code>pwd</code> y utiliza una ruta relativa o absoluta que corresponda. Esta distinción evita confundir un problema de localización con un error del código.</p>
 <h2 id="asignar-leer-y-delimitar-una-variable">Asignar, leer y delimitar una variable<a class="headerlink" href="#asignar-leer-y-delimitar-una-variable" title="Permanent link">&para;</a></h2>
 <p>Una variable permite dar un nombre a una información. Al asignar no se escribe <code>$</code>; al utilizar el valor se expande con <code>$</code>. Bash no necesita que declares de antemano que será texto o un número para estos casos sencillos.</p>
@@ -2435,7 +2435,7 @@
 <p><code>shift</code> retira el primer argumento posicional y desplaza los demás. Es útil cuando el primero indica una acción y el resto son sus datos. Antes de usarlo, comprueba que hay algo que retirar. No modifica la lista de argumentos de otra llamada independiente ni borra variables con nombres propios que ya hayas creado.</p>
 <h2 id="problema-explicado-paso-a-paso-etiqueta-de-una-muestra-de-laboratorio">Problema explicado paso a paso: etiqueta de una muestra de laboratorio<a class="headerlink" href="#problema-explicado-paso-a-paso-etiqueta-de-una-muestra-de-laboratorio" title="Permanent link">&para;</a></h2>
 <p>Guarda <code>etiqueta.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash etiqueta.sh muestra responsable\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
@@ -2488,7 +2488,7 @@
 </table>
 <p>Una variable de shell no pasa necesariamente a los procesos hijos. <code>export COLOR_FICHA=azul</code> la incorpora al entorno de los nuevos procesos. <code>printenv COLOR_FICHA</code> la consulta. Utiliza nombres propios del script: no sobrescribas <code>PATH</code> con una ruta de trabajo, porque dejarías de localizar comandos.</p>
 <h2 id="transformar-texto-y-guardar-colecciones">Transformar texto y guardar colecciones<a class="headerlink" href="#transformar-texto-y-guardar-colecciones" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">archivo</span><span class="o">=</span><span class="s1">'muestra.version.txt'</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">archivo</span><span class="p">%.txt</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">archivo</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">7</span><span class="si">}</span><span class="s2">"</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">salas</span><span class="o">=(</span><span class="s1">'Sala azul cielo'</span><span class="w"> </span><span class="s1">'Sala gris'</span><span class="o">)</span>
@@ -2546,7 +2546,7 @@
 </tbody>
 </table>
 <h3 id="problema-explicado-paso-a-paso-conservar-nombres-con-espacios-en-un-array">Problema explicado paso a paso: conservar nombres con espacios en un array<a class="headerlink" href="#problema-explicado-paso-a-paso-conservar-nombres-con-espacios-en-un-array" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">salas</span><span class="o">=(</span><span class="s1">'Azul cielo'</span><span class="w"> </span><span class="s1">'Gris perla'</span><span class="o">)</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">salas</span><span class="o">+=(</span><span class="s1">'Verde musgo'</span><span class="o">)</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">for</span><span class="w"> </span>indice<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="p">!salas[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
@@ -2565,7 +2565,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Argumentos: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$#</span><span class="s2">"</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </code></pre></div>
@@ -2579,7 +2579,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash nombre.sh archivo.csv\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
@@ -2598,7 +2598,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">dias</span><span class="o">=(</span>lunes<span class="w"> </span>martes<span class="o">)</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">dias</span><span class="o">+=(</span>jueves<span class="o">)</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>dias<span class="o">[</span><span class="m">1</span><span class="o">]=</span><span class="s1">'miércoles'</span>

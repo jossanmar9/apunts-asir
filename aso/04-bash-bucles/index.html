@@ -2377,7 +2377,7 @@
 <p>Si añades mensajes de depuración por stdout, también acabarán dentro de <code>codigo</code>. Mantén ahí solo el dato que has prometido devolver y utiliza stderr para diagnóstico. Esta separación permite reutilizar una función sin tener que limpiar su salida cada vez.</p>
 <h2 id="problema-explicado-paso-a-paso-preparar-etiquetas-de-estanterias">Problema explicado paso a paso: preparar etiquetas de estanterías<a class="headerlink" href="#problema-explicado-paso-a-paso-preparar-etiquetas-de-estanterias" title="Permanent link">&para;</a></h2>
 <p>Queremos cuatro etiquetas, excepto la tercera, que está fuera de servicio. Una función crea cada etiqueta para que el formato esté en un único lugar.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>etiqueta<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">numero</span><span class="o">=</span><span class="nv">$1</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'ESTANTERIA-%02d\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$numero</span><span class="s2">"</span>
@@ -2397,7 +2397,7 @@
 <li><code>continue</code> omite la etiqueta 3, pero permite que el recorrido continúe con 4.</li>
 </ol>
 <h2 id="while-y-until-con-seguimiento"><code>while</code> y <code>until</code> con seguimiento<a class="headerlink" href="#while-y-until-con-seguimiento" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">pendientes</span><span class="o">=</span><span class="m">3</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">while</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>pendientes<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Cajas pendientes: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$pendientes</span><span class="s2">"</span>
@@ -2413,7 +2413,7 @@
 <p>El <code>while</code> muestra 3, 2 y 1. El <code>until</code> muestra las revisiones 1 y 2: cuando la condición pasa a ser verdadera, ya no entra. Cambiar <code>until</code> por <code>while</code> sin negar la condición altera completamente el comportamiento.</p>
 <h2 id="funcion-que-calcula-y-funcion-que-comprueba">Función que calcula y función que comprueba<a class="headerlink" href="#funcion-que-calcula-y-funcion-que-comprueba" title="Permanent link">&para;</a></h2>
 <p>Bash distingue <strong>datos por stdout</strong> y <strong>estado por return</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>nombre_etiqueta<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'CAJA-%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="o">}</span>
@@ -2451,7 +2451,7 @@
 </table>
 <h2 id="leer-un-archivo-linea-a-linea-sin-romper-sus-datos">Leer un archivo línea a línea sin romper sus datos<a class="headerlink" href="#leer-un-archivo-linea-a-linea-sin-romper-sus-datos" title="Permanent link">&para;</a></h2>
 <p>Este patrón de los apuntes anteriores es útil para procesar listados. Mantiene espacios, barras y la última línea aunque no termine con salto:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>linea<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="nv">$linea</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Recibido: [%s]\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$linea</span><span class="s2">"</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span>notas.txt
@@ -2459,7 +2459,7 @@
 <p>Para probarlo, crea <code>notas.txt</code> con dos líneas: <code>Sala azul</code> y <code>Pendiente de revisar</code>. Obtendrás una línea <code>Recibido: [...]</code> por cada una. <code>IFS=</code> evita recortar o separar por espacios; <code>-r</code> conserva las barras; <code>&lt; notas.txt</code> conecta el archivo con la entrada del bucle.</p>
 <p>En Bash, un bucle colocado después de una tubería suele ejecutarse en una subshell. Si cuentas dentro de <code>cat notas.txt | while ...</code>, el contador puede no conservar su valor fuera del bucle. La redirección anterior evita esa dificultad.</p>
 <h2 id="menu-que-se-repite-hasta-terminar">Menú que se repite hasta terminar<a class="headerlink" href="#menu-que-se-repite-hasta-terminar" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s1">'Escribe ver o salir: '</span><span class="w"> </span>opcion<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">break</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$opcion</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
@@ -2480,7 +2480,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">for</span><span class="w"> </span>palabra<span class="w"> </span><span class="k">in</span><span class="w"> </span>inicio<span class="w"> </span>medio<span class="w"> </span>FIN<span class="w"> </span>extra<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$palabra</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'FIN'</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="k">break</span>
@@ -2498,7 +2498,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">contador</span><span class="o">=</span><span class="m">0</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">for</span><span class="w"> </span>respuesta<span class="w"> </span><span class="k">in</span><span class="w"> </span>si<span class="w"> </span>no<span class="w"> </span>si<span class="w"> </span>si<span class="w"> </span>no<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$respuesta</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'si'</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
@@ -2517,7 +2517,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>enmarcar<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'[%s]\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="o">}</span>
