@@ -20,7 +20,7 @@ Prueba primero una transformación pequeña con datos que conozcas. Cuando funci
 
 Un analizador como ShellCheck detecta muchos patrones problemáticos, como expansiones sin comillas. Tampoco conoce todo el significado del ejercicio. Finalmente, los casos de prueba comprueban comportamiento con datos concretos. Necesitas distinguir estos niveles para no dar por correcto un programa solo porque la sintaxis es válida.
 
-Durante la depuración, imprime el dato con límites visibles: `printf 'DEBUG: archivo=[%s]\n' "$archivo" >&2`. Los corchetes ayudan a ver un dato vacío o espacios sobrantes. Retira o controla estos mensajes cuando dejen de hacer falta.
+Durante la depuración, imprime el dato con límites visibles: `echo "DEBUG: archivo=[$archivo]" >&2`. Los corchetes ayudan a ver un dato vacío o espacios sobrantes. Retira o controla estos mensajes cuando dejen de hacer falta.
 
 ## Por qué `set -e` no reemplaza los `if`
 
@@ -50,25 +50,31 @@ Recibir un archivo de texto y mostrar cuántas líneas tiene, incluido un nombre
 #!/bin/bash
 set -u
 if (( $# != 1 )); then
-    printf 'Uso: bash informe.sh archivo\n' >&2
+    echo 'Uso: bash informe.sh archivo' >&2
     exit 1
 fi
 archivo=$1
 if [[ ! -f "$archivo" || ! -r "$archivo" ]]; then
-    printf 'Se necesita un archivo ordinario que se pueda leer.\n' >&2
+    echo 'Se necesita un archivo ordinario que se pueda leer.' >&2
     exit 2
 fi
 if lineas=$(wc -l < "$archivo"); then
-    printf 'Documento: %s\nLíneas: %s\n' "$archivo" "$lineas"
+    echo "Documento: $archivo"
+    echo "Líneas: $lineas"
 else
-    printf 'No se ha podido completar el recuento.\n' >&2
+    echo 'No se ha podido completar el recuento.' >&2
     exit 3
 fi
 ```
 
 ### Prueba guiada
 
-Crea `texto corto.txt` con `printf 'primera\nsegunda\n' > "texto corto.txt"`.
+Crea `texto corto.txt` con estas dos órdenes. La primera escribe la primera línea y la segunda añade la siguiente:
+
+```bash
+echo "primera" > "texto corto.txt"
+echo "segunda" >> "texto corto.txt"
+```
 
 | Llamada | Resultado esperado |
 | --- | --- |
@@ -84,7 +90,7 @@ El segundo `if` contempla que el comando falle aunque se haya superado la compro
 
 `bash -n informe.sh` comprueba la sintaxis sin ejecutar el contenido. `bash -x informe.sh "texto corto.txt"` muestra los comandos expandidos mientras los ejecuta; evita utilizar trazas sobre secretos. Si tienes ShellCheck, `shellcheck informe.sh` ayuda a detectar problemas habituales.
 
-`trap 'printf "Fin del laboratorio\n" >&2' EXIT` ejecuta una acción al salir. También puedes capturar señales o `ERR` según el caso. Utiliza `trap` para limpieza y diagnóstico conscientes, no para ocultar un fallo.
+`trap 'echo "Fin del laboratorio" >&2' EXIT` ejecuta una acción al salir. También puedes capturar señales o `ERR` según el caso. Utiliza `trap` para limpieza y diagnóstico conscientes, no para ocultar un fallo.
 
 ## Aplicación a tareas de administración
 
@@ -101,12 +107,12 @@ Una función de error evita repetir mensajes y salidas en scripts más largos:
 ```bash
 #!/bin/bash
 error() {
-    printf 'ERROR: %s\n' "$*" >&2
+    echo "ERROR: $*" >&2
     exit 1
 }
 (( $# == 1 )) || error "Uso: bash revisar.sh archivo"
 [[ -f "$1" ]] || error "No es un archivo ordinario: $1"
-printf 'Preparado para revisar: %s\n' "$1"
+echo "Preparado para revisar: $1"
 ```
 
 Con un archivo existente, imprime la ruta. Sin argumento, termina con código 1 y una indicación de uso. La validación ocurre antes de leer `$1` como dato de trabajo.
@@ -134,9 +140,9 @@ Escribe un script que compruebe si `wc` está disponible. Si lo está, muestra `
     ```bash
     #!/bin/bash
     if command -v wc >/dev/null 2>&1; then
-        printf 'Herramienta disponible\n'
+        echo 'Herramienta disponible'
     else
-        printf 'Falta la herramienta wc\n' >&2
+        echo 'Falta la herramienta wc' >&2
         exit 2
     fi
     ```
@@ -145,8 +151,7 @@ Escribe un script que compruebe si `wc` está disponible. Si lo está, muestra `
 
 ### 2. Conserva el código de una operación
 
-Una comprobación falla y después haces `printf 'Comprobado
-'`. Al consultar `$?`, obtienes 0. Escribe una secuencia que guarde el estado de `false` antes del mensaje y muestre después ese estado guardado. No uses `set -e` en esta prueba.
+Una comprobación falla y después haces `echo 'Comprobado'`. Al consultar `$?`, obtienes 0. Escribe una secuencia que guarde el estado de `false` antes del mensaje y muestre después ese estado guardado. No uses `set -e` en esta prueba.
 
 ??? tip "Pista"
     Cada orden actualiza `$?`; la asignación debe hacerse inmediatamente después de la que interesa.
@@ -155,11 +160,11 @@ Una comprobación falla y después haces `printf 'Comprobado
     ```bash
     false
     estado=$?
-    printf 'Comprobado\n'
-    printf 'Estado de la prueba: %s\n' "$estado"
+    echo 'Comprobado'
+    echo "Estado de la prueba: $estado"
     ```
 
-    El estado mostrado es 1. El `printf` intermedio no modifica la variable `estado`, aunque sí cambia el significado del `$?` que consultarías después.
+    El estado mostrado es 1. El `echo` intermedio no modifica la variable `estado`, aunque sí cambia el significado del `$?` que consultarías después.
 
 ### 3. Organiza una investigación
 
@@ -170,8 +175,7 @@ Un script debe procesar dos nombres con espacios, pero recibe cuatro palabras. E
 
 ??? success "Solución paso a paso"
     1. Revisaría si cada nombre completo está entre comillas al llamar al script.
-    2. Observaría `$#` y cada argumento mediante `printf '<%s>
-    ' "$@"`.
+    2. Observaría `$#` y recorrería `"$@"` con `for argumento in "$@"; do echo "<$argumento>"; done`.
     3. Repetiría la misma llamada con los nombres entrecomillados y comprobaría que hay exactamente dos argumentos completos.
 
     Cambiar nombres para quitarles espacios evita la prueba, pero no corrige el tratamiento de datos válidos con espacios.

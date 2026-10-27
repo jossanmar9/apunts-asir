@@ -8,7 +8,7 @@ En Bash, `nombre=valor` asigna y `$nombre` expande el valor. No pongas espacios 
 
 ## De una orden a un script: qué cambia realmente
 
-Cuando escribes una orden en el terminal, Bash la interpreta en ese momento. Al guardar varias órdenes en un archivo no inventas un lenguaje distinto: preparas una secuencia para repetirla. El archivo no se ejecuta solo por terminar en `.sh`; necesitas indicar un intérprete o hacerlo ejecutable.
+Cuando escribes una orden en el terminal, Bash la interpreta en ese momento. Al guardar varias órdenes en un archivo no inventas un lenguaje distinto: preparas una secuencia para repetirla. El archivo no se ejecuta solo por terminar en `.sh`. Puedes entregárselo a Bash con `bash ficha.sh`; para ejecutarlo como `./ficha.sh` necesita tanto una cabecera de intérprete correcta como permiso de ejecución.
 
 Puedes crear `ficha.sh` en un editor de texto, escribir la primera línea `#!/bin/bash` y guardar. `bash ficha.sh` inicia Bash y le entrega el archivo. `chmod u+x ficha.sh` permite después invocarlo como `./ficha.sh`. El `./` significa «búscalo en esta carpeta»: la carpeta actual no tiene por qué estar en `PATH`.
 
@@ -19,28 +19,54 @@ Si estás en otra carpeta, `bash ficha.sh` no busca el archivo junto al que tien
 Una variable permite dar un nombre a una información. Al asignar no se escribe `$`; al utilizar el valor se expande con `$`. Bash no necesita que declares de antemano que será texto o un número para estos casos sencillos.
 
 ```bash
-nombre='Carpeta de láminas'
-printf '%s\n' "$nombre"
-base='lamina'
-printf '%s\n' "${base}_revisada.txt"
+nombre="Carpeta de láminas"
+echo "$nombre"
+base="lamina"
+echo "${base}_revisada.txt"
 ```
 
-La primera impresión muestra `Carpeta de láminas`. La segunda muestra `lamina_revisada.txt`. Las llaves delimitan dónde acaba el nombre: `$base_revisada` buscaría una variable llamada `base_revisada`, no uniría automáticamente el valor de `base` con ese sufijo.
+La salida es:
+
+```text
+Carpeta de láminas
+lamina_revisada.txt
+```
+
+`echo` muestra un texto y añade un salto de línea. La primera orden lee el valor de `nombre`; la segunda une el valor de `base` con `_revisada.txt`. Las llaves delimitan dónde acaba el nombre: `$base_revisada` buscaría una variable llamada `base_revisada`, no uniría automáticamente el valor de `base` con ese sufijo.
 
 Los nombres distinguen mayúsculas: `nombre` y `Nombre` no son la misma variable. Pueden contener letras, cifras y guiones bajos, pero no empezar por cifra. Usa nombres que expliquen el dato y evita ocupar nombres del sistema para otros fines.
+
+## Mostrar texto con `echo`
+
+`echo` muestra lo que recibe y añade un salto de línea. Las comillas dobles permiten incluir el valor de una variable dentro del mensaje:
+
+```bash
+nombre="Láminas grandes"
+echo "Nombre: $nombre"
+```
+
+La salida es `Nombre: Láminas grandes`. `Nombre: ` es texto fijo y `$nombre` se sustituye por el valor guardado. Para mostrar dos líneas, escribe dos órdenes `echo`; no necesitas introducir códigos de formato.
 
 ## Por qué las comillas cambian los argumentos
 
 Bash prepara los argumentos antes de llamar a una orden. Si expandes una variable sin comillas en una orden corriente, el resultado puede dividirse en palabras y tratar caracteres como `*` como patrones de nombres. Las comillas dobles mantienen el resultado como un argumento y permiten expandir variables. Las simples conservan el texto literalmente.
 
 ```bash
-nombre='Láminas grandes'
-printf '[%s]\n' "$nombre"
-printf '[%s]\n' $nombre
-printf '%s\n' 'El contenido de $nombre no se expande aquí'
+nombre="Láminas   grandes"
+echo "$nombre"
+echo $nombre
+echo 'El contenido de $nombre no se expande aquí'
 ```
 
-La primera orden muestra `[Láminas grandes]`. La segunda imprime dos líneas, `[Láminas]` y `[grandes]`: el formato se aplica a dos argumentos. La tercera conserva los caracteres `$nombre`. No hay dos archivos ni dos variables diferentes: ha cambiado cómo la shell entrega el dato a la orden.
+La primera orden conserva los tres espacios del valor. En la segunda, Bash lo divide en dos argumentos y `echo` los muestra separados por un espacio. La tercera conserva literalmente los caracteres `$nombre`.
+
+```text
+Láminas   grandes
+Láminas grandes
+El contenido de $nombre no se expande aquí
+```
+
+Aunque las dos primeras líneas se parecen, Bash no ha entregado los mismos argumentos. Esto importa cuando otra orden espera recibir un único nombre con espacios.
 
 Este efecto importa al copiar, buscar o imprimir nombres con espacios. La regla práctica para pasar un dato como argumento es `"$variable"`. No añadas comillas al azar a toda la sintaxis: una expresión regular o un patrón pueden necesitar que parte de su sintaxis conserve su significado.
 
@@ -50,7 +76,7 @@ Este efecto importa al copiar, buscar o imprimir nombres con espacios. La regla 
 
 ```bash
 fecha=$(date +%Y-%m-%d)
-printf 'Fecha del informe: %s\n' "$fecha"
+echo "Fecha del informe: $fecha"
 ```
 
 El valor de la fecha depende del día del equipo. No esperes el texto `date +%Y-%m-%d`: las comillas y `$()` indican operaciones distintas. Una variable normal tampoco se convierte en una variable de entorno hasta que la exportas; una shell hija recibe el entorno exportado, no todos los nombres internos de su padre.
@@ -70,14 +96,15 @@ Guarda `etiqueta.sh`:
 ```bash
 #!/bin/bash
 if (( $# != 2 )); then
-    printf 'Uso: bash etiqueta.sh muestra responsable\n' >&2
+    echo 'Uso: bash etiqueta.sh muestra responsable' >&2
     exit 1
 fi
 muestra=$1
 responsable=$2
 read -r -p 'Ubicación de la muestra: ' ubicacion
-printf 'Muestra: %s\nResponsable: %s\nUbicación: %s\n' \
-    "$muestra" "$responsable" "$ubicacion"
+echo "Muestra: $muestra"
+echo "Responsable: $responsable"
+echo "Ubicación: $ubicacion"
 ```
 
 Ejecuta `bash etiqueta.sh "Roca volcánica" "Laia Ferrer"` y escribe `Armario azul`.
@@ -89,7 +116,7 @@ Ejecuta `bash etiqueta.sh "Roca volcánica" "Laia Ferrer"` y escribe `Armario az
 1. `$#` cuenta argumentos. Si no son dos, el mensaje va a la salida de error con `>&2` y el código final es 1.
 2. `$1` y `$2` son los datos de la llamada. `$0` es el nombre con el que se ha invocado el script.
 3. `read -r` lee una línea sin tratar las barras invertidas como escapes.
-4. `printf` utiliza un formato fijo y datos separados. `%s` sustituye texto y `\n` introduce un salto de línea.
+4. Cada `echo` muestra una línea con su etiqueta y la variable correspondiente. Las comillas mantienen los espacios de los valores.
 
 ## Variables que conviene reconocer
 
@@ -108,9 +135,11 @@ Una variable de shell no pasa necesariamente a los procesos hijos. `export COLOR
 ```bash
 #!/bin/bash
 archivo='muestra.version.txt'
-printf '%s\n' "${archivo%.txt}" "${archivo:0:7}"
+echo "${archivo%.txt}"
+echo "${archivo:0:7}"
 salas=('Sala azul cielo' 'Sala gris')
-printf '%s\n' "${salas[0]}" "${#salas[@]}"
+echo "${salas[0]}"
+echo "${#salas[@]}"
 ```
 
 El primer bloque muestra `muestra.version` y `muestra`. `%` elimina el sufijo que coincide con el patrón; `${texto#patron}` elimina un prefijo; las versiones dobles `%%` y `##` eliminan la coincidencia más larga. `${texto:inicio:longitud}` extrae una subcadena. Los arrays indexados comienzan en cero y `"${salas[@]}"` conserva cada elemento.
@@ -139,7 +168,7 @@ Si el enunciado dice «recibe una carpeta», la interfaz normal es `bash program
 salas=('Azul cielo' 'Gris perla')
 salas+=('Verde musgo')
 for indice in "${!salas[@]}"; do
-    printf '%s: %s\n' "$indice" "${salas[$indice]}"
+    echo "$indice: ${salas[$indice]}"
 done
 ```
 
@@ -161,11 +190,13 @@ Escribe `argumentos.sh` para mostrar cuántos argumentos recibe y después impri
 ??? success "Solución paso a paso"
     ```bash
     #!/bin/bash
-    printf 'Argumentos: %s\n' "$#"
-    printf '<%s>\n' "$@"
+    echo "Argumentos: $#"
+    for argumento in "$@"; do
+        echo "<$argumento>"
+    done
     ```
 
-    La salida es `Argumentos: 2`, `<azul>` y `<gris claro>`. Las comillas de la llamada agrupan el segundo argumento y las de `"$@"` mantienen esa agrupación al reenviarlo.
+    La salida es `Argumentos: 2`, `<azul>` y `<gris claro>`. Las comillas de la llamada agrupan el segundo argumento. El `for` recorre `"$@"` y conserva cada argumento completo. Si no pasas ninguno, solo aparece `Argumentos: 0`: el bucle no imprime un elemento vacío.
 
 ### 2. Genera un nombre sin tocar archivos
 
@@ -178,12 +209,12 @@ Recibe como único argumento un nombre terminado en `.csv`. Supón que el sufijo
     ```bash
     #!/bin/bash
     if (( $# != 1 )); then
-        printf 'Uso: bash nombre.sh archivo.csv\n' >&2
+        echo 'Uso: bash nombre.sh archivo.csv' >&2
         exit 1
     fi
     nombre=$1
     base=${nombre%.csv}
-    printf '%s\n' "${base}_revisado.csv"
+    echo "${base}_revisado.csv"
     ```
 
     El resultado es `lista del club_revisado.csv`. Primero validamos el número de argumentos; después transformamos texto. No hay ninguna operación de escritura sobre el sistema de archivos.
@@ -201,8 +232,8 @@ Crea un array con `lunes` y `martes`, añade `jueves` y cambia el segundo elemen
     dias=(lunes martes)
     dias+=(jueves)
     dias[1]='miércoles'
-    printf 'Último: %s\n' "${dias[2]}"
-    printf 'Cantidad: %s\n' "${#dias[@]}"
+    echo "Último: ${dias[2]}"
+    echo "Cantidad: ${#dias[@]}"
     ```
 
     La salida es `Último: jueves` y `Cantidad: 3`. Cambiar una posición no aumenta el tamaño; añadir un elemento sí.

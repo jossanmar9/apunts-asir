@@ -71,10 +71,10 @@ cd inventario-lab
 git init
 git config user.name "Estudiante de pruebas"
 git config user.email "estudiante@example.com"
-printf 'Cables: 7\n' > inventario.txt
+echo 'Cables: 7' > inventario.txt
 git add inventario.txt
 git commit -m "Registra el inventario inicial"
-printf 'Cables: 8\n' > inventario.txt
+echo 'Cables: 8' > inventario.txt
 git diff
 git add inventario.txt
 git diff --cached
@@ -126,7 +126,7 @@ Continúa en el laboratorio local del inventario y con el árbol de trabajo limp
 
 ```bash
 git switch -c ubicacion
-printf 'Ubicación: armario azul\n' > ubicacion.txt
+echo 'Ubicación: armario azul' > ubicacion.txt
 git add ubicacion.txt
 git commit -m "Documenta la ubicación del material"
 git switch -
@@ -146,13 +146,11 @@ git branch -d ubicacion
 
 Si dos líneas de trabajo modifican de manera incompatible la misma zona, Git puede detener la integración. Un archivo en conflicto muestra marcas como:
 
-```text
-    <<<<<<< HEAD
-    Cables: 8
-    =======
-    Cables: 9
-    >>>>>>> recuento
-```
+| Marca | Qué delimita |
+| --- | --- |
+| `<<<<<<< HEAD` | Comienzo de la versión de la rama actual, por ejemplo `Cables: 8`. |
+| `=======` | Separación entre las dos propuestas. |
+| `>>>>>>> recuento` | Final de la versión de la otra rama, por ejemplo `Cables: 9`. |
 
 No elijas un lado sin comprobar los hechos. Revisa cuál es el inventario correcto, escribe el resultado final y elimina las marcas. Después usa `git add inventario.txt` y completa el commit de fusión. `git status` explica qué falta. Si has decidido cancelar una fusión en curso, `git merge --abort` intenta volver al estado previo; revisa antes los cambios que tenías.
 
@@ -216,8 +214,8 @@ En un repositorio de laboratorio con un primer commit, tienes `manual.txt` y `ta
     Después del commit inicial, puedes realizar esta prueba:
 
     ```bash
-    printf 'Manual revisado\n' > manual.txt
-    printf 'Tarea pendiente\n' > tareas.txt
+    echo 'Manual revisado' > manual.txt
+    echo 'Tarea pendiente' > tareas.txt
     git add manual.txt
     git status --short
     git diff
@@ -235,12 +233,12 @@ En un repositorio de laboratorio, crea `borrador.tmp` sin añadirlo a Git. Añad
 
 ??? success "Solución paso a paso"
     ```bash
-    printf 'Notas temporales\n' > borrador.tmp
-    printf '*.tmp\n' > .gitignore
+    echo 'Notas temporales' > borrador.tmp
+    echo '*.tmp' >> .gitignore
     git status --short
     ```
 
-    El borrador no aparece entre los archivos nuevos que Git propone registrar, pero sigue en disco. `.gitignore` sí puede aparecer como nuevo. No hace falta `git rm`: el borrador nunca se había registrado. Si ya tuviera historial, la regla sola no lo retiraría.
+    `>>` añade la regla sin sobrescribir otras que ya existieran. El borrador no aparece entre los archivos nuevos que Git propone registrar, pero sigue en disco. `.gitignore` sí puede aparecer como nuevo. No hace falta `git rm`: el borrador nunca se había registrado. Si ya tuviera historial, la regla sola no lo retiraría.
 
 ### 3. Revisa antes de integrar una rama
 
@@ -252,7 +250,7 @@ En un repositorio de laboratorio con un primer commit, crea una rama `instruccio
 ??? success "Solución paso a paso"
     ```bash
     git switch -c instrucciones
-    printf 'Leer antes de empezar\n' > uso.txt
+    echo 'Leer antes de empezar' > uso.txt
     git add uso.txt
     git commit -m "Documenta el uso del laboratorio"
     git switch -

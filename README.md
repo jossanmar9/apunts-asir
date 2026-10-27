@@ -22,7 +22,7 @@ Las tablas, explicaciones y técnicas de los apuntes anteriores se han incorpora
 
 ## Criterio de redacción
 
-En ASO se utiliza Bash con la cabecera `#!/bin/bash`, siguiendo el formato de clase. Mantén esta cabecera en los scripts y soluciones nuevos.
+En ASO se utiliza Bash con la cabecera `#!/bin/bash`, siguiendo el formato de clase. Mantén esta cabecera en los scripts y soluciones nuevos. Para mostrar mensajes se utiliza `echo`, como en clase; conserva también este criterio en los ejemplos y ejercicios.
 
 - Desarrolla la explicación para un estudiante que empieza: qué significa cada concepto, cómo funciona y por qué se utiliza.
 - Incorpora el desarrollo útil del material anterior; no lo reduzcas a una tabla o a una mención.
@@ -77,6 +77,17 @@ mkdocs serve
 ```
 
 Abre `http://127.0.0.1:8000`. Para comprobar la compilación: `mkdocs build --strict`.
+
+## Revisar los ejemplos
+
+Con Python 3, Bash, PHP, Git y `bc` instalados:
+
+```bash
+mkdocs build --strict --site-dir /tmp/asir-revision-web
+python3 scripts/revisar_apuntes.py --site-dir /tmp/asir-revision-web
+```
+
+El comprobador revisa sintaxis, ejecuta ejemplos en carpetas temporales y comprueba enlaces, tablas y ejercicios desplegables de la web generada. Las comprobaciones adicionales `--http` y `--docker` prueban los formularios mediante un servidor local y el entorno Nginx/PHP en un proyecto Docker temporal independiente; necesitan permisos para abrir puertos locales y acceder a Docker. Estas pruebas comprueban los casos incluidos, pero no sustituyen la revisión de las explicaciones.
 
 ## Publicar cambios
 

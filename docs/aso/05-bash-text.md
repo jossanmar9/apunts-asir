@@ -178,7 +178,7 @@ En `pendiente pendiente listo`, sustituye las dos apariciones de `pendiente` por
 
 ??? success "Solución paso a paso"
     ```bash
-    printf '%s\n' 'pendiente pendiente listo' | sed 's/pendiente/hecho/g'
+    echo 'pendiente pendiente listo' | sed 's/pendiente/hecho/g'
     ```
 
     El resultado es `hecho hecho listo`. Sin `g`, sería `hecho pendiente listo`: solo cambiaría la primera aparición de la línea.

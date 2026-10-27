@@ -20,7 +20,7 @@ Final:  -4 -3 -2 -1
 
 ## Leer un corte como dos fronteras
 
-En `texto[inicio:fin]`, se incluye `inicio` y se excluye `fin`. Esto permite que la longitud de un tramo sencillo sea `fin - inicio`. En `"mapa"[1:3]` se toman los índices 1 y 2: el resultado es `ap`, no `apa`.
+En `texto[inicio:fin]`, se incluye `inicio` y se excluye `fin`. Con paso 1 y límites válidos dentro de la cadena, la longitud es `fin - inicio`. Si el límite queda fuera de la cadena, Python lo ajusta y esa resta por sí sola ya no describe el resultado. En `"mapa"[1:3]` se toman los índices 1 y 2: el resultado es `ap`, no `apa`.
 
 Si omites el inicio, partes del principio. Si omites el final, llegas hasta el final. Un tercer valor indica el paso. `texto[::-1]` recorre en orden inverso; no modifica por sí mismo la variable original.
 

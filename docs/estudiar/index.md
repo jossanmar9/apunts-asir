@@ -42,7 +42,7 @@ Intenta recuperar la información antes de volver a leerla. Así puedes distingu
 | Delante | Detrás |
 | --- | --- |
 | Bash: comprobar si existe un archivo | `if [[ -f "$archivo" ]]; then ...` |
-| Git: deshacer el último commit local sin perder los cambios | `git reset --soft HEAD~1` |
+| Git: retirar el último commit local no compartido y conservar sus cambios preparados | `git reset --soft HEAD~1` |
 | Docker: ver también los contenedores detenidos | `docker ps -a` |
 | PHP: escapar texto al insertarlo en HTML | `htmlspecialchars($x, ENT_QUOTES, 'UTF-8')` |
 

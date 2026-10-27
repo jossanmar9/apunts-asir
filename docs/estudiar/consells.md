@@ -80,7 +80,7 @@ El programa debe mostrar qué presupone y cómo actúa. Opciones como `set -u` o
 ```bash
 # Comprobar una ruta antes de trabajar con ella
 if [[ -z "${CARPETA_TRABAJO:-}" ]]; then
-    printf 'Falta definir CARPETA_TRABAJO\n' >&2
+    echo 'Falta definir CARPETA_TRABAJO' >&2
     exit 1
 fi
 ```
@@ -97,8 +97,8 @@ Explica qué ha ocurrido y cómo continuar.
 
 ```bash
 if [[ ! -f "${1:-}" ]]; then
-    printf 'Error: indica un archivo existente.\n' >&2
-    printf 'Uso: %s archivo_usuarios.txt\n' "$0" >&2
+    echo 'Error: indica un archivo existente.' >&2
+    echo "Uso: $0 archivo_usuarios.txt" >&2
     exit 1
 fi
 ```

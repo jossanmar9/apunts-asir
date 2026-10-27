@@ -108,7 +108,7 @@ if ($pendiente === 0) {
 } else {
     $mensaje = 'Hay que continuar';
 }
-echo $mensaje; // Hay que continuar
+echo $mensaje . "\n"; // Hay que continuar
 
 $formato = 'audio';
 switch ($formato) {
@@ -122,6 +122,8 @@ switch ($formato) {
         echo 'Formato desconocido';
 }
 ```
+
+Ejecutado en el terminal, este bloque muestra primero `Hay que continuar` y después `Escuchar`, en líneas separadas.
 
 `break` evita continuar con el siguiente caso. El `switch` tradicional hace comparaciones flexibles; con entradas mixtas conviene validar el tipo o utilizar comparaciones estrictas con `if`.
 
@@ -190,8 +192,7 @@ Crea el array `['pendiente', 'terminada', 'pendiente']`. Recórrelo y muestra ú
     $tareas = ['pendiente', 'terminada', 'pendiente'];
     foreach ($tareas as $estado) {
         if ($estado === 'pendiente') {
-            echo $estado . "
-    ";
+            echo $estado . "\n";
         }
     }
     ```
@@ -235,8 +236,7 @@ Con `[-2, 4, 0, 3]`, calcula mediante un bucle el total de las cantidades estric
             $total += $cantidad;
         }
     }
-    echo $total . "
-    ";
+    echo $total . "\n";
     ```
 
     El total avanza de 0 a 4 y después a 7. El cero y -2 no lo cambian. El acumulador se prepara una vez, no en cada vuelta.

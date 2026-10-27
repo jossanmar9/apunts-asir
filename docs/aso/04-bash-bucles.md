@@ -13,10 +13,10 @@ En un `for` sobre una lista, la propia lista limita las vueltas. En un `while`, 
 ```bash
 paso=1
 while (( paso <= 3 )); do
-    printf 'Preparación %s\n' "$paso"
+    echo "Preparación $paso"
     paso=$((paso + 1))
 done
-printf 'Valor al terminar: %s\n' "$paso"
+echo "Valor al terminar: $paso"
 ```
 
 La salida enumera preparaciones 1, 2 y 3, y termina mostrando 4. La cuarta comprobación se hace, pero el cuerpo ya no se ejecuta. Esta diferencia entre comprobar y ejecutar explica muchos errores de una vuelta de más o de menos.
@@ -41,7 +41,7 @@ Los parámetros posicionales se refieren a la llamada actual. Dentro de `etiquet
 mostrar_ficha() {
     local titulo=$1
     local zona=${2:-sin_asignar}
-    printf 'Ficha: %s; zona: %s\n' "$titulo" "$zona"
+    echo "Ficha: $titulo; zona: $zona"
 }
 mostrar_ficha 'Mapa antiguo' 'Sala azul'
 mostrar_ficha 'Plano pequeño'
@@ -56,13 +56,13 @@ Una función puede producir un texto y además indicar si pudo completar su tare
 ```bash
 formar_codigo() {
     if [[ ! "$1" =~ ^[A-Z]{2}$ ]]; then
-        printf 'Se necesitan dos letras mayúsculas\n' >&2
+        echo 'Se necesitan dos letras mayúsculas' >&2
         return 1
     fi
-    printf 'FICHA-%s\n' "$1"
+    echo "FICHA-$1"
 }
 if codigo=$(formar_codigo 'AZ'); then
-    printf 'Código recibido: %s\n' "$codigo"
+    echo "Código recibido: $codigo"
 fi
 ```
 
@@ -78,7 +78,7 @@ Queremos cuatro etiquetas, excepto la tercera, que está fuera de servicio. Una 
 #!/bin/bash
 etiqueta() {
     local numero=$1
-    printf 'ESTANTERIA-%02d\n' "$numero"
+    echo "ESTANTERIA-0$numero"
 }
 for numero in 1 2 3 4; do
     if (( numero == 3 )); then
@@ -92,7 +92,7 @@ done
 
 1. La función se define antes de llamarla.
 2. Dentro de la función, `$1` es el primer argumento de **la función**, no necesariamente el del script.
-3. `local` limita la variable a la función. `%02d` formatea el entero con al menos dos cifras.
+3. `local` limita la variable a la función. Para los números del 1 al 4 de este ejemplo, `0$numero` construye las etiquetas `01` a `04`. No es una regla general para números de cualquier longitud.
 4. `continue` omite la etiqueta 3, pero permite que el recorrido continúe con 4.
 
 ## `while` y `until` con seguimiento
@@ -101,14 +101,14 @@ done
 #!/bin/bash
 pendientes=3
 while (( pendientes > 0 )); do
-    printf 'Cajas pendientes: %s\n' "$pendientes"
+    echo "Cajas pendientes: $pendientes"
     pendientes=$((pendientes - 1))
 done
 
 revisadas=0
 until (( revisadas == 2 )); do
     revisadas=$((revisadas + 1))
-    printf 'Revisión %s completada\n' "$revisadas"
+    echo "Revisión $revisadas completada"
 done
 ```
 
@@ -121,14 +121,14 @@ Bash distingue **datos por stdout** y **estado por return**:
 ```bash
 #!/bin/bash
 nombre_etiqueta() {
-    printf 'CAJA-%s\n' "$1"
+    echo "CAJA-$1"
 }
 es_codigo() {
     [[ "$1" =~ ^[A-Z]{2}[0-9]{2}$ ]]
 }
 nombre=$(nombre_etiqueta 'AB42')
 if es_codigo 'AB42'; then
-    printf '%s es válido\n' "$nombre"
+    echo "$nombre es válido"
 fi
 ```
 
@@ -149,7 +149,7 @@ Este patrón de los apuntes anteriores es útil para procesar listados. Mantiene
 ```bash
 #!/bin/bash
 while IFS= read -r linea || [[ -n "$linea" ]]; do
-    printf 'Recibido: [%s]\n' "$linea"
+    echo "Recibido: [$linea]"
 done < notas.txt
 ```
 
@@ -164,9 +164,9 @@ En Bash, un bucle colocado después de una tubería suele ejecutarse en una subs
 while true; do
     read -r -p 'Escribe ver o salir: ' opcion || break
     case "$opcion" in
-        ver) printf 'La consulta está preparada\n' ;;
+        ver) echo 'La consulta está preparada' ;;
         salir) break ;;
-        *) printf 'Opción no reconocida\n' ;;
+        *) echo 'Opción no reconocida' ;;
     esac
 done
 ```
@@ -191,7 +191,7 @@ Recorre `inicio medio FIN extra`. Imprime los elementos anteriores a `FIN` y ter
         if [[ "$palabra" == 'FIN' ]]; then
             break
         fi
-        printf '%s\n' "$palabra"
+        echo "$palabra"
     done
     ```
 
@@ -213,7 +213,7 @@ Recorre las respuestas `si no si si no` y cuenta únicamente cuántas son exacta
             contador=$((contador + 1))
         fi
     done
-    printf 'Respuestas afirmativas: %s\n' "$contador"
+    echo "Respuestas afirmativas: $contador"
     ```
 
     El resultado es 3. Reiniciar el contador dentro perdería el progreso; imprimir dentro mostraría resultados parciales en lugar de una única respuesta final.
@@ -229,10 +229,10 @@ Crea `enmarcar` para recibir una frase y producirla entre corchetes. Captura su 
     ```bash
     #!/bin/bash
     enmarcar() {
-        printf '[%s]\n' "$1"
+        echo "[$1]"
     }
     resultado=$(enmarcar 'Revisión pendiente')
-    printf 'Resultado: %s\n' "$resultado"
+    echo "Resultado: $resultado"
     ```
 
     La salida final es `Resultado: [Revisión pendiente]`. La función produce texto y la llamada lo conserva. `return` serviría para un código de estado, no para esa frase.

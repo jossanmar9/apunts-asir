@@ -2,7 +2,7 @@
 
 ## Importar una herramienta, no memorizar un catálogo
 
-La biblioteca estándar ya viene con Python. `import sys` permite acceder con el prefijo `sys.`; `from pathlib import Path` importa directamente el nombre `Path`. Un nombre de archivo como `random.py` o `sys.py` en tu proyecto puede causar confusiones con imports: utiliza nombres propios.
+La biblioteca estándar ya viene con Python. `import sys` permite acceder con el prefijo `sys.`; `from pathlib import Path` importa directamente el nombre `Path`. Un nombre de archivo como `random.py` o `pathlib.py` en tu proyecto puede causar confusiones con imports: utiliza nombres propios.
 
 | Módulo | Qué consultas o haces |
 | --- | --- |

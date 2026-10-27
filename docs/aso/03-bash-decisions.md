@@ -18,14 +18,14 @@ Para enteros, `(( expresion ))` permite calcular y comparar. Para texto y archiv
 
 ## Hacer cuentas: no todo texto parecido a una operación se calcula
 
-Si escribes `printf '%s\n' '8 + 3'`, estás imprimiendo texto. La expansión aritmética `$((8 + 3))` pide a Bash que evalúe la operación y sustituya la expresión por su resultado.
+Si escribes `echo '8 + 3'`, estás imprimiendo texto. La expansión aritmética `$((8 + 3))` pide a Bash que evalúe la operación y sustituya la expresión por su resultado.
 
 ```bash
 piezas=23
 capacidad=5
 completos=$((piezas / capacidad))
 sobrantes=$((piezas % capacidad))
-printf 'Lotes completos: %s; piezas sueltas: %s\n' "$completos" "$sobrantes"
+echo "Lotes completos: $completos; piezas sueltas: $sobrantes"
 ```
 
 Resultado: `Lotes completos: 4; piezas sueltas: 3`. La división entera cuenta cuántos grupos completos caben; el resto cuenta lo que queda. No son resultados intercambiables. Si necesitas incluir un grupo incompleto, necesitas decidir qué hacer con el resto.
@@ -40,9 +40,9 @@ La estructura se lee «ejecuta esta prueba; si termina con estado cero, ejecuta 
 
 ```bash
 if [[ 3 -gt 2 ]]; then
-    printf 'La condición se cumple\n'
+    echo 'La condición se cumple'
 else
-    printf 'La condición no se cumple\n'
+    echo 'La condición no se cumple'
 fi
 ```
 
@@ -74,17 +74,17 @@ Una sala de prueba tiene 12 butacas libres. El script acepta una cantidad entre 
 #!/bin/bash
 peticion=${1:-}
 if [[ ! "$peticion" =~ ^[1-9][0-9]?$ ]]; then
-    printf 'Escribe una cantidad de una o dos cifras, sin cero inicial.\n' >&2
+    echo 'Escribe una cantidad de una o dos cifras, sin cero inicial.' >&2
     exit 1
 fi
 libres=12
 if (( peticion > libres )); then
-    printf 'No hay suficientes butacas.\n'
+    echo 'No hay suficientes butacas.'
 elif (( peticion == libres )); then
-    printf 'La sala queda completa.\n'
+    echo 'La sala queda completa.'
 else
     quedan=$((libres - peticion))
-    printf 'Reserva aceptada. Quedan %s butacas.\n' "$quedan"
+    echo "Reserva aceptada. Quedan $quedan butacas."
 fi
 ```
 
@@ -104,7 +104,7 @@ La validación se hace **antes** de la aritmética. `^` y `$` anclan todo el tex
 `$((7 / 2))` devuelve 3: la aritmética ordinaria de Bash es entera. `%` calcula el resto. Para decimales puedes utilizar `bc`, si está instalado:
 
 ```bash
-printf 'scale=2; 7 / 2\n' | bc
+echo 'scale=2; 7 / 2' | bc
 ```
 
 Resultado: `3.50`. `scale` controla los decimales en la división; no es una regla universal de redondeo monetario. `expr` y `let` aparecen en scripts antiguos, pero `$((...))` suele ser más legible.
@@ -114,9 +114,9 @@ Para opciones concretas, `case` evita cadenas largas de igualdades:
 ```bash
 accion=${1:-ayuda}
 case "$accion" in
-    resumen) printf 'Muestra el resumen de la sala\n' ;;
-    ayuda) printf 'Opciones: resumen, ayuda\n' ;;
-    *) printf 'Opción desconocida\n' >&2; exit 1 ;;
+    resumen) echo 'Muestra el resumen de la sala' ;;
+    ayuda) echo 'Opciones: resumen, ayuda' ;;
+    *) echo 'Opción desconocida' >&2; exit 1 ;;
 esac
 ```
 
@@ -127,9 +127,9 @@ Una condición de shell también puede ser un comando: no necesitas capturar su 
 ```bash
 #!/bin/bash
 if command -v bash >/dev/null 2>&1; then
-    printf 'Bash está disponible\n'
+    echo 'Bash está disponible'
 else
-    printf 'No se ha localizado Bash en PATH\n' >&2
+    echo 'No se ha localizado Bash en PATH' >&2
 fi
 ```
 
@@ -165,12 +165,12 @@ Recibe un nombre como primer argumento. Muestra `Documento` si acaba en `.pdf` o
     ```bash
     #!/bin/bash
     if (( $# != 1 )); then
-        printf 'Uso: bash formato.sh nombre\n' >&2
+        echo 'Uso: bash formato.sh nombre' >&2
         exit 1
     fi
     case "$1" in
-        *.pdf|*.odt) printf 'Documento\n' ;;
-        *) printf 'Otro formato\n' ;;
+        *.pdf|*.odt) echo 'Documento' ;;
+        *) echo 'Otro formato' ;;
     esac
     ```
 
@@ -187,13 +187,13 @@ Recibe una ruta y acepta solo un archivo ordinario no vacío. No basta con que e
     ```bash
     #!/bin/bash
     if (( $# != 1 )); then
-        printf 'Uso: bash comprobar.sh ruta\n' >&2
+        echo 'Uso: bash comprobar.sh ruta' >&2
         exit 1
     fi
     if [[ -f "$1" && -s "$1" ]]; then
-        printf 'Preparado\n'
+        echo 'Preparado'
     else
-        printf 'No válido\n'
+        echo 'No válido'
     fi
     ```
 
@@ -212,9 +212,9 @@ Con `disponibles=12` y `solicitadas=3`, alguien compara los textos mediante `[[ 
     disponibles=12
     solicitadas=3
     if (( disponibles > solicitadas )); then
-        printf 'Hay más unidades disponibles que solicitadas\n'
+        echo 'Hay más unidades disponibles que solicitadas'
     else
-        printf 'No hay una cantidad mayor disponible\n'
+        echo 'No hay una cantidad mayor disponible'
     fi
     ```
 

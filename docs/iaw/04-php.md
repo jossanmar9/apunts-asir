@@ -153,8 +153,7 @@ Guarda 30 como cantidad necesaria de hojas y 22 como cantidad disponible. Escrib
     $necesarias = 30;
     $disponibles = 22;
     $faltan = $necesarias - $disponibles;
-    echo 'Faltan ' . $faltan . " hojas
-    ";
+    echo 'Faltan ' . $faltan . " hojas\n";
     ```
 
     1. Restamos las disponibles a las necesarias.
