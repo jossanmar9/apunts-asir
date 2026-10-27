@@ -2513,7 +2513,7 @@
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="s1">'Hay que continuar'</span><span class="p">;</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">echo</span> <span class="nv">$mensaje</span><span class="p">;</span> <span class="c1">// Hay que continuar</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">echo</span> <span class="nv">$mensaje</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// Hay que continuar</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nv">$formato</span> <span class="o">=</span> <span class="s1">'audio'</span><span class="p">;</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">switch</span> <span class="p">(</span><span class="nv">$formato</span><span class="p">)</span> <span class="p">{</span>
@@ -2527,6 +2527,7 @@
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="k">echo</span> <span class="s1">'Formato desconocido'</span><span class="p">;</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
 </code></pre></div>
+<p>Ejecutado en el terminal, este bloque muestra primero <code>Hay que continuar</code> y después <code>Escuchar</code>, en líneas separadas.</p>
 <p><code>break</code> evita continuar con el siguiente caso. El <code>switch</code> tradicional hace comparaciones flexibles; con entradas mixtas conviene validar el tipo o utilizar comparaciones estrictas con <code>if</code>.</p>
 <h2 id="repetir-con-contador-o-condicion">Repetir con contador o condición<a class="headerlink" href="#repetir-con-contador-o-condicion" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?php</span>
@@ -2592,10 +2593,9 @@
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">$tareas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pendiente'</span><span class="p">,</span> <span class="s1">'terminada'</span><span class="p">,</span> <span class="s1">'pendiente'</span><span class="p">];</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$tareas</span> <span class="k">as</span> <span class="nv">$estado</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$estado</span> <span class="o">===</span> <span class="s1">'pendiente'</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="k">echo</span> <span class="nv">$estado</span> <span class="o">.</span> <span class="s2">"</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="p">}</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="k">echo</span> <span class="nv">$estado</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
 </code></pre></div>
 <p>En cada vuelta se comprueba un estado. La segunda no imprime nada porque no cumple la condición. Las otras dos muestran <code>pendiente</code>.</p>
 </details>
@@ -2633,8 +2633,7 @@
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="nv">$total</span> <span class="o">+=</span> <span class="nv">$cantidad</span><span class="p">;</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="p">}</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">echo</span> <span class="nv">$total</span> <span class="o">.</span> <span class="s2">"</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">echo</span> <span class="nv">$total</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>El total avanza de 0 a 4 y después a 7. El cero y -2 no lo cambian. El acumulador se prepara una vez, no en cada vuelta.</p>
 </details>

@@ -1128,6 +1128,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mostrar-texto-con-echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mostrar texto con echo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#por-que-las-comillas-cambian-los-argumentos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2201,6 +2212,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mostrar-texto-con-echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mostrar texto con echo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#por-que-las-comillas-cambian-los-argumentos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2402,31 +2424,46 @@
 <p>Una shell interpreta comandos. Un script guarda comandos en un archivo para que puedas repetir el proceso. La primera línea <code>#!/bin/bash</code> indica que el script se ejecuta con Bash, situado en <code>/bin/bash</code>, como utilizamos en clase. Con <code>bash nombre.sh</code> eliges Bash explícitamente; con <code>./nombre.sh</code> necesitas permiso de ejecución, que puedes dar con <code>chmod u+x nombre.sh</code>.</p>
 <p>En Bash, <code>nombre=valor</code> asigna y <code>$nombre</code> expande el valor. No pongas espacios alrededor de <code>=</code>. Las comillas dobles conservan los espacios de un dato, pero expanden variables; las simples tratan el contenido literalmente. Los comentarios comienzan con <code>#</code>.</p>
 <h2 id="de-una-orden-a-un-script-que-cambia-realmente">De una orden a un script: qué cambia realmente<a class="headerlink" href="#de-una-orden-a-un-script-que-cambia-realmente" title="Permanent link">&para;</a></h2>
-<p>Cuando escribes una orden en el terminal, Bash la interpreta en ese momento. Al guardar varias órdenes en un archivo no inventas un lenguaje distinto: preparas una secuencia para repetirla. El archivo no se ejecuta solo por terminar en <code>.sh</code>; necesitas indicar un intérprete o hacerlo ejecutable.</p>
+<p>Cuando escribes una orden en el terminal, Bash la interpreta en ese momento. Al guardar varias órdenes en un archivo no inventas un lenguaje distinto: preparas una secuencia para repetirla. El archivo no se ejecuta solo por terminar en <code>.sh</code>. Puedes entregárselo a Bash con <code>bash ficha.sh</code>; para ejecutarlo como <code>./ficha.sh</code> necesita tanto una cabecera de intérprete correcta como permiso de ejecución.</p>
 <p>Puedes crear <code>ficha.sh</code> en un editor de texto, escribir la primera línea <code>#!/bin/bash</code> y guardar. <code>bash ficha.sh</code> inicia Bash y le entrega el archivo. <code>chmod u+x ficha.sh</code> permite después invocarlo como <code>./ficha.sh</code>. El <code>./</code> significa «búscalo en esta carpeta»: la carpeta actual no tiene por qué estar en <code>PATH</code>.</p>
 <p>Si estás en otra carpeta, <code>bash ficha.sh</code> no busca el archivo junto al que tienes abierto en el editor. Parte del directorio de trabajo. Compruébalo con <code>pwd</code> y utiliza una ruta relativa o absoluta que corresponda. Esta distinción evita confundir un problema de localización con un error del código.</p>
 <h2 id="asignar-leer-y-delimitar-una-variable">Asignar, leer y delimitar una variable<a class="headerlink" href="#asignar-leer-y-delimitar-una-variable" title="Permanent link">&para;</a></h2>
 <p>Una variable permite dar un nombre a una información. Al asignar no se escribe <code>$</code>; al utilizar el valor se expande con <code>$</code>. Bash no necesita que declares de antemano que será texto o un número para estos casos sencillos.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">nombre</span><span class="o">=</span><span class="s1">'Carpeta de láminas'</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$nombre</span><span class="s2">"</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">base</span><span class="o">=</span><span class="s1">'lamina'</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">base</span><span class="si">}</span><span class="s2">_revisada.txt"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">nombre</span><span class="o">=</span><span class="s2">"Carpeta de láminas"</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$nombre</span><span class="s2">"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">base</span><span class="o">=</span><span class="s2">"lamina"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">base</span><span class="si">}</span><span class="s2">_revisada.txt"</span>
 </code></pre></div>
-<p>La primera impresión muestra <code>Carpeta de láminas</code>. La segunda muestra <code>lamina_revisada.txt</code>. Las llaves delimitan dónde acaba el nombre: <code>$base_revisada</code> buscaría una variable llamada <code>base_revisada</code>, no uniría automáticamente el valor de <code>base</code> con ese sufijo.</p>
+<p>La salida es:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Carpeta de láminas
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>lamina_revisada.txt
+</code></pre></div>
+<p><code>echo</code> muestra un texto y añade un salto de línea. La primera orden lee el valor de <code>nombre</code>; la segunda une el valor de <code>base</code> con <code>_revisada.txt</code>. Las llaves delimitan dónde acaba el nombre: <code>$base_revisada</code> buscaría una variable llamada <code>base_revisada</code>, no uniría automáticamente el valor de <code>base</code> con ese sufijo.</p>
 <p>Los nombres distinguen mayúsculas: <code>nombre</code> y <code>Nombre</code> no son la misma variable. Pueden contener letras, cifras y guiones bajos, pero no empezar por cifra. Usa nombres que expliquen el dato y evita ocupar nombres del sistema para otros fines.</p>
+<h2 id="mostrar-texto-con-echo">Mostrar texto con <code>echo</code><a class="headerlink" href="#mostrar-texto-con-echo" title="Permanent link">&para;</a></h2>
+<p><code>echo</code> muestra lo que recibe y añade un salto de línea. Las comillas dobles permiten incluir el valor de una variable dentro del mensaje:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">nombre</span><span class="o">=</span><span class="s2">"Láminas grandes"</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Nombre: </span><span class="nv">$nombre</span><span class="s2">"</span>
+</code></pre></div>
+<p>La salida es <code>Nombre: Láminas grandes</code>. <code>Nombre:</code> es texto fijo y <code>$nombre</code> se sustituye por el valor guardado. Para mostrar dos líneas, escribe dos órdenes <code>echo</code>; no necesitas introducir códigos de formato.</p>
 <h2 id="por-que-las-comillas-cambian-los-argumentos">Por qué las comillas cambian los argumentos<a class="headerlink" href="#por-que-las-comillas-cambian-los-argumentos" title="Permanent link">&para;</a></h2>
 <p>Bash prepara los argumentos antes de llamar a una orden. Si expandes una variable sin comillas en una orden corriente, el resultado puede dividirse en palabras y tratar caracteres como <code>*</code> como patrones de nombres. Las comillas dobles mantienen el resultado como un argumento y permiten expandir variables. Las simples conservan el texto literalmente.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">nombre</span><span class="o">=</span><span class="s1">'Láminas grandes'</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'[%s]\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$nombre</span><span class="s2">"</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'[%s]\n'</span><span class="w"> </span><span class="nv">$nombre</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s1">'El contenido de $nombre no se expande aquí'</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">nombre</span><span class="o">=</span><span class="s2">"Láminas   grandes"</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$nombre</span><span class="s2">"</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$nombre</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'El contenido de $nombre no se expande aquí'</span>
 </code></pre></div>
-<p>La primera orden muestra <code>[Láminas grandes]</code>. La segunda imprime dos líneas, <code>[Láminas]</code> y <code>[grandes]</code>: el formato se aplica a dos argumentos. La tercera conserva los caracteres <code>$nombre</code>. No hay dos archivos ni dos variables diferentes: ha cambiado cómo la shell entrega el dato a la orden.</p>
+<p>La primera orden conserva los tres espacios del valor. En la segunda, Bash lo divide en dos argumentos y <code>echo</code> los muestra separados por un espacio. La tercera conserva literalmente los caracteres <code>$nombre</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Láminas   grandes
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Láminas grandes
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>El contenido de $nombre no se expande aquí
+</code></pre></div>
+<p>Aunque las dos primeras líneas se parecen, Bash no ha entregado los mismos argumentos. Esto importa cuando otra orden espera recibir un único nombre con espacios.</p>
 <p>Este efecto importa al copiar, buscar o imprimir nombres con espacios. La regla práctica para pasar un dato como argumento es <code>"$variable"</code>. No añadas comillas al azar a toda la sintaxis: una expresión regular o un patrón pueden necesitar que parte de su sintaxis conserve su significado.</p>
 <h2 id="capturar-la-salida-no-es-capturar-el-estado">Capturar la salida no es capturar el estado<a class="headerlink" href="#capturar-la-salida-no-es-capturar-el-estado" title="Permanent link">&para;</a></h2>
 <p><code>resultado=$(orden)</code> ejecuta una orden y captura su stdout, eliminando los saltos de línea finales. No captura automáticamente stderr. El código de salida sigue siendo otra información distinta, que puedes comprobar con un <code>if</code> o guardar inmediatamente.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">fecha</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Fecha del informe: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$fecha</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">fecha</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Fecha del informe: </span><span class="nv">$fecha</span><span class="s2">"</span>
 </code></pre></div>
 <p>El valor de la fecha depende del día del equipo. No esperes el texto <code>date +%Y-%m-%d</code>: las comillas y <code>$()</code> indican operaciones distintas. Una variable normal tampoco se convierte en una variable de entorno hasta que la exportas; una shell hija recibe el entorno exportado, no todos los nombres internos de su padre.</p>
 <h2 id="que-significa-recibir-varios-argumentos">Qué significa recibir varios argumentos<a class="headerlink" href="#que-significa-recibir-varios-argumentos" title="Permanent link">&para;</a></h2>
@@ -2435,16 +2472,17 @@
 <p><code>shift</code> retira el primer argumento posicional y desplaza los demás. Es útil cuando el primero indica una acción y el resto son sus datos. Antes de usarlo, comprueba que hay algo que retirar. No modifica la lista de argumentos de otra llamada independiente ni borra variables con nombres propios que ya hayas creado.</p>
 <h2 id="problema-explicado-paso-a-paso-etiqueta-de-una-muestra-de-laboratorio">Problema explicado paso a paso: etiqueta de una muestra de laboratorio<a class="headerlink" href="#problema-explicado-paso-a-paso-etiqueta-de-una-muestra-de-laboratorio" title="Permanent link">&para;</a></h2>
 <p>Guarda <code>etiqueta.sh</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash etiqueta.sh muestra responsable\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">fi</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">muestra</span><span class="o">=</span><span class="nv">$1</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">responsable</span><span class="o">=</span><span class="nv">$2</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s1">'Ubicación de la muestra: '</span><span class="w"> </span>ubicacion
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Muestra: %s\nResponsable: %s\nUbicación: %s\n'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="s2">"</span><span class="nv">$muestra</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$responsable</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ubicacion</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Uso: bash etiqueta.sh muestra responsable'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">fi</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">muestra</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">responsable</span><span class="o">=</span><span class="nv">$2</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s1">'Ubicación de la muestra: '</span><span class="w"> </span>ubicacion
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Muestra: </span><span class="nv">$muestra</span><span class="s2">"</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Responsable: </span><span class="nv">$responsable</span><span class="s2">"</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Ubicación: </span><span class="nv">$ubicacion</span><span class="s2">"</span>
 </code></pre></div>
 <p>Ejecuta <code>bash etiqueta.sh "Roca volcánica" "Laia Ferrer"</code> y escribe <code>Armario azul</code>.</p>
 <p><strong>Resultado esperado:</strong> tres líneas con la muestra, el nombre completo y la ubicación. Las comillas hacen que cada frase sea un argumento. Sin ellas, el número de argumentos cambiaría y el script mostraría la ayuda.</p>
@@ -2453,7 +2491,7 @@
 <li><code>$#</code> cuenta argumentos. Si no son dos, el mensaje va a la salida de error con <code>&gt;&amp;2</code> y el código final es 1.</li>
 <li><code>$1</code> y <code>$2</code> son los datos de la llamada. <code>$0</code> es el nombre con el que se ha invocado el script.</li>
 <li><code>read -r</code> lee una línea sin tratar las barras invertidas como escapes.</li>
-<li><code>printf</code> utiliza un formato fijo y datos separados. <code>%s</code> sustituye texto y <code>\n</code> introduce un salto de línea.</li>
+<li>Cada <code>echo</code> muestra una línea con su etiqueta y la variable correspondiente. Las comillas mantienen los espacios de los valores.</li>
 </ol>
 <h2 id="variables-que-conviene-reconocer">Variables que conviene reconocer<a class="headerlink" href="#variables-que-conviene-reconocer" title="Permanent link">&para;</a></h2>
 <table>
@@ -2488,11 +2526,13 @@
 </table>
 <p>Una variable de shell no pasa necesariamente a los procesos hijos. <code>export COLOR_FICHA=azul</code> la incorpora al entorno de los nuevos procesos. <code>printenv COLOR_FICHA</code> la consulta. Utiliza nombres propios del script: no sobrescribas <code>PATH</code> con una ruta de trabajo, porque dejarías de localizar comandos.</p>
 <h2 id="transformar-texto-y-guardar-colecciones">Transformar texto y guardar colecciones<a class="headerlink" href="#transformar-texto-y-guardar-colecciones" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">archivo</span><span class="o">=</span><span class="s1">'muestra.version.txt'</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">archivo</span><span class="p">%.txt</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">archivo</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">7</span><span class="si">}</span><span class="s2">"</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">salas</span><span class="o">=(</span><span class="s1">'Sala azul cielo'</span><span class="w"> </span><span class="s1">'Sala gris'</span><span class="o">)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">salas</span><span class="p">[0]</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${#</span><span class="nv">salas</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">archivo</span><span class="o">=</span><span class="s1">'muestra.version.txt'</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">archivo</span><span class="p">%.txt</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">archivo</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">7</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">salas</span><span class="o">=(</span><span class="s1">'Sala azul cielo'</span><span class="w"> </span><span class="s1">'Sala gris'</span><span class="o">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">salas</span><span class="p">[0]</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${#</span><span class="nv">salas</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p>El primer bloque muestra <code>muestra.version</code> y <code>muestra</code>. <code>%</code> elimina el sufijo que coincide con el patrón; <code>${texto#patron}</code> elimina un prefijo; las versiones dobles <code>%%</code> y <code>##</code> eliminan la coincidencia más larga. <code>${texto:inicio:longitud}</code> extrae una subcadena. Los arrays indexados comienzan en cero y <code>"${salas[@]}"</code> conserva cada elemento.</p>
 <table>
@@ -2546,12 +2586,12 @@
 </tbody>
 </table>
 <h3 id="problema-explicado-paso-a-paso-conservar-nombres-con-espacios-en-un-array">Problema explicado paso a paso: conservar nombres con espacios en un array<a class="headerlink" href="#problema-explicado-paso-a-paso-conservar-nombres-con-espacios-en-un-array" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">salas</span><span class="o">=(</span><span class="s1">'Azul cielo'</span><span class="w"> </span><span class="s1">'Gris perla'</span><span class="o">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">salas</span><span class="o">+=(</span><span class="s1">'Verde musgo'</span><span class="o">)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">for</span><span class="w"> </span>indice<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="p">!salas[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$indice</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">salas</span><span class="p">[</span><span class="nv">$indice</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">salas</span><span class="o">=(</span><span class="s1">'Azul cielo'</span><span class="w"> </span><span class="s1">'Gris perla'</span><span class="o">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">salas</span><span class="o">+=(</span><span class="s1">'Verde musgo'</span><span class="o">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">for</span><span class="w"> </span>indice<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="p">!salas[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$indice</span><span class="s2">: </span><span class="si">${</span><span class="nv">salas</span><span class="p">[</span><span class="nv">$indice</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">done</span>
 </code></pre></div>
 <p>La salida tiene tres líneas: <code>0: Azul cielo</code>, <code>1: Gris perla</code> y <code>2: Verde musgo</code>. <code>+=</code> añade sin sustituir lo anterior; <code>${!salas[@]}</code> recorre los índices existentes. Las comillas conservan cada nombre completo. <code>unset 'salas[1]'</code> eliminaría ese elemento, pero no renumeraría automáticamente los demás.</p>
 <p>Para cargar un archivo de una entrada por línea, utiliza <code>mapfile -t salas &lt; salas.txt</code> en una versión de Bash que disponga de <code>mapfile</code>. Es más seguro para espacios que <code>salas=($(cat salas.txt))</code>. Los arrays asociativos necesitan <code>declare -A</code> y permiten acceder por clave, como <code>capacidad[azul]=18</code>.</p>
@@ -2565,11 +2605,13 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Argumentos: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$#</span><span class="s2">"</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Argumentos: </span><span class="nv">$#</span><span class="s2">"</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">for</span><span class="w"> </span>argumento<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"&lt;</span><span class="nv">$argumento</span><span class="s2">&gt;"</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">done</span>
 </code></pre></div>
-<p>La salida es <code>Argumentos: 2</code>, <code>&lt;azul&gt;</code> y <code>&lt;gris claro&gt;</code>. Las comillas de la llamada agrupan el segundo argumento y las de <code>"$@"</code> mantienen esa agrupación al reenviarlo.</p>
+<p>La salida es <code>Argumentos: 2</code>, <code>&lt;azul&gt;</code> y <code>&lt;gris claro&gt;</code>. Las comillas de la llamada agrupan el segundo argumento. El <code>for</code> recorre <code>"$@"</code> y conserva cada argumento completo. Si no pasas ninguno, solo aparece <code>Argumentos: 0</code>: el bucle no imprime un elemento vacío.</p>
 </details>
 <h3 id="2-genera-un-nombre-sin-tocar-archivos">2. Genera un nombre sin tocar archivos<a class="headerlink" href="#2-genera-un-nombre-sin-tocar-archivos" title="Permanent link">&para;</a></h3>
 <p>Recibe como único argumento un nombre terminado en <code>.csv</code>. Supón que el sufijo es correcto. Quita ese sufijo y construye el nombre acabado en <code>_revisado.csv</code>. Imprime el resultado sin crear ni renombrar ningún archivo. Prueba con <code>lista del club.csv</code>.</p>
@@ -2579,14 +2621,14 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash nombre.sh archivo.csv\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">fi</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">nombre</span><span class="o">=</span><span class="nv">$1</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">base</span><span class="o">=</span><span class="si">${</span><span class="nv">nombre</span><span class="p">%.csv</span><span class="si">}</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">base</span><span class="si">}</span><span class="s2">_revisado.csv"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Uso: bash nombre.sh archivo.csv'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">fi</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">nombre</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">base</span><span class="o">=</span><span class="si">${</span><span class="nv">nombre</span><span class="p">%.csv</span><span class="si">}</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">base</span><span class="si">}</span><span class="s2">_revisado.csv"</span>
 </code></pre></div>
 <p>El resultado es <code>lista del club_revisado.csv</code>. Primero validamos el número de argumentos; después transformamos texto. No hay ninguna operación de escritura sobre el sistema de archivos.</p>
 </details>
@@ -2598,12 +2640,12 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">dias</span><span class="o">=(</span>lunes<span class="w"> </span>martes<span class="o">)</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">dias</span><span class="o">+=(</span>jueves<span class="o">)</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>dias<span class="o">[</span><span class="m">1</span><span class="o">]=</span><span class="s1">'miércoles'</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Último: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">dias</span><span class="p">[2]</span><span class="si">}</span><span class="s2">"</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Cantidad: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="si">${#</span><span class="nv">dias</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">dias</span><span class="o">=(</span>lunes<span class="w"> </span>martes<span class="o">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nv">dias</span><span class="o">+=(</span>jueves<span class="o">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>dias<span class="o">[</span><span class="m">1</span><span class="o">]=</span><span class="s1">'miércoles'</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Último: </span><span class="si">${</span><span class="nv">dias</span><span class="p">[2]</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Cantidad: </span><span class="si">${#</span><span class="nv">dias</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p>La salida es <code>Último: jueves</code> y <code>Cantidad: 3</code>. Cambiar una posición no aumenta el tamaño; añadir un elemento sí.</p>
 </details>

@@ -2396,7 +2396,7 @@
 <h2 id="que-comprueba-cada-nivel-de-revision">Qué comprueba cada nivel de revisión<a class="headerlink" href="#que-comprueba-cada-nivel-de-revision" title="Permanent link">&para;</a></h2>
 <p><code>bash -n</code> detecta problemas de estructura y sintaxis: un <code>fi</code> ausente o un bloque mal formado. No demuestra que la ruta exista ni que el cálculo sea correcto. <code>bash -x</code> sí ejecuta y muestra las expansiones: puede revelar un argumento vacío o una orden construida de forma distinta a la esperada.</p>
 <p>Un analizador como ShellCheck detecta muchos patrones problemáticos, como expansiones sin comillas. Tampoco conoce todo el significado del ejercicio. Finalmente, los casos de prueba comprueban comportamiento con datos concretos. Necesitas distinguir estos niveles para no dar por correcto un programa solo porque la sintaxis es válida.</p>
-<p>Durante la depuración, imprime el dato con límites visibles: <code>printf 'DEBUG: archivo=[%s]\n' "$archivo" &gt;&amp;2</code>. Los corchetes ayudan a ver un dato vacío o espacios sobrantes. Retira o controla estos mensajes cuando dejen de hacer falta.</p>
+<p>Durante la depuración, imprime el dato con límites visibles: <code>echo "DEBUG: archivo=[$archivo]" &gt;&amp;2</code>. Los corchetes ayudan a ver un dato vacío o espacios sobrantes. Retira o controla estos mensajes cuando dejen de hacer falta.</p>
 <h2 id="por-que-set-e-no-reemplaza-los-if">Por qué <code>set -e</code> no reemplaza los <code>if</code><a class="headerlink" href="#por-que-set-e-no-reemplaza-los-if" title="Permanent link">&para;</a></h2>
 <p><code>set -e</code> tiene reglas y excepciones según el contexto de ejecución. Una orden usada como condición de un <code>if</code>, por ejemplo, puede fallar sin que eso signifique terminar inmediatamente el script: precisamente estás utilizando su resultado para decidir.</p>
 <p>Además, algunas órdenes devuelven un estado no cero como resultado normal de una consulta. Que <code>grep</code> no encuentre coincidencias puede ser una respuesta esperable. El programa debe decidir si significa «no hay resultados», «faltan datos obligatorios» o una situación que requiere terminar.</p>
@@ -2412,23 +2412,27 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">set</span><span class="w"> </span>-u
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Uso: bash informe.sh archivo\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Uso: bash informe.sh archivo'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">fi</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">archivo</span><span class="o">=</span><span class="nv">$1</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$archivo</span><span class="s2">"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>!<span class="w"> </span>-r<span class="w"> </span><span class="s2">"</span><span class="nv">$archivo</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Se necesita un archivo ordinario que se pueda leer.\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Se necesita un archivo ordinario que se pueda leer.'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">fi</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">if</span><span class="w"> </span><span class="nv">lineas</span><span class="o">=</span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span><span class="s2">"</span><span class="nv">$archivo</span><span class="s2">"</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Documento: %s\nLíneas: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$archivo</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$lineas</span><span class="s2">"</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">else</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'No se ha podido completar el recuento.\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">3</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">fi</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Documento: </span><span class="nv">$archivo</span><span class="s2">"</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Líneas: </span><span class="nv">$lineas</span><span class="s2">"</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">else</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'No se ha podido completar el recuento.'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">3</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">fi</span>
 </code></pre></div>
 <h3 id="prueba-guiada">Prueba guiada<a class="headerlink" href="#prueba-guiada" title="Permanent link">&para;</a></h3>
-<p>Crea <code>texto corto.txt</code> con <code>printf 'primera\nsegunda\n' &gt; "texto corto.txt"</code>.</p>
+<p>Crea <code>texto corto.txt</code> con estas dos órdenes. La primera escribe la primera línea y la segunda añade la siguiente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"primera"</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"texto corto.txt"</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"segunda"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"texto corto.txt"</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2455,21 +2459,21 @@
 <p>El segundo <code>if</code> contempla que el comando falle aunque se haya superado la comprobación previa: entre comprobar y leer, el estado del archivo podría cambiar.</p>
 <h2 id="como-depurarlo">Cómo depurarlo<a class="headerlink" href="#como-depurarlo" title="Permanent link">&para;</a></h2>
 <p><code>bash -n informe.sh</code> comprueba la sintaxis sin ejecutar el contenido. <code>bash -x informe.sh "texto corto.txt"</code> muestra los comandos expandidos mientras los ejecuta; evita utilizar trazas sobre secretos. Si tienes ShellCheck, <code>shellcheck informe.sh</code> ayuda a detectar problemas habituales.</p>
-<p><code>trap 'printf "Fin del laboratorio\n" &gt;&amp;2' EXIT</code> ejecuta una acción al salir. También puedes capturar señales o <code>ERR</code> según el caso. Utiliza <code>trap</code> para limpieza y diagnóstico conscientes, no para ocultar un fallo.</p>
+<p><code>trap 'echo "Fin del laboratorio" &gt;&amp;2' EXIT</code> ejecuta una acción al salir. También puedes capturar señales o <code>ERR</code> según el caso. Utiliza <code>trap</code> para limpieza y diagnóstico conscientes, no para ocultar un fallo.</p>
 <h2 id="aplicacion-a-tareas-de-administracion">Aplicación a tareas de administración<a class="headerlink" href="#aplicacion-a-tareas-de-administracion" title="Permanent link">&para;</a></h2>
 <p>Un script de copias combina comprobación del origen, comando de archivado, estado y log. Un lector de CSV debe separar campos sin dividir los espacios, por ejemplo con <code>while IFS=';' read -r nombre zona; do ...; done &lt; datos.csv</code> para un formato simple sin comillas internas. Un formato CSV general requiere un lector adecuado.</p>
 <p>En gestión de usuarios o servicios, separa <strong>consultar</strong>, <strong>decidir</strong> y <strong>modificar</strong>. Prueba primero la lógica con datos de laboratorio y mensajes de lo que haría. No necesitas ejecutar altas masivas para entender un <code>if</code>. Al interpretar un sondeo, recuerda también que una IP que no responde a ping no queda demostrada como libre: puede filtrar ICMP.</p>
 <h2 id="metodo-de-trabajo-recuperado-de-los-apuntes-anteriores">Método de trabajo recuperado de los apuntes anteriores<a class="headerlink" href="#metodo-de-trabajo-recuperado-de-los-apuntes-anteriores" title="Permanent link">&para;</a></h2>
 <p>Antes de programar, escribe una llamada de ejemplo y su resultado esperado. Divide después el trabajo en leer, comprobar, transformar y presentar. Prueba cada parte por separado y añade las comprobaciones antes de conectarlas.</p>
 <p>Una función de error evita repetir mensajes y salidas en scripts más largos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>error<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'ERROR: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>error<span class="w"> </span><span class="s2">"Uso: bash revisar.sh archivo"</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>error<span class="w"> </span><span class="s2">"No es un archivo ordinario: </span><span class="nv">$1</span><span class="s2">"</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Preparado para revisar: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>error<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"ERROR: </span><span class="nv">$*</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="o">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="o">((</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">))</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>error<span class="w"> </span><span class="s2">"Uso: bash revisar.sh archivo"</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>error<span class="w"> </span><span class="s2">"No es un archivo ordinario: </span><span class="nv">$1</span><span class="s2">"</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Preparado para revisar: </span><span class="nv">$1</span><span class="s2">"</span>
 </code></pre></div>
 <p>Con un archivo existente, imprime la ruta. Sin argumento, termina con código 1 y una indicación de uso. La validación ocurre antes de leer <code>$1</code> como dato de trabajo.</p>
 <h2 id="procesos-permisos-y-senales-en-el-contexto-de-un-script">Procesos, permisos y señales en el contexto de un script<a class="headerlink" href="#procesos-permisos-y-senales-en-el-contexto-de-un-script" title="Permanent link">&para;</a></h2>
@@ -2486,31 +2490,30 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>wc<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Herramienta disponible\n'</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">else</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Falta la herramienta wc\n'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">fi</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>wc<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Herramienta disponible'</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">else</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Falta la herramienta wc'</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">fi</span>
 </code></pre></div>
 <p>Con <code>wc</code> disponible termina normalmente con estado cero. El otro camino informa por el canal de errores y utiliza un código que permite al programa que llama reconocer el fallo.</p>
 </details>
 <h3 id="2-conserva-el-codigo-de-una-operacion">2. Conserva el código de una operación<a class="headerlink" href="#2-conserva-el-codigo-de-una-operacion" title="Permanent link">&para;</a></h3>
-<p>Una comprobación falla y después haces <code>printf 'Comprobado
-'</code>. Al consultar <code>$?</code>, obtienes 0. Escribe una secuencia que guarde el estado de <code>false</code> antes del mensaje y muestre después ese estado guardado. No uses <code>set -e</code> en esta prueba.</p>
+<p>Una comprobación falla y después haces <code>echo 'Comprobado'</code>. Al consultar <code>$?</code>, obtienes 0. Escribe una secuencia que guarde el estado de <code>false</code> antes del mensaje y muestre después ese estado guardado. No uses <code>set -e</code> en esta prueba.</p>
 <details class="tip">
 <summary>Pista</summary>
 <p>Cada orden actualiza <code>$?</code>; la asignación debe hacerse inmediatamente después de la que interesa.</p>
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">false</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">estado</span><span class="o">=</span><span class="nv">$?</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Comprobado\n'</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'Estado de la prueba: %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$estado</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">false</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">estado</span><span class="o">=</span><span class="nv">$?</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'Comprobado'</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Estado de la prueba: </span><span class="nv">$estado</span><span class="s2">"</span>
 </code></pre></div>
-<p>El estado mostrado es 1. El <code>printf</code> intermedio no modifica la variable <code>estado</code>, aunque sí cambia el significado del <code>$?</code> que consultarías después.</p>
+<p>El estado mostrado es 1. El <code>echo</code> intermedio no modifica la variable <code>estado</code>, aunque sí cambia el significado del <code>$?</code> que consultarías después.</p>
 </details>
 <h3 id="3-organiza-una-investigacion">3. Organiza una investigación<a class="headerlink" href="#3-organiza-una-investigacion" title="Permanent link">&para;</a></h3>
 <p>Un script debe procesar dos nombres con espacios, pero recibe cuatro palabras. Explica qué revisarías en la llamada, cómo comprobarías el número de argumentos y qué prueba repetirías después de corregirlo. No cambies el formato de los nombres para ocultar el error.</p>
@@ -2522,8 +2525,7 @@
 <summary>Solución paso a paso</summary>
 <ol>
 <li>Revisaría si cada nombre completo está entre comillas al llamar al script.</li>
-<li>Observaría <code>$#</code> y cada argumento mediante <code>printf '&lt;%s&gt;
-' "$@"</code>.</li>
+<li>Observaría <code>$#</code> y recorrería <code>"$@"</code> con <code>for argumento in "$@"; do echo "&lt;$argumento&gt;"; done</code>.</li>
 <li>Repetiría la misma llamada con los nombres entrecomillados y comprobaría que hay exactamente dos argumentos completos.</li>
 </ol>
 <p>Cambiar nombres para quitarles espacios evita la prueba, pero no corrige el tratamiento de datos válidos con espacios.</p>

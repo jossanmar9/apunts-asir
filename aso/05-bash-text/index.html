@@ -2538,7 +2538,7 @@
 </details>
 <details class="success">
 <summary>Solución paso a paso</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s\n'</span><span class="w"> </span><span class="s1">'pendiente pendiente listo'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/pendiente/hecho/g'</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'pendiente pendiente listo'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/pendiente/hecho/g'</span>
 </code></pre></div>
 <p>El resultado es <code>hecho hecho listo</code>. Sin <code>g</code>, sería <code>hecho pendiente listo</code>: solo cambiaría la primera aparición de la línea.</p>
 </details>
