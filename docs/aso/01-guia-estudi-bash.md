@@ -1,62 +1,62 @@
-# UT1 · Guia d'estudi de Bash
+# UT1 · Guía de estudio de Bash
 
-Aquesta pàgina és una **guia de repàs per a estudiar** la UT1. No substitueix els apartats detallats: els ordena, destaca el que convé dominar i usa exemples curts.
+Esta página es una **guía de repaso para estudiar** la UT1. No sustituye los apartados detallados: los ordena, destaca lo que conviene dominar y utiliza ejemplos cortos.
 
-## 1. Estructura mínima d'un script
+## 1. Estructura mínima de un script
 
 ```bash
 #!/bin/bash
-echo "Hola món"
+echo "Hola mundo"
 ```
 
 ```bash
 chmod +x script.sh
 ./script.sh
-# o bé
+# o bien
 bash script.sh
 ```
 
-`#!/bin/bash` indica l'intèrpret. Per executar amb `./script.sh` cal permís d'execució.
+`#!/bin/bash` indica el intérprete. Para ejecutar con `./script.sh` hace falta permiso de ejecución.
 
-## 2. Variables, cometes i entrada
+## 2. Variables, comillas y entrada
 
 ```bash
-nom="Jose"
-echo "Hola $nom"
-read -r -p "Nom de l'usuari: " usuari
-echo "Usuari: $usuari"
+nombre="Jose"
+echo "Hola $nombre"
+read -r -p "Nombre del usuario: " usuario
+echo "Usuario: $usuario"
 ```
 
-!!! warning "Error típic"
-    `nom = "Jose"` és incorrecte. En una assignació no hi ha espais al voltant de `=`.
+!!! warning "Error típico"
+    `nombre = "Jose"` es incorrecto. En una asignación no hay espacios alrededor de `=`.
 
-Regla pràctica: quan passes una variable a una ordre, normalment usa `"$variable"` per conservar espais.
+Regla práctica: cuando pasas una variable a una orden, normalmente usa `"$variable"` para conservar espacios.
 
-Variables d'entorn que convé reconéixer: `$HOME`, `$USER`, `$PATH`, `$PWD`, `$SHELL`, `$HOSTNAME`.
+Variables de entorno que conviene reconocer: `$HOME`, `$USER`, `$PATH`, `$PWD`, `$SHELL`, `$HOSTNAME`.
 
-## 3. Paràmetres
+## 3. Parámetros
 
-Si executes:
+Si ejecutas:
 
 ```bash
 ./alta.sh pepe 25
 ```
 
-Dins del script:
+Dentro del script:
 
 ```bash
-echo "$0"  # nom del script
+echo "$0"  # nombre del script
 echo "$1"  # pepe
 echo "$2"  # 25
-echo "$#"  # nombre de paràmetres
-echo "$@"  # tots els paràmetres
+echo "$#"  # número de parámetros
+echo "$@"  # todos los parámetros
 ```
 
-Validació típica:
+Validación típica:
 
 ```bash
 if (( $# != 2 )); then
-    echo "Ús: $0 usuari edat" >&2
+    echo "Uso: $0 usuario edad" >&2
     exit 1
 fi
 ```
@@ -64,120 +64,120 @@ fi
 ## 4. Arrays
 
 ```bash
-servidors=("web01" "db01" "backup01")
-echo "${servidors[0]}"
-echo "${servidors[@]}"
-echo "${#servidors[@]}"
+servidores=("web01" "db01" "backup01")
+echo "${servidores[0]}"
+echo "${servidores[@]}"
+echo "${#servidores[@]}"
 ```
 
-Recórrer-los:
+Recorrerlos:
 
 ```bash
-for servidor in "${servidors[@]}"; do
+for servidor in "${servidores[@]}"; do
     echo "$servidor"
 done
 ```
 
-## 5. Matemàtiques
+## 5. Matemáticas
 
-Per a enters, la forma recomanada és `$(( ... ))` o `(( ... ))`:
+Para enteros, la forma recomendada es `$(( ... ))` o `(( ... ))`:
 
 ```bash
-usats=70
+usados=70
 total=100
-lliures=$((total - usats))
-echo "$lliures"
+libres=$((total - usados))
+echo "$libres"
 ```
 
-Per a decimals, el material usa `bc`:
+Para decimales, el material utiliza `bc`:
 
 ```bash
-resultat=$(echo "scale=2; 10 / 3" | bc)
-echo "$resultat"
+resultado=$(echo "scale=2; 10 / 3" | bc)
+echo "$resultado"
 ```
 
-## 6. Tests: fitxers, cadenes i números
+## 6. Tests: archivos, cadenas y números
 
-### Fitxers
+### Archivos
 
 ```bash
-[[ -e "$ruta" ]]  # existeix
-[[ -f "$ruta" ]]  # fitxer regular
-[[ -d "$ruta" ]]  # directori
-[[ -r "$ruta" ]]  # llegible
-[[ -w "$ruta" ]]  # escriptura
-[[ -x "$ruta" ]]  # executable
-[[ -s "$ruta" ]]  # mida > 0
+[[ -e "$ruta" ]]  # existe
+[[ -f "$ruta" ]]  # archivo regular
+[[ -d "$ruta" ]]  # directorio
+[[ -r "$ruta" ]]  # legible
+[[ -w "$ruta" ]]  # escritura
+[[ -x "$ruta" ]]  # ejecutable
+[[ -s "$ruta" ]]  # tamaño > 0
 ```
 
-### Cadenes
+### Cadenas
 
 ```bash
-[[ -z "$nom" ]]       # buida
-[[ -n "$nom" ]]       # no buida
-[[ "$a" == "$b" ]]   # iguals
-[[ "$a" != "$b" ]]   # diferents
+[[ -z "$nombre" ]]       # vacía
+[[ -n "$nombre" ]]       # no vacía
+[[ "$a" == "$b" ]]      # iguales
+[[ "$a" != "$b" ]]      # diferentes
 ```
 
 ### Números
 
-| Operador | Significat |
+| Operador | Significado |
 |---|---|
 | `-eq` | igual |
-| `-ne` | diferent |
+| `-ne` | diferente |
 | `-lt` | menor |
 | `-le` | menor o igual |
-| `-gt` | major |
-| `-ge` | major o igual |
+| `-gt` | mayor |
+| `-ge` | mayor o igual |
 
 ```bash
-if [[ $ocupacio -ge 90 ]]; then
+if [[ $ocupacion -ge 90 ]]; then
     echo "Alerta"
 fi
 ```
 
-Amb `[[ ... ]]` pots combinar condicions amb `&&` i `||`.
+Con `[[ ... ]]` puedes combinar condiciones con `&&` y `||`.
 
-## 7. Manipulació de cadenes
+## 7. Manipulación de cadenas
 
 ```bash
-fitxer="informe_final.pdf"
-echo "${fitxer:0:7}"  # informe
-echo "${fitxer%.*}"   # informe_final
-echo "${fitxer##*.}"  # pdf
-echo "${#fitxer}"     # longitud
+archivo="informe_final.pdf"
+echo "${archivo:0:7}"  # informe
+echo "${archivo%.*}"   # informe_final
+echo "${archivo##*.}"  # pdf
+echo "${#archivo}"     # longitud
 ```
 
-Aquestes expansions són molt útils per tractar noms de fitxers sense invocar eines externes.
+Estas expansiones son muy útiles para tratar nombres de archivos sin invocar herramientas externas.
 
 ## 8. `if`, `elif`, `else`
 
 ```bash
 if [[ $nota -ge 9 ]]; then
-    echo "Excel·lent"
+    echo "Excelente"
 elif [[ $nota -ge 5 ]]; then
-    echo "Aprovat"
+    echo "Aprobado"
 else
-    echo "Suspés"
+    echo "Suspenso"
 fi
 ```
 
-Pensa sempre: **quina condició vull comprovar i què passa en cada cas?**
+Piensa siempre: **¿qué condición quiero comprobar y qué ocurre en cada caso?**
 
 ## 9. `case`
 
-És útil quan una variable pot tindre diverses opcions conegudes:
+Es útil cuando una variable puede tener varias opciones conocidas:
 
 ```bash
 case "$1" in
     iniciar)
-        echo "Iniciant"
+        echo "Iniciando"
         ;;
     parar)
-        echo "Parant"
+        echo "Parando"
         ;;
     *)
-        echo "Opció desconeguda"
+        echo "Opción desconocida"
         ;;
 esac
 ```
@@ -187,8 +187,8 @@ esac
 ### `for`
 
 ```bash
-for usuari in anna joan pere; do
-    echo "$usuari"
+for usuario in ana juan pedro; do
+    echo "$usuario"
 done
 ```
 
@@ -210,7 +210,7 @@ done
 
 ### `until`
 
-Es repeteix **fins que** la condició és certa:
+Se repite **hasta que** la condición es cierta:
 
 ```bash
 contador=1
@@ -220,80 +220,80 @@ until [[ $contador -gt 5 ]]; do
 done
 ```
 
-`continue` salta a la iteració següent; `break` ix del bucle.
+`continue` salta a la siguiente iteración; `break` sale del bucle.
 
-## 11. Funcions
+## 11. Funciones
 
 ```bash
-comprovar_usuari() {
+comprobar_usuario() {
     if id "$1" &>/dev/null; then
         return 0
     fi
     return 1
 }
 
-if comprovar_usuari "alumne"; then
-    echo "Existeix"
+if comprobar_usuario "alumno"; then
+    echo "Existe"
 else
-    echo "No existeix"
+    echo "No existe"
 fi
 ```
 
-Una funció s'ha de definir abans d'usar-la. Els seus arguments també són `$1`, `$2`... `return` retorna un **codi d'eixida**, no una cadena.
+Una función debe definirse antes de utilizarla. Sus argumentos también son `$1`, `$2`... `return` devuelve un **código de salida**, no una cadena.
 
-Per obtindre un valor:
+Para obtener un valor:
 
 ```bash
 sumar() {
     echo $(($1 + $2))
 }
 
-resultat=$(sumar 4 6)
+resultado=$(sumar 4 6)
 ```
 
-## 12. `grep` i expressions regulars
+## 12. `grep` y expresiones regulares
 
-Patrons bàsics:
+Patrones básicos:
 
-| Patró | Significat |
+| Patrón | Significado |
 |---|---|
-| `^` | inici de línia |
-| `$` | final de línia |
-| `.` | qualsevol caràcter |
-| `[0-9]` | un dígit |
-| `[A-Z]` | una majúscula |
-| `[^0-9]` | qualsevol caràcter que no siga dígit |
+| `^` | inicio de línea |
+| `$` | final de línea |
+| `.` | cualquier carácter |
+| `[0-9]` | un dígito |
+| `[A-Z]` | una mayúscula |
+| `[^0-9]` | cualquier carácter que no sea un dígito |
 
-Amb `grep -E` tens regex esteses: `+`, `?`, `{n}`, `{n,m}`, `|` i `( )`.
+Con `grep -E` tienes regex extendidas: `+`, `?`, `{n}`, `{n,m}`, `|` y `( )`.
 
 ```bash
 grep '^root' /etc/passwd
 grep 'bash$' /etc/passwd
 grep -E 'error|fallo' sistema.log
-grep -E '^[0-9]{4}$' codis.txt
+grep -E '^[0-9]{4}$' codigos.txt
 ```
 
-En Bash pots validar directament amb `=~`:
+En Bash puedes validar directamente con `=~`:
 
 ```bash
-if [[ $port =~ ^[0-9]{1,5}$ ]]; then
-    echo "Format numèric correcte"
+if [[ $puerto =~ ^[0-9]{1,5}$ ]]; then
+    echo "Formato numérico correcto"
 fi
 ```
 
-## 13. Eines de text que has de saber combinar
+## 13. Herramientas de texto que debes saber combinar
 
 ```bash
 grep -i "error" sistema.log
 cut -d: -f1 /etc/passwd
 awk -F: '{print $1, $3}' /etc/passwd
-sort noms.txt
-sort noms.txt | uniq -c
-tr '[:lower:]' '[:upper:]' < noms.txt
+sort nombres.txt
+sort nombres.txt | uniq -c
+tr '[:lower:]' '[:upper:]' < nombres.txt
 find . -type f -name "*.log"
 ```
 
-`cut` va bé amb un delimitador clar. `awk` és millor quan vols treballar amb columnes i condicions.
+`cut` funciona bien con un delimitador claro. `awk` es mejor cuando quieres trabajar con columnas y condiciones.
 
 ## 14. `sed`
 
@@ -301,88 +301,88 @@ find . -type f -name "*.log"
 sed 's/http/https/' config.txt
 sed 's/http/https/g' config.txt
 sed '/error/d' log.txt
-sed '/^$/d' fitxer.txt
-sed -n '3,7p' fitxer.txt
+sed '/^$/d' archivo.txt
+sed -n '3,7p' archivo.txt
 ```
 
-`-i` modifica el fitxer real:
+`-i` modifica el archivo real:
 
 ```bash
-sed -i.bak 's/antic/nou/g' config.txt
+sed -i.bak 's/antiguo/nuevo/g' config.txt
 ```
 
-Això crea una còpia `.bak` abans de modificar.
+Esto crea una copia `.bak` antes de modificar.
 
-## 15. Pipes i redireccions
+## 15. Pipes y redirecciones
 
 ```bash
 ps -ef | grep ssh
-comanda > fitxer.txt
-comanda >> fitxer.txt
-comanda 2> errors.log
-comanda &> tot.log
+comando > archivo.txt
+comando >> archivo.txt
+comando 2> errores.log
+comando &> todo.log
 ```
 
-`>` substitueix; `>>` afegeix. La pipe `|` envia la sortida d'una ordre a l'entrada de la següent.
+`>` sustituye; `>>` añade. La pipe `|` envía la salida de una orden a la entrada de la siguiente.
 
-## 16. Errors i depuració
+## 16. Errores y depuración
 
-Tot comandament retorna un codi: **0 = èxit**, un altre valor = error.
+Todo comando devuelve un código: **0 = éxito**, otro valor = error.
 
 ```bash
 ls /etc/passwd
 echo "$?"
 ```
 
-Per depurar:
+Para depurar:
 
 ```bash
 bash -x script.sh
 ```
 
-Altres eines del tema:
+Otras herramientas del tema:
 
 ```bash
 set -e
 set -u
-trap 'echo "Interromput"; exit 1' SIGINT SIGTERM
+trap 'echo "Interrumpido"; exit 1' SIGINT SIGTERM
 ```
 
-## 17. Exemple integrador
+## 17. Ejemplo integrador
 
-Script que rep un directori i compta els `.log`:
+Script que recibe un directorio y cuenta los `.log`:
 
 ```bash
 #!/bin/bash
 
 if (( $# != 1 )); then
-    echo "Ús: $0 directori" >&2
+    echo "Uso: $0 directorio" >&2
     exit 1
 fi
 
 ruta=$1
 
 if [[ ! -d "$ruta" ]]; then
-    echo "El directori no existeix" >&2
+    echo "El directorio no existe" >&2
     exit 2
 fi
 
-quantitat=$(find "$ruta" -type f -name '*.log' | wc -l)
-echo "Fitxers .log: $quantitat"
+cantidad=$(find "$ruta" -type f -name '*.log' | wc -l)
+echo "Archivos .log: $cantidad"
 ```
 
-Ací combines paràmetres, `if`, test de directori, substitució de comandes, `find`, pipe i `wc`.
+Aquí combinas parámetros, `if`, test de directorio, sustitución de comandos, `find`, pipe y `wc`.
 
-## Què prioritzaria per a l'examen
+## Qué priorizaría para el examen
 
-1. Saber llegir un script i predir què farà.
-2. `$1`, `$#`, `"$@"`, variables i cometes.
-3. `[[ ... ]]`: fitxers, cadenes i comparacions numèriques.
-4. `if`, `case`, `for`, `while` i funcions.
-5. Pipes i redireccions.
-6. `grep` + regex, `awk`, `cut` i `sed`.
-7. Codi d'eixida `$?` i diagnòstic d'errors.
-8. Combinar-ho en scripts curts d'administració.
+1. Saber leer un script y predecir qué hará.
+2. `$1`, `$#`, `"$@"`, variables y comillas.
+3. `[[ ... ]]`: archivos, cadenas y comparaciones numéricas.
+4. `if`, `case`, `for`, `while` y funciones.
+5. Pipes y redirecciones.
+6. `grep` + regex, `awk`, `cut` y `sed`.
+7. Código de salida `$?` y diagnóstico de errores.
+8. Combinarlo en scripts cortos de administración.
 
-!!! tip "Com estudiar-la"
-    Llig un apartat, tanca els apunts i escriu un exemple de 5-10 línies de memòria. Després fes els exercicis de la UT1 sense mirar la solució.
+!!! tip "Cómo estudiarla"
+    Lee un apartado, cierra los apuntes y escribe un ejemplo de 5-10 líneas de memoria. Después haz los ejercicios de la UT1 sin mirar la solución.
