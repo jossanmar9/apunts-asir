@@ -55,7 +55,7 @@ numero = 08  # Error de sintaxis
 
 ```python
 binario = 0b1010   # 10
- octal = 0o12       # 10
+octal = 0o12       # 10
 hexadecimal = 0xA  # 10
 ```
 
