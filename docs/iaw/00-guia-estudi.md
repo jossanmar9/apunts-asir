@@ -41,8 +41,6 @@ Regla mental: **estático = enviar un recurso; dinámico = generar una respuesta
 
 Una petición tiene, como mínimo, método, ruta, cabeceras y a veces cuerpo. Una respuesta contiene un código de estado, cabeceras y normalmente un cuerpo.
 
-Códigos que debes reconocer rápidamente:
-
 | Código | Idea |
 | --- | --- |
 | 200 | correcto |
@@ -79,18 +77,14 @@ services:
   db:
 ```
 
-Y reconocer `ports`, `volumes`, `environment` y `depends_on`.
+También debes reconocer `ports`, `volumes`, `environment` y `depends_on`.
 
-La práctica de clase exige precisamente coordinar **nginx + php + db**, montar `app/`, proporcionar configuración de Nginx, pasar datos de conexión mediante variables y cargar un SQL inicial.
+La práctica de clase exige coordinar **nginx + php + db**, montar `app/`, proporcionar la configuración de Nginx, pasar datos de conexión mediante variables y cargar un SQL inicial.
 
 ## `.env` y `.env.example`
 
-No confundas los dos:
-
 - `.env.example`: plantilla que documenta las variables necesarias.
 - `.env`: valores reales de tu entorno.
-
-Ejemplo:
 
 ```dotenv
 DB_HOST=db
@@ -114,7 +108,7 @@ docker compose exec php sh
 docker compose config
 ```
 
-Ejemplo: si Nginx funciona pero PHP no conecta con MariaDB, primero comprueba si `db` está levantado, después las variables de entorno, el host, usuario/contraseña y finalmente los logs.
+Ejemplo: si Nginx funciona pero PHP no conecta con MariaDB, primero comprueba si `db` está levantado, después las variables de entorno, el host, el usuario y la contraseña y, finalmente, los logs.
 
 ---
 
@@ -151,9 +145,9 @@ if ($meses < 1) {
 }
 ```
 
-Llig `if` com una pregunta: **si esta condición es cierta, qué hago?**
+Lee `if` como una pregunta: **si esta condición es cierta, ¿qué hago?**
 
-## Arrays i `foreach`
+## Arrays y `foreach`
 
 ```php
 $errores = ['Falta el nombre', 'Correo incorrecto'];
@@ -163,9 +157,9 @@ foreach ($errores as $error) {
 }
 ```
 
-Açò és especialment important perquè la pràctica de classe demana acumular errors en un array i mostrar-los amb `foreach`.
+Esto es especialmente importante porque la práctica de clase pide acumular errores en un array y mostrarlos con `foreach`.
 
-## Funcions
+## Funciones
 
 ```php
 function calcularTotal(float $precio, int $meses): float
@@ -174,9 +168,9 @@ function calcularTotal(float $precio, int $meses): float
 }
 ```
 
-Una funció evita repetir una operació i li dona un nom clar.
+Una función evita repetir una operación y le da un nombre claro.
 
-## Formularis i POST
+## Formularios y POST
 
 ```html
 <form method="post">
@@ -191,9 +185,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ```
 
-No dones per fet que un camp existeix ni que el seu contingut és correcte.
+No des por hecho que un campo existe ni que su contenido es correcto.
 
-## Validar no és el mateix que recollir
+## Validar no es lo mismo que recoger
 
 ```php
 $correo = trim($_POST['correo'] ?? '');
@@ -205,34 +199,34 @@ if ($correo === '') {
 }
 ```
 
-Ordre mental recomanat:
+Orden mental recomendado:
 
-1. comprovar si s'ha enviat el formulari;
-2. recollir;
-3. normalitzar (`trim`, etc.);
+1. comprobar si se ha enviado el formulario;
+2. recoger los datos;
+3. normalizar (`trim`, etc.);
 4. validar;
-5. acumular errors;
-6. si no hi ha errors, calcular/processar;
-7. generar la resposta HTML.
+5. acumular errores;
+6. si no hay errores, calcular o procesar;
+7. generar la respuesta HTML.
 
-## Eixida segura
+## Salida segura
 
-Si tornes a mostrar text introduït per l'usuari:
+Si vuelves a mostrar texto introducido por el usuario:
 
 ```php
 <?= htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') ?>
 ```
 
-No confongues **validar** (decidir si una dada és acceptable) amb **escapar** (evitar que un text es tracte com HTML quan el mostres).
+No confundas **validar** (decidir si un dato es aceptable) con **escapar** (evitar que un texto se interprete como HTML cuando lo muestras).
 
-## Sessions
+## Sesiones
 
 ```php
 session_start();
 $_SESSION['usuario'] = 'jose';
 ```
 
-La sessió permet conservar estat entre peticions. Per a un logout bàsic:
+La sesión permite conservar estado entre peticiones. Para un cierre de sesión básico:
 
 ```php
 session_start();
@@ -242,9 +236,9 @@ header('Location: login.php');
 exit;
 ```
 
-`session_start()` i `header()` han d'executar-se abans d'haver enviat eixida que impedisca modificar les capçaleres.
+`session_start()` y `header()` deben ejecutarse antes de haber enviado una salida que impida modificar las cabeceras.
 
-## Depuració que has de saber fer
+## Depuración que debes saber hacer
 
 ```bash
 php -l archivo.php
@@ -252,22 +246,22 @@ docker compose logs -f
 docker compose exec php sh
 ```
 
-Durant una prova també pots inspeccionar dades:
+Durante una prueba también puedes inspeccionar datos:
 
 ```php
 var_dump($_POST);
 var_dump($_SESSION);
 ```
 
-`php -l` comprova sintaxi sense executar el programa. Els `var_dump` de depuració s'han de retirar quan ja no fan falta.
+`php -l` comprueba la sintaxis sin ejecutar el programa. Los `var_dump` de depuración deben retirarse cuando ya no hagan falta.
 
-## Ordre recomanat per estudiar
+## Orden recomendado para estudiar
 
-1. Entén el recorregut navegador → Nginx → PHP-FPM → MariaDB.
-2. Domina ports, volums, serveis i variables de Compose.
-3. Practica diagnòstic amb `ps`, `logs`, `exec` i `config` de Compose.
-4. Passa a PHP: variables → condicions → arrays → bucles → funcions.
-5. Després formularis: POST → recollida → validació → errors → resposta.
-6. Finalment practica sessions, redireccions i depuració.
+1. Entiende el recorrido navegador → Nginx → PHP-FPM → MariaDB.
+2. Domina puertos, volúmenes, servicios y variables de Compose.
+3. Practica el diagnóstico con `ps`, `logs`, `exec` y `config` de Compose.
+4. Pasa a PHP: variables → condiciones → arrays → bucles → funciones.
+5. Después, formularios: POST → recogida → validación → errores → respuesta.
+6. Finalmente, practica sesiones, redirecciones y depuración.
 
-Quan pugues explicar **per què** funciona cada pas sense mirar els apunts, ja no estaràs memoritzant: estaràs entenent el stack.
+Cuando puedas explicar **por qué** funciona cada paso sin mirar los apuntes, ya no estarás memorizando: estarás entendiendo el stack.
