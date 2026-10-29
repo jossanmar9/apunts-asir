@@ -32,6 +32,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
+    - toc.follow
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -46,10 +47,6 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.snippets:
-      base_path:
-        - .
-      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -67,13 +64,17 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets:
+      base_path:
+        - .
+      check_paths: true
   - attr_list
   - def_list
   - md_in_html
   - tables
   - toc:
       permalink: true
-      toc_depth: 6
+      toc_depth: 2-6
 
 extra_css:
   - assets/stylesheets/extra.css
@@ -82,6 +83,7 @@ nav:
   - "Inicio": index.md
   - "IAW":
       - iaw/index.md
+      - "Guía de estudio UT1 + UT2": iaw/00-guia-estudi.md
       - "UT1 · Entorno de implantación web": iaw/ut1.md
       - "UT2 · Programación web en servidor": iaw/ut2.md
   - "ASO":
