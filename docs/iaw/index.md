@@ -30,17 +30,17 @@ La unidad parte del entorno de UT1 y practica el ciclo **petición → PHP → v
 
 ## Ejercicios adicionales
 
-A més dels problemes explicats dins dels apunts, hi ha un banc separat d'exercicis **sense solució** per practicar de manera autònoma. Els enunciats són diferents de les pràctiques de classe i mantenen el mateix nivell i continguts.
+Además de los problemas explicados dentro de los apuntes, hay un banco separado de ejercicios **sin solución** para practicar de forma autónoma. Los enunciados son diferentes de las prácticas de clase y mantienen el mismo nivel y contenidos.
 
-- **UT1:** 60 exercicis d'arquitectura, HTTP, Docker, Compose, Nginx, PHP-FPM, MariaDB, variables, logs i diagnòstic.
-- **UT2:** 50 exercicis de PHP, control de flux, arrays, funcions, formularis, validació, sessions i depuració.
+- **UT1:** 60 ejercicios de arquitectura, HTTP, Docker, Compose, Nginx, PHP-FPM, MariaDB, variables, logs y diagnóstico.
+- **UT2:** 50 ejercicios de PHP, control de flujo, arrays, funciones, formularios, validación, sesiones y depuración.
 
-Consulta la secció **Ejercicios → IAW** de la web.
+Consulta la sección **Ejercicios → IAW** de la web.
 
-## Material pendent
+## Material pendiente
 
-UT3 (accés a bases de dades) i les unitats posteriors s'incorporaran quan disposem del material de classe corresponent, per no avançar continguts que no siguen els que treballa el curs.
+UT3 (acceso a bases de datos) y las unidades posteriores se incorporarán cuando dispongamos del material de clase correspondiente, para no adelantar contenidos que no sean los que se trabajan en el curso.
 
-## Com estudiar aquests apunts
+## Cómo estudiar estos apuntes
 
-Llig primer la guia de repàs. Després entra en cada tema i intenta explicar amb les teues paraules què fa cada component o instrucció. En programació, prediu el resultat abans d'executar. En Docker, intenta identificar primer **quin servei falla i quina evidència ho demostraria** abans de canviar configuracions.
+Lee primero la guía de repaso. Después entra en cada tema e intenta explicar con tus propias palabras qué hace cada componente o instrucción. En programación, predice el resultado antes de ejecutar. En Docker, intenta identificar primero **qué servicio falla y qué evidencia lo demostraría** antes de cambiar configuraciones.
