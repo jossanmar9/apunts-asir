@@ -105,10 +105,12 @@ nav:
           - "Monitorización, logs y diagnóstico": aso/11-monitoritzacio.md
   - "Python":
       - python-classe/index.md
-      - "UT1 · Introducción, entorno y tipos de datos":
-          - "Programación y entorno": python-classe/01-entorn.md
-          - "Variables, tipos y operadores": python-classe/02-dades.md
-          - "Entrada y salida": python-classe/03-entrada.md
+      - "UT1 · Introducción a Python":
+          - "1.1 · Introducción a la programación": python-classe/ut1-01-introduccion.md
+          - "1.2 · Entorno de desarrollo": python-classe/ut1-02-entorno.md
+          - "1.3 · Datos, variables, tipos y objetos": python-classe/ut1-03-datos.md
+          - "1.4 · Números, booleanos y operadores": python-classe/ut1-04-numeros-operadores.md
+          - "1.5 · Cadenas, entrada/salida y f-strings": python-classe/ut1-05-cadenas-entrada-salida.md
       - "UT2 · Objetos predefinidos y cadenas":
           - "Objetos y métodos de cadenas": python-classe/04-cadenes.md
           - "F-strings y Unicode": python-classe/05-format.md
