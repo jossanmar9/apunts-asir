@@ -1,12 +1,12 @@
-# UT2 · 3. Serveis i systemd
+# UT2 · 3. Servicios y systemd
 
-## Què és un servei?
+## ¿Qué es un servicio?
 
-Un **servei** és un procés que s'executa en segon pla i proporciona una funcionalitat al sistema o als usuaris. Exemples habituals: Apache/Nginx, MySQL/PostgreSQL o SSH.
+Un **servicio** es un proceso que se ejecuta en segundo plano y proporciona una funcionalidad al sistema o a los usuarios. Ejemplos habituales: Apache/Nginx, MySQL/PostgreSQL o SSH.
 
-Linux ha tingut diferents sistemes d'inici, com SysVinit i Upstart. El tema se centra en **systemd**, que organitza serveis mitjançant unitats (*units*).
+Linux ha tenido diferentes sistemas de inicio, como SysVinit y Upstart. El tema se centra en **systemd**, que organiza servicios mediante unidades (*units*).
 
-Les unitats es troben habitualment en rutes com:
+Las unidades se encuentran habitualmente en rutas como:
 
 ```text
 /etc/systemd/system
@@ -15,7 +15,7 @@ Les unitats es troben habitualment en rutes com:
 
 ## `systemctl`
 
-Ordres que has de dominar:
+Órdenes que debes dominar:
 
 ```bash
 systemctl status ssh
@@ -26,68 +26,68 @@ sudo systemctl enable ssh
 sudo systemctl disable ssh
 ```
 
-No confongues **start** i **enable**:
+No confundas **start** y **enable**:
 
-- `start` → inicia el servei **ara**.
-- `enable` → configura que s'inicie durant l'arrancada.
+- `start` → inicia el servicio **ahora**.
+- `enable` → configura que se inicie durante el arranque.
 
-Per fer les dues coses:
+Para hacer las dos cosas:
 
 ```bash
 sudo systemctl enable --now ssh
 ```
 
-I per deshabilitar i parar:
+Y para deshabilitar y detener:
 
 ```bash
 sudo systemctl disable --now ssh
 ```
 
-## Llistar serveis
+## Listar servicios
 
 ```bash
 systemctl list-units --type=service
 ```
 
-## Flux de diagnòstic senzill
+## Flujo de diagnóstico sencillo
 
-Si un servei no funciona:
+Si un servicio no funciona:
 
 ```bash
 systemctl status ssh
 ```
 
-Mira si està actiu, si ha fallat i els missatges que apareixen. Després pots consultar el journal:
+Mira si está activo, si ha fallado y los mensajes que aparecen. Después puedes consultar el journal:
 
 ```bash
 journalctl -u ssh
 ```
 
-Per veure missatges recents:
+Para ver mensajes recientes:
 
 ```bash
 journalctl -u ssh -n 50
 ```
 
-## Exemple mental d'examen
+## Ejemplo mental de examen
 
-**Pregunta:** «Vull que SSH s'inicie ara i també automàticament després de reiniciar.»
+**Pregunta:** «Quiero que SSH se inicie ahora y también automáticamente después de reiniciar.»
 
 ```bash
 sudo systemctl enable --now ssh
 ```
 
-**Pregunta:** «Vull reiniciar el servei perquè he canviat la configuració.»
+**Pregunta:** «Quiero reiniciar el servicio porque he cambiado la configuración.»
 
 ```bash
 sudo systemctl restart ssh
 ```
 
-**Pregunta:** «Només vull saber què li passa.»
+**Pregunta:** «Solo quiero saber qué le pasa.»
 
 ```bash
 systemctl status ssh
 ```
 
 !!! tip
-    Abans de memoritzar ordres, diferencia tres idees: **estat actual**, **acció ara** i **comportament en l'arrancada**.
+    Antes de memorizar órdenes, diferencia tres ideas: **estado actual**, **acción ahora** y **comportamiento en el arranque**.
