@@ -28,14 +28,14 @@ theme:
         icon: material/weather-sunny
         name: Modo claro
   features:
-    - navigation.tabs          # una pestaña por módulo
+    - navigation.tabs
     - navigation.sections
-    - navigation.indexes       # index.md es la portada de cada módulo
+    - navigation.indexes
     - navigation.top
-    - navigation.footer        # botones Anterior / Siguiente
+    - navigation.footer
     - search.suggest
     - search.highlight
-    - content.code.copy        # botón para copiar bloques de código
+    - content.code.copy
     - content.code.annotate
     - content.tabs.link
     - content.action.edit
@@ -45,8 +45,8 @@ plugins:
       lang: [es, en]
 
 markdown_extensions:
-  - admonition               # !!! note / tip / warning
-  - pymdownx.details         # ??? desplegables
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -57,7 +57,7 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.keys            # ++ctrl+c++
+  - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -109,6 +109,13 @@ nav:
           - "Condicionales y bucles": python-classe/06-control.md
           - "Errores y depuración": python-classe/07-errors.md
           - "Bibliotecas de administración": python-classe/08-biblioteques.md
+  - "Ejercicios":
+      - ejercicios/index.md
+      - "Python":
+          - ejercicios/python/index.md
+          - "UT1 · Introducción y tipos": ejercicios/python/ut1.md
+          - "UT2 · Cadenas": ejercicios/python/ut2.md
+          - "UT3 · Condicionales y sysadmin": ejercicios/python/ut3.md
   - "Git y GitHub":
       - git-github/index.md
   - "Sostenibilidad":
