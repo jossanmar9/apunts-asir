@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 021 · Tres servicios
+#
+# Escribe el esqueleto de un compose.yaml con nginx, php y db.
+
+# Escribe aquí tus comandos, configuración o explicación.

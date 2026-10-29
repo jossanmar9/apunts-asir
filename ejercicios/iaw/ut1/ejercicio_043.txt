@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 043 · Error de host
+#
+# Cambia temporalmente DB_HOST por un nombre incorrecto y compara el error con el de credenciales.
+
+# Escribe aquí tus comandos, configuración o explicación.

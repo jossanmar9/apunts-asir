@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 046 · Reproducibilidad
+#
+# Explica qué archivos necesitaría otra persona para levantar el mismo entorno desde cero.
+
+# Escribe aquí tus comandos, configuración o explicación.

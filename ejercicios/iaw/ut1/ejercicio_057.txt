@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 057 · Compose config
+#
+# Usa docker compose config para revisar la configuración resultante y detectar variables ausentes.
+
+# Escribe aquí tus comandos, configuración o explicación.

@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 019 · Dockerfile PHP
+#
+# Diseña un Dockerfile mínimo basado en PHP-FPM y explica cada instrucción.
+
+# Escribe aquí tus comandos, configuración o explicación.

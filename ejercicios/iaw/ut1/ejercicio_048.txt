@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 048 · Usuario de base de datos
+#
+# Explica por qué la aplicación no debería conectarse habitualmente como root.
+
+# Escribe aquí tus comandos, configuración o explicación.

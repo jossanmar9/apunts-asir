@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 045 · Servicio no disponible
+#
+# Detén db y observa cómo se comporta la aplicación; documenta el diagnóstico.
+
+# Escribe aquí tus comandos, configuración o explicación.

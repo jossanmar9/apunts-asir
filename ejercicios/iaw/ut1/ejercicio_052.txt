@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 052 · Prueba de estáticos
+#
+# Añade un archivo CSS y comprueba que Nginx puede servirlo sin ejecutar PHP.
+
+# Escribe aquí tus comandos, configuración o explicación.

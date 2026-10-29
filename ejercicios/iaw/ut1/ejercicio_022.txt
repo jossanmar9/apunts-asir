@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 022 · Dependencias
+#
+# Añade depends_on donde tenga sentido y explica qué garantiza y qué no garantiza.
+
+# Escribe aquí tus comandos, configuración o explicación.

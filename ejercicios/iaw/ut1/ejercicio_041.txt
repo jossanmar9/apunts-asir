@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 041 · Conexión PHP-MariaDB
+#
+# Crea una prueba mínima que confirme que PHP puede abrir una conexión PDO con db.
+
+# Escribe aquí tus comandos, configuración o explicación.

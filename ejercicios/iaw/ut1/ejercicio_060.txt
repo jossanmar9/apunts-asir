@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 060 · Caso final UT1
+#
+# Monta desde una carpeta vacía un stack Nginx + PHP-FPM + MariaDB que muestre un registro inicial y documenta el diagnóstico de al menos un fallo provocado.
+
+# Escribe aquí tus comandos, configuración o explicación.

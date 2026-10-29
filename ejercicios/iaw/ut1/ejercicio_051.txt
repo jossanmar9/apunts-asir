@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 051 · Mapa del stack
+#
+# Dibuja en texto el recorrido navegador → Nginx → PHP-FPM → MariaDB y anota el protocolo o función de cada salto.
+
+# Escribe aquí tus comandos, configuración o explicación.

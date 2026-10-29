@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 002 · Ruta de una petición
+#
+# Explica paso a paso qué ocurre desde que el navegador solicita index.php hasta que recibe HTML.
+
+# Escribe aquí tus comandos, configuración o explicación.

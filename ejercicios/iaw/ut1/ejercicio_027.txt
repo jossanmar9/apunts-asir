@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 027 · No usar localhost
+#
+# Razona por qué localhost desde el contenedor PHP no apunta al contenedor de base de datos.
+
+# Escribe aquí tus comandos, configuración o explicación.

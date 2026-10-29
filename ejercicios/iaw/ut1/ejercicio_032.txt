@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 032 · Inicialización SQL
+#
+# Crea un init.sql que genere una tabla sencilla e inserte un registro inicial.
+
+# Escribe aquí tus comandos, configuración o explicación.

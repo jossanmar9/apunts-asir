@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 014 · Primer contenedor Nginx
+#
+# Escribe y explica un docker run que publique Nginx en un puerto no estándar.
+
+# Escribe aquí tus comandos, configuración o explicación.

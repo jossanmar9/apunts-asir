@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 011 · Diagnóstico 500
+#
+# Propón una secuencia de comprobaciones ante un error 500 en una página PHP.
+
+# Escribe aquí tus comandos, configuración o explicación.

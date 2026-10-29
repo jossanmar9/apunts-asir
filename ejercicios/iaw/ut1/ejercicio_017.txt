@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 017 · Montaje de solo lectura
+#
+# Explica y prueba el efecto de :ro en un volumen de Nginx.
+
+# Escribe aquí tus comandos, configuración o explicación.

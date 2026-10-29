@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 038 · Logs de un servicio
+#
+# Sigue en tiempo real únicamente los logs de PHP o Nginx.
+
+# Escribe aquí tus comandos, configuración o explicación.

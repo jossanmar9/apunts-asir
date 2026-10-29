@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 036 · Estado del stack
+#
+# Usa docker compose ps para comprobar el estado de los tres servicios.
+
+# Escribe aquí tus comandos, configuración o explicación.

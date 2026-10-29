@@ -1,0 +1,4693 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes desarrollados de IAW, ASO, Python, Sostenibilidad y Git y GitHub, con explicaciones desde cero y problemas fáciles paso a paso para estudiar ASIR">
+      
+      
+      
+        <link rel="canonical" href="https://jossanmar9.github.io/apunts-asir/ejercicios/iaw/ut1/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../ut2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>UT1 · Entorno web · 60 - Apuntes ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ut1-entorno-de-implantacion-web" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Apuntes ASIR" class="md-header__button md-logo" aria-label="Apuntes ASIR" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Apuntes ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT1 · Entorno web · 60
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jossanmar9/apunts-asir" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    apunts-asir
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../iaw/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  IAW
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../aso/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ASO
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python-classe/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Ejercicios
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git-github/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git y GitHub
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sostenibilidad/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Sostenibilidad
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../estudiar/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cómo estudiar
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../classe/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Fuentes y cobertura
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Apuntes ASIR" class="md-nav__button md-logo" aria-label="Apuntes ASIR" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-7zM4 3h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1m5 4h1V5H9zm0 8h1v-2H9zM5 5v2h2V5zm0 8v2h2v-2z"/></svg>
+
+    </a>
+    Apuntes ASIR
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jossanmar9/apunts-asir" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    apunts-asir
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../iaw/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IAW
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IAW
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/00-guia-estudi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía de estudio UT1 + UT2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Entorno de implantación web
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT1 · Entorno de implantación web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/01-arquitectura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/02-http/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP y diagnóstico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/03-entorn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Compose y entorno reproducible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 · Programación web en servidor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 · Programación web en servidor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/04-php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP y tipos de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/05-control-funcions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control de flujo, arrays y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/06-formularis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Formularios y validación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/07-estat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookies, sesiones y autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iaw/08-depuracio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depuración y comprobaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../aso/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASO
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ASO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT1 · Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/01-guia-estudi-bash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía de estudio y repaso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/02-bash-dades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts, variables y parámetros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/03-bash-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cálculos y decisiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/04-bash-bucles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bucles y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/05-bash-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archivos, filtros y expresiones regulares
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/06-bash-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errores y scripts de administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 · Procesos, servicios y automatización
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 · Procesos, servicios y automatización
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/07-processos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Procesos en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/08-control-processos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control, señales y prioridades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/09-systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios y systemd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/10-automatitzacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatización: cron y at
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aso/11-monitoritzacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitorización, logs y diagnóstico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../python-classe/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Introducción, entorno y tipos de datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT1 · Introducción, entorno y tipos de datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/01-entorn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación y entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/02-dades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables, tipos y operadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/03-entrada/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entrada y salida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 · Objetos predefinidos y cadenas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 · Objetos predefinidos y cadenas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/04-cadenes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetos y métodos de cadenas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/05-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    F-strings y Unicode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 · Control de flujo y bibliotecas sysadmin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT3 · Control de flujo y bibliotecas sysadmin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/06-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Condicionales y bucles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/07-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errores y depuración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python-classe/08-biblioteques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bibliotecas de administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ejercicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/ut1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Introducción y tipos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/ut2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 · Cadenas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/ut3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 · Condicionales y sysadmin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../aso/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASO
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ASO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aso/ut1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Bash · 120
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aso/ut2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 · Procesos, servicios y automatización · 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IAW
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IAW
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Entorno web · 60
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 · Entorno web · 60
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-001-estatico-o-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 001 · Estático o dinámico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-002-ruta-de-una-peticion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 002 · Ruta de una petición
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-003-papel-de-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 003 · Papel de Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-004-papel-de-php-fpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 004 · Papel de PHP-FPM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-005-papel-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 005 · Papel de MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-006-codigo-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 006 · Código HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-007-peticion-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 007 · Petición HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-008-respuesta-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 008 · Respuesta HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-009-get-y-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 009 · GET y POST
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-010-diagnostico-404" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 010 · Diagnóstico 404
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-011-diagnostico-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 011 · Diagnóstico 500
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-012-puerto-publicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 012 · Puerto publicado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-013-conflicto-de-puerto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 013 · Conflicto de puerto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-014-primer-contenedor-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 014 · Primer contenedor Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-015-ciclo-de-un-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 015 · Ciclo de un contenedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-016-bind-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 016 · Bind mount
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-017-montaje-de-solo-lectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 017 · Montaje de solo lectura
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-018-imagen-frente-a-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 018 · Imagen frente a contenedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-019-dockerfile-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 019 · Dockerfile PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-020-extension-pdo-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 020 · Extensión PDO MySQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-021-tres-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 021 · Tres servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-022-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 022 · Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-023-volumenes-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 023 · Volúmenes Compose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-024-configuracion-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 024 · Configuración Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-025-fastcgi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 025 · FastCGI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-026-nombre-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 026 · Nombre de servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-027-no-usar-localhost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 027 · No usar localhost
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-028-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 028 · Variables de entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-029-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 029 · .env.example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-030-env-y-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 030 · .env y Git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-031-environment-y-env_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 031 · environment y env_file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-032-inicializacion-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 032 · Inicialización SQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-033-volumen-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 033 · Volumen de MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-034-reinicializar-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 034 · Reinicializar base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-035-construir-y-levantar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 035 · Construir y levantar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-036-estado-del-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 036 · Estado del stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-037-logs-completos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 037 · Logs completos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-038-logs-de-un-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 038 · Logs de un servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-039-entrar-en-un-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 039 · Entrar en un contenedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-040-comprobar-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 040 · Comprobar variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-041-conexion-php-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 041 · Conexión PHP-MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-042-error-de-credenciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 042 · Error de credenciales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-043-error-de-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 043 · Error de host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-044-error-de-nginx-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 044 · Error de Nginx-PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-045-servicio-no-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 045 · Servicio no disponible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-046-reproducibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 046 · Reproducibilidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-047-seguridad-de-puertos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 047 · Seguridad de puertos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-048-usuario-de-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 048 · Usuario de base de datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-049-secretos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 049 · Secretos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-050-documentar-el-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 050 · Documentar el stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-051-mapa-del-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 051 · Mapa del stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-052-prueba-de-estaticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 052 · Prueba de estáticos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-053-prueba-de-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 053 · Prueba de PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-054-pagina-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 054 · Página de estado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-055-cambio-de-puerto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 055 · Cambio de puerto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-056-dos-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 056 · Dos stacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-057-compose-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 057 · Compose config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-058-recrear-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 058 · Recrear servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-059-evidencia-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 059 · Evidencia técnica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-060-caso-final-ut1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 060 · Caso final UT1
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 · PHP · 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../git-github/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git y GitHub
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git y GitHub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sostenibilidad/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sostenibilidad
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sostenibilidad
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sostenibilidad/01-organizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 · Sostenibilidad en las organizaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sostenibilidad/02-retos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 · Retos ambientales y sociales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sostenibilidad/03-ods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 · ODS en el desempeño profesional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sostenibilidad/04-economia-circular/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 · Economía verde y circular
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sostenibilidad/05-actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 · Actividades sostenibles y medioambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sostenibilidad/06-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 · El plan de sostenibilidad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../estudiar/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cómo estudiar
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cómo estudiar
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../estudiar/consells/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consejos de programación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../classe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fuentes y cobertura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-001-estatico-o-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 001 · Estático o dinámico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-002-ruta-de-una-peticion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 002 · Ruta de una petición
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-003-papel-de-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 003 · Papel de Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-004-papel-de-php-fpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 004 · Papel de PHP-FPM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-005-papel-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 005 · Papel de MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-006-codigo-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 006 · Código HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-007-peticion-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 007 · Petición HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-008-respuesta-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 008 · Respuesta HTTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-009-get-y-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 009 · GET y POST
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-010-diagnostico-404" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 010 · Diagnóstico 404
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-011-diagnostico-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 011 · Diagnóstico 500
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-012-puerto-publicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 012 · Puerto publicado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-013-conflicto-de-puerto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 013 · Conflicto de puerto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-014-primer-contenedor-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 014 · Primer contenedor Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-015-ciclo-de-un-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 015 · Ciclo de un contenedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-016-bind-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 016 · Bind mount
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-017-montaje-de-solo-lectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 017 · Montaje de solo lectura
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-018-imagen-frente-a-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 018 · Imagen frente a contenedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-019-dockerfile-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 019 · Dockerfile PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-020-extension-pdo-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 020 · Extensión PDO MySQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-021-tres-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 021 · Tres servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-022-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 022 · Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-023-volumenes-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 023 · Volúmenes Compose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-024-configuracion-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 024 · Configuración Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-025-fastcgi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 025 · FastCGI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-026-nombre-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 026 · Nombre de servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-027-no-usar-localhost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 027 · No usar localhost
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-028-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 028 · Variables de entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-029-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 029 · .env.example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-030-env-y-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 030 · .env y Git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-031-environment-y-env_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 031 · environment y env_file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-032-inicializacion-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 032 · Inicialización SQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-033-volumen-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 033 · Volumen de MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-034-reinicializar-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 034 · Reinicializar base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-035-construir-y-levantar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 035 · Construir y levantar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-036-estado-del-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 036 · Estado del stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-037-logs-completos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 037 · Logs completos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-038-logs-de-un-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 038 · Logs de un servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-039-entrar-en-un-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 039 · Entrar en un contenedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-040-comprobar-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 040 · Comprobar variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-041-conexion-php-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 041 · Conexión PHP-MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-042-error-de-credenciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 042 · Error de credenciales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-043-error-de-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 043 · Error de host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-044-error-de-nginx-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 044 · Error de Nginx-PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-045-servicio-no-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 045 · Servicio no disponible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-046-reproducibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 046 · Reproducibilidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-047-seguridad-de-puertos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 047 · Seguridad de puertos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-048-usuario-de-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 048 · Usuario de base de datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-049-secretos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 049 · Secretos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-050-documentar-el-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 050 · Documentar el stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-051-mapa-del-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 051 · Mapa del stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-052-prueba-de-estaticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 052 · Prueba de estáticos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-053-prueba-de-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 053 · Prueba de PHP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-054-pagina-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 054 · Página de estado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-055-cambio-de-puerto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 055 · Cambio de puerto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-056-dos-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 056 · Dos stacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-057-compose-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 057 · Compose config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-058-recrear-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 058 · Recrear servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-059-evidencia-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 059 · Evidencia técnica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-060-caso-final-ut1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 060 · Caso final UT1
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/jossanmar9/apunts-asir/edit/main/docs/ejercicios/iaw/ut1.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="ut1-entorno-de-implantacion-web">UT1 · Entorno de implantación web<a class="headerlink" href="#ut1-entorno-de-implantacion-web" title="Permanent link">&para;</a></h1>
+<p>Banco de <strong>60 ejercicios adicionales</strong> para practicar. No incluyen solución y están pensados para complementar, no copiar, las actividades de clase.</p>
+<h2 id="ejercicio-001-estatico-o-dinamico">Ejercicio 001 · Estático o dinámico<a class="headerlink" href="#ejercicio-001-estatico-o-dinamico" title="Permanent link">&para;</a></h2>
+<p>Clasifica varios recursos web como estáticos, dinámicos o mixtos y justifica cada decisión.</p>
+<p><a class="md-button" href="ejercicio_001.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_001.txt</a></p>
+<h2 id="ejercicio-002-ruta-de-una-peticion">Ejercicio 002 · Ruta de una petición<a class="headerlink" href="#ejercicio-002-ruta-de-una-peticion" title="Permanent link">&para;</a></h2>
+<p>Explica paso a paso qué ocurre desde que el navegador solicita index.php hasta que recibe HTML.</p>
+<p><a class="md-button" href="ejercicio_002.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_002.txt</a></p>
+<h2 id="ejercicio-003-papel-de-nginx">Ejercicio 003 · Papel de Nginx<a class="headerlink" href="#ejercicio-003-papel-de-nginx" title="Permanent link">&para;</a></h2>
+<p>Describe qué peticiones puede resolver Nginx directamente y cuáles debe reenviar a PHP-FPM.</p>
+<p><a class="md-button" href="ejercicio_003.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_003.txt</a></p>
+<h2 id="ejercicio-004-papel-de-php-fpm">Ejercicio 004 · Papel de PHP-FPM<a class="headerlink" href="#ejercicio-004-papel-de-php-fpm" title="Permanent link">&para;</a></h2>
+<p>Explica por qué PHP-FPM no sustituye a Nginx y qué devuelve después de ejecutar un script.</p>
+<p><a class="md-button" href="ejercicio_004.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_004.txt</a></p>
+<h2 id="ejercicio-005-papel-de-mariadb">Ejercicio 005 · Papel de MariaDB<a class="headerlink" href="#ejercicio-005-papel-de-mariadb" title="Permanent link">&para;</a></h2>
+<p>Indica qué información tendría sentido guardar de forma persistente en una aplicación web sencilla.</p>
+<p><a class="md-button" href="ejercicio_005.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_005.txt</a></p>
+<h2 id="ejercicio-006-codigo-http">Ejercicio 006 · Código HTTP<a class="headerlink" href="#ejercicio-006-codigo-http" title="Permanent link">&para;</a></h2>
+<p>Relaciona situaciones habituales con 200, 301/302, 403, 404 y 500.</p>
+<p><a class="md-button" href="ejercicio_006.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_006.txt</a></p>
+<h2 id="ejercicio-007-peticion-http">Ejercicio 007 · Petición HTTP<a class="headerlink" href="#ejercicio-007-peticion-http" title="Permanent link">&para;</a></h2>
+<p>Identifica método, ruta y cabeceras en una petición HTTP de ejemplo.</p>
+<p><a class="md-button" href="ejercicio_007.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_007.txt</a></p>
+<h2 id="ejercicio-008-respuesta-http">Ejercicio 008 · Respuesta HTTP<a class="headerlink" href="#ejercicio-008-respuesta-http" title="Permanent link">&para;</a></h2>
+<p>Identifica estado, cabeceras y cuerpo en una respuesta HTTP de ejemplo.</p>
+<p><a class="md-button" href="ejercicio_008.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_008.txt</a></p>
+<h2 id="ejercicio-009-get-y-post">Ejercicio 009 · GET y POST<a class="headerlink" href="#ejercicio-009-get-y-post" title="Permanent link">&para;</a></h2>
+<p>Elige GET o POST para cinco situaciones web y justifica la elección.</p>
+<p><a class="md-button" href="ejercicio_009.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_009.txt</a></p>
+<h2 id="ejercicio-010-diagnostico-404">Ejercicio 010 · Diagnóstico 404<a class="headerlink" href="#ejercicio-010-diagnostico-404" title="Permanent link">&para;</a></h2>
+<p>Propón una secuencia de comprobaciones cuando Nginx devuelve 404.</p>
+<p><a class="md-button" href="ejercicio_010.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_010.txt</a></p>
+<h2 id="ejercicio-011-diagnostico-500">Ejercicio 011 · Diagnóstico 500<a class="headerlink" href="#ejercicio-011-diagnostico-500" title="Permanent link">&para;</a></h2>
+<p>Propón una secuencia de comprobaciones ante un error 500 en una página PHP.</p>
+<p><a class="md-button" href="ejercicio_011.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_011.txt</a></p>
+<h2 id="ejercicio-012-puerto-publicado">Ejercicio 012 · Puerto publicado<a class="headerlink" href="#ejercicio-012-puerto-publicado" title="Permanent link">&para;</a></h2>
+<p>Explica qué significa 8080:80 y desde qué URL accederías al servicio.</p>
+<p><a class="md-button" href="ejercicio_012.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_012.txt</a></p>
+<h2 id="ejercicio-013-conflicto-de-puerto">Ejercicio 013 · Conflicto de puerto<a class="headerlink" href="#ejercicio-013-conflicto-de-puerto" title="Permanent link">&para;</a></h2>
+<p>Un contenedor no arranca porque 8080 está ocupado. Indica cómo diagnosticarlo y una solución.</p>
+<p><a class="md-button" href="ejercicio_013.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_013.txt</a></p>
+<h2 id="ejercicio-014-primer-contenedor-nginx">Ejercicio 014 · Primer contenedor Nginx<a class="headerlink" href="#ejercicio-014-primer-contenedor-nginx" title="Permanent link">&para;</a></h2>
+<p>Escribe y explica un docker run que publique Nginx en un puerto no estándar.</p>
+<p><a class="md-button" href="ejercicio_014.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_014.txt</a></p>
+<h2 id="ejercicio-015-ciclo-de-un-contenedor">Ejercicio 015 · Ciclo de un contenedor<a class="headerlink" href="#ejercicio-015-ciclo-de-un-contenedor" title="Permanent link">&para;</a></h2>
+<p>Practica docker ps, logs, stop, start y rm sobre un contenedor de prueba.</p>
+<p><a class="md-button" href="ejercicio_015.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_015.txt</a></p>
+<h2 id="ejercicio-016-bind-mount">Ejercicio 016 · Bind mount<a class="headerlink" href="#ejercicio-016-bind-mount" title="Permanent link">&para;</a></h2>
+<p>Monta una carpeta local con un index.html dentro de Nginx y comprueba que los cambios se reflejan.</p>
+<p><a class="md-button" href="ejercicio_016.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_016.txt</a></p>
+<h2 id="ejercicio-017-montaje-de-solo-lectura">Ejercicio 017 · Montaje de solo lectura<a class="headerlink" href="#ejercicio-017-montaje-de-solo-lectura" title="Permanent link">&para;</a></h2>
+<p>Explica y prueba el efecto de :ro en un volumen de Nginx.</p>
+<p><a class="md-button" href="ejercicio_017.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_017.txt</a></p>
+<h2 id="ejercicio-018-imagen-frente-a-contenedor">Ejercicio 018 · Imagen frente a contenedor<a class="headerlink" href="#ejercicio-018-imagen-frente-a-contenedor" title="Permanent link">&para;</a></h2>
+<p>Explica con un ejemplo práctico la diferencia entre una imagen y un contenedor.</p>
+<p><a class="md-button" href="ejercicio_018.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_018.txt</a></p>
+<h2 id="ejercicio-019-dockerfile-php">Ejercicio 019 · Dockerfile PHP<a class="headerlink" href="#ejercicio-019-dockerfile-php" title="Permanent link">&para;</a></h2>
+<p>Diseña un Dockerfile mínimo basado en PHP-FPM y explica cada instrucción.</p>
+<p><a class="md-button" href="ejercicio_019.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_019.txt</a></p>
+<h2 id="ejercicio-020-extension-pdo-mysql">Ejercicio 020 · Extensión PDO MySQL<a class="headerlink" href="#ejercicio-020-extension-pdo-mysql" title="Permanent link">&para;</a></h2>
+<p>Investiga qué necesita una imagen PHP para conectar mediante PDO con MariaDB y documenta la decisión.</p>
+<p><a class="md-button" href="ejercicio_020.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_020.txt</a></p>
+<h2 id="ejercicio-021-tres-servicios">Ejercicio 021 · Tres servicios<a class="headerlink" href="#ejercicio-021-tres-servicios" title="Permanent link">&para;</a></h2>
+<p>Escribe el esqueleto de un compose.yaml con nginx, php y db.</p>
+<p><a class="md-button" href="ejercicio_021.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_021.txt</a></p>
+<h2 id="ejercicio-022-dependencias">Ejercicio 022 · Dependencias<a class="headerlink" href="#ejercicio-022-dependencias" title="Permanent link">&para;</a></h2>
+<p>Añade depends_on donde tenga sentido y explica qué garantiza y qué no garantiza.</p>
+<p><a class="md-button" href="ejercicio_022.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_022.txt</a></p>
+<h2 id="ejercicio-023-volumenes-compose">Ejercicio 023 · Volúmenes Compose<a class="headerlink" href="#ejercicio-023-volumenes-compose" title="Permanent link">&para;</a></h2>
+<p>Monta app/ en Nginx y PHP indicando por qué ambos necesitan acceder al código.</p>
+<p><a class="md-button" href="ejercicio_023.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_023.txt</a></p>
+<h2 id="ejercicio-024-configuracion-nginx">Ejercicio 024 · Configuración Nginx<a class="headerlink" href="#ejercicio-024-configuracion-nginx" title="Permanent link">&para;</a></h2>
+<p>Monta default.conf desde el host y explica por qué es útil mantenerlo en el proyecto.</p>
+<p><a class="md-button" href="ejercicio_024.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_024.txt</a></p>
+<h2 id="ejercicio-025-fastcgi">Ejercicio 025 · FastCGI<a class="headerlink" href="#ejercicio-025-fastcgi" title="Permanent link">&para;</a></h2>
+<p>Identifica la directiva de Nginx que permite enviar PHP al servicio PHP-FPM y explica el flujo.</p>
+<p><a class="md-button" href="ejercicio_025.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_025.txt</a></p>
+<h2 id="ejercicio-026-nombre-de-servicio">Ejercicio 026 · Nombre de servicio<a class="headerlink" href="#ejercicio-026-nombre-de-servicio" title="Permanent link">&para;</a></h2>
+<p>Explica por qué PHP puede usar db como host de MariaDB dentro de Compose.</p>
+<p><a class="md-button" href="ejercicio_026.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_026.txt</a></p>
+<h2 id="ejercicio-027-no-usar-localhost">Ejercicio 027 · No usar localhost<a class="headerlink" href="#ejercicio-027-no-usar-localhost" title="Permanent link">&para;</a></h2>
+<p>Razona por qué localhost desde el contenedor PHP no apunta al contenedor de base de datos.</p>
+<p><a class="md-button" href="ejercicio_027.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_027.txt</a></p>
+<h2 id="ejercicio-028-variables-de-entorno">Ejercicio 028 · Variables de entorno<a class="headerlink" href="#ejercicio-028-variables-de-entorno" title="Permanent link">&para;</a></h2>
+<p>Pasa DB_HOST, DB_NAME, DB_USER y DB_PASSWORD al servicio PHP.</p>
+<p><a class="md-button" href="ejercicio_028.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_028.txt</a></p>
+<h2 id="ejercicio-029-envexample">Ejercicio 029 · .env.example<a class="headerlink" href="#ejercicio-029-envexample" title="Permanent link">&para;</a></h2>
+<p>Crea una plantilla .env.example sin secretos reales y explica para qué sirve.</p>
+<p><a class="md-button" href="ejercicio_029.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_029.txt</a></p>
+<h2 id="ejercicio-030-env-y-git">Ejercicio 030 · .env y Git<a class="headerlink" href="#ejercicio-030-env-y-git" title="Permanent link">&para;</a></h2>
+<p>Prepara .gitignore para evitar publicar el .env real.</p>
+<p><a class="md-button" href="ejercicio_030.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_030.txt</a></p>
+<h2 id="ejercicio-031-environment-y-env_file">Ejercicio 031 · environment y env_file<a class="headerlink" href="#ejercicio-031-environment-y-env_file" title="Permanent link">&para;</a></h2>
+<p>Compara las dos formas de proporcionar variables a un servicio Compose.</p>
+<p><a class="md-button" href="ejercicio_031.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_031.txt</a></p>
+<h2 id="ejercicio-032-inicializacion-sql">Ejercicio 032 · Inicialización SQL<a class="headerlink" href="#ejercicio-032-inicializacion-sql" title="Permanent link">&para;</a></h2>
+<p>Crea un init.sql que genere una tabla sencilla e inserte un registro inicial.</p>
+<p><a class="md-button" href="ejercicio_032.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_032.txt</a></p>
+<h2 id="ejercicio-033-volumen-de-mariadb">Ejercicio 033 · Volumen de MariaDB<a class="headerlink" href="#ejercicio-033-volumen-de-mariadb" title="Permanent link">&para;</a></h2>
+<p>Añade persistencia para la base de datos y comprueba qué ocurre al recrear el contenedor.</p>
+<p><a class="md-button" href="ejercicio_033.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_033.txt</a></p>
+<h2 id="ejercicio-034-reinicializar-base">Ejercicio 034 · Reinicializar base<a class="headerlink" href="#ejercicio-034-reinicializar-base" title="Permanent link">&para;</a></h2>
+<p>Explica por qué un init.sql puede no volver a ejecutarse si ya existe el volumen de datos.</p>
+<p><a class="md-button" href="ejercicio_034.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_034.txt</a></p>
+<h2 id="ejercicio-035-construir-y-levantar">Ejercicio 035 · Construir y levantar<a class="headerlink" href="#ejercicio-035-construir-y-levantar" title="Permanent link">&para;</a></h2>
+<p>Practica docker compose up -d --build y explica cuándo necesitas --build.</p>
+<p><a class="md-button" href="ejercicio_035.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_035.txt</a></p>
+<h2 id="ejercicio-036-estado-del-stack">Ejercicio 036 · Estado del stack<a class="headerlink" href="#ejercicio-036-estado-del-stack" title="Permanent link">&para;</a></h2>
+<p>Usa docker compose ps para comprobar el estado de los tres servicios.</p>
+<p><a class="md-button" href="ejercicio_036.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_036.txt</a></p>
+<h2 id="ejercicio-037-logs-completos">Ejercicio 037 · Logs completos<a class="headerlink" href="#ejercicio-037-logs-completos" title="Permanent link">&para;</a></h2>
+<p>Obtén los logs del stack e identifica qué líneas pertenecen a cada servicio.</p>
+<p><a class="md-button" href="ejercicio_037.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_037.txt</a></p>
+<h2 id="ejercicio-038-logs-de-un-servicio">Ejercicio 038 · Logs de un servicio<a class="headerlink" href="#ejercicio-038-logs-de-un-servicio" title="Permanent link">&para;</a></h2>
+<p>Sigue en tiempo real únicamente los logs de PHP o Nginx.</p>
+<p><a class="md-button" href="ejercicio_038.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_038.txt</a></p>
+<h2 id="ejercicio-039-entrar-en-un-contenedor">Ejercicio 039 · Entrar en un contenedor<a class="headerlink" href="#ejercicio-039-entrar-en-un-contenedor" title="Permanent link">&para;</a></h2>
+<p>Usa docker compose exec para inspeccionar rutas y archivos dentro de un servicio.</p>
+<p><a class="md-button" href="ejercicio_039.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_039.txt</a></p>
+<h2 id="ejercicio-040-comprobar-variables">Ejercicio 040 · Comprobar variables<a class="headerlink" href="#ejercicio-040-comprobar-variables" title="Permanent link">&para;</a></h2>
+<p>Comprueba desde el contenedor PHP que las variables de entorno esperadas existen.</p>
+<p><a class="md-button" href="ejercicio_040.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_040.txt</a></p>
+<h2 id="ejercicio-041-conexion-php-mariadb">Ejercicio 041 · Conexión PHP-MariaDB<a class="headerlink" href="#ejercicio-041-conexion-php-mariadb" title="Permanent link">&para;</a></h2>
+<p>Crea una prueba mínima que confirme que PHP puede abrir una conexión PDO con db.</p>
+<p><a class="md-button" href="ejercicio_041.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_041.txt</a></p>
+<h2 id="ejercicio-042-error-de-credenciales">Ejercicio 042 · Error de credenciales<a class="headerlink" href="#ejercicio-042-error-de-credenciales" title="Permanent link">&para;</a></h2>
+<p>Provoca una contraseña incorrecta y utiliza los logs para localizar el problema.</p>
+<p><a class="md-button" href="ejercicio_042.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_042.txt</a></p>
+<h2 id="ejercicio-043-error-de-host">Ejercicio 043 · Error de host<a class="headerlink" href="#ejercicio-043-error-de-host" title="Permanent link">&para;</a></h2>
+<p>Cambia temporalmente DB_HOST por un nombre incorrecto y compara el error con el de credenciales.</p>
+<p><a class="md-button" href="ejercicio_043.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_043.txt</a></p>
+<h2 id="ejercicio-044-error-de-nginx-php">Ejercicio 044 · Error de Nginx-PHP<a class="headerlink" href="#ejercicio-044-error-de-nginx-php" title="Permanent link">&para;</a></h2>
+<p>Rompe temporalmente el destino FastCGI y determina qué evidencia aparece en los logs.</p>
+<p><a class="md-button" href="ejercicio_044.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_044.txt</a></p>
+<h2 id="ejercicio-045-servicio-no-disponible">Ejercicio 045 · Servicio no disponible<a class="headerlink" href="#ejercicio-045-servicio-no-disponible" title="Permanent link">&para;</a></h2>
+<p>Detén db y observa cómo se comporta la aplicación; documenta el diagnóstico.</p>
+<p><a class="md-button" href="ejercicio_045.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_045.txt</a></p>
+<h2 id="ejercicio-046-reproducibilidad">Ejercicio 046 · Reproducibilidad<a class="headerlink" href="#ejercicio-046-reproducibilidad" title="Permanent link">&para;</a></h2>
+<p>Explica qué archivos necesitaría otra persona para levantar el mismo entorno desde cero.</p>
+<p><a class="md-button" href="ejercicio_046.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_046.txt</a></p>
+<h2 id="ejercicio-047-seguridad-de-puertos">Ejercicio 047 · Seguridad de puertos<a class="headerlink" href="#ejercicio-047-seguridad-de-puertos" title="Permanent link">&para;</a></h2>
+<p>Decide qué servicios necesitan publicar puertos al host y cuáles pueden quedar solo en la red interna.</p>
+<p><a class="md-button" href="ejercicio_047.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_047.txt</a></p>
+<h2 id="ejercicio-048-usuario-de-base-de-datos">Ejercicio 048 · Usuario de base de datos<a class="headerlink" href="#ejercicio-048-usuario-de-base-de-datos" title="Permanent link">&para;</a></h2>
+<p>Explica por qué la aplicación no debería conectarse habitualmente como root.</p>
+<p><a class="md-button" href="ejercicio_048.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_048.txt</a></p>
+<h2 id="ejercicio-049-secretos">Ejercicio 049 · Secretos<a class="headerlink" href="#ejercicio-049-secretos" title="Permanent link">&para;</a></h2>
+<p>Localiza posibles secretos en una configuración de ejemplo y propón dónde deberían guardarse.</p>
+<p><a class="md-button" href="ejercicio_049.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_049.txt</a></p>
+<h2 id="ejercicio-050-documentar-el-stack">Ejercicio 050 · Documentar el stack<a class="headerlink" href="#ejercicio-050-documentar-el-stack" title="Permanent link">&para;</a></h2>
+<p>Escribe una sección README con requisitos, arranque, comprobación, parada y solución de problemas.</p>
+<p><a class="md-button" href="ejercicio_050.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_050.txt</a></p>
+<h2 id="ejercicio-051-mapa-del-stack">Ejercicio 051 · Mapa del stack<a class="headerlink" href="#ejercicio-051-mapa-del-stack" title="Permanent link">&para;</a></h2>
+<p>Dibuja en texto el recorrido navegador → Nginx → PHP-FPM → MariaDB y anota el protocolo o función de cada salto.</p>
+<p><a class="md-button" href="ejercicio_051.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_051.txt</a></p>
+<h2 id="ejercicio-052-prueba-de-estaticos">Ejercicio 052 · Prueba de estáticos<a class="headerlink" href="#ejercicio-052-prueba-de-estaticos" title="Permanent link">&para;</a></h2>
+<p>Añade un archivo CSS y comprueba que Nginx puede servirlo sin ejecutar PHP.</p>
+<p><a class="md-button" href="ejercicio_052.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_052.txt</a></p>
+<h2 id="ejercicio-053-prueba-de-php">Ejercicio 053 · Prueba de PHP<a class="headerlink" href="#ejercicio-053-prueba-de-php" title="Permanent link">&para;</a></h2>
+<p>Crea un script PHP mínimo y demuestra que el navegador recibe el resultado, no el código fuente.</p>
+<p><a class="md-button" href="ejercicio_053.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_053.txt</a></p>
+<h2 id="ejercicio-054-pagina-de-estado">Ejercicio 054 · Página de estado<a class="headerlink" href="#ejercicio-054-pagina-de-estado" title="Permanent link">&para;</a></h2>
+<p>Crea una página de diagnóstico que indique si PHP funciona y si puede conectar con la base de datos.</p>
+<p><a class="md-button" href="ejercicio_054.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_054.txt</a></p>
+<h2 id="ejercicio-055-cambio-de-puerto">Ejercicio 055 · Cambio de puerto<a class="headerlink" href="#ejercicio-055-cambio-de-puerto" title="Permanent link">&para;</a></h2>
+<p>Cambia solo el puerto del host sin modificar el puerto interno de Nginx y comprueba el resultado.</p>
+<p><a class="md-button" href="ejercicio_055.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_055.txt</a></p>
+<h2 id="ejercicio-056-dos-stacks">Ejercicio 056 · Dos stacks<a class="headerlink" href="#ejercicio-056-dos-stacks" title="Permanent link">&para;</a></h2>
+<p>Plantea cómo ejecutar dos copias del proyecto simultáneamente evitando conflictos de puertos y nombres.</p>
+<p><a class="md-button" href="ejercicio_056.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_056.txt</a></p>
+<h2 id="ejercicio-057-compose-config">Ejercicio 057 · Compose config<a class="headerlink" href="#ejercicio-057-compose-config" title="Permanent link">&para;</a></h2>
+<p>Usa docker compose config para revisar la configuración resultante y detectar variables ausentes.</p>
+<p><a class="md-button" href="ejercicio_057.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_057.txt</a></p>
+<h2 id="ejercicio-058-recrear-servicios">Ejercicio 058 · Recrear servicios<a class="headerlink" href="#ejercicio-058-recrear-servicios" title="Permanent link">&para;</a></h2>
+<p>Compara restart con down/up y explica en qué situaciones no producen el mismo efecto.</p>
+<p><a class="md-button" href="ejercicio_058.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_058.txt</a></p>
+<h2 id="ejercicio-059-evidencia-tecnica">Ejercicio 059 · Evidencia técnica<a class="headerlink" href="#ejercicio-059-evidencia-tecnica" title="Permanent link">&para;</a></h2>
+<p>Prepara una lista de comandos y capturas/resultados que demostrarían que el stack funciona correctamente.</p>
+<p><a class="md-button" href="ejercicio_059.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_059.txt</a></p>
+<h2 id="ejercicio-060-caso-final-ut1">Ejercicio 060 · Caso final UT1<a class="headerlink" href="#ejercicio-060-caso-final-ut1" title="Permanent link">&para;</a></h2>
+<p>Monta desde una carpeta vacía un stack Nginx + PHP-FPM + MariaDB que muestre un registro inicial y documenta el diagnóstico de al menos un fallo provocado.</p>
+<p><a class="md-button" href="ejercicio_060.txt"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6z"/></svg></span> Abrir ejercicio_060.txt</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Ejercicios · IAW">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Ejercicios · IAW
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ut2/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: UT2 · PHP · 50">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                UT2 · PHP · 50
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Apuntes ASIR
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

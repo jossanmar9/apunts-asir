@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 001 · Estático o dinámico
+#
+# Clasifica varios recursos web como estáticos, dinámicos o mixtos y justifica cada decisión.
+
+# Escribe aquí tus comandos, configuración o explicación.

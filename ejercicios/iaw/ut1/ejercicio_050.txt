@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 050 · Documentar el stack
+#
+# Escribe una sección README con requisitos, arranque, comprobación, parada y solución de problemas.
+
+# Escribe aquí tus comandos, configuración o explicación.
