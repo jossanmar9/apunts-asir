@@ -11,3 +11,5 @@ Esta página reúne **toda la teoría de la UT1**. La tabla de contenidos permit
 --8<-- "docs/python-classe/ut1-04-numeros-operadores.md"
 
 --8<-- "docs/python-classe/ut1-05-cadenas-entrada-salida.md"
+
+--8<-- "docs/python-classe/ut1-ejercicios-resueltos.md"
