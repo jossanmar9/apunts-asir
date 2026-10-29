@@ -30,7 +30,7 @@ jobs:
       - name: Regenerar ejercicios UT1 y UT2
         run: python scripts/regenera_ejercicios_python.py
 
-      - name: Regenerar UT3 revisada
+      - name: Regenerar UT3
         run: python scripts/regenera_ut3_python.py
 
       - name: Guardar cambios
@@ -41,6 +41,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No hay cambios que guardar"
           else
-            git commit -m "Actualizar 150 ejercicios de Python revisados"
+            git commit -m "Actualizar 220 ejercicios de Python"
             git push
           fi
