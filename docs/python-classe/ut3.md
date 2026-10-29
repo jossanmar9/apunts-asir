@@ -11,3 +11,5 @@ Esta página reúne **toda la teoría de la UT3**. La tabla de contenidos permit
 --8<-- "docs/python-classe/ut3-04-depuracion-errores.md"
 
 --8<-- "docs/python-classe/ut3-05-librerias-sysadmin.md"
+
+--8<-- "docs/python-classe/ut3-ejercicios-resueltos.md"
