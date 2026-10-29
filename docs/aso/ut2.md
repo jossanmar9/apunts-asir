@@ -11,3 +11,5 @@ Esta página reúne **toda la teoría de la UT2** en un único tema, con sus apa
 --8<-- "docs/aso/10-automatitzacio.md"
 
 --8<-- "docs/aso/11-monitoritzacio.md"
+
+--8<-- "docs/aso/ut2-ejercicios-resueltos.md"
