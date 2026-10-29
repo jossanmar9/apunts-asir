@@ -3311,7 +3311,6 @@
 <p>Regla mental: <strong>estático = enviar un recurso; dinámico = generar una respuesta</strong>.</p>
 <h2 id="http-que-conviene-dominar">HTTP que conviene dominar<a class="headerlink" href="#http-que-conviene-dominar" title="Permanent link">&para;</a></h2>
 <p>Una petición tiene, como mínimo, método, ruta, cabeceras y a veces cuerpo. Una respuesta contiene un código de estado, cabeceras y normalmente un cuerpo.</p>
-<p>Códigos que debes reconocer rápidamente:</p>
 <table>
 <thead>
 <tr>
@@ -3362,15 +3361,13 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">php</span><span class="p">:</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
 </code></pre></div>
-<p>Y reconocer <code>ports</code>, <code>volumes</code>, <code>environment</code> y <code>depends_on</code>.</p>
-<p>La práctica de clase exige precisamente coordinar <strong>nginx + php + db</strong>, montar <code>app/</code>, proporcionar configuración de Nginx, pasar datos de conexión mediante variables y cargar un SQL inicial.</p>
+<p>También debes reconocer <code>ports</code>, <code>volumes</code>, <code>environment</code> y <code>depends_on</code>.</p>
+<p>La práctica de clase exige coordinar <strong>nginx + php + db</strong>, montar <code>app/</code>, proporcionar la configuración de Nginx, pasar datos de conexión mediante variables y cargar un SQL inicial.</p>
 <h2 id="env-y-envexample"><code>.env</code> y <code>.env.example</code><a class="headerlink" href="#env-y-envexample" title="Permanent link">&para;</a></h2>
-<p>No confundas los dos:</p>
 <ul>
 <li><code>.env.example</code>: plantilla que documenta las variables necesarias.</li>
 <li><code>.env</code>: valores reales de tu entorno.</li>
 </ul>
-<p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>DB_HOST=db
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>DB_NAME=ut1db
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>DB_USER=ut1user
@@ -3386,7 +3383,7 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>php<span class="w"> </span>sh
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>docker<span class="w"> </span>compose<span class="w"> </span>config
 </code></pre></div>
-<p>Ejemplo: si Nginx funciona pero PHP no conecta con MariaDB, primero comprueba si <code>db</code> está levantado, después las variables de entorno, el host, usuario/contraseña y finalmente los logs.</p>
+<p>Ejemplo: si Nginx funciona pero PHP no conecta con MariaDB, primero comprueba si <code>db</code> está levantado, después las variables de entorno, el host, el usuario y la contraseña y, finalmente, los logs.</p>
 <hr />
 <h1 id="ut2-php-en-servidor">UT2 · PHP en servidor<a class="headerlink" href="#ut2-php-en-servidor" title="Permanent link">&para;</a></h1>
 <p>La idea principal es:</p>
@@ -3409,23 +3406,23 @@
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="x">    echo 'Dato correcto';</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="x">}</span>
 </code></pre></div>
-<p>Llig <code>if</code> com una pregunta: <strong>si esta condición es cierta, qué hago?</strong></p>
-<h2 id="arrays-i-foreach">Arrays i <code>foreach</code><a class="headerlink" href="#arrays-i-foreach" title="Permanent link">&para;</a></h2>
+<p>Lee <code>if</code> como una pregunta: <strong>si esta condición es cierta, ¿qué hago?</strong></p>
+<h2 id="arrays-y-foreach">Arrays y <code>foreach</code><a class="headerlink" href="#arrays-y-foreach" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="x">$errores = ['Falta el nombre', 'Correo incorrecto'];</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="x">foreach ($errores as $error) {</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="x">    echo "&lt;p&gt;$error&lt;/p&gt;";</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="x">}</span>
 </code></pre></div>
-<p>Açò és especialment important perquè la pràctica de classe demana acumular errors en un array i mostrar-los amb <code>foreach</code>.</p>
-<h2 id="funcions">Funcions<a class="headerlink" href="#funcions" title="Permanent link">&para;</a></h2>
+<p>Esto es especialmente importante porque la práctica de clase pide acumular errores en un array y mostrarlos con <code>foreach</code>.</p>
+<h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="x">function calcularTotal(float $precio, int $meses): float</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="x">{</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="x">    return $precio * $meses;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="x">}</span>
 </code></pre></div>
-<p>Una funció evita repetir una operació i li dona un nom clar.</p>
-<h2 id="formularis-i-post">Formularis i POST<a class="headerlink" href="#formularis-i-post" title="Permanent link">&para;</a></h2>
+<p>Una función evita repetir una operación y le da un nombre claro.</p>
+<h2 id="formularios-y-post">Formularios y POST<a class="headerlink" href="#formularios-y-post" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -3435,8 +3432,8 @@
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="x">    $nombre = trim($_POST['nombre'] ?? '');</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="x">}</span>
 </code></pre></div>
-<p>No dones per fet que un camp existeix ni que el seu contingut és correcte.</p>
-<h2 id="validar-no-es-el-mateix-que-recollir">Validar no és el mateix que recollir<a class="headerlink" href="#validar-no-es-el-mateix-que-recollir" title="Permanent link">&para;</a></h2>
+<p>No des por hecho que un campo existe ni que su contenido es correcto.</p>
+<h2 id="validar-no-es-lo-mismo-que-recoger">Validar no es lo mismo que recoger<a class="headerlink" href="#validar-no-es-lo-mismo-que-recoger" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="x">$correo = trim($_POST['correo'] ?? '');</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="x">if ($correo === '') {</span>
@@ -3445,53 +3442,53 @@
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="x">    $errores[] = 'El correo no tiene un formato válido';</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="x">}</span>
 </code></pre></div>
-<p>Ordre mental recomanat:</p>
+<p>Orden mental recomendado:</p>
 <ol>
-<li>comprovar si s'ha enviat el formulari;</li>
-<li>recollir;</li>
-<li>normalitzar (<code>trim</code>, etc.);</li>
+<li>comprobar si se ha enviado el formulario;</li>
+<li>recoger los datos;</li>
+<li>normalizar (<code>trim</code>, etc.);</li>
 <li>validar;</li>
-<li>acumular errors;</li>
-<li>si no hi ha errors, calcular/processar;</li>
-<li>generar la resposta HTML.</li>
+<li>acumular errores;</li>
+<li>si no hay errores, calcular o procesar;</li>
+<li>generar la respuesta HTML.</li>
 </ol>
-<h2 id="eixida-segura">Eixida segura<a class="headerlink" href="#eixida-segura" title="Permanent link">&para;</a></h2>
-<p>Si tornes a mostrar text introduït per l'usuari:</p>
+<h2 id="salida-segura">Salida segura<a class="headerlink" href="#salida-segura" title="Permanent link">&para;</a></h2>
+<p>Si vuelves a mostrar texto introducido por el usuario:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">'UTF-8'</span><span class="p">)</span> <span class="cp">?&gt;</span>
 </code></pre></div>
-<p>No confongues <strong>validar</strong> (decidir si una dada és acceptable) amb <strong>escapar</strong> (evitar que un text es tracte com HTML quan el mostres).</p>
-<h2 id="sessions">Sessions<a class="headerlink" href="#sessions" title="Permanent link">&para;</a></h2>
+<p>No confundas <strong>validar</strong> (decidir si un dato es aceptable) con <strong>escapar</strong> (evitar que un texto se interprete como HTML cuando lo muestras).</p>
+<h2 id="sesiones">Sesiones<a class="headerlink" href="#sesiones" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="x">session_start();</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="x">$_SESSION['usuario'] = 'jose';</span>
 </code></pre></div>
-<p>La sessió permet conservar estat entre peticions. Per a un logout bàsic:</p>
+<p>La sesión permite conservar estado entre peticiones. Para un cierre de sesión básico:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="x">session_start();</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="x">$_SESSION = [];</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="x">session_destroy();</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="x">header('Location: login.php');</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="x">exit;</span>
 </code></pre></div>
-<p><code>session_start()</code> i <code>header()</code> han d'executar-se abans d'haver enviat eixida que impedisca modificar les capçaleres.</p>
-<h2 id="depuracio-que-has-de-saber-fer">Depuració que has de saber fer<a class="headerlink" href="#depuracio-que-has-de-saber-fer" title="Permanent link">&para;</a></h2>
+<p><code>session_start()</code> y <code>header()</code> deben ejecutarse antes de haber enviado una salida que impida modificar las cabeceras.</p>
+<h2 id="depuracion-que-debes-saber-hacer">Depuración que debes saber hacer<a class="headerlink" href="#depuracion-que-debes-saber-hacer" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>php<span class="w"> </span>-l<span class="w"> </span>archivo.php
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>php<span class="w"> </span>sh
 </code></pre></div>
-<p>Durant una prova també pots inspeccionar dades:</p>
+<p>Durante una prueba también puedes inspeccionar datos:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="x">var_dump($_POST);</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="x">var_dump($_SESSION);</span>
 </code></pre></div>
-<p><code>php -l</code> comprova sintaxi sense executar el programa. Els <code>var_dump</code> de depuració s'han de retirar quan ja no fan falta.</p>
-<h2 id="ordre-recomanat-per-estudiar">Ordre recomanat per estudiar<a class="headerlink" href="#ordre-recomanat-per-estudiar" title="Permanent link">&para;</a></h2>
+<p><code>php -l</code> comprueba la sintaxis sin ejecutar el programa. Los <code>var_dump</code> de depuración deben retirarse cuando ya no hagan falta.</p>
+<h2 id="orden-recomendado-para-estudiar">Orden recomendado para estudiar<a class="headerlink" href="#orden-recomendado-para-estudiar" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Entén el recorregut navegador → Nginx → PHP-FPM → MariaDB.</li>
-<li>Domina ports, volums, serveis i variables de Compose.</li>
-<li>Practica diagnòstic amb <code>ps</code>, <code>logs</code>, <code>exec</code> i <code>config</code> de Compose.</li>
-<li>Passa a PHP: variables → condicions → arrays → bucles → funcions.</li>
-<li>Després formularis: POST → recollida → validació → errors → resposta.</li>
-<li>Finalment practica sessions, redireccions i depuració.</li>
+<li>Entiende el recorrido navegador → Nginx → PHP-FPM → MariaDB.</li>
+<li>Domina puertos, volúmenes, servicios y variables de Compose.</li>
+<li>Practica el diagnóstico con <code>ps</code>, <code>logs</code>, <code>exec</code> y <code>config</code> de Compose.</li>
+<li>Pasa a PHP: variables → condiciones → arrays → bucles → funciones.</li>
+<li>Después, formularios: POST → recogida → validación → errores → respuesta.</li>
+<li>Finalmente, practica sesiones, redirecciones y depuración.</li>
 </ol>
-<p>Quan pugues explicar <strong>per què</strong> funciona cada pas sense mirar els apunts, ja no estaràs memoritzant: estaràs entenent el stack.</p>
+<p>Cuando puedas explicar <strong>por qué</strong> funciona cada paso sin mirar los apuntes, ya no estarás memorizando: estarás entendiendo el stack.</p>
 
 
 
