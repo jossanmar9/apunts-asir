@@ -3015,6 +3015,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ut2-procesos-servicios-y-automatizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UT2 · Procesos, servicios y automatización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#herramienta-transversal-git-y-github" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3037,10 +3048,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practica-en-cada-tema" class="md-nav__link">
+  <a href="#practica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Práctica en cada tema
+        Práctica
       
     </span>
   </a>
@@ -3084,7 +3095,7 @@
 
 
 <h1 id="aso-administracion-de-sistemas-operativos">ASO · Administración de sistemas operativos<a class="headerlink" href="#aso-administracion-de-sistemas-operativos" title="Permanent link">&para;</a></h1>
-<p>Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema desarrolla la teoría desde cero, explica qué hace cada instrucción y contiene problemas sencillos resueltos paso a paso. Las explicaciones incorporan el material que ya teníamos en el repositorio. Los problemas son diferentes de los ejercicios de práctica o entrega de clase.</p>
+<p>Apuntes para estudiar y consultar mientras haces los trabajos, revisados a partir del material de clase y con ejemplos claros y sencillos. Cada tema desarrolla la teoría desde cero, explica qué hace cada instrucción y utiliza ejemplos orientados a administración de sistemas.</p>
 <h2 id="ut1-bash">UT1 · Bash<a class="headerlink" href="#ut1-bash" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3094,6 +3105,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>0</td>
+<td><a href="01-guia-estudi-bash/">Guía de estudio y repaso</a></td>
+</tr>
 <tr>
 <td>1</td>
 <td><a href="02-bash-dades/">Scripts, variables y parámetros</a></td>
@@ -3116,16 +3131,46 @@
 </tr>
 </tbody>
 </table>
+<h2 id="ut2-procesos-servicios-y-automatizacion">UT2 · Procesos, servicios y automatización<a class="headerlink" href="#ut2-procesos-servicios-y-automatizacion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Explicación y problemas paso a paso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="07-processos/">Procesos en Linux</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="08-control-processos/">Control de procesos, señales y prioridades</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="09-systemd/">Servicios y systemd</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="10-automatitzacio/">Automatización: cron y at</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="11-monitoritzacio/">Monitorización, logs y diagnóstico</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="herramienta-transversal-git-y-github">Herramienta transversal: Git y GitHub<a class="headerlink" href="#herramienta-transversal-git-y-github" title="Permanent link">&para;</a></h2>
 <p>La introducción que corresponde a UT0 está en el <a href="../git-github/">tema independiente de Git y GitHub</a>, accesible desde su propia pestaña del menú.</p>
 <h2 id="material-pendiente-de-publicar">Material pendiente de publicar<a class="headerlink" href="#material-pendiente-de-publicar" title="Permanent link">&para;</a></h2>
-<p>UT2 (procesos), UT3 (acceso remoto), UT4 (Ansible), UT5.1 (directorio Linux), UT5.2 (Samba), UT6 (PowerShell), UT7.1 (Directorio Activo), UT7.2 (PowerShell y directorio) y UT8 (monitorización) aparecen como «Próximamente». Las ampliaciones incluidas en los temas actuales no se presentan como teoría de esas unidades pendientes.</p>
-<h2 id="practica-en-cada-tema">Práctica en cada tema<a class="headerlink" href="#practica-en-cada-tema" title="Permanent link">&para;</a></h2>
-<p>Cada tema contiene tres ejercicios diferentes de los problemas de teoría. Inténtalos por tu cuenta y utiliza las pistas o la solución plegada cuando lo necesites. Las soluciones explican el razonamiento paso a paso.</p>
+<p>Las unidades posteriores se incorporarán cuando dispongamos del material de clase correspondiente, para mantener los apuntes alineados con lo trabajado durante el curso.</p>
+<h2 id="practica">Práctica<a class="headerlink" href="#practica" title="Permanent link">&para;</a></h2>
+<p>Además de los ejemplos y problemas incluidos en la teoría, la sección <strong>Ejercicios → ASO</strong> contiene ejercicios adicionales sin solución para practicar de forma autónoma.</p>
 <h2 id="como-utilizar-estos-apuntes">Cómo utilizar estos apuntes<a class="headerlink" href="#como-utilizar-estos-apuntes" title="Permanent link">&para;</a></h2>
-<p>Lee la explicación del concepto y después sigue el problema paso a paso. Anota los valores de las variables y predice el resultado antes de ejecutarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.</p>
+<p>Lee primero la guía de estudio de la UT1 y después entra en cada tema. Intenta predecir el resultado de los comandos antes de ejecutarlos. En la UT2, acostúmbrate a plantear el diagnóstico antes de actuar: identificar el proceso o servicio, consultar su estado y revisar los registros antes de modificar o detener nada.</p>
 <p>Consulta también <a href="../estudiar/">Cómo estudiar</a>, <a href="../git-github/">Git y GitHub</a> y las <a href="../classe/">fuentes y la cobertura</a>.</p>
-<p>Última consulta de los materiales: <strong>26/10/2026</strong>. Traducción al castellano: <strong>27/10/2026</strong>. Actualización manual cuando lo solicite el estudiante.</p>
 
 
 
