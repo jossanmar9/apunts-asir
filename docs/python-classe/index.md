@@ -1,42 +1,43 @@
 # Python · Introducción a la programación
 
-Apuntes para estudiar y consultar mientras haces los trabajos, enriquecidos con el material propio que ya teníamos y con palabras clave definidas en cada tema. Cada tema desarrolla la teoría desde cero, explica qué hace cada instrucción y contiene problemas sencillos resueltos paso a paso. Las explicaciones incorporan el material que ya teníamos en el repositorio. Los problemas son diferentes de los ejercicios de práctica o entrega de clase.
+Apuntes de Python revisados a partir del material de clase. La teoría sigue la misma organización y nivel del temario del módulo, con explicaciones algo más desarrolladas y ejemplos sencillos para estudiar.
 
-## UT1 · Introducción, entorno y tipos de datos
+## UT1 · Introducción a Python
 
-| Tema | Explicación y problemas paso a paso |
+| Tema | Contenido |
 | --- | --- |
-| 1 | [Programación y entorno](01-entorn.md) |
-| 2 | [Variables, tipos y operadores](02-dades.md) |
-| 3 | [Entrada y salida](03-entrada.md) |
+| 1.1 | [Introducción a la programación y a Python](ut1-01-introduccion.md) |
+| 1.2 | [Entorno de desarrollo](ut1-02-entorno.md) |
+| 1.3 | [Datos, variables, tipos y objetos](ut1-03-datos.md) |
+| 1.4 | [Números, booleanos y operadores](ut1-04-numeros-operadores.md) |
+| 1.5 | [Cadenas, entrada/salida y f-strings](ut1-05-cadenas-entrada-salida.md) |
 
 ## UT2 · Objetos predefinidos y cadenas
 
-| Tema | Explicación y problemas paso a paso |
+| Tema | Contenido |
 | --- | --- |
-| 1 | [Objetos y métodos de cadenas](04-cadenes.md) |
-| 2 | [F-strings y Unicode](05-format.md) |
+| 2.1 | Objetos predefinidos, funciones y métodos |
+| 2.2 | Métodos de cadenas |
+| 2.3 | Formateo de cadenas, f-strings y Unicode |
 
-## UT3 · Control de flujo y bibliotecas sysadmin
+La revisión completa de UT2 se realizará siguiendo los documentos 2.1–2.3 del material de clase.
 
-| Tema | Explicación y problemas paso a paso |
+## UT3 · Control de flujo y bibliotecas para administración
+
+| Tema | Contenido |
 | --- | --- |
-| 1 | [Condicionales y bucles](06-control.md) |
-| 2 | [Errores y depuración](07-errors.md) |
-| 3 | [Bibliotecas de administración](08-biblioteques.md) |
+| 3.1 | Condicionales |
+| 3.2 | Bucle `while` |
+| 3.3 | Bucle `for` y `range()` |
+| 3.4 | Errores y depuración |
+| 3.5 | Librerías útiles para administradores de sistemas |
 
-## Material pendiente de publicar
-
-UT4 (POO, prevista en empresa), UT5 (estructuras de datos) y UT6 (funciones, módulos y archivos) aparecen en la planificación, pero no tienen teoría en el menú consultado. Las nociones que se necesitan para entender los ejemplos actuales se explican dentro de su tema; estas unidades se desarrollarán cuando corresponda.
-
-## Práctica en cada tema
-
-Cada tema contiene tres ejercicios diferentes de los problemas de teoría. Inténtalos por tu cuenta y utiliza las pistas o la solución plegada cuando lo necesites. Las soluciones explican el razonamiento paso a paso.
+La revisión completa de UT3 se realizará siguiendo los documentos 3.1–3.5 del material de clase.
 
 ## Cómo utilizar estos apuntes
 
-Lee la explicación del concepto y después sigue el problema paso a paso. Anota los valores de las variables y predice el resultado antes de ejecutarlo. Durante un trabajo, busca el concepto que necesitas y aplícalo a tu enunciado. Si el caso es distinto, adapta el razonamiento, los datos y las validaciones.
+Lee primero la explicación y ejecuta los ejemplos. Antes de ejecutar un programa, intenta predecir el resultado y sigue los valores de las variables. Después utiliza los [ejercicios de Python](../ejercicios/python/index.md) para practicar sin limitarte a copiar los ejemplos de teoría.
 
-Consulta también [Cómo estudiar](../estudiar/index.md), [Git y GitHub](../git-github/index.md) y las [fuentes y la cobertura](../classe.md).
+Consulta también [Cómo estudiar](../estudiar/index.md), [Git y GitHub](../git-github/index.md) y las [fuentes y cobertura](../classe.md).
 
-Última consulta de los materiales: **26/10/2026**. Traducción al castellano: **27/10/2026**. Actualización manual cuando lo solicite el estudiante.
+Última revisión de UT1 con el material de clase: **29/10/2026**.
