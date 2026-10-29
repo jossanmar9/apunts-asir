@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 026 · Nombre de servicio
+#
+# Explica por qué PHP puede usar db como host de MariaDB dentro de Compose.
+
+# Escribe aquí tus comandos, configuración o explicación.

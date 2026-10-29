@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 028 · Variables de entorno
+#
+# Pasa DB_HOST, DB_NAME, DB_USER y DB_PASSWORD al servicio PHP.
+
+# Escribe aquí tus comandos, configuración o explicación.

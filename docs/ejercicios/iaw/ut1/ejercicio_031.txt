@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 031 · environment y env_file
+#
+# Compara las dos formas de proporcionar variables a un servicio Compose.
+
+# Escribe aquí tus comandos, configuración o explicación.

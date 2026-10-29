@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 012 · Puerto publicado
+#
+# Explica qué significa 8080:80 y desde qué URL accederías al servicio.
+
+# Escribe aquí tus comandos, configuración o explicación.

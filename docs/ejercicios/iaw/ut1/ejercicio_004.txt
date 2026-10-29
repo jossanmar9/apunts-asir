@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 004 · Papel de PHP-FPM
+#
+# Explica por qué PHP-FPM no sustituye a Nginx y qué devuelve después de ejecutar un script.
+
+# Escribe aquí tus comandos, configuración o explicación.

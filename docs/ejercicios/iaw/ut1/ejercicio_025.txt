@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 025 · FastCGI
+#
+# Identifica la directiva de Nginx que permite enviar PHP al servicio PHP-FPM y explica el flujo.
+
+# Escribe aquí tus comandos, configuración o explicación.

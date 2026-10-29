@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 042 · Error de credenciales
+#
+# Provoca una contraseña incorrecta y utiliza los logs para localizar el problema.
+
+# Escribe aquí tus comandos, configuración o explicación.

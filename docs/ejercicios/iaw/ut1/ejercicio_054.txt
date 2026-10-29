@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 054 · Página de estado
+#
+# Crea una página de diagnóstico que indique si PHP funciona y si puede conectar con la base de datos.
+
+# Escribe aquí tus comandos, configuración o explicación.

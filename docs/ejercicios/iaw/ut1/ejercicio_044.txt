@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 044 · Error de Nginx-PHP
+#
+# Rompe temporalmente el destino FastCGI y determina qué evidencia aparece en los logs.
+
+# Escribe aquí tus comandos, configuración o explicación.

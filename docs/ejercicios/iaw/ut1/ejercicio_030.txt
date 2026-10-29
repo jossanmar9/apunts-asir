@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 030 · .env y Git
+#
+# Prepara .gitignore para evitar publicar el .env real.
+
+# Escribe aquí tus comandos, configuración o explicación.

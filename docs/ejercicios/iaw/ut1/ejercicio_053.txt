@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 053 · Prueba de PHP
+#
+# Crea un script PHP mínimo y demuestra que el navegador recibe el resultado, no el código fuente.
+
+# Escribe aquí tus comandos, configuración o explicación.

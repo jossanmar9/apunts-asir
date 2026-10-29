@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 059 · Evidencia técnica
+#
+# Prepara una lista de comandos y capturas/resultados que demostrarían que el stack funciona correctamente.
+
+# Escribe aquí tus comandos, configuración o explicación.

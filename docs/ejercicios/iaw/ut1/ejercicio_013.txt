@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 013 · Conflicto de puerto
+#
+# Un contenedor no arranca porque 8080 está ocupado. Indica cómo diagnosticarlo y una solución.
+
+# Escribe aquí tus comandos, configuración o explicación.

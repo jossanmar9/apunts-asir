@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 029 · .env.example
+#
+# Crea una plantilla .env.example sin secretos reales y explica para qué sirve.
+
+# Escribe aquí tus comandos, configuración o explicación.

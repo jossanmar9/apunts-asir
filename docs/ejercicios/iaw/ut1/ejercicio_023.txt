@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 023 · Volúmenes Compose
+#
+# Monta app/ en Nginx y PHP indicando por qué ambos necesitan acceder al código.
+
+# Escribe aquí tus comandos, configuración o explicación.

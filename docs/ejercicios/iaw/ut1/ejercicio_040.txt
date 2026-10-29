@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 040 · Comprobar variables
+#
+# Comprueba desde el contenedor PHP que las variables de entorno esperadas existen.
+
+# Escribe aquí tus comandos, configuración o explicación.

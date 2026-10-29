@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 006 · Código HTTP
+#
+# Relaciona situaciones habituales con 200, 301/302, 403, 404 y 500.
+
+# Escribe aquí tus comandos, configuración o explicación.

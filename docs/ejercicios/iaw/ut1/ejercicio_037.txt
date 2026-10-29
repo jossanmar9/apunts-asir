@@ -1,0 +1,6 @@
+# IAW · UT1 · Entorno de implantación web
+# Ejercicio 037 · Logs completos
+#
+# Obtén los logs del stack e identifica qué líneas pertenecen a cada servicio.
+
+# Escribe aquí tus comandos, configuración o explicación.
