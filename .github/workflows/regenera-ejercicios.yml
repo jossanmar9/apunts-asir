@@ -1,0 +1,37 @@
+name: Regenerar ejercicios Python
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/regenera-ejercicios.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  regenerar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Regenerar ejercicios
+        run: python scripts/regenera_ejercicios_python.py
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ejercicios/python/ut1 docs/ejercicios/python/ut2 docs/ejercicios/python/ut3 docs/ejercicios/python/ut1.md docs/ejercicios/python/ut2.md docs/ejercicios/python/ut3.md
+          if git diff --cached --quiet; then
+            echo "No hay cambios que guardar"
+          else
+            git commit -m "Actualizar 150 ejercicios de Python sin duplicados"
+            git push
+          fi
