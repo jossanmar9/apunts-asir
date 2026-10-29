@@ -1,20 +1,20 @@
-# UT2 · 5. Monitorització, logs i diagnòstic
+# UT2 · 5. Monitorización, logs y diagnóstico
 
-Administrar no és només iniciar i parar processos. També cal saber **què està passant**, trobar el coll de botella i consultar registres.
+Administrar no consiste solo en iniciar y detener procesos. También hay que saber **qué está pasando**, encontrar el cuello de botella y consultar registros.
 
-## Tres tipus d'informació
+## Tres tipos de información
 
-- **Mètriques**: valors numèrics al llarg del temps: CPU, memòria, E/S...
-- **Logs**: missatges amb marca temporal sobre esdeveniments.
-- **Estat actual**: fotografia del sistema en un moment concret.
+- **Métricas**: valores numéricos a lo largo del tiempo: CPU, memoria, E/S...
+- **Logs**: mensajes con marca temporal sobre acontecimientos.
+- **Estado actual**: fotografía del sistema en un momento concreto.
 
-## Començar per `top`
+## Empezar por `top`
 
 ```bash
 top
 ```
 
-És una primera ullada útil per veure CPU, memòria, swap i processos que destaquen.
+Es una primera vista útil para ver CPU, memoria, swap y procesos que destacan.
 
 ## `vmstat`
 
@@ -22,7 +22,7 @@ top
 vmstat 1
 ```
 
-Mostra periòdicament informació sobre processos, memòria, paginació, E/S i CPU. És útil per saber si el problema sembla general i si hi ha pressió de memòria o espera.
+Muestra periódicamente información sobre procesos, memoria, paginación, E/S y CPU. Es útil para saber si el problema parece general y si hay presión de memoria o espera.
 
 ## `iostat`
 
@@ -30,24 +30,24 @@ Mostra periòdicament informació sobre processos, memòria, paginació, E/S i C
 iostat
 ```
 
-Ajuda a estudiar CPU i dispositius d'E/S. Si sospites que el disc és el coll de botella, és una eina adequada per aprofundir.
+Ayuda a estudiar CPU y dispositivos de E/S. Si sospechas que el disco es el cuello de botella, es una herramienta adecuada para profundizar.
 
 ## `sar`
 
-`sar` permet consultar estadístiques de rendiment del sistema. El tema el presenta com una eina de mètriques junt amb `top` i `vmstat`.
+`sar` permite consultar estadísticas de rendimiento del sistema. El tema lo presenta como una herramienta de métricas junto con `top` y `vmstat`.
 
-## Una seqüència fàcil de recordar
+## Una secuencia fácil de recordar
 
-Quan «el servidor va lent»:
+Cuando «el servidor va lento»:
 
 ```text
-1. top      → què destaca ara?
-2. vmstat   → CPU, memòria, espera, E/S?
-3. iostat   → el problema apunta als discos?
-4. logs     → hi ha errors que expliquen el símptoma?
+1. top      → ¿qué destaca ahora?
+2. vmstat   → ¿CPU, memoria, espera, E/S?
+3. iostat   → ¿el problema apunta a los discos?
+4. logs     → ¿hay errores que expliquen el síntoma?
 ```
 
-No és una recepta universal, però és una bona seqüència de diagnòstic per a la unitat.
+No es una receta universal, pero es una buena secuencia de diagnóstico para la unidad.
 
 ## `journalctl`
 
@@ -57,40 +57,40 @@ Consultar el journal:
 journalctl
 ```
 
-Filtrar per una unitat:
+Filtrar por una unidad:
 
 ```bash
 journalctl -u ssh
 ```
 
-Últimes 50 entrades:
+Últimas 50 entradas:
 
 ```bash
 journalctl -u ssh -n 50
 ```
 
-Seguir els missatges mentre apareixen:
+Seguir los mensajes mientras aparecen:
 
 ```bash
 journalctl -f
 ```
 
-## Logs tradicionals
+## Logs tradicionales
 
-També trobaràs registres en `/var/log`. Pots combinar les eines de la UT1:
+También encontrarás registros en `/var/log`. Puedes combinar las herramientas de la UT1:
 
 ```bash
 grep -i "error" /var/log/syslog
 tail -n 50 /var/log/syslog
 ```
 
-Això és important: **UT2 reutilitza Bash**. Pipes, `grep`, redireccions i scripts continuen sent eines d'administració.
+Esto es importante: **UT2 reutiliza Bash**. Pipes, `grep`, redirecciones y scripts continúan siendo herramientas de administración.
 
 ## `logrotate`
 
-Els logs poden créixer indefinidament. `logrotate` permet rotar-los per conservar històric sense mantindre un únic fitxer enorme.
+Los logs pueden crecer indefinidamente. `logrotate` permite rotarlos para conservar un histórico sin mantener un único archivo enorme.
 
-Conceptualment:
+Conceptualmente:
 
 ```text
 app.log
@@ -99,9 +99,9 @@ app.log.2.gz
 ...
 ```
 
-## Exemple de diagnòstic d'un servei
+## Ejemplo de diagnóstico de un servicio
 
-Suposa que SSH no respon:
+Supón que SSH no responde:
 
 ```bash
 systemctl status ssh
@@ -109,24 +109,24 @@ ps -C sshd -o pid,stat,%cpu,%mem,cmd
 journalctl -u ssh -n 50
 ```
 
-Cada ordre respon una pregunta diferent:
+Cada orden responde a una pregunta diferente:
 
-1. `systemctl status` → està actiu el servei?
-2. `ps` → existeixen els processos i en quin estat estan?
-3. `journalctl` → què ha registrat el servei?
+1. `systemctl status` → ¿está activo el servicio?
+2. `ps` → ¿existen los procesos y en qué estado están?
+3. `journalctl` → ¿qué ha registrado el servicio?
 
-## Què prioritzaria per a l'examen de la UT2
+## Qué priorizaría para el examen de la UT2
 
-1. Procés, PID, PPID i estats `R`, `S`, `D`, `T`, `Z`.
+1. Proceso, PID, PPID y estados `R`, `S`, `D`, `T`, `Z`.
 2. `ps`, `pstree`, `top`, `pgrep`.
-3. Primer/segon pla: `&`, `jobs`, `fg`, `bg`, ++ctrl+z++.
-4. `SIGTERM` vs `SIGKILL`.
-5. `nice` i `renice`.
-6. Concepte de servei i `systemctl`.
-7. Diferència entre `start` i `enable`.
-8. Sintaxi de `cron` i diferència `cron`/`at`.
-9. `journalctl` i `/var/log`.
-10. Saber plantejar una seqüència de diagnòstic.
+3. Primer/segundo plano: `&`, `jobs`, `fg`, `bg`, ++ctrl+z++.
+4. `SIGTERM` frente a `SIGKILL`.
+5. `nice` y `renice`.
+6. Concepto de servicio y `systemctl`.
+7. Diferencia entre `start` y `enable`.
+8. Sintaxis de `cron` y diferencia `cron`/`at`.
+9. `journalctl` y `/var/log`.
+10. Saber plantear una secuencia de diagnóstico.
 
 !!! tip "Forma de practicar"
-    Obri dos terminals. En un crea processos amb `sleep`, posa'ls en segon pla i canvia'n l'estat; en l'altre observa'ls amb `ps`, `pstree` i `top`. Aprendràs molt més ràpid que memoritzant la taula d'ordres.
+    Abre dos terminales. En uno crea procesos con `sleep`, ponlos en segundo plano y cambia su estado; en el otro obsérvalos con `ps`, `pstree` y `top`. Aprenderás mucho más rápido que memorizando la tabla de órdenes.
