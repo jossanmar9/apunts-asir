@@ -4,6 +4,7 @@ Ejercicios adicionales para practicar Bash, ajustados al nivel y contenidos de c
 
 [:material-download: Descargar los 120 ejercicios de UT1](../descargas/aso-ut1.zip){ .md-button .md-button--primary }
 
+
 ## Variables, parámetros y entrada/salida
 1. **Ficha del servidor.** Recibe hostname, ubicación y responsable y muestra una ficha en tres líneas.
 [🐚 Abrir ejercicio_001.sh](ut1/ejercicio_001.sh){ .md-button }

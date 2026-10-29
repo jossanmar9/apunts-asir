@@ -4,6 +4,7 @@ Basados en la teoría de clase: procesos, systemd, cron/at y seguimiento/diagnó
 
 [:material-download: Descargar los 50 ejercicios de UT2](../descargas/aso-ut2.zip){ .md-button .md-button--primary }
 
+
 ## Procesos y estados
 1. Ejecuta `ps` y explica PID, TTY, TIME y CMD observando tu salida.
 [🐚 Abrir ejercicio_001.sh](ut2/ejercicio_001.sh){ .md-button }

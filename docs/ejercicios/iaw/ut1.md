@@ -4,6 +4,7 @@ Banco de **60 ejercicios adicionales** para practicar. No incluyen solución y e
 
 [:material-download: Descargar los 60 ejercicios de UT1](../descargas/iaw-ut1.zip){ .md-button .md-button--primary }
 
+
 ## Ejercicio 001 · Estático o dinámico
 
 Clasifica varios recursos web como estáticos, dinámicos o mixtos y justifica cada decisión.

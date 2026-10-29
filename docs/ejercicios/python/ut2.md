@@ -4,6 +4,7 @@
 
 [:material-download: Descargar los 50 ejercicios de UT2](../descargas/python-ut2.zip){ .md-button .md-button--primary }
 
+
 !!! note "Organización"
     **1–20:** básicos · **21–40:** intermedios · **41–50:** repaso.
 
