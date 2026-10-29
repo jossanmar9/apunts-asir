@@ -11,3 +11,5 @@ Esta página reúne **toda la teoría de la UT2** en un único tema, con sus apa
 --8<-- "docs/iaw/07-estat.md"
 
 --8<-- "docs/iaw/08-depuracio.md"
+
+--8<-- "docs/iaw/ut2-ejercicios-resueltos.md"
