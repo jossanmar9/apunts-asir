@@ -7,3 +7,5 @@ Esta página reúne **toda la teoría de la UT1** en un único tema, con sus apa
 --8<-- "docs/iaw/02-http.md"
 
 --8<-- "docs/iaw/03-entorn.md"
+
+--8<-- "docs/iaw/ut1-ejercicios-resueltos.md"
