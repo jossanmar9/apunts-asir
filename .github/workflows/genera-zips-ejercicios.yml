@@ -1,0 +1,49 @@
+name: Generar ZIP de ejercicios
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ejercicios/python/**'
+      - 'docs/ejercicios/aso/**'
+      - 'docs/ejercicios/iaw/**'
+      - 'scripts/genera_zips_ejercicios.py'
+      - '.github/workflows/genera-zips-ejercicios.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generar-zips-ejercicios
+  cancel-in-progress: false
+
+jobs:
+  generar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generar ZIP
+        run: python scripts/genera_zips_ejercicios.py
+
+      - name: Guardar ZIP actualizados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ejercicios/descargas/*.zip
+          if git diff --cached --quiet; then
+            echo "No hay ZIP que actualizar"
+          else
+            git commit -m "Actualizar ZIP de ejercicios"
+            git push
+          fi
