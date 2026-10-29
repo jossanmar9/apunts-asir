@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ut2-3-serveis-i-systemd" class="md-skip">
+        <a href="#ut2-3-servicios-y-systemd" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -1472,10 +1472,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-un-servei" class="md-nav__link">
+  <a href="#que-es-un-servicio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Què és un servei?
+        ¿Qué es un servicio?
       
     </span>
   </a>
@@ -1494,10 +1494,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#llistar-serveis" class="md-nav__link">
+  <a href="#listar-servicios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Llistar serveis
+        Listar servicios
       
     </span>
   </a>
@@ -1505,10 +1505,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#flux-de-diagnostic-senzill" class="md-nav__link">
+  <a href="#flujo-de-diagnostico-sencillo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux de diagnòstic senzill
+        Flujo de diagnóstico sencillo
       
     </span>
   </a>
@@ -1516,10 +1516,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-mental-dexamen" class="md-nav__link">
+  <a href="#ejemplo-mental-de-examen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemple mental d'examen
+        Ejemplo mental de examen
       
     </span>
   </a>
@@ -3108,10 +3108,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-un-servei" class="md-nav__link">
+  <a href="#que-es-un-servicio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Què és un servei?
+        ¿Qué es un servicio?
       
     </span>
   </a>
@@ -3130,10 +3130,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#llistar-serveis" class="md-nav__link">
+  <a href="#listar-servicios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Llistar serveis
+        Listar servicios
       
     </span>
   </a>
@@ -3141,10 +3141,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#flux-de-diagnostic-senzill" class="md-nav__link">
+  <a href="#flujo-de-diagnostico-sencillo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux de diagnòstic senzill
+        Flujo de diagnóstico sencillo
       
     </span>
   </a>
@@ -3152,10 +3152,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-mental-dexamen" class="md-nav__link">
+  <a href="#ejemplo-mental-de-examen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemple mental d'examen
+        Ejemplo mental de examen
       
     </span>
   </a>
@@ -3187,16 +3187,16 @@
   
 
 
-<h1 id="ut2-3-serveis-i-systemd">UT2 · 3. Serveis i systemd<a class="headerlink" href="#ut2-3-serveis-i-systemd" title="Permanent link">&para;</a></h1>
-<h2 id="que-es-un-servei">Què és un servei?<a class="headerlink" href="#que-es-un-servei" title="Permanent link">&para;</a></h2>
-<p>Un <strong>servei</strong> és un procés que s'executa en segon pla i proporciona una funcionalitat al sistema o als usuaris. Exemples habituals: Apache/Nginx, MySQL/PostgreSQL o SSH.</p>
-<p>Linux ha tingut diferents sistemes d'inici, com SysVinit i Upstart. El tema se centra en <strong>systemd</strong>, que organitza serveis mitjançant unitats (<em>units</em>).</p>
-<p>Les unitats es troben habitualment en rutes com:</p>
+<h1 id="ut2-3-servicios-y-systemd">UT2 · 3. Servicios y systemd<a class="headerlink" href="#ut2-3-servicios-y-systemd" title="Permanent link">&para;</a></h1>
+<h2 id="que-es-un-servicio">¿Qué es un servicio?<a class="headerlink" href="#que-es-un-servicio" title="Permanent link">&para;</a></h2>
+<p>Un <strong>servicio</strong> es un proceso que se ejecuta en segundo plano y proporciona una funcionalidad al sistema o a los usuarios. Ejemplos habituales: Apache/Nginx, MySQL/PostgreSQL o SSH.</p>
+<p>Linux ha tenido diferentes sistemas de inicio, como SysVinit y Upstart. El tema se centra en <strong>systemd</strong>, que organiza servicios mediante unidades (<em>units</em>).</p>
+<p>Las unidades se encuentran habitualmente en rutas como:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/etc/systemd/system
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>/lib/systemd/system
 </code></pre></div>
 <h2 id="systemctl"><code>systemctl</code><a class="headerlink" href="#systemctl" title="Permanent link">&para;</a></h2>
-<p>Ordres que has de dominar:</p>
+<p>Órdenes que debes dominar:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>ssh
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>ssh
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>ssh
@@ -3204,43 +3204,43 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ssh
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>ssh
 </code></pre></div>
-<p>No confongues <strong>start</strong> i <strong>enable</strong>:</p>
+<p>No confundas <strong>start</strong> y <strong>enable</strong>:</p>
 <ul>
-<li><code>start</code> → inicia el servei <strong>ara</strong>.</li>
-<li><code>enable</code> → configura que s'inicie durant l'arrancada.</li>
+<li><code>start</code> → inicia el servicio <strong>ahora</strong>.</li>
+<li><code>enable</code> → configura que se inicie durante el arranque.</li>
 </ul>
-<p>Per fer les dues coses:</p>
+<p>Para hacer las dos cosas:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>ssh
 </code></pre></div>
-<p>I per deshabilitar i parar:</p>
+<p>Y para deshabilitar y detener:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>ssh
 </code></pre></div>
-<h2 id="llistar-serveis">Llistar serveis<a class="headerlink" href="#llistar-serveis" title="Permanent link">&para;</a></h2>
+<h2 id="listar-servicios">Listar servicios<a class="headerlink" href="#listar-servicios" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service
 </code></pre></div>
-<h2 id="flux-de-diagnostic-senzill">Flux de diagnòstic senzill<a class="headerlink" href="#flux-de-diagnostic-senzill" title="Permanent link">&para;</a></h2>
-<p>Si un servei no funciona:</p>
+<h2 id="flujo-de-diagnostico-sencillo">Flujo de diagnóstico sencillo<a class="headerlink" href="#flujo-de-diagnostico-sencillo" title="Permanent link">&para;</a></h2>
+<p>Si un servicio no funciona:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>ssh
 </code></pre></div>
-<p>Mira si està actiu, si ha fallat i els missatges que apareixen. Després pots consultar el journal:</p>
+<p>Mira si está activo, si ha fallado y los mensajes que aparecen. Después puedes consultar el journal:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>ssh
 </code></pre></div>
-<p>Per veure missatges recents:</p>
+<p>Para ver mensajes recientes:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>ssh<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span>
 </code></pre></div>
-<h2 id="exemple-mental-dexamen">Exemple mental d'examen<a class="headerlink" href="#exemple-mental-dexamen" title="Permanent link">&para;</a></h2>
-<p><strong>Pregunta:</strong> «Vull que SSH s'inicie ara i també automàticament després de reiniciar.»</p>
+<h2 id="ejemplo-mental-de-examen">Ejemplo mental de examen<a class="headerlink" href="#ejemplo-mental-de-examen" title="Permanent link">&para;</a></h2>
+<p><strong>Pregunta:</strong> «Quiero que SSH se inicie ahora y también automáticamente después de reiniciar.»</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>ssh
 </code></pre></div>
-<p><strong>Pregunta:</strong> «Vull reiniciar el servei perquè he canviat la configuració.»</p>
+<p><strong>Pregunta:</strong> «Quiero reiniciar el servicio porque he cambiado la configuración.»</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
 </code></pre></div>
-<p><strong>Pregunta:</strong> «Només vull saber què li passa.»</p>
+<p><strong>Pregunta:</strong> «Solo quiero saber qué le pasa.»</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>ssh
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Abans de memoritzar ordres, diferencia tres idees: <strong>estat actual</strong>, <strong>acció ara</strong> i <strong>comportament en l'arrancada</strong>.</p>
+<p>Antes de memorizar órdenes, diferencia tres ideas: <strong>estado actual</strong>, <strong>acción ahora</strong> y <strong>comportamiento en el arranque</strong>.</p>
 </div>
 
 

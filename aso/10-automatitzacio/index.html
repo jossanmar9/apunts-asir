@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ut2-4-automatitzacio-cron-i-at" class="md-skip">
+        <a href="#ut2-4-automatizacion-cron-y-at" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -1500,10 +1500,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quan-usar-cada-eina" class="md-nav__link">
+  <a href="#cuando-usar-cada-herramienta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quan usar cada eina
+        Cuándo usar cada herramienta
       
     </span>
   </a>
@@ -1522,10 +1522,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#com-llegir-una-expressio-cron" class="md-nav__link">
+  <a href="#como-leer-una-expresion-cron" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Com llegir una expressió cron
+        Cómo leer una expresión cron
       
     </span>
   </a>
@@ -1533,10 +1533,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#at-una-sola-execucio" class="md-nav__link">
+  <a href="#at-una-sola-ejecucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        at: una sola execució
+        at: una sola ejecución
       
     </span>
   </a>
@@ -1547,7 +1547,7 @@
   <a href="#cron-o-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cron o at?
+        ¿Cron o at?
       
     </span>
   </a>
@@ -1555,10 +1555,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-dadministracio" class="md-nav__link">
+  <a href="#ejemplo-de-administracion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemple d'administració
+        Ejemplo de administración
       
     </span>
   </a>
@@ -3119,10 +3119,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quan-usar-cada-eina" class="md-nav__link">
+  <a href="#cuando-usar-cada-herramienta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quan usar cada eina
+        Cuándo usar cada herramienta
       
     </span>
   </a>
@@ -3141,10 +3141,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#com-llegir-una-expressio-cron" class="md-nav__link">
+  <a href="#como-leer-una-expresion-cron" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Com llegir una expressió cron
+        Cómo leer una expresión cron
       
     </span>
   </a>
@@ -3152,10 +3152,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#at-una-sola-execucio" class="md-nav__link">
+  <a href="#at-una-sola-ejecucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        at: una sola execució
+        at: una sola ejecución
       
     </span>
   </a>
@@ -3166,7 +3166,7 @@
   <a href="#cron-o-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cron o at?
+        ¿Cron o at?
       
     </span>
   </a>
@@ -3174,10 +3174,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-dadministracio" class="md-nav__link">
+  <a href="#ejemplo-de-administracion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemple d'administració
+        Ejemplo de administración
       
     </span>
   </a>
@@ -3209,102 +3209,102 @@
   
 
 
-<h1 id="ut2-4-automatitzacio-cron-i-at">UT2 · 4. Automatització: cron i at<a class="headerlink" href="#ut2-4-automatitzacio-cron-i-at" title="Permanent link">&para;</a></h1>
-<h2 id="quan-usar-cada-eina">Quan usar cada eina<a class="headerlink" href="#quan-usar-cada-eina" title="Permanent link">&para;</a></h2>
+<h1 id="ut2-4-automatizacion-cron-y-at">UT2 · 4. Automatización: cron y at<a class="headerlink" href="#ut2-4-automatizacion-cron-y-at" title="Permanent link">&para;</a></h1>
+<h2 id="cuando-usar-cada-herramienta">Cuándo usar cada herramienta<a class="headerlink" href="#cuando-usar-cada-herramienta" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>cron</strong> → tasques que es repeteixen periòdicament.</li>
-<li><strong>at</strong> → una tasca que s'ha d'executar <strong>una sola vegada</strong> en un moment futur.</li>
+<li><strong>cron</strong> → tareas que se repiten periódicamente.</li>
+<li><strong>at</strong> → una tarea que debe ejecutarse <strong>una sola vez</strong> en un momento futuro.</li>
 </ul>
 <h2 id="cron"><code>cron</code><a class="headerlink" href="#cron" title="Permanent link">&para;</a></h2>
-<p><code>cron</code> és un dimoni que revisa periòdicament els <em>crontabs</em> buscant treballs programats.</p>
-<p>Editar el crontab de l'usuari:</p>
+<p><code>cron</code> es un demonio que revisa periódicamente los <em>crontabs</em> buscando trabajos programados.</p>
+<p>Editar el crontab del usuario:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>crontab<span class="w"> </span>-e
 </code></pre></div>
-<p>Llistar-lo:</p>
+<p>Listarlo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>crontab<span class="w"> </span>-l
 </code></pre></div>
-<p>Una línia de cron té cinc camps temporals abans de l'ordre:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>minut hora dia_mes mes dia_setmana ordre
+<p>Una línea de cron tiene cinco campos temporales antes de la orden:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>minuto hora dia_mes mes dia_semana orden
 </code></pre></div>
-<p>Exemple: executar una còpia cada dia a les 02:30:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>30 2 * * * /home/alumne/copia.sh
+<p>Ejemplo: ejecutar una copia cada día a las 02:30:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>30 2 * * * /home/alumno/copia.sh
 </code></pre></div>
-<p>Exemple: cada dilluns a les 08:00:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>0 8 * * 1 /home/alumne/informe.sh
+<p>Ejemplo: cada lunes a las 08:00:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>0 8 * * 1 /home/alumno/informe.sh
 </code></pre></div>
-<p>Exemple: cada 15 minuts:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>*/15 * * * * /home/alumne/comprovar.sh
+<p>Ejemplo: cada 15 minutos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>*/15 * * * * /home/alumno/comprobar.sh
 </code></pre></div>
-<h2 id="com-llegir-una-expressio-cron">Com llegir una expressió cron<a class="headerlink" href="#com-llegir-una-expressio-cron" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>0 23 * * 5 /home/alumne/backup.sh
+<h2 id="como-leer-una-expresion-cron">Cómo leer una expresión cron<a class="headerlink" href="#como-leer-una-expresion-cron" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>0 23 * * 5 /home/alumno/backup.sh
 </code></pre></div>
-<p>Llig-la d'esquerra a dreta:</p>
+<p>Léela de izquierda a derecha:</p>
 <ol>
-<li>minut <code>0</code></li>
+<li>minuto <code>0</code></li>
 <li>hora <code>23</code></li>
-<li>qualsevol dia del mes</li>
-<li>qualsevol mes</li>
-<li>dia de setmana <code>5</code></li>
+<li>cualquier día del mes</li>
+<li>cualquier mes</li>
+<li>día de la semana <code>5</code></li>
 </ol>
-<p>→ divendres a les 23:00.</p>
+<p>→ viernes a las 23:00.</p>
 <div class="admonition warning">
-<p class="admonition-title">Error típic</p>
-<p>En <code>cron</code> és millor usar <strong>rutes absolutes</strong>. L'entorn no és necessàriament el mateix que tens al terminal interactiu.</p>
+<p class="admonition-title">Error típico</p>
+<p>En <code>cron</code> es mejor usar <strong>rutas absolutas</strong>. El entorno no es necesariamente el mismo que tienes en la terminal interactiva.</p>
 </div>
-<p>Per guardar eixida i errors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>0 2 * * * /home/alumne/copia.sh &gt;&gt; /home/alumne/copia.log 2&gt;&amp;1
+<p>Para guardar salida y errores:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>0 2 * * * /home/alumno/copia.sh &gt;&gt; /home/alumno/copia.log 2&gt;&amp;1
 </code></pre></div>
-<h2 id="at-una-sola-execucio"><code>at</code>: una sola execució<a class="headerlink" href="#at-una-sola-execucio" title="Permanent link">&para;</a></h2>
-<p>Exemple interactiu:</p>
+<h2 id="at-una-sola-ejecucion"><code>at</code>: una sola ejecución<a class="headerlink" href="#at-una-sola-ejecucion" title="Permanent link">&para;</a></h2>
+<p>Ejemplo interactivo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>at<span class="w"> </span><span class="m">18</span>:30
 </code></pre></div>
-<p>Després escrius l'ordre i finalitzes l'entrada.</p>
-<p>També pots enviar una ordre per pipe:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/home/alumne/copia.sh"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>at<span class="w"> </span><span class="m">18</span>:30
+<p>Después escribes la orden y finalizas la entrada.</p>
+<p>También puedes enviar una orden por pipe:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/home/alumno/copia.sh"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>at<span class="w"> </span><span class="m">18</span>:30
 </code></pre></div>
-<p>Llistar tasques pendents:</p>
+<p>Listar tareas pendientes:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>atq
 </code></pre></div>
-<p>Eliminar la tasca 14:</p>
+<p>Eliminar la tarea 14:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>atrm<span class="w"> </span><span class="m">14</span>
 </code></pre></div>
-<h2 id="cron-o-at">Cron o at?<a class="headerlink" href="#cron-o-at" title="Permanent link">&para;</a></h2>
+<h2 id="cron-o-at">¿Cron o at?<a class="headerlink" href="#cron-o-at" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Necessitat</th>
-<th>Eina</th>
+<th>Necesidad</th>
+<th>Herramienta</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>còpia cada nit</td>
+<td>copia cada noche</td>
 <td><code>cron</code></td>
 </tr>
 <tr>
-<td>informe cada dilluns</td>
+<td>informe cada lunes</td>
 <td><code>cron</code></td>
 </tr>
 <tr>
-<td>apagar una vegada esta nit</td>
+<td>apagar una vez esta noche</td>
 <td><code>at</code></td>
 </tr>
 <tr>
-<td>executar un script d'ací a una hora</td>
+<td>ejecutar un script dentro de una hora</td>
 <td><code>at</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="exemple-dadministracio">Exemple d'administració<a class="headerlink" href="#exemple-dadministracio" title="Permanent link">&para;</a></h2>
+<h2 id="ejemplo-de-administracion">Ejemplo de administración<a class="headerlink" href="#ejemplo-de-administracion" title="Permanent link">&para;</a></h2>
 <p>Script:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">ara</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">'+%F %T'</span><span class="k">)</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ara</span><span class="s2"> - còpia executada"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/home/alumne/backup.log
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">ahora</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">'+%F %T'</span><span class="k">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ahora</span><span class="s2"> - copia ejecutada"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/home/alumno/backup.log
 </code></pre></div>
 <p>Crontab:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>0 3 * * * /home/alumne/backup.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>0 3 * * * /home/alumno/backup.sh
 </code></pre></div>
-<p>Açò combina Bash amb automatització real: el script fa la tasca i <code>cron</code> decideix <strong>quan</strong> s'executa.</p>
+<p>Esto combina Bash con automatización real: el script realiza la tarea y <code>cron</code> decide <strong>cuándo</strong> se ejecuta.</p>
 
 
 
