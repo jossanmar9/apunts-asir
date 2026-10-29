@@ -4,10 +4,16 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'scripts/regenera_ejercicios_python.py'
+      - 'scripts/regenera_ut3_python.py'
       - '.github/workflows/regenera-ejercicios.yml'
 
 permissions:
   contents: write
+
+concurrency:
+  group: generar-ejercicios-python
+  cancel-in-progress: false
 
 jobs:
   regenerar:
@@ -21,8 +27,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Regenerar ejercicios
+      - name: Regenerar ejercicios UT1 y UT2
         run: python scripts/regenera_ejercicios_python.py
+
+      - name: Regenerar UT3 revisada
+        run: python scripts/regenera_ut3_python.py
 
       - name: Guardar cambios
         run: |
@@ -32,6 +41,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No hay cambios que guardar"
           else
-            git commit -m "Actualizar 150 ejercicios de Python sin duplicados"
+            git commit -m "Actualizar 150 ejercicios de Python revisados"
             git push
           fi
