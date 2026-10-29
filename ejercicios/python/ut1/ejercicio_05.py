@@ -1,5 +1,7 @@
-"""Ejercicio 05 · Área de un rectángulo
-Pide base y altura y calcula el área de un rectángulo.
+"""
+Ejercicio 05: Área de un rombo
+
+Pide las diagonales mayor y menor y calcula el área: D * d / 2.
 """
 
 # Escribe tu solución a partir de aquí:

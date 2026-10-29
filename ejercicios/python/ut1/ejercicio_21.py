@@ -1,5 +1,7 @@
-"""Ejercicio 21 · Sueldo con incremento
-Pide un sueldo y calcula el nuevo sueldo tras aumentarlo un 5 %.
+"""
+Ejercicio 21: Media de cuatro temperaturas
+
+Pide cuatro temperaturas y calcula su media.
 """
 
 # Escribe tu solución a partir de aquí:

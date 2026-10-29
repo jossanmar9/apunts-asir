@@ -1,5 +1,7 @@
-"""Ejercicio 17 · Cara opuesta de dado
-Pide 1-6 y muestra en letras la cara opuesta: 1-6, 2-5, 3-4.
+"""
+Ejercicio 17: Validar puerto
+
+Pide un entero y muestra si es un puerto válido entre 1 y 65535.
 """
 
 # Escribe tu solución a partir de aquí:

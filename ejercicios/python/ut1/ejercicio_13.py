@@ -1,5 +1,7 @@
-"""Ejercicio 13 · Celsius a Fahrenheit
-Pide grados Celsius y conviértelos a Fahrenheit: F = C * 9/5 + 32.
+"""
+Ejercicio 13: KiB a bytes
+
+Pide una cantidad en KiB y conviértela a bytes usando 1024.
 """
 
 # Escribe tu solución a partir de aquí:

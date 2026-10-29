@@ -1,5 +1,7 @@
-"""Ejercicio 21 · Pertenencia simple
-Pide una palabra y muestra si contiene la letra 'a' usando in.
+"""
+Ejercicio 21: Comprobar sufijo log
+
+Pide un nombre de fichero y muestra True o False según termine en '.log' usando endswith().
 """
 
 # Escribe tu solución a partir de aquí:

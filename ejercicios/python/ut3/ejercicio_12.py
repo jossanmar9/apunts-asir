@@ -1,5 +1,7 @@
-"""Ejercicio 12 · Múltiplo de 3 y 5
-Pide un entero e indica si es divisible por 3 y por 5.
+"""
+Ejercicio 12: Clasificar HTTP
+
+Pide un código HTTP y clasifícalo como 2xx, 3xx, 4xx, 5xx u otro.
 """
 
 # Escribe tu solución a partir de aquí:

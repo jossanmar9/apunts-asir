@@ -1,5 +1,7 @@
-"""Ejercicio 16 · Día de la semana
-Pide 1-7 y muestra el día correspondiente; otros valores deben dar error.
+"""
+Ejercicio 16: Temperatura de CPU
+
+Pide temperatura de CPU y clasifícala como normal, caliente o crítica.
 """
 
 # Escribe tu solución a partir de aquí:

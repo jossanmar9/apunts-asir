@@ -1,5 +1,7 @@
-"""Ejercicio 19 · Triángulo rectángulo
-Pide tres lados e indica si cumplen Pitágoras, suponiendo que el tercero es la hipotenusa.
+"""
+Ejercicio 19: Entorno por prefijo
+
+Pide hostname y muestra PRODUCCIÓN si empieza por PROD-, PRUEBAS si empieza por TEST- y DESCONOCIDO en otro caso.
 """
 
 # Escribe tu solución a partir de aquí:

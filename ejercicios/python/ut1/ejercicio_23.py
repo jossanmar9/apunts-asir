@@ -1,5 +1,7 @@
-"""Ejercicio 23 · Precio medio
-Pide el precio de cuatro productos y calcula el precio medio.
+"""
+Ejercicio 23: Diferencia de temperaturas
+
+Pide temperatura máxima y mínima y muestra la diferencia.
 """
 
 # Escribe tu solución a partir de aquí:

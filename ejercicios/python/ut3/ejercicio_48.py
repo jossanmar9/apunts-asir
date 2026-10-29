@@ -1,5 +1,7 @@
-"""Ejercicio 48 · Extensión permitida
-PERMITIDO si el nombre termina en '.txt' o '.log'; en otro caso NO PERMITIDO.
+"""
+Ejercicio 48: Comprobar fichero
+
+Pide una ruta por sys.argv y pathlib; indica si existe y además es un fichero.
 """
 
 # Escribe tu solución a partir de aquí:

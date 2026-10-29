@@ -1,5 +1,7 @@
-"""Ejercicio 31 · Extraer número de equipo
-De 'PC-AULA-27', extrae '27' usando métodos y slicing.
+"""
+Ejercicio 31: Cambiar separador de fecha
+
+Dada '2026/10/29', conviértela a '2026-10-29' usando replace().
 """
 
 # Escribe tu solución a partir de aquí:

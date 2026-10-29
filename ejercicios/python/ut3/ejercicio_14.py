@@ -1,5 +1,7 @@
-"""Ejercicio 14 · Año bisiesto
-Indica si un año es bisiesto: divisible por 4 y no por 100, salvo si también es divisible por 400.
+"""
+Ejercicio 14: Estado de memoria
+
+Pide porcentaje de RAM usada y clasifícalo en BAJO, MEDIO o ALTO.
 """
 
 # Escribe tu solución a partir de aquí:

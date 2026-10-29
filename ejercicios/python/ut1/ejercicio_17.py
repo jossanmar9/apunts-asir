@@ -1,5 +1,7 @@
-"""Ejercicio 17 · Segundos a horas
-Pide segundos y muestra horas, minutos y segundos.
+"""
+Ejercicio 17: Aumento porcentual
+
+Pide una cantidad y un porcentaje de aumento. Muestra el incremento y el resultado final.
 """
 
 # Escribe tu solución a partir de aquí:

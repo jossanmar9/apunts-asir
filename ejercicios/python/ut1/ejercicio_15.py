@@ -1,5 +1,7 @@
-"""Ejercicio 15 · Minutos a horas
-Pide minutos y muestra horas completas y minutos restantes.
+"""
+Ejercicio 15: Precio antes de IVA
+
+Pide un precio final con IVA del 21 % y calcula el precio aproximado antes de IVA.
 """
 
 # Escribe tu solución a partir de aquí:

@@ -1,5 +1,7 @@
-"""Ejercicio 48 · Contraseña simple aleatoria
-Genera 8 caracteres: 4 letras y 4 dígitos usando string y random, sin bucles.
+"""
+Ejercicio 48: Código de soporte
+
+Usa random y string.ascii_uppercase para generar 3 letras y después 3 dígitos, sin bucles.
 """
 
 # Escribe tu solución a partir de aquí:

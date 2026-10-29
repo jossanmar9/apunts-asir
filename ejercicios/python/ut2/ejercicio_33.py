@@ -1,5 +1,7 @@
-"""Ejercicio 33 · Usuario de ruta Windows
-De C:\\Users\\maria\\Desktop\\proyecto, extrae 'maria' con find/index y slicing.
+"""
+Ejercicio 33: Ocultar palabra
+
+Pide una frase y una palabra; sustituye esa palabra por '***' con replace(), sin condicionales.
 """
 
 # Escribe tu solución a partir de aquí:

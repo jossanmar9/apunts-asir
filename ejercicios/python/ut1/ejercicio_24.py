@@ -1,5 +1,7 @@
-"""Ejercicio 24 · Euros a céntimos
-Pide euros con decimales y muestra cuántos céntimos representan.
+"""
+Ejercicio 24: Conversión de litros
+
+Pide litros y conviértelos a mililitros.
 """
 
 # Escribe tu solución a partir de aquí:

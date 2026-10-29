@@ -1,5 +1,7 @@
-"""Ejercicio 20 · Comprobar extensión
-Pide un archivo y muestra si termina en '.txt' usando endswith().
+"""
+Ejercicio 20: Cambiar extensión
+
+Dado 'datos.csv', genera el nombre 'datos.bak' usando slicing y concatenación.
 """
 
 # Escribe tu solución a partir de aquí:

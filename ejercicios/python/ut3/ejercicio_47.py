@@ -1,5 +1,7 @@
-"""Ejercicio 47 · Archivo o directorio
-Recibe ruta por sys.argv. Con pathlib distingue ARCHIVO, DIRECTORIO o NO EXISTE.
+"""
+Ejercicio 47: Comprobar directorio
+
+Pide una ruta por sys.argv y pathlib; indica si existe y además es un directorio.
 """
 
 # Escribe tu solución a partir de aquí:

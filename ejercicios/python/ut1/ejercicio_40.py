@@ -1,5 +1,7 @@
-"""Ejercicio 40 · Nota ponderada
-Pide tres parciales, examen y trabajo. Calcula 55 % media parciales, 30 % examen y 15 % trabajo.
+"""
+Ejercicio 40: Descarga en minutos
+
+Pide tamaño en MB y velocidad en MB/s. Calcula el tiempo de descarga expresado en minutos.
 """
 
 # Escribe tu solución a partir de aquí:

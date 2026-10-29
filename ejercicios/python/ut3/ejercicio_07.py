@@ -1,5 +1,7 @@
-"""Ejercicio 07 · Mayor de tres
-Pide tres números y muestra cuál es el mayor.
+"""
+Ejercicio 07: Calificación textual
+
+Pide una nota de 0 a 10 y clasifícala como insuficiente, suficiente, bien, notable o sobresaliente.
 """
 
 # Escribe tu solución a partir de aquí:

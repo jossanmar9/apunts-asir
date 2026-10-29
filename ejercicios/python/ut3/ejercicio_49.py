@@ -1,5 +1,7 @@
-"""Ejercicio 49 · Nivel de batería simulado
-Menos de 10: CRÍTICA; menos de 25: BAJA; resto: OK.
+"""
+Ejercicio 49: Crear carpeta backups
+
+Con pathlib, comprueba si existe una carpeta backups. Si no existe, créala; si existe, avisa.
 """
 
 # Escribe tu solución a partir de aquí:

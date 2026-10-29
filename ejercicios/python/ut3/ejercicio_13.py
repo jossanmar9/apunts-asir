@@ -1,5 +1,7 @@
-"""Ejercicio 13 · Rango permitido
-Pide un número e indica si está entre 10 y 20, incluidos.
+"""
+Ejercicio 13: Estado de CPU
+
+Pide porcentaje de CPU y muestra NORMAL, ALTO o CRÍTICO según dos umbrales.
 """
 
 # Escribe tu solución a partir de aquí:

@@ -1,5 +1,7 @@
-"""Ejercicio 30 · Extraer aula
-De 'PC-AULA-27', extrae 'AULA' usando find() y slicing.
+"""
+Ejercicio 30: Limpiar separadores
+
+Dado 'AA__BB__CC', sustituye '__' por '-' usando replace().
 """
 
 # Escribe tu solución a partir de aquí:

@@ -1,5 +1,7 @@
-"""Ejercicio 29 · Normalizar código
-Convierte '  srv -- web -  03  ' en 'SRV-WEB-03' con strip(), replace() y upper().
+"""
+Ejercicio 29: Número de serie
+
+Pide un número de serie como texto y muestra el resultado de isdigit().
 """
 
 # Escribe tu solución a partir de aquí:

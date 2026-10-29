@@ -1,5 +1,7 @@
-"""Ejercicio 34 · Validar servidor
-Un hostname es válido si empieza por 'SRV-' y tiene al menos 8 caracteres.
+"""
+Ejercicio 34: Pérdida de paquetes
+
+Pide porcentaje de pérdida y clasifica SIN PÉRDIDAS, LEVE o GRAVE.
 """
 
 # Escribe tu solución a partir de aquí:

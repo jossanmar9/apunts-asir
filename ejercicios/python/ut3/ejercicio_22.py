@@ -1,5 +1,7 @@
-"""Ejercicio 22 · Precio de entrada por edad
-Menores de 5 gratis, 5-17 pagan 5 €, adultos 10 €.
+"""
+Ejercicio 22: Archivo comprimido
+
+Pide un nombre y muestra si parece comprimido cuando termina en .zip, .gz o .tar.
 """
 
 # Escribe tu solución a partir de aquí:

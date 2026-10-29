@@ -1,5 +1,7 @@
-"""Ejercicio 49 · Código de inventario aleatorio
-Genera 3 letras mayúsculas y 3 dígitos aleatorios con string y random, sin bucles.
+"""
+Ejercicio 49: Token corto
+
+Genera un token de 8 caracteres alternando letra y dígito cuatro veces, usando random y string sin bucles.
 """
 
 # Escribe tu solución a partir de aquí:

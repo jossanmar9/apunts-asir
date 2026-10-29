@@ -1,5 +1,7 @@
-"""Ejercicio 12 · Kilómetros a metros
-Pide una distancia en kilómetros y conviértela a metros.
+"""
+Ejercicio 12: GiB a MiB
+
+Pide una cantidad en GiB y conviértela a MiB usando 1024.
 """
 
 # Escribe tu solución a partir de aquí:

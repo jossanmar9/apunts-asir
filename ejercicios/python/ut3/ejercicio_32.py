@@ -1,5 +1,7 @@
-"""Ejercicio 32 · Puerto conocido
-22=SSH, 80=HTTP, 443=HTTPS; cualquier otro: Otro puerto.
+"""
+Ejercicio 32: Nivel de batería
+
+Pide porcentaje de batería y clasifica CRÍTICA, BAJA, MEDIA o ALTA.
 """
 
 # Escribe tu solución a partir de aquí:

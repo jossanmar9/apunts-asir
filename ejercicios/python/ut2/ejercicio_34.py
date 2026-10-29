@@ -1,5 +1,7 @@
-"""Ejercicio 34 · Carpeta de ruta Windows
-De C:\\Users\\maria\\Desktop\\proyecto, extrae 'Desktop'.
+"""
+Ejercicio 34: Siguiente Unicode
+
+Pide un carácter, muestra su código Unicode y el carácter correspondiente al código siguiente.
 """
 
 # Escribe tu solución a partir de aquí:

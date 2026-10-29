@@ -1,5 +1,7 @@
-"""Ejercicio 30 · Espacio libre mínimo
-Si hay menos de 10 GB libres muestra ESPACIO BAJO; en otro caso OK.
+"""
+Ejercicio 30: Estación aproximada
+
+Pide un mes y clasifícalo como invierno, primavera, verano u otoño por meses completos.
 """
 
 # Escribe tu solución a partir de aquí:

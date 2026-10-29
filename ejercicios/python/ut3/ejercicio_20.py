@@ -1,5 +1,7 @@
-"""Ejercicio 20 · Potencia según exponente
-Exponente positivo: potencia; cero: 1; negativo: recíproco de la potencia positiva.
+"""
+Ejercicio 20: Tipo de equipo
+
+Pide hostname y clasifícalo como servidor si empieza por SRV-, portátil si empieza por LAP- u otro.
 """
 
 # Escribe tu solución a partir de aquí:

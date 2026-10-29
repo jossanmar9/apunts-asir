@@ -1,5 +1,7 @@
-"""Ejercicio 27 · Zona de transporte
-Zona 1-5 y peso en gramos. Tarifas: 24,20,21,10,18 por gramo. Más de 5000 g se rechaza.
+"""
+Ejercicio 27: Turno laboral
+
+Pide una hora y clasifícala como mañana, tarde o noche usando tres franjas.
 """
 
 # Escribe tu solución a partir de aquí:

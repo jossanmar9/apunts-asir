@@ -1,5 +1,7 @@
-"""Ejercicio 25 · Admisión por nota
-Nota>=5, edad>=18 y sexo F: ACEPTADA; mismas condiciones y M: POSIBLE; resto: NO ACEPTADA.
+"""
+Ejercicio 25: Dos requisitos de contraseña
+
+Pide una contraseña y valida que tenga al menos 10 caracteres y contenga '@'.
 """
 
 # Escribe tu solución a partir de aquí:

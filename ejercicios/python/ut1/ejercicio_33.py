@@ -1,5 +1,7 @@
-"""Ejercicio 33 · Invertir dos cifras
-Pide un entero de dos cifras e inviértelo usando división entera y módulo.
+"""
+Ejercicio 33: Densidad
+
+Pide masa y volumen y calcula la densidad.
 """
 
 # Escribe tu solución a partir de aquí:

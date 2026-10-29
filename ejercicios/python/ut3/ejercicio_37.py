@@ -1,5 +1,7 @@
-"""Ejercicio 37 · Turno según hora
-Usa datetime: antes de 12 Mañana, 12-19 Tarde, desde 20 Noche.
+"""
+Ejercicio 37: Reinicio necesario
+
+Pide s o n indicando si hay reinicio pendiente y muestra el mensaje correspondiente; rechaza otros valores.
 """
 
 # Escribe tu solución a partir de aquí:

@@ -1,5 +1,7 @@
-"""Ejercicio 40 · Horario laboral
-Usa datetime. Entre las 8 y las 17 inclusive: Horario laboral; resto: Fuera de horario.
+"""
+Ejercicio 40: Intentos de login
+
+Pide número de intentos fallidos y muestra NORMAL, AVISO o BLOQUEO según tramos.
 """
 
 # Escribe tu solución a partir de aquí:

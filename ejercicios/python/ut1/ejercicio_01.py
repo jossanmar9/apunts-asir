@@ -1,5 +1,7 @@
-"""Ejercicio 01 · Saludo personalizado
-Pide al usuario su nombre y muestra un saludo personalizado.
+"""
+Ejercicio 01: Compra de entradas
+
+Pide el precio de una entrada y cuántas entradas se compran. Muestra el coste total.
 """
 
 # Escribe tu solución a partir de aquí:

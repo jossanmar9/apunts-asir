@@ -1,5 +1,7 @@
-"""Ejercicio 01 · Mayor de dos números
-Pide dos números e indica si el primero es mayor que el segundo.
+"""
+Ejercicio 01: Mayor de edad para servicio
+
+Pide una edad y muestra ACCESO si es 18 o más; en caso contrario, DENEGADO.
 """
 
 # Escribe tu solución a partir de aquí:

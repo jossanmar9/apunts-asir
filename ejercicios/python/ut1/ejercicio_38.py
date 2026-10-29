@@ -1,5 +1,7 @@
-"""Ejercicio 38 · Tiempo de alcance
-Pide distancia entre dos vehículos y sus velocidades. Calcula cuándo el más rápido alcanza al otro.
+"""
+Ejercicio 38: Horas decimales a minutos
+
+Pide horas con decimales y calcula el total de minutos.
 """
 
 # Escribe tu solución a partir de aquí:

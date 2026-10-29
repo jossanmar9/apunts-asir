@@ -1,5 +1,7 @@
-"""Ejercicio 41 · Puntuación de test
-Pide correctas, incorrectas y blancas. Correcta +5, incorrecta -1, blanca 0.
+"""
+Ejercicio 41: Porcentaje libre
+
+Pide capacidad total y espacio libre de un disco. Calcula el porcentaje que queda libre.
 """
 
 # Escribe tu solución a partir de aquí:
