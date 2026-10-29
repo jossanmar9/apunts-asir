@@ -26,3 +26,8 @@ En UT1 y UT2 se sigue una progresión de ejercicios básicos, intermedios y de r
 
 !!! tip "Cómo utilizarlos"
     Estudia primero el tema correspondiente e intenta resolver los ejercicios sin consultar otros programas. Si te atascas, vuelve a la teoría y después inténtalo de nuevo. Deja los ejercicios de repaso o mixtos para cuando controles los conceptos por separado.
+
+## ASO
+
+- [UT1 · Bash — 120 ejercicios](aso/ut1.md)
+- [UT2 · Procesos, servicios y automatización — 50 ejercicios](aso/ut2.md)

@@ -2,6 +2,8 @@
 
 120 ejercicios ajustados a los temas 3.1–3.5. Primero se practica cada bloque por separado y al final se combinan los contenidos.
 
+[:material-download: Descargar los 120 ejercicios de UT3](../descargas/python-ut3.zip){ .md-button .md-button--primary }
+
 !!! note "Organización"
     **1–20:** condicionales · **21–40:** `while` · **41–60:** `for` y `range()` · **61–80:** depuración y errores · **81–100:** librerías sysadmin · **101–120:** ejercicios mixtos.
 

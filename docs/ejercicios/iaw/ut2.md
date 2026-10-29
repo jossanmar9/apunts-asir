@@ -2,6 +2,8 @@
 
 Banco de **50 ejercicios adicionales** para practicar. No incluyen solución y están pensados para complementar, no copiar, las actividades de clase.
 
+[:material-download: Descargar los 50 ejercicios de UT2](../descargas/iaw-ut2.zip){ .md-button .md-button--primary }
+
 ## Ejercicio 001 · Servidor o cliente
 
 Explica qué código ejecuta el servidor y qué recibe finalmente el navegador en una página PHP.
