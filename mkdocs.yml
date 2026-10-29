@@ -105,22 +105,9 @@ nav:
           - "Monitorización, logs y diagnóstico": aso/11-monitoritzacio.md
   - "Python":
       - python-classe/index.md
-      - "UT1 · Introducción a Python":
-          - "1.1 · Introducción a la programación": python-classe/ut1-01-introduccion.md
-          - "1.2 · Entorno de desarrollo": python-classe/ut1-02-entorno.md
-          - "1.3 · Datos, variables, tipos y objetos": python-classe/ut1-03-datos.md
-          - "1.4 · Números, booleanos y operadores": python-classe/ut1-04-numeros-operadores.md
-          - "1.5 · Cadenas, entrada/salida y f-strings": python-classe/ut1-05-cadenas-entrada-salida.md
-      - "UT2 · Objetos predefinidos y cadenas":
-          - "2.1 · Objetos predefinidos, funciones y métodos": python-classe/ut2-01-objetos-predefinidos.md
-          - "2.2 · Métodos y operaciones con cadenas": python-classe/ut2-02-metodos-cadenas.md
-          - "2.3 · F-strings, formato y Unicode": python-classe/ut2-03-fstrings-unicode.md
-      - "UT3 · Control de flujo y bibliotecas sysadmin":
-          - "3.1 · Condicionales": python-classe/ut3-01-condicionales.md
-          - "3.2 · Bucles while": python-classe/ut3-02-while.md
-          - "3.3 · Bucles for, range() y recorridos": python-classe/ut3-03-for-range.md
-          - "3.4 · Depuración, errores y excepciones": python-classe/ut3-04-depuracion-errores.md
-          - "3.5 · Librerías para administradores": python-classe/ut3-05-librerias-sysadmin.md
+      - "UT1 · Introducción a Python": python-classe/ut1-01-introduccion.md
+      - "UT2 · Objetos predefinidos y cadenas": python-classe/ut2-01-objetos-predefinidos.md
+      - "UT3 · Control de flujo y bibliotecas sysadmin": python-classe/ut3-01-condicionales.md
   - "Ejercicios":
       - ejercicios/index.md
       - "Python":
