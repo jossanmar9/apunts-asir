@@ -116,9 +116,11 @@ nav:
           - "2.2 · Métodos y operaciones con cadenas": python-classe/ut2-02-metodos-cadenas.md
           - "2.3 · F-strings, formato y Unicode": python-classe/ut2-03-fstrings-unicode.md
       - "UT3 · Control de flujo y bibliotecas sysadmin":
-          - "Condicionales y bucles": python-classe/06-control.md
-          - "Errores y depuración": python-classe/07-errors.md
-          - "Bibliotecas de administración": python-classe/08-biblioteques.md
+          - "3.1 · Condicionales": python-classe/ut3-01-condicionales.md
+          - "3.2 · Bucles while": python-classe/ut3-02-while.md
+          - "3.3 · Bucles for, range() y recorridos": python-classe/ut3-03-for-range.md
+          - "3.4 · Depuración, errores y excepciones": python-classe/ut3-04-depuracion-errores.md
+          - "3.5 · Librerías para administradores": python-classe/ut3-05-librerias-sysadmin.md
   - "Ejercicios":
       - ejercicios/index.md
       - "Python":
