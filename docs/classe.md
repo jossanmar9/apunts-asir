@@ -1,61 +1,73 @@
 # Fuentes, cobertura y actualizaciones
 
-Esta web ofrece **apuntes desarrollados**, separados por módulo, unidad y tema, y una sección independiente de **Git y GitHub**. Los enlaces originales permiten contrastar la teoría y consultar las indicaciones del profesorado.
+Esta web reúne **apuntes desarrollados en castellano**, organizados por módulo y unidad, una sección transversal de **Git y GitHub** y bancos de ejercicios adicionales. Los materiales originales sirven para contrastar el temario y mantener el nivel de los contenidos trabajados en clase.
 
 ## Materiales consultados
 
 | Módulo | Fuente original | Apuntes disponibles |
 | --- | --- | --- |
 | IAW | [victoria-nr · iaw-alumnos](https://victoria-nr.github.io/iaw-alumnos/) | [UT1 y UT2](iaw/index.md) |
-| ASO | [angelabserrano · aso](https://angelabserrano.github.io/aso/) | [UT1 · Bash](aso/index.md) |
+| ASO | [angelabserrano · aso](https://angelabserrano.github.io/aso/) | [UT1 y UT2](aso/index.md) |
 | Python | [victoria-nr · python-intro-alumnos](https://victoria-nr.github.io/python-intro-alumnos/) | [UT1, UT2 y UT3](python-classe/index.md) |
-| Git y GitHub | [UT0 de ASO](https://angelabserrano.github.io/aso/git/introduccion/) | [Tema independiente](git-github/index.md) |
+| Git y GitHub | Material de Git de ASO | [Tema independiente](git-github/index.md) |
+| Sostenibilidad | Material facilitado en PDF | [Seis unidades](sostenibilidad/index.md) |
 
-**Consulta de fuentes: 26/10/2026. Traducción al castellano: 27/10/2026.** Cada tema enlaza la teoría concreta utilizada. Los enunciados de prácticas se han consultado para diferenciar los ejemplos propios de las tareas asignadas; no se reproducen sus soluciones.
+Los enunciados de las prácticas de clase se utilizan para comprobar la cobertura y evitar que los ejercicios propios reproduzcan las tareas asignadas.
 
 ## Cobertura detallada
 
 | Módulo y unidad | Conceptos cubiertos |
 | --- | --- |
-| IAW · UT1 | Estático y dinámico, componentes, HTTP, LAMP y otros stacks, Git, Docker, Compose, puertos, montajes, variables, PHP-FPM, MariaDB, logs y configuración básica |
-| IAW · UT2 | PHP y HTML, variables y operadores, arrays, decisiones, bucles, funciones, formularios, validación, cookies, sesiones, autenticación, aislamiento y depuración |
-| Git y GitHub · transversal | Git local y remoto, preparación y commits, GitHub, autenticación SSH y errores habituales |
-| ASO · UT1 | Scripts, entorno, entrada, argumentos, arrays, aritmética, texto, comprobaciones de archivos, decisiones, bucles, funciones, filtros, expresiones regulares, estados y depuración |
-| Python · UT1 | Programación, intérprete y bytecode, editor y entorno virtual, objetos, variables, tipos, operadores, conversiones y entrada/salida |
-| Python · UT2 | Funciones y métodos, inmutabilidad, índices, cortes, búsqueda y transformación de texto, formatos y Unicode |
-| Python · UT3 | Condicionales, while, for, range, enumerate, break/continue/else, depuración, nociones de excepciones y bibliotecas de sysadmin |
+| IAW · UT1 | Arquitectura web, HTTP, Nginx, PHP-FPM, MariaDB, Docker, Compose, puertos, montajes, variables, logs y diagnóstico básico |
+| IAW · UT2 | PHP y HTML, variables y operadores, arrays, decisiones, bucles, funciones, formularios, validación, cookies, sesiones, autenticación y depuración |
+| ASO · UT1 | Bash: scripts, variables, entrada, argumentos, aritmética, decisiones, bucles, funciones, archivos, filtros, expresiones regulares, estados y depuración |
+| ASO · UT2 | Procesos, estados, señales, prioridades, jobs, systemd, servicios, cron, `at`, monitorización, logs y diagnóstico |
+| Python · UT1 | Programación, intérprete y bytecode, entorno de desarrollo, objetos, variables, tipos, operadores, conversiones y entrada/salida |
+| Python · UT2 | Objetos predefinidos, funciones y métodos, inmutabilidad, índices, slicing, métodos de cadenas, f-strings, formato y Unicode |
+| Python · UT3 | Condicionales, `while`, `for`, `range()`, `enumerate()`, `break`, `continue`, `else` en bucles, depuración, nociones de excepciones y bibliotecas de administración |
+| Git y GitHub · transversal | Git local y remoto, preparación, commits, GitHub, SSH, ramas, conflictos, Pull Requests y recuperación |
+| Sostenibilidad | ASG, retos ambientales y sociales, ODS, economía verde y circular, actividades sostenibles, huellas y plan de sostenibilidad |
 
-## Sostenibilidad: PDF facilitado
+## Ejercicios adicionales
 
-Se incorporan los [seis temas de Sostenibilidad](sostenibilidad/index.md), siguiendo las unidades del libro de Juan Jesús García Navarro y Antonio Ramón Álvarez Sánchez, Editex, edición 2024. Cubren las páginas impresas 10–167: organizaciones y ASG, retos ambientales y sociales, los 17 ODS, economía verde y circular, actividades sostenibles y plan de sostenibilidad. La cobertura describe el documento recibido; no presupone qué unidades se han impartido en clase.
+El banco separado de ejercicios contiene actualmente **500 ejercicios sin solución**, distintos de las tareas de clase:
 
-Se han redactado resúmenes explicados y ejemplos nuevos, sin reproducir ni resolver sus actividades de evaluación o proyecto. Las referencias legales se presentan como contexto del temario de esa edición y se aclara la diferencia entre guía, certificación y etiquetado. Incorporación: **27/10/2026**.
+| Módulo | Unidad | Ejercicios |
+| --- | --- | ---: |
+| Python | UT1 | 50 |
+| Python | UT2 | 50 |
+| Python | UT3 | 120 |
+| ASO | UT1 | 120 |
+| ASO | UT2 | 50 |
+| IAW | UT1 | 60 |
+| IAW | UT2 | 50 |
+| | **Total** | **500** |
 
-## ¿Qué falta en las fuentes consultadas?
+Además, los temas teóricos pueden incluir pequeños ejercicios con pistas y soluciones plegadas. Estos ejercicios internos y el banco adicional cumplen funciones distintas: los primeros acompañan la explicación; el banco sirve para practicar de forma autónoma.
 
-- **IAW:** UT3 a UT7 aparecen en la planificación, sin páginas de teoría en el menú consultado.
-- **ASO:** desde UT2 hasta UT8, incluidas las subdivisiones de directorio, Samba y PowerShell, las páginas indican «Próximamente».
-- **Python:** UT4 a UT6 constan en la planificación, sin teoría en el menú consultado; UT4 está prevista en empresa.
+## Sostenibilidad
 
-Las ampliaciones de nuestros apuntes se han integrado en los temas publicados, en castellano y con ejemplos propios. Las palabras clave se explican dentro de su tema. Estas ampliaciones no convierten las unidades pendientes en material de clase ya publicado.
+Los seis temas de Sostenibilidad se han preparado a partir del material facilitado para el módulo. El repositorio contiene apuntes, explicaciones y ejercicios propios, no una copia íntegra del libro o de sus actividades de evaluación.
 
-## Ampliaciones integradas
+La cobertura describe el material recibido y no presupone qué unidades se han impartido ya en clase.
 
-- **IAW:** HTML y CSS de contexto, tipos y texto en PHP, Dockerfile, redes, persistencia, formularios y seguridad de sesión.
-- **ASO:** lectura y arrays, decisiones, bucles, archivos, filtros, redirecciones, permisos y método de depuración.
-- **Python:** conversiones, referencias, texto, formato, recorridos, excepciones, archivos y argumentos.
-- **Git y GitHub:** revisión de cambios, ramas, conflictos, Pull Requests y recuperación.
+## Material pendiente
 
-Integración revisada el **27/10/2026**. Se mantiene la fecha original de consulta de las fuentes de clase.
+- **IAW:** UT3 y unidades posteriores se incorporarán cuando se disponga del material correspondiente.
+- **ASO:** UT1 y UT2 están incorporadas; las unidades posteriores se añadirán conforme se publique o facilite el material de clase.
+- **Python:** UT1, UT2 y UT3 están incorporadas; las unidades posteriores se añadirán cuando se trabajen en el curso.
 
-## ¿Cómo se explican los problemas?
+Las ampliaciones utilizadas para explicar mejor un concepto no convierten una unidad futura en material de clase ya publicado.
 
-Cada problema explica el problema, los datos, las decisiones, el código cuando hace falta y el resultado esperado. Se empieza por situaciones sencillas y se explica el motivo de cada instrucción. Los enunciados son diferentes de las actividades de clase para practicar o entregar. Se pueden consultar mientras trabajas para entender la técnica y aplicarla a otro enunciado.
+## Criterio de actualización
 
-## Ejercicios para practicar
+Cuando se incorpora material nuevo:
 
-Los 22 temas de programación y Git incluyen **66 ejercicios**. Los seis temas de Sostenibilidad añaden **18 ejercicios**: en total, los 28 temas incluyen tres ejercicios cada uno, **84 ejercicios** con pistas y soluciones paso a paso plegadas. Los enunciados son distintos de las demostraciones de teoría y de los ejercicios asignados en clase. Se han añadido el **27/10/2026**.
+1. Se revisa la teoría y se determina qué conceptos pertenecen realmente a la unidad.
+2. Se actualizan los apuntes en castellano sin adelantar innecesariamente contenidos posteriores.
+3. Se comprueba que los ejemplos y ejercicios propios sean distintos de las tareas asignadas.
+4. Se revisan los ejercicios adicionales para que practiquen únicamente contenidos ya cubiertos.
+5. Se actualizan índices, navegación, generadores y documentación cuando cambie la cobertura.
+6. Se comprueba la compilación de la web y, cuando corresponde, los ejemplos ejecutables.
 
-## ¿Cuándo se actualiza?
-
-**Cuando lo indique el estudiante.** En cada revisión se consultarán los materiales nuevos, se añadirán o corregirán los temas afectados y se comprobará que los casos didácticos siguen siendo diferentes de los ejercicios asignados. No se descargan ni incorporan novedades automáticamente.
+No existe sincronización automática con las fuentes de clase. Las actualizaciones se realizan manualmente cuando se revisa material nuevo.
