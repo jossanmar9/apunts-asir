@@ -1,32 +1,32 @@
-# UT2 · 1. Processos en Linux
+# UT2 · 1. Procesos en Linux
 
-## Què és un procés?
+## ¿Qué es un proceso?
 
-Un **procés** és una instància d'un programa que s'està executant. Si obris una aplicació o executes una ordre, el sistema crea un procés.
+Un **proceso** es una instancia de un programa que se está ejecutando. Si abres una aplicación o ejecutas una orden, el sistema crea un proceso.
 
-Linux guarda informació de cada procés: PID, PID del pare, estat, prioritat, memòria i fitxers oberts, entre altres dades.
+Linux guarda información de cada proceso: PID, PID del padre, estado, prioridad, memoria y archivos abiertos, entre otros datos.
 
-| Concepte | Significat |
+| Concepto | Significado |
 |---|---|
-| PID | identificador únic del procés |
-| PPID | PID del procés pare |
-| estat | situació actual del procés |
-| prioritat | preferència de CPU |
-| descriptors | fitxers oberts pel procés |
+| PID | identificador único del proceso |
+| PPID | PID del proceso padre |
+| estado | situación actual del proceso |
+| prioridad | preferencia de CPU |
+| descriptores | archivos abiertos por el proceso |
 
-## Estats que has de reconéixer
+## Estados que debes reconocer
 
-- `R` — Running: executant-se o preparat per executar-se.
-- `S` — Sleeping: esperant un esdeveniment; pot ser interromput.
-- `D` — espera no interrompible, habitualment relacionada amb E/S.
-- `T` — Stopped/Traced: procés detingut o depurat.
-- `Z` — Zombie: ja ha acabat, però encara conserva una entrada en la taula de processos.
-- `X` — Dead: estat transitori mentre desapareix del sistema.
+- `R` — Running: ejecutándose o preparado para ejecutarse.
+- `S` — Sleeping: esperando un evento; puede ser interrumpido.
+- `D` — espera no interrumpible, habitualmente relacionada con E/S.
+- `T` — Stopped/Traced: proceso detenido o depurado.
+- `Z` — Zombie: ya ha terminado, pero todavía conserva una entrada en la tabla de procesos.
+- `X` — Dead: estado transitorio mientras desaparece del sistema.
 
-!!! tip "Idea per recordar-ho"
-    Un `Z` no és un programa que continue treballant: **ja ha acabat**, però el sistema encara conserva temporalment la seua entrada.
+!!! tip "Idea para recordarlo"
+    Un `Z` no es un programa que continúe trabajando: **ya ha terminado**, pero el sistema todavía conserva temporalmente su entrada.
 
-## `ps`: fotografia dels processos
+## `ps`: fotografía de los procesos
 
 ```bash
 ps
@@ -35,17 +35,17 @@ ps -f
 ps -ef
 ```
 
-`ps` mostra processos. `-e` inclou tots els processos i `-f` dona informació ampliada.
+`ps` muestra procesos. `-e` incluye todos los procesos y `-f` proporciona información ampliada.
 
-Exemple útil:
+Ejemplo útil:
 
 ```bash
-ps -u alumne -o pid,stat,%cpu,%mem,cmd
+ps -u alumno -o pid,stat,%cpu,%mem,cmd
 ```
 
-Mostra els processos d'`alumne` amb les columnes que ens interessen.
+Muestra los procesos de `alumno` con las columnas que nos interesan.
 
-Buscar per nom:
+Buscar por nombre:
 
 ```bash
 ps -C bash -o pid,user,%cpu,cmd
@@ -53,7 +53,7 @@ pgrep bash
 pgrep -a bash
 ```
 
-`pgrep` és especialment còmode quan només vols trobar PID associats a un nom.
+`pgrep` es especialmente cómodo cuando solo quieres encontrar PID asociados a un nombre.
 
 ## `pstree`
 
@@ -61,30 +61,30 @@ pgrep -a bash
 pstree
 ```
 
-Mostra els processos com un arbre i ajuda a entendre la relació **pare → fill**.
+Muestra los procesos como un árbol y ayuda a entender la relación **padre → hijo**.
 
-## `top` i `htop`
+## `top` y `htop`
 
-`top` actualitza la informació contínuament i permet veure consum de CPU, memòria, swap i processos actius.
+`top` actualiza la información continuamente y permite ver consumo de CPU, memoria, swap y procesos activos.
 
 ```bash
 top
 ```
 
-Per obtindre, sense entrar en `top`, els cinc processos que més CPU gasten:
+Para obtener, sin entrar en `top`, los cinco procesos que más CPU consumen:
 
 ```bash
 ps -eo pid,user,%cpu,comm --sort=-%cpu | head -n 6
 ```
 
-`--sort=-%cpu` ordena de major a menor. `head -n 6` deixa la capçalera i cinc processos.
+`--sort=-%cpu` ordena de mayor a menor. `head -n 6` deja la cabecera y cinco procesos.
 
-## Exemple de diagnòstic
+## Ejemplo de diagnóstico
 
-Si un equip va lent:
+Si un equipo va lento:
 
 ```bash
 ps -eo pid,user,%cpu,%mem,cmd --sort=-%cpu | head
 ```
 
-No mates immediatament el primer procés. Primer identifica'l, comprova qui l'ha iniciat i si el consum és esperable. Administrar processos és també **diagnosticar abans d'actuar**.
+No mates inmediatamente el primer proceso. Primero identifícalo, comprueba quién lo ha iniciado y si el consumo es esperable. Administrar procesos también consiste en **diagnosticar antes de actuar**.
