@@ -1,8 +1,8 @@
-# UT2 · 2. Control de processos, senyals i prioritats
+# UT2 · 2. Control de procesos, señales y prioridades
 
-## Primer i segon pla
+## Primer y segundo plano
 
-En primer pla, la terminal espera que el procés acabe. Amb `&` el llances en segon pla:
+En primer plano, la terminal espera a que el proceso termine. Con `&` lo lanzas en segundo plano:
 
 ```bash
 sleep 300 &
@@ -12,34 +12,34 @@ sleep 300 &
 jobs
 ```
 
-`jobs` mostra els treballs de la shell actual.
+`jobs` muestra los trabajos de la shell actual.
 
-Per suspendre un procés en primer pla: ++ctrl+z++.
+Para suspender un proceso en primer plano: ++ctrl+z++.
 
 ```bash
 bg %1
 fg %1
 ```
 
-`bg` continua un treball suspés en segon pla; `fg` el porta al primer pla.
+`bg` continúa un trabajo suspendido en segundo plano; `fg` lo lleva al primer plano.
 
-## Senyals i `kill`
+## Señales y `kill`
 
-`kill` envia una **senyal** a un procés. No significa necessàriament «matar».
+`kill` envía una **señal** a un proceso. No significa necesariamente «matar».
 
 ```bash
 kill -15 2345
 ```
 
-Senyals principals del tema:
+Señales principales del tema:
 
-| Senyal | Ús |
+| Señal | Uso |
 |---|---|
-| `SIGHUP` / `-1` | habitualment recarregar/reiniciar segons el programa |
-| `SIGTERM` / `-15` | demanar una finalització ordenada |
-| `SIGKILL` / `-9` | finalització immediata i forçada |
+| `SIGHUP` / `-1` | habitualmente recargar/reiniciar según el programa |
+| `SIGTERM` / `-15` | solicitar una finalización ordenada |
+| `SIGKILL` / `-9` | finalización inmediata y forzada |
 
-Regla pràctica del material: prova primer `SIGTERM` i reserva `SIGKILL` per a quan siga necessari.
+Regla práctica del material: prueba primero `SIGTERM` y reserva `SIGKILL` para cuando sea necesario.
 
 ```bash
 kill -15 2345
@@ -47,53 +47,53 @@ ps -p 2345
 kill -9 2345
 ```
 
-`killall` treballa per nom:
+`killall` trabaja por nombre:
 
 ```bash
-killall nom_programa
+killall nombre_programa
 ```
 
 !!! warning
-    No uses `kill -9` com a primera opció per costum. El procés no té oportunitat de tancar fitxers ni alliberar recursos ordenadament.
+    No uses `kill -9` como primera opción por costumbre. El proceso no tiene oportunidad de cerrar archivos ni liberar recursos de forma ordenada.
 
-## Comprovar si un PID existeix
+## Comprobar si existe un PID
 
 ```bash
 ps -p 2345
 echo "$?"
 ```
 
-Un codi `0` indica que `ps` ha trobat el procés; un altre codi indica que no.
+Un código `0` indica que `ps` ha encontrado el proceso; otro código indica que no.
 
-## `nice` i `renice`
+## `nice` y `renice`
 
 El valor **nice** va de `-20` a `19`.
 
-- Valor nice més baix → més prioritat.
-- Valor nice més alt → menys prioritat.
-- Un usuari normal pot reduir la prioritat dels seus processos augmentant el nice.
-- `root` pot utilitzar tot el rang.
+- Valor nice más bajo → más prioridad.
+- Valor nice más alto → menos prioridad.
+- Un usuario normal puede reducir la prioridad de sus procesos aumentando el nice.
+- `root` puede utilizar todo el rango.
 
-Iniciar amb prioritat diferent:
+Iniciar con una prioridad diferente:
 
 ```bash
 nice -n 10 sleep 300 &
 ```
 
-Canviar-la després:
+Cambiarla después:
 
 ```bash
 renice -n 15 -p 2345
 sudo renice -n -5 -p 2345
 ```
 
-Veure el valor:
+Ver el valor:
 
 ```bash
 ps -o pid,ni,cmd -p 2345
 ```
 
-## `$!`: PID de l'últim procés en segon pla
+## `$!`: PID del último proceso en segundo plano
 
 ```bash
 sleep 300 &
@@ -102,11 +102,11 @@ echo "$pid"
 ps -p "$pid" -o pid,stat,ni,cmd
 ```
 
-És molt útil en scripts perquè no has d'endevinar el PID.
+Es muy útil en scripts porque no tienes que adivinar el PID.
 
 ## `nohup`
 
-Per a una tasca llarga que ha de continuar encara que tanques la sessió:
+Para una tarea larga que debe continuar aunque cierres la sesión:
 
 ```bash
 nohup ./copia.sh &
@@ -114,9 +114,9 @@ nohup ./copia.sh &
 
 ## `lsof`
 
-`lsof` permet veure fitxers oberts pels processos. És útil, per exemple, quan no pots desmuntar un recurs perquè algun procés l'està utilitzant.
+`lsof` permite ver archivos abiertos por los procesos. Es útil, por ejemplo, cuando no puedes desmontar un recurso porque algún proceso lo está utilizando.
 
-## Exemple complet
+## Ejemplo completo
 
 ```bash
 sleep 600 &
@@ -127,4 +127,4 @@ ps -p "$pid" -o pid,stat,ni,cmd
 kill -15 "$pid"
 ```
 
-Ací practiques segon pla, `$!`, prioritat, consulta i finalització ordenada.
+Aquí practicas segundo plano, `$!`, prioridad, consulta y finalización ordenada.
