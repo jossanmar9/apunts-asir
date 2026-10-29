@@ -112,8 +112,9 @@ nav:
           - "1.4 · Números, booleanos y operadores": python-classe/ut1-04-numeros-operadores.md
           - "1.5 · Cadenas, entrada/salida y f-strings": python-classe/ut1-05-cadenas-entrada-salida.md
       - "UT2 · Objetos predefinidos y cadenas":
-          - "Objetos y métodos de cadenas": python-classe/04-cadenes.md
-          - "F-strings y Unicode": python-classe/05-format.md
+          - "2.1 · Objetos predefinidos, funciones y métodos": python-classe/ut2-01-objetos-predefinidos.md
+          - "2.2 · Métodos y operaciones con cadenas": python-classe/ut2-02-metodos-cadenas.md
+          - "2.3 · F-strings, formato y Unicode": python-classe/ut2-03-fstrings-unicode.md
       - "UT3 · Control de flujo y bibliotecas sysadmin":
           - "Condicionales y bucles": python-classe/06-control.md
           - "Errores y depuración": python-classe/07-errors.md
