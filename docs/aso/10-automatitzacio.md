@@ -1,126 +1,126 @@
-# UT2 · 4. Automatització: cron i at
+# UT2 · 4. Automatización: cron y at
 
-## Quan usar cada eina
+## Cuándo usar cada herramienta
 
-- **cron** → tasques que es repeteixen periòdicament.
-- **at** → una tasca que s'ha d'executar **una sola vegada** en un moment futur.
+- **cron** → tareas que se repiten periódicamente.
+- **at** → una tarea que debe ejecutarse **una sola vez** en un momento futuro.
 
 ## `cron`
 
-`cron` és un dimoni que revisa periòdicament els *crontabs* buscant treballs programats.
+`cron` es un demonio que revisa periódicamente los *crontabs* buscando trabajos programados.
 
-Editar el crontab de l'usuari:
+Editar el crontab del usuario:
 
 ```bash
 crontab -e
 ```
 
-Llistar-lo:
+Listarlo:
 
 ```bash
 crontab -l
 ```
 
-Una línia de cron té cinc camps temporals abans de l'ordre:
+Una línea de cron tiene cinco campos temporales antes de la orden:
 
 ```text
-minut hora dia_mes mes dia_setmana ordre
+minuto hora dia_mes mes dia_semana orden
 ```
 
-Exemple: executar una còpia cada dia a les 02:30:
+Ejemplo: ejecutar una copia cada día a las 02:30:
 
 ```cron
-30 2 * * * /home/alumne/copia.sh
+30 2 * * * /home/alumno/copia.sh
 ```
 
-Exemple: cada dilluns a les 08:00:
+Ejemplo: cada lunes a las 08:00:
 
 ```cron
-0 8 * * 1 /home/alumne/informe.sh
+0 8 * * 1 /home/alumno/informe.sh
 ```
 
-Exemple: cada 15 minuts:
+Ejemplo: cada 15 minutos:
 
 ```cron
-*/15 * * * * /home/alumne/comprovar.sh
+*/15 * * * * /home/alumno/comprobar.sh
 ```
 
-## Com llegir una expressió cron
+## Cómo leer una expresión cron
 
 ```cron
-0 23 * * 5 /home/alumne/backup.sh
+0 23 * * 5 /home/alumno/backup.sh
 ```
 
-Llig-la d'esquerra a dreta:
+Léela de izquierda a derecha:
 
-1. minut `0`
+1. minuto `0`
 2. hora `23`
-3. qualsevol dia del mes
-4. qualsevol mes
-5. dia de setmana `5`
+3. cualquier día del mes
+4. cualquier mes
+5. día de la semana `5`
 
-→ divendres a les 23:00.
+→ viernes a las 23:00.
 
-!!! warning "Error típic"
-    En `cron` és millor usar **rutes absolutes**. L'entorn no és necessàriament el mateix que tens al terminal interactiu.
+!!! warning "Error típico"
+    En `cron` es mejor usar **rutas absolutas**. El entorno no es necesariamente el mismo que tienes en la terminal interactiva.
 
-Per guardar eixida i errors:
+Para guardar salida y errores:
 
 ```cron
-0 2 * * * /home/alumne/copia.sh >> /home/alumne/copia.log 2>&1
+0 2 * * * /home/alumno/copia.sh >> /home/alumno/copia.log 2>&1
 ```
 
-## `at`: una sola execució
+## `at`: una sola ejecución
 
-Exemple interactiu:
+Ejemplo interactivo:
 
 ```bash
 at 18:30
 ```
 
-Després escrius l'ordre i finalitzes l'entrada.
+Después escribes la orden y finalizas la entrada.
 
-També pots enviar una ordre per pipe:
+También puedes enviar una orden por pipe:
 
 ```bash
-echo "/home/alumne/copia.sh" | at 18:30
+echo "/home/alumno/copia.sh" | at 18:30
 ```
 
-Llistar tasques pendents:
+Listar tareas pendientes:
 
 ```bash
 atq
 ```
 
-Eliminar la tasca 14:
+Eliminar la tarea 14:
 
 ```bash
 atrm 14
 ```
 
-## Cron o at?
+## ¿Cron o at?
 
-| Necessitat | Eina |
+| Necesidad | Herramienta |
 |---|---|
-| còpia cada nit | `cron` |
-| informe cada dilluns | `cron` |
-| apagar una vegada esta nit | `at` |
-| executar un script d'ací a una hora | `at` |
+| copia cada noche | `cron` |
+| informe cada lunes | `cron` |
+| apagar una vez esta noche | `at` |
+| ejecutar un script dentro de una hora | `at` |
 
-## Exemple d'administració
+## Ejemplo de administración
 
 Script:
 
 ```bash
 #!/bin/bash
-ara=$(date '+%F %T')
-echo "$ara - còpia executada" >> /home/alumne/backup.log
+ahora=$(date '+%F %T')
+echo "$ahora - copia ejecutada" >> /home/alumno/backup.log
 ```
 
 Crontab:
 
 ```cron
-0 3 * * * /home/alumne/backup.sh
+0 3 * * * /home/alumno/backup.sh
 ```
 
-Açò combina Bash amb automatització real: el script fa la tasca i `cron` decideix **quan** s'executa.
+Esto combina Bash con automatización real: el script realiza la tarea y `cron` decide **cuándo** se ejecuta.
