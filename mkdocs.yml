@@ -77,6 +77,7 @@ nav:
   - "Inicio": index.md
   - "IAW":
       - iaw/index.md
+      - "Guía de estudio UT1 + UT2": iaw/00-guia-estudi.md
       - "UT1 · Entorno de implantación web":
           - "Arquitectura y componentes": iaw/01-arquitectura.md
           - "HTTP y diagnóstico": iaw/02-http.md
@@ -126,6 +127,10 @@ nav:
           - ejercicios/aso/index.md
           - "UT1 · Bash · 120": ejercicios/aso/ut1.md
           - "UT2 · Procesos, servicios y automatización · 50": ejercicios/aso/ut2.md
+      - "IAW":
+          - ejercicios/iaw/index.md
+          - "UT1 · Entorno web · 60": ejercicios/iaw/ut1.md
+          - "UT2 · PHP · 50": ejercicios/iaw/ut2.md
   - "Git y GitHub":
       - git-github/index.md
   - "Sostenibilidad":
