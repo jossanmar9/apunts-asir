@@ -74,7 +74,7 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-      toc_depth: 2-6
+      toc_depth: 1-6
 
 extra_css:
   - assets/stylesheets/extra.css
