@@ -1,0 +1,29 @@
+name: Regenerar ejercicios IAW
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/regenera_ejercicios_iaw.py'
+
+permissions:
+  contents: write
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generar ejercicios
+        run: python scripts/regenera_ejercicios_iaw.py
+      - name: Guardar ejercicios generados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ejercicios/iaw
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Añadir ejercicios de IAW"
+            git push
+          fi
