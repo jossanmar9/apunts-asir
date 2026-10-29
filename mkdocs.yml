@@ -46,6 +46,10 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
+  - pymdownx.snippets:
+      base_path:
+        - .
+      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -69,6 +73,7 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+      toc_depth: 6
 
 extra_css:
   - assets/stylesheets/extra.css
@@ -77,37 +82,17 @@ nav:
   - "Inicio": index.md
   - "IAW":
       - iaw/index.md
-      - "Guía de estudio UT1 + UT2": iaw/00-guia-estudi.md
-      - "UT1 · Entorno de implantación web":
-          - "Arquitectura y componentes": iaw/01-arquitectura.md
-          - "HTTP y diagnóstico": iaw/02-http.md
-          - "Docker Compose y entorno reproducible": iaw/03-entorn.md
-      - "UT2 · Programación web en servidor":
-          - "PHP y tipos de datos": iaw/04-php.md
-          - "Control de flujo, arrays y funciones": iaw/05-control-funcions.md
-          - "Formularios y validación": iaw/06-formularis.md
-          - "Cookies, sesiones y autenticación": iaw/07-estat.md
-          - "Depuración y comprobaciones": iaw/08-depuracio.md
+      - "UT1 · Entorno de implantación web": iaw/ut1.md
+      - "UT2 · Programación web en servidor": iaw/ut2.md
   - "ASO":
       - aso/index.md
-      - "UT1 · Bash":
-          - "Guía de estudio y repaso": aso/01-guia-estudi-bash.md
-          - "Scripts, variables y parámetros": aso/02-bash-dades.md
-          - "Cálculos y decisiones": aso/03-bash-decisions.md
-          - "Bucles y funciones": aso/04-bash-bucles.md
-          - "Archivos, filtros y expresiones regulares": aso/05-bash-text.md
-          - "Errores y scripts de administración": aso/06-bash-errors.md
-      - "UT2 · Procesos, servicios y automatización":
-          - "Procesos en Linux": aso/07-processos.md
-          - "Control, señales y prioridades": aso/08-control-processos.md
-          - "Servicios y systemd": aso/09-systemd.md
-          - "Automatización: cron y at": aso/10-automatitzacio.md
-          - "Monitorización, logs y diagnóstico": aso/11-monitoritzacio.md
+      - "UT1 · Bash": aso/ut1.md
+      - "UT2 · Procesos, servicios y automatización": aso/ut2.md
   - "Python":
       - python-classe/index.md
-      - "UT1 · Introducción a Python": python-classe/ut1-01-introduccion.md
-      - "UT2 · Objetos predefinidos y cadenas": python-classe/ut2-01-objetos-predefinidos.md
-      - "UT3 · Control de flujo y bibliotecas sysadmin": python-classe/ut3-01-condicionales.md
+      - "UT1 · Introducción a Python": python-classe/ut1.md
+      - "UT2 · Objetos predefinidos y cadenas": python-classe/ut2.md
+      - "UT3 · Control de flujo y bibliotecas sysadmin": python-classe/ut3.md
   - "Ejercicios":
       - ejercicios/index.md
       - "Python":
