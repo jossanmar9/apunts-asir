@@ -9,6 +9,7 @@ on:
       - 'docs/ejercicios/aso/**'
       - 'docs/ejercicios/iaw/**'
       - 'scripts/genera_zips_ejercicios.py'
+      - 'scripts/anade_botones_descarga.py'
       - '.github/workflows/genera-zips-ejercicios.yml'
 
 permissions:
@@ -33,17 +34,31 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Regenerar ejercicios de Python
+        run: |
+          python scripts/regenera_ejercicios_python.py
+          python scripts/regenera_ut3_python.py
+
+      - name: Regenerar ejercicios de ASO
+        run: python scripts/regenera_ejercicios_aso.py
+
+      - name: Regenerar ejercicios de IAW
+        run: python scripts/regenera_ejercicios_iaw.py
+
+      - name: Añadir botones de descarga
+        run: python scripts/anade_botones_descarga.py
+
       - name: Generar ZIP
         run: python scripts/genera_zips_ejercicios.py
 
-      - name: Guardar ZIP actualizados
+      - name: Guardar ejercicios y ZIP actualizados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/ejercicios/descargas/*.zip
+          git add docs/ejercicios
           if git diff --cached --quiet; then
-            echo "No hay ZIP que actualizar"
+            echo "No hay cambios que guardar"
           else
-            git commit -m "Actualizar ZIP de ejercicios"
+            git commit -m "Actualizar ejercicios y paquetes ZIP"
             git push
           fi
