@@ -1,7 +1,4 @@
-"""
-Ejercicio 36: Carga del servidor
+# Ejercicio 36 · Comprobar con assert
+# Crea una variable edad con un valor negativo y usa assert para comprobar que sea mayor o igual que cero. Observa el error y después corrige el valor.
 
-Pide un valor de carga y número de núcleos; avisa si la carga supera el número de núcleos.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

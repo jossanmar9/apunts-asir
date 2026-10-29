@@ -1,7 +1,4 @@
-"""
-Ejercicio 40: Intentos de login
+# Ejercicio 40 · Fecha actual
+# Importa datetime y muestra la fecha y hora actuales usando datetime.datetime.now().
 
-Pide número de intentos fallidos y muestra NORMAL, AVISO o BLOQUEO según tramos.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

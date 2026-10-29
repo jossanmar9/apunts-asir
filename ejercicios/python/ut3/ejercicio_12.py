@@ -1,7 +1,4 @@
-"""
-Ejercicio 12: Clasificar HTTP
+# Ejercicio 12 · Cuenta atrás
+# Pide un entero positivo y muestra una cuenta atrás hasta 0 utilizando while.
 
-Pide un código HTTP y clasifícalo como 2xx, 3xx, 4xx, 5xx u otro.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

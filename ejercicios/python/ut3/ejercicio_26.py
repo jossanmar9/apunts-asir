@@ -1,7 +1,4 @@
-"""
-Ejercicio 26: Horario de soporte
+# Ejercicio 26 · Repetir mensaje
+# Pide un mensaje y muéstralo cinco veces usando for y _ como variable no utilizada.
 
-Pide una hora de 0 a 23 e indica si está dentro del horario 8–18.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

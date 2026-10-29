@@ -1,7 +1,4 @@
-"""
-Ejercicio 15: Espacio libre mínimo
+# Ejercicio 15 · Salir con break
+# Crea un while True que pida comandos. Termina con break cuando el usuario escriba salir.
 
-Pide GB libres y muestra aviso si quedan menos de 10 GB.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

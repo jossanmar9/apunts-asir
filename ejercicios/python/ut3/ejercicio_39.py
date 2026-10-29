@@ -1,7 +1,4 @@
-"""
-Ejercicio 39: Código de salida
+# Ejercicio 39 · Variable PATH
+# Importa os y muestra el valor de la variable de entorno PATH con os.getenv().
 
-Pide el código de salida de un comando. Muestra ÉXITO si es 0 y ERROR en otro caso.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

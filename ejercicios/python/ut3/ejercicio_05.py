@@ -1,7 +1,4 @@
-"""
-Ejercicio 05: Múltiplo de 3 y 5
+# Ejercicio 05 · Horario permitido
+# Pide una hora de 0 a 23 y muestra si está dentro del horario de soporte de 8 a 18 usando and.
 
-Pide un entero e indica si es divisible a la vez por 3 y por 5.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

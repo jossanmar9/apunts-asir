@@ -1,7 +1,4 @@
-"""
-Ejercicio 29: Trimestre
+# Ejercicio 29 · Omitir temporal
+# Recorre una lista de nombres de archivo y utiliza continue para no mostrar los que terminan en .tmp.
 
-Pide un mes de 1 a 12 e indica a qué trimestre pertenece.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

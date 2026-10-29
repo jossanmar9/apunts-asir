@@ -1,7 +1,4 @@
-"""
-Ejercicio 21: Extensión permitida
+# Ejercicio 21 · Recorrer palabra
+# Pide una palabra y muestra cada carácter en una línea utilizando for.
 
-Pide un nombre de archivo y acepta solo si termina en .txt, .log o .conf.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

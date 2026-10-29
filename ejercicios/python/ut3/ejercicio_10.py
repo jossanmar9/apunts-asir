@@ -1,7 +1,4 @@
-"""
-Ejercicio 10: Precio de museo
+# Ejercicio 10 · Acceso con dos requisitos
+# Pide edad y si tiene autorización (s/n). Permite el acceso únicamente si es mayor de edad y tiene autorización.
 
-Pide edad y asigna tarifa infantil, general o sénior.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

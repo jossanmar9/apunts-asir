@@ -1,7 +1,4 @@
-"""
-Ejercicio 13: Estado de CPU
+# Ejercicio 13 · Contraseña repetida
+# Pide una contraseña hasta que el usuario escriba 'python'. Después muestra ACCESO CONCEDIDO.
 
-Pide porcentaje de CPU y muestra NORMAL, ALTO o CRÍTICO según dos umbrales.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

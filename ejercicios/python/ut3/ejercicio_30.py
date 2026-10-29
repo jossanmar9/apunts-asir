@@ -1,7 +1,4 @@
-"""
-Ejercicio 30: Estación aproximada
+# Ejercicio 30 · Buscar puerto con else
+# Recorre [22, 53, 80, 443] buscando el puerto 3306. Usa for con else para indicar que no se encontró.
 
-Pide un mes y clasifícalo como invierno, primavera, verano u otoño por meses completos.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

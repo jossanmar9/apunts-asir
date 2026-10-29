@@ -1,7 +1,4 @@
-"""
-Ejercicio 43: Dos copias disponibles
+# Ejercicio 43 · Directorio actual
+# Importa pathlib y muestra el directorio actual con pathlib.Path.cwd().
 
-Pide si existe copia local y remota mediante s/n e indica si hay al menos una disponible.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

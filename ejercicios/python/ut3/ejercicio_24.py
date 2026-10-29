@@ -1,7 +1,4 @@
-"""
-Ejercicio 24: Contraseña mínima
+# Ejercicio 24 · Pares hasta 30
+# Muestra los números pares del 2 al 30 usando el paso de range().
 
-Pide una contraseña y comprueba únicamente que tenga al menos 12 caracteres.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

@@ -1,7 +1,4 @@
-"""
-Ejercicio 46: Ruta absoluta Linux
+# Ejercicio 46 · Tamaño de un archivo
+# Importa pathlib, comprueba si existe informe.log y, si existe, muestra su tamaño con stat().st_size.
 
-Pide una ruta y muestra ABSOLUTA si empieza por '/', RELATIVA en otro caso.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

@@ -1,7 +1,4 @@
-"""
-Ejercicio 17: Validar puerto
+# Ejercicio 17 · Suma hasta cero
+# Pide números enteros y acumula su suma. El programa termina cuando se introduce 0.
 
-Pide un entero y muestra si es un puerto válido entre 1 y 65535.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

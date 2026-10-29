@@ -1,7 +1,4 @@
-"""
-Ejercicio 04: Múltiplo de 5
+# Ejercicio 04 · Espacio de disco
+# Pide los GB libres. Muestra CRÍTICO si son menos de 5, AVISO si son menos de 15 y CORRECTO en otro caso.
 
-Pide un entero e indica si es múltiplo de 5.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

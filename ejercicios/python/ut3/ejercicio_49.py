@@ -1,7 +1,4 @@
-"""
-Ejercicio 49: Crear carpeta backups
+# Ejercicio 49 · Copiar backup
+# Importa pathlib y shutil. Si existe backup.zip, crea la carpeta copias si hace falta y copia allí el archivo.
 
-Con pathlib, comprueba si existe una carpeta backups. Si no existe, créala; si existe, avisa.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

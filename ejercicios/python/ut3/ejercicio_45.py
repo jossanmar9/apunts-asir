@@ -1,7 +1,4 @@
-"""
-Ejercicio 45: URL segura
+# Ejercicio 45 · Listar archivos Python
+# Importa pathlib y recorre la carpeta actual con iterdir(). Muestra solo los archivos cuya extensión sea .py.
 
-Pide una URL y muestra SEGURA si empieza por https://; si no, REVISAR.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

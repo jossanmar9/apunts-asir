@@ -1,7 +1,4 @@
-"""
-Ejercicio 48: Comprobar fichero
+# Ejercicio 48 · Uso de disco
+# Importa shutil, consulta disk_usage('/') y muestra el porcentaje de espacio utilizado.
 
-Pide una ruta por sys.argv y pathlib; indica si existe y además es un fichero.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

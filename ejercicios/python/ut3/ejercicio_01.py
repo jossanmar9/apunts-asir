@@ -1,7 +1,4 @@
-"""
-Ejercicio 01: Mayor de edad para servicio
+# Ejercicio 01 · Control de acceso por edad
+# Pide una edad y muestra ACCESO si es mayor o igual que 18; en caso contrario, DENEGADO.
 
-Pide una edad y muestra ACCESO si es 18 o más; en caso contrario, DENEGADO.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

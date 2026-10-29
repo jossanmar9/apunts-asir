@@ -1,7 +1,4 @@
-"""
-Ejercicio 42: Antigüedad de copia
+# Ejercicio 42 · Información del sistema
+# Importa platform y muestra sistema operativo, versión y procesador.
 
-Pide horas desde el último backup y avisa si son más de 24.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

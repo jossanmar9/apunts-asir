@@ -1,7 +1,4 @@
-"""
-Ejercicio 19: Entorno por prefijo
+# Ejercicio 19 · Buscar sin break
+# Pide números hasta introducir uno mayor que 100. Usa while con else para mostrar que el bucle terminó de forma normal.
 
-Pide hostname y muestra PRODUCCIÓN si empieza por PROD-, PRUEBAS si empieza por TEST- y DESCONOCIDO en otro caso.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

@@ -1,7 +1,4 @@
-"""
-Ejercicio 47: Comprobar directorio
+# Ejercicio 47 · Buscar logs recursivamente
+# Importa pathlib y utiliza rglob('*.log') para mostrar archivos .log de la carpeta actual y sus subcarpetas.
 
-Pide una ruta por sys.argv y pathlib; indica si existe y además es un directorio.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.
