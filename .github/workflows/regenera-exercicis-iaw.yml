@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/regenera_ejercicios_iaw.py'
+      - '.github/workflows/regenera-exercicis-iaw.yml'
 
 permissions:
   contents: write
