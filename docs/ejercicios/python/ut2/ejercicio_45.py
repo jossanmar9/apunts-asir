@@ -1,5 +1,7 @@
-"""Ejercicio 45 · Carácter desde código
-Pide un número entre 32 y 126 y muestra el carácter correspondiente con chr().
+"""
+Ejercicio 45: Dominio de cuenta
+
+Dada una cuenta con formato 'DOMINIO\alumno', extrae solo 'DOMINIO'.
 """
 
 # Escribe tu solución a partir de aquí:

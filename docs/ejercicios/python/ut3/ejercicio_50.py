@@ -1,5 +1,7 @@
-"""Ejercicio 50 · Estado de servicio
-'running': Servicio activo; 'stopped': Servicio detenido; otros: Estado desconocido.
+"""
+Ejercicio 50: Elegir raíz según sistema
+
+Usa platform.system(): Windows muestra C:\, Linux /, Darwin /Users y otro sistema desconocido.
 """
 
 # Escribe tu solución a partir de aquí:

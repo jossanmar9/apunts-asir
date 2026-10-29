@@ -1,5 +1,7 @@
-"""Ejercicio 02 · Edad el próximo año
-Pide la edad del usuario y muestra cuántos años tendrá el próximo año.
+"""
+Ejercicio 02: Precio por kilo
+
+Pide el precio por kilo de un producto y los kilos comprados. Calcula el importe.
 """
 
 # Escribe tu solución a partir de aquí:

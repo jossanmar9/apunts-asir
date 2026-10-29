@@ -1,5 +1,7 @@
-"""Ejercicio 09 · Nota cualitativa
-Pide una nota 0-10 y clasifícala como suspenso, aprobado, notable o sobresaliente.
+"""
+Ejercicio 09: Tarifa de aparcamiento
+
+Pide horas de estacionamiento y calcula el precio con tres tramos de precio por hora.
 """
 
 # Escribe tu solución a partir de aquí:

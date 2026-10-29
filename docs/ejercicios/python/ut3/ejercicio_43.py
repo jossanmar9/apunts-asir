@@ -1,5 +1,7 @@
-"""Ejercicio 43 · Config de ejemplo
-Si existe config.ini: Config existente. Si no y existe config.example.ini, cópialo con shutil. Si falta: aviso.
+"""
+Ejercicio 43: Dos copias disponibles
+
+Pide si existe copia local y remota mediante s/n e indica si hay al menos una disponible.
 """
 
 # Escribe tu solución a partir de aquí:

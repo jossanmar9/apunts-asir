@@ -1,5 +1,7 @@
-"""Ejercicio 37 · Velocidad media
-Pide distancia y tiempo y calcula la velocidad media.
+"""
+Ejercicio 37: Minutos decimales a segundos
+
+Pide minutos con decimales y calcula el total de segundos.
 """
 
 # Escribe tu solución a partir de aquí:

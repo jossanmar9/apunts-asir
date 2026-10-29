@@ -1,5 +1,7 @@
-"""Ejercicio 49 · Coste de almacenamiento
-Pide GB almacenados y precio por GB. Calcula el coste total.
+"""
+Ejercicio 49: Porcentaje de aciertos
+
+Pide número total de preguntas y número de aciertos. Calcula el porcentaje de aciertos.
 """
 
 # Escribe tu solución a partir de aquí:

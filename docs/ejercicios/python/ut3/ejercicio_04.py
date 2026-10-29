@@ -1,5 +1,7 @@
-"""Ejercicio 04 · División segura
-Pide dos números. Divide si el segundo no es cero; si lo es, muestra un aviso.
+"""
+Ejercicio 04: Múltiplo de 5
+
+Pide un entero e indica si es múltiplo de 5.
 """
 
 # Escribe tu solución a partir de aquí:

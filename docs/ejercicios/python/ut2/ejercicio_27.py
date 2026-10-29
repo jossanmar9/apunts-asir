@@ -1,5 +1,7 @@
-"""Ejercicio 27 · Todo minúsculas
-Pide una cadena y comprueba si está completamente en minúsculas.
+"""
+Ejercicio 27: Código en minúsculas válido
+
+Pide una cadena y muestra el resultado de islower().
 """
 
 # Escribe tu solución a partir de aquí:

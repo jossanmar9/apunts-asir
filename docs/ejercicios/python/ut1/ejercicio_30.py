@@ -1,5 +1,7 @@
-"""Ejercicio 30 · Distancia entre números
-Pide dos números y muestra el valor absoluto de su diferencia.
+"""
+Ejercicio 30: Ahorro anual
+
+Pide cuánto ahorras cada mes y calcula el ahorro de un año.
 """
 
 # Escribe tu solución a partir de aquí:

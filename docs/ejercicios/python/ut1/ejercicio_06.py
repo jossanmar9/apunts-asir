@@ -1,5 +1,7 @@
-"""Ejercicio 06 · Perímetro de un rectángulo
-Pide base y altura y calcula el perímetro.
+"""
+Ejercicio 06: Área de un trapecio
+
+Pide base mayor, base menor y altura y calcula el área.
 """
 
 # Escribe tu solución a partir de aquí:

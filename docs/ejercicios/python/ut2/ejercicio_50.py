@@ -1,5 +1,7 @@
-"""Ejercicio 50 · Username normalizado
-Con nombre='  José  ' y apellido='  Martínez  ', crea un username con 3 letras de cada uno sin tildes y dos dígitos aleatorios.
+"""
+Ejercicio 50: Normalizar alias
+
+Dado '  José.Pérez  ', limpia bordes, pasa a minúsculas y sustituye vocales acentuadas con replace().
 """
 
 # Escribe tu solución a partir de aquí:

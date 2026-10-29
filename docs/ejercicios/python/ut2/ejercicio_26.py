@@ -1,5 +1,7 @@
-"""Ejercicio 26 · Todo mayúsculas
-Pide una cadena y comprueba si está completamente en mayúsculas.
+"""
+Ejercicio 26: Alias alfanumérico
+
+Pide un alias y muestra el resultado de isalnum().
 """
 
 # Escribe tu solución a partir de aquí:

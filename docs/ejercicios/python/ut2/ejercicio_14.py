@@ -1,5 +1,7 @@
-"""Ejercicio 14 · Cambiar separadores
-Pide una fecha AAAA_MM_DD y cambia los guiones bajos por guiones.
+"""
+Ejercicio 14: Posición de dos puntos
+
+Dada 'usuario:grupo', localiza la posición de ':' con find().
 """
 
 # Escribe tu solución a partir de aquí:

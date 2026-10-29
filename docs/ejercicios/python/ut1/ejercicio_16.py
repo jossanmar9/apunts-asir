@@ -1,5 +1,7 @@
-"""Ejercicio 16 · Segundos a minutos
-Pide segundos y muestra minutos completos y segundos restantes.
+"""
+Ejercicio 16: Rebaja en euros
+
+Pide un precio y un porcentaje de rebaja. Calcula cuántos euros se descuentan y el precio final.
 """
 
 # Escribe tu solución a partir de aquí:

@@ -1,5 +1,7 @@
-"""Ejercicio 21 · Descuento por importe
-Aplica 5 % si supera 50 €, 10 % si supera 100 € y 15 % si supera 200 €. Muestra el final.
+"""
+Ejercicio 21: Extensión permitida
+
+Pide un nombre de archivo y acepta solo si termina en .txt, .log o .conf.
 """
 
 # Escribe tu solución a partir de aquí:

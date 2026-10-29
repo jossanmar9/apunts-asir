@@ -1,5 +1,7 @@
-"""Ejercicio 16 · Buscar arroba
-Pide un email y muestra la posición de @ usando find().
+"""
+Ejercicio 16: Extraer protocolo
+
+Dada 'https://servidor.local', extrae 'https' localizando '://'.
 """
 
 # Escribe tu solución a partir de aquí:

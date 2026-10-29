@@ -1,5 +1,7 @@
-"""Ejercicio 01 · Tres tipos de cadenas
-Crea cadenas con comillas simples, dobles y multilínea e imprime las tres.
+"""
+Ejercicio 01: Código de inventario
+
+Dado el texto '  srv-042  ', elimina espacios de los extremos y muéstralo en mayúsculas.
 """
 
 # Escribe tu solución a partir de aquí:

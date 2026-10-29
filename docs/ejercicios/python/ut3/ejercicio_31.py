@@ -1,5 +1,7 @@
-"""Ejercicio 31 · Validar puerto
-Pide un puerto e indica si está en el rango válido 1-65535.
+"""
+Ejercicio 31: Días restantes de licencia
+
+Pide días restantes y muestra AGOTADA, PRÓXIMA A CADUCAR o ACTIVA según el valor.
 """
 
 # Escribe tu solución a partir de aquí:

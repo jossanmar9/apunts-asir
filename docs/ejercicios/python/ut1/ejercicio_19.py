@@ -1,5 +1,7 @@
-"""Ejercicio 19 · Precio con descuento
-Pide un precio y calcula cuánto se paga tras un descuento del 15 %.
+"""
+Ejercicio 19: Coste de impresión
+
+Pide número de páginas y precio por página. Calcula el coste total.
 """
 
 # Escribe tu solución a partir de aquí:

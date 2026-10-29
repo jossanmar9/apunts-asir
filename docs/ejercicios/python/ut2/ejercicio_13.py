@@ -1,5 +1,7 @@
-"""Ejercicio 13 · Eliminar bordes
-Pide texto con espacios exteriores y muestra el resultado de strip().
+"""
+Ejercicio 13: Contar barras
+
+Dada una ruta Linux, cuenta cuántos caracteres '/' contiene.
 """
 
 # Escribe tu solución a partir de aquí:

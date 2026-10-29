@@ -1,5 +1,7 @@
-"""Ejercicio 25 · Céntimos a euros
-Pide céntimos y muestra euros y céntimos restantes.
+"""
+Ejercicio 25: Conversión de gramos
+
+Pide gramos y conviértelos a kilogramos.
 """
 
 # Escribe tu solución a partir de aquí:

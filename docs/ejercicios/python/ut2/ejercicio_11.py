@@ -1,5 +1,7 @@
-"""Ejercicio 11 · Minúsculas
-Pide una frase y muéstrala completamente en minúsculas.
+"""
+Ejercicio 11: Código en minúsculas
+
+Pide un código y muéstralo completamente en minúsculas.
 """
 
 # Escribe tu solución a partir de aquí:

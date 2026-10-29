@@ -1,5 +1,7 @@
-"""Ejercicio 03 · Repetir palabra
-Pide una palabra y un número y muestra la palabra repetida ese número de veces.
+"""
+Ejercicio 03: Banner repetido
+
+Pide una palabra y muestra esa palabra repetida cinco veces.
 """
 
 # Escribe tu solución a partir de aquí:

@@ -1,5 +1,7 @@
-"""Ejercicio 28 · Normalizar hostname
-Convierte '  pc -- laboratorio -  12  ' en 'PC-LABORATORIO-12' sin condicionales ni bucles.
+"""
+Ejercicio 28: Código en mayúsculas válido
+
+Pide una cadena y muestra el resultado de isupper().
 """
 
 # Escribe tu solución a partir de aquí:

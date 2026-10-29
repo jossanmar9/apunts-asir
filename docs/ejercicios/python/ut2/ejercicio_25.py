@@ -1,5 +1,7 @@
-"""Ejercicio 25 · Alfanumérico
-Pide un texto y comprueba con isalnum() si es alfanumérico.
+"""
+Ejercicio 25: Solo letras
+
+Pide un alias y muestra el resultado de isalpha().
 """
 
 # Escribe tu solución a partir de aquí:

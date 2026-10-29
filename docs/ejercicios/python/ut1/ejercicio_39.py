@@ -1,5 +1,7 @@
-"""Ejercicio 39 · Precio por unidad
-Pide precio total y número de unidades. Calcula precio por unidad.
+"""
+Ejercicio 39: Tiempo total de tareas
+
+Pide la duración en minutos de cuatro tareas y calcula el total en horas decimales.
 """
 
 # Escribe tu solución a partir de aquí:

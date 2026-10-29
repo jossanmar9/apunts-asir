@@ -1,5 +1,7 @@
-"""Ejercicio 15 · Mes y días
-Pide un mes 1-12 e indica cuántos días tiene. Considera febrero de 28 días.
+"""
+Ejercicio 15: Espacio libre mínimo
+
+Pide GB libres y muestra aviso si quedan menos de 10 GB.
 """
 
 # Escribe tu solución a partir de aquí:
