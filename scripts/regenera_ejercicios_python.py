@@ -172,7 +172,7 @@ for unidad, ejercicios in (("ut1", UT1), ("ut2", UT2), ("ut3", UT3)):
     for numero, (titulo, enunciado) in enumerate(ejercicios, 1):
         texto = f'"""\nEjercicio {numero:02d}: {titulo}\n\n{enunciado}\n"""\n\n# Escribe tu solución a partir de aquí:\n'
         (carpeta / f"ejercicio_{numero:02d}.py").write_text(texto, encoding="utf-8")
-        md += [f"## Ejercicio {numero:02d} · {titulo}", enunciado, ""]
+        md += [f"## Ejercicio {numero:02d} · {titulo}", enunciado, "", f"[:material-language-python: Abrir ejercicio_{numero:02d}.py]({unidad}/ejercicio_{numero:02d}.py){{ .md-button }}", ""]
     (BASE / f"{unidad}.md").write_text("\n".join(md), encoding="utf-8")
 
 print("150 ejercicios regenerados.")
