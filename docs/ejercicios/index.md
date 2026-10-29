@@ -12,3 +12,8 @@ De momento están disponibles los ejercicios de **Python**.
 
 !!! tip "Cómo utilizarlos"
     Intenta resolver cada ejercicio sin mirar apuntes. Si te atascas, revisa primero el tema correspondiente y vuelve a intentarlo.
+
+## ASO
+
+- [UT1 · Bash — 120 ejercicios](aso/ut1.md)
+- [UT2 · Procesos, servicios y automatización — 50 ejercicios](aso/ut2.md)

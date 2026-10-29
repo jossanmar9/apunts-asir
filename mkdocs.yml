@@ -116,6 +116,10 @@ nav:
           - "UT1 · Introducción y tipos": ejercicios/python/ut1.md
           - "UT2 · Cadenas": ejercicios/python/ut2.md
           - "UT3 · Condicionales y sysadmin": ejercicios/python/ut3.md
+      - "ASO":
+          - ejercicios/aso/index.md
+          - "UT1 · Bash · 120": ejercicios/aso/ut1.md
+          - "UT2 · Procesos, servicios y automatización · 50": ejercicios/aso/ut2.md
   - "Git y GitHub":
       - git-github/index.md
   - "Sostenibilidad":
