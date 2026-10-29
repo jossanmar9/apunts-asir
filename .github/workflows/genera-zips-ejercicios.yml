@@ -32,18 +32,7 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-
-      - name: Regenerar ejercicios de Python
-        run: |
-          python scripts/regenera_ejercicios_python.py
-          python scripts/regenera_ut3_python.py
-
-      - name: Regenerar ejercicios de ASO
-        run: python scripts/regenera_ejercicios_aso.py
-
-      - name: Regenerar ejercicios de IAW
-        run: python scripts/regenera_ejercicios_iaw.py
+          python-version: '3.14'
 
       - name: Añadir botones de descarga
         run: python scripts/anade_botones_descarga.py
@@ -51,14 +40,15 @@ jobs:
       - name: Generar ZIP
         run: python scripts/genera_zips_ejercicios.py
 
-      - name: Guardar ejercicios y ZIP actualizados
+      - name: Guardar botones y ZIP actualizados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/ejercicios
+          git add docs/ejercicios/descargas docs/ejercicios/python/*.md docs/ejercicios/aso/*.md docs/ejercicios/iaw/*.md
           if git diff --cached --quiet; then
             echo "No hay cambios que guardar"
           else
-            git commit -m "Actualizar ejercicios y paquetes ZIP"
+            git commit -m "Actualizar botones y paquetes ZIP de ejercicios"
+            git pull --rebase origin main
             git push
           fi
