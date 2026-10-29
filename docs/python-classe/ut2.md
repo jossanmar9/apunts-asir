@@ -7,3 +7,5 @@ Esta página reúne **toda la teoría de la UT2**. La tabla de contenidos permit
 --8<-- "docs/python-classe/ut2-02-metodos-cadenas.md"
 
 --8<-- "docs/python-classe/ut2-03-fstrings-unicode.md"
+
+--8<-- "docs/python-classe/ut2-ejercicios-resueltos.md"
