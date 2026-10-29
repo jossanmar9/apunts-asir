@@ -13,3 +13,5 @@ Esta página reúne **toda la teoría de la UT1** en un único tema, con sus apa
 --8<-- "docs/aso/05-bash-text.md"
 
 --8<-- "docs/aso/06-bash-errors.md"
+
+--8<-- "docs/aso/ut1-ejercicios-resueltos.md"
