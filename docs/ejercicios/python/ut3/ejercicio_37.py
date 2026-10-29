@@ -1,7 +1,4 @@
-"""
-Ejercicio 37: Reinicio necesario
+# Ejercicio 37 · Versión de Python
+# Importa sys y muestra sys.version y sys.platform.
 
-Pide s o n indicando si hay reinicio pendiente y muestra el mensaje correspondiente; rechaza otros valores.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

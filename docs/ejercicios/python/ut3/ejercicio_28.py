@@ -1,7 +1,4 @@
-"""
-Ejercicio 28: Día laborable numérico
+# Ejercicio 28 · Buscar error
+# Recorre ['OK', 'OK', 'ERROR', 'OK'] y usa break para detenerte al encontrar ERROR.
 
-Pide un número 0–6 y muestra LABORABLE para 0–4 y FIN DE SEMANA para 5–6; rechaza otros.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

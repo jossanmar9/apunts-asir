@@ -1,7 +1,4 @@
-"""
-Ejercicio 23: Usuario administrador
+# Ejercicio 23 · Números del 1 al 20
+# Muestra los números del 1 al 20 utilizando range(inicio, fin).
 
-Pide usuario y muestra aviso si es root o administrator; en otro caso indica usuario estándar.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

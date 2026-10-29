@@ -1,7 +1,4 @@
-"""
-Ejercicio 16: Temperatura de CPU
+# Ejercicio 16 · Saltar el cinco
+# Muestra del 1 al 10 con while, pero utiliza continue para no mostrar el número 5.
 
-Pide temperatura de CPU y clasifícala como normal, caliente o crítica.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

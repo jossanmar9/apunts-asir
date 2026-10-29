@@ -1,7 +1,4 @@
-"""
-Ejercicio 50: Elegir raíz según sistema
+# Ejercicio 50 · Inventario Python
+# Importa datetime, pathlib y platform. Muestra sistema, fecha actual y cuántos archivos .py hay en la carpeta actual combinando for e if.
 
-Usa platform.system(): Windows muestra C:\, Linux /, Darwin /Users y otro sistema desconocido.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

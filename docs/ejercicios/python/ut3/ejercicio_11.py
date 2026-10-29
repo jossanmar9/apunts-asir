@@ -1,7 +1,4 @@
-"""
-Ejercicio 11: Acceso por puerto
+# Ejercicio 11 · Contador del 1 al 10
+# Muestra los números del 1 al 10 utilizando while.
 
-Pide un puerto. Muestra WEB para 80 o 443, SSH para 22 y OTRO para el resto.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

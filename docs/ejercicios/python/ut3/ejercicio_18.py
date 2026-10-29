@@ -1,7 +1,4 @@
-"""
-Ejercicio 18: Puerto privilegiado
+# Ejercicio 18 · Tres intentos
+# Permite introducir una clave como máximo tres veces usando while. Termina antes con break si la clave es correcta.
 
-Pide un puerto válido y muestra si es privilegiado, menor de 1024, o no privilegiado.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

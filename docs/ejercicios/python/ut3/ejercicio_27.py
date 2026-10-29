@@ -1,7 +1,4 @@
-"""
-Ejercicio 27: Turno laboral
+# Ejercicio 27 · Enumerar servidores
+# Recorre la lista ['web', 'db', 'dns'] con enumerate(..., 1) y muestra número y nombre.
 
-Pide una hora y clasifícala como mañana, tarde o noche usando tres franjas.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

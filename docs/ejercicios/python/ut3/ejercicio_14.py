@@ -1,7 +1,4 @@
-"""
-Ejercicio 14: Estado de memoria
+# Ejercicio 14 · Validar entero positivo
+# Pide un número como texto y repite la entrada mientras no sea un número positivo usando isdigit() y while.
 
-Pide porcentaje de RAM usada y clasifícalo en BAJO, MEDIO o ALTO.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

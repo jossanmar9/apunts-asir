@@ -1,7 +1,4 @@
-"""
-Ejercicio 06: Validar nota
+# Ejercicio 06 · Archivo de configuración
+# Pide un nombre de archivo y muestra ACEPTADO si termina en .conf o .ini; en otro caso, RECHAZADO.
 
-Pide una nota y muestra VÁLIDA si está entre 0 y 10; si no, NO VÁLIDA.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

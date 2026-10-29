@@ -1,7 +1,4 @@
-"""
-Ejercicio 02: Temperatura de congelación
+# Ejercicio 02 · Estado de temperatura
+# Pide una temperatura y clasifícala como BAJO CERO, CERO o SOBRE CERO.
 
-Pide una temperatura y clasifícala como bajo cero, cero o sobre cero.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

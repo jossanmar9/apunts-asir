@@ -1,7 +1,4 @@
-"""
-Ejercicio 07: Calificación textual
+# Ejercicio 07 · Usuario especial
+# Pide un usuario y muestra PRIVILEGIADO si es root o administrator; en otro caso, ESTÁNDAR.
 
-Pide una nota de 0 a 10 y clasifícala como insuficiente, suficiente, bien, notable o sobresaliente.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

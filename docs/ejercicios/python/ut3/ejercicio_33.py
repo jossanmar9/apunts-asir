@@ -1,7 +1,4 @@
-"""
-Ejercicio 33: Latencia de red
+# Ejercicio 33 · Localizar un ValueError
+# Escribe un pequeño programa que intente convertir 'abc' con int(). Ejecútalo, identifica el tipo de error y corrige el dato para que funcione.
 
-Pide milisegundos de latencia y clasifica EXCELENTE, ACEPTABLE o ALTA.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

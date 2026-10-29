@@ -1,7 +1,4 @@
-"""
-Ejercicio 22: Archivo comprimido
+# Ejercicio 22 · Números del 0 al 9
+# Muestra los números del 0 al 9 utilizando for y range().
 
-Pide un nombre y muestra si parece comprimido cuando termina en .zip, .gz o .tar.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

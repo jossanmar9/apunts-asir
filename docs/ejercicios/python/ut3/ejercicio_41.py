@@ -1,7 +1,4 @@
-"""
-Ejercicio 41: Tamaño de log
+# Ejercicio 41 · Backup de ayer
+# Importa datetime y genera un nombre backup_YYYY_MM_DD.zip correspondiente a ayer usando datetime.timedelta().
 
-Pide tamaño de un log en MB y muestra ROTAR si supera 100 MB; si no, CONSERVAR.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

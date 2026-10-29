@@ -1,256 +1,256 @@
-# UT3 · Ejercicios adicionales
+# UT3 · Ejercicios adicionales revisados
 
-50 ejercicios distintos de los ejercicios originales de practicar y entregar.
+50 ejercicios ajustados a los contenidos de los temas 3.1–3.5: condicionales, `while`, `for`, depuración y librerías de administración.
 
 !!! note "Organización"
-    **1–20:** básicos · **21–40:** intermedios · **41–50:** repaso.
+    **1–10:** condicionales · **11–20:** `while` · **21–32:** `for` y `range()` · **33–36:** depuración · **37–50:** librerías sysadmin.
 
-## Ejercicio 01 · Mayor de edad para servicio
-Pide una edad y muestra ACCESO si es 18 o más; en caso contrario, DENEGADO.
+## Ejercicio 01 · Control de acceso por edad
+Pide una edad y muestra ACCESO si es mayor o igual que 18; en caso contrario, DENEGADO.
 
 [:material-language-python: Abrir ejercicio_01.py](ut3/ejercicio_01.py){ .md-button }
 
-## Ejercicio 02 · Temperatura de congelación
-Pide una temperatura y clasifícala como bajo cero, cero o sobre cero.
+## Ejercicio 02 · Estado de temperatura
+Pide una temperatura y clasifícala como BAJO CERO, CERO o SOBRE CERO.
 
 [:material-language-python: Abrir ejercicio_02.py](ut3/ejercicio_02.py){ .md-button }
 
-## Ejercicio 03 · Número dentro de intervalo
-Pide un número y comprueba si está entre 10 y 20, ambos incluidos.
+## Ejercicio 03 · Puerto web
+Pide un puerto y muestra WEB si es 80 o 443, SSH si es 22 y OTRO en cualquier otro caso.
 
 [:material-language-python: Abrir ejercicio_03.py](ut3/ejercicio_03.py){ .md-button }
 
-## Ejercicio 04 · Múltiplo de 5
-Pide un entero e indica si es múltiplo de 5.
+## Ejercicio 04 · Espacio de disco
+Pide los GB libres. Muestra CRÍTICO si son menos de 5, AVISO si son menos de 15 y CORRECTO en otro caso.
 
 [:material-language-python: Abrir ejercicio_04.py](ut3/ejercicio_04.py){ .md-button }
 
-## Ejercicio 05 · Múltiplo de 3 y 5
-Pide un entero e indica si es divisible a la vez por 3 y por 5.
+## Ejercicio 05 · Horario permitido
+Pide una hora de 0 a 23 y muestra si está dentro del horario de soporte de 8 a 18 usando and.
 
 [:material-language-python: Abrir ejercicio_05.py](ut3/ejercicio_05.py){ .md-button }
 
-## Ejercicio 06 · Validar nota
-Pide una nota y muestra VÁLIDA si está entre 0 y 10; si no, NO VÁLIDA.
+## Ejercicio 06 · Archivo de configuración
+Pide un nombre de archivo y muestra ACEPTADO si termina en .conf o .ini; en otro caso, RECHAZADO.
 
 [:material-language-python: Abrir ejercicio_06.py](ut3/ejercicio_06.py){ .md-button }
 
-## Ejercicio 07 · Calificación textual
-Pide una nota de 0 a 10 y clasifícala como insuficiente, suficiente, bien, notable o sobresaliente.
+## Ejercicio 07 · Usuario especial
+Pide un usuario y muestra PRIVILEGIADO si es root o administrator; en otro caso, ESTÁNDAR.
 
 [:material-language-python: Abrir ejercicio_07.py](ut3/ejercicio_07.py){ .md-button }
 
-## Ejercicio 08 · Descuento por cantidad
-Pide unidades compradas y aplica tres tramos de descuento definidos en el enunciado del programa.
+## Ejercicio 08 · Asignación condicional
+Pide una nota y guarda en una variable el texto APTO o NO APTO mediante una asignación condicional. Después muéstrala.
 
 [:material-language-python: Abrir ejercicio_08.py](ut3/ejercicio_08.py){ .md-button }
 
-## Ejercicio 09 · Tarifa de aparcamiento
-Pide horas de estacionamiento y calcula el precio con tres tramos de precio por hora.
+## Ejercicio 09 · Nombre no vacío
+Pide un nombre, aplica strip() y utiliza directamente su valor verdadero o falso para indicar si se ha escrito algo.
 
 [:material-language-python: Abrir ejercicio_09.py](ut3/ejercicio_09.py){ .md-button }
 
-## Ejercicio 10 · Precio de museo
-Pide edad y asigna tarifa infantil, general o sénior.
+## Ejercicio 10 · Acceso con dos requisitos
+Pide edad y si tiene autorización (s/n). Permite el acceso únicamente si es mayor de edad y tiene autorización.
 
 [:material-language-python: Abrir ejercicio_10.py](ut3/ejercicio_10.py){ .md-button }
 
-## Ejercicio 11 · Acceso por puerto
-Pide un puerto. Muestra WEB para 80 o 443, SSH para 22 y OTRO para el resto.
+## Ejercicio 11 · Contador del 1 al 10
+Muestra los números del 1 al 10 utilizando while.
 
 [:material-language-python: Abrir ejercicio_11.py](ut3/ejercicio_11.py){ .md-button }
 
-## Ejercicio 12 · Clasificar HTTP
-Pide un código HTTP y clasifícalo como 2xx, 3xx, 4xx, 5xx u otro.
+## Ejercicio 12 · Cuenta atrás
+Pide un entero positivo y muestra una cuenta atrás hasta 0 utilizando while.
 
 [:material-language-python: Abrir ejercicio_12.py](ut3/ejercicio_12.py){ .md-button }
 
-## Ejercicio 13 · Estado de CPU
-Pide porcentaje de CPU y muestra NORMAL, ALTO o CRÍTICO según dos umbrales.
+## Ejercicio 13 · Contraseña repetida
+Pide una contraseña hasta que el usuario escriba 'python'. Después muestra ACCESO CONCEDIDO.
 
 [:material-language-python: Abrir ejercicio_13.py](ut3/ejercicio_13.py){ .md-button }
 
-## Ejercicio 14 · Estado de memoria
-Pide porcentaje de RAM usada y clasifícalo en BAJO, MEDIO o ALTO.
+## Ejercicio 14 · Validar entero positivo
+Pide un número como texto y repite la entrada mientras no sea un número positivo usando isdigit() y while.
 
 [:material-language-python: Abrir ejercicio_14.py](ut3/ejercicio_14.py){ .md-button }
 
-## Ejercicio 15 · Espacio libre mínimo
-Pide GB libres y muestra aviso si quedan menos de 10 GB.
+## Ejercicio 15 · Salir con break
+Crea un while True que pida comandos. Termina con break cuando el usuario escriba salir.
 
 [:material-language-python: Abrir ejercicio_15.py](ut3/ejercicio_15.py){ .md-button }
 
-## Ejercicio 16 · Temperatura de CPU
-Pide temperatura de CPU y clasifícala como normal, caliente o crítica.
+## Ejercicio 16 · Saltar el cinco
+Muestra del 1 al 10 con while, pero utiliza continue para no mostrar el número 5.
 
 [:material-language-python: Abrir ejercicio_16.py](ut3/ejercicio_16.py){ .md-button }
 
-## Ejercicio 17 · Validar puerto
-Pide un entero y muestra si es un puerto válido entre 1 y 65535.
+## Ejercicio 17 · Suma hasta cero
+Pide números enteros y acumula su suma. El programa termina cuando se introduce 0.
 
 [:material-language-python: Abrir ejercicio_17.py](ut3/ejercicio_17.py){ .md-button }
 
-## Ejercicio 18 · Puerto privilegiado
-Pide un puerto válido y muestra si es privilegiado, menor de 1024, o no privilegiado.
+## Ejercicio 18 · Tres intentos
+Permite introducir una clave como máximo tres veces usando while. Termina antes con break si la clave es correcta.
 
 [:material-language-python: Abrir ejercicio_18.py](ut3/ejercicio_18.py){ .md-button }
 
-## Ejercicio 19 · Entorno por prefijo
-Pide hostname y muestra PRODUCCIÓN si empieza por PROD-, PRUEBAS si empieza por TEST- y DESCONOCIDO en otro caso.
+## Ejercicio 19 · Buscar sin break
+Pide números hasta introducir uno mayor que 100. Usa while con else para mostrar que el bucle terminó de forma normal.
 
 [:material-language-python: Abrir ejercicio_19.py](ut3/ejercicio_19.py){ .md-button }
 
-## Ejercicio 20 · Tipo de equipo
-Pide hostname y clasifícalo como servidor si empieza por SRV-, portátil si empieza por LAP- u otro.
+## Ejercicio 20 · Menú sencillo
+Muestra un menú con opciones 1, 2 y 0 dentro de un while. Repite hasta elegir 0 y usa if/elif para responder a cada opción.
 
 [:material-language-python: Abrir ejercicio_20.py](ut3/ejercicio_20.py){ .md-button }
 
-## Ejercicio 21 · Extensión permitida
-Pide un nombre de archivo y acepta solo si termina en .txt, .log o .conf.
+## Ejercicio 21 · Recorrer palabra
+Pide una palabra y muestra cada carácter en una línea utilizando for.
 
 [:material-language-python: Abrir ejercicio_21.py](ut3/ejercicio_21.py){ .md-button }
 
-## Ejercicio 22 · Archivo comprimido
-Pide un nombre y muestra si parece comprimido cuando termina en .zip, .gz o .tar.
+## Ejercicio 22 · Números del 0 al 9
+Muestra los números del 0 al 9 utilizando for y range().
 
 [:material-language-python: Abrir ejercicio_22.py](ut3/ejercicio_22.py){ .md-button }
 
-## Ejercicio 23 · Usuario administrador
-Pide usuario y muestra aviso si es root o administrator; en otro caso indica usuario estándar.
+## Ejercicio 23 · Números del 1 al 20
+Muestra los números del 1 al 20 utilizando range(inicio, fin).
 
 [:material-language-python: Abrir ejercicio_23.py](ut3/ejercicio_23.py){ .md-button }
 
-## Ejercicio 24 · Contraseña mínima
-Pide una contraseña y comprueba únicamente que tenga al menos 12 caracteres.
+## Ejercicio 24 · Pares hasta 30
+Muestra los números pares del 2 al 30 usando el paso de range().
 
 [:material-language-python: Abrir ejercicio_24.py](ut3/ejercicio_24.py){ .md-button }
 
-## Ejercicio 25 · Dos requisitos de contraseña
-Pide una contraseña y valida que tenga al menos 10 caracteres y contenga '@'.
+## Ejercicio 25 · Cuenta atrás con range
+Muestra del 10 al 0 utilizando range() con paso negativo.
 
 [:material-language-python: Abrir ejercicio_25.py](ut3/ejercicio_25.py){ .md-button }
 
-## Ejercicio 26 · Horario de soporte
-Pide una hora de 0 a 23 e indica si está dentro del horario 8–18.
+## Ejercicio 26 · Repetir mensaje
+Pide un mensaje y muéstralo cinco veces usando for y _ como variable no utilizada.
 
 [:material-language-python: Abrir ejercicio_26.py](ut3/ejercicio_26.py){ .md-button }
 
-## Ejercicio 27 · Turno laboral
-Pide una hora y clasifícala como mañana, tarde o noche usando tres franjas.
+## Ejercicio 27 · Enumerar servidores
+Recorre la lista ['web', 'db', 'dns'] con enumerate(..., 1) y muestra número y nombre.
 
 [:material-language-python: Abrir ejercicio_27.py](ut3/ejercicio_27.py){ .md-button }
 
-## Ejercicio 28 · Día laborable numérico
-Pide un número 0–6 y muestra LABORABLE para 0–4 y FIN DE SEMANA para 5–6; rechaza otros.
+## Ejercicio 28 · Buscar error
+Recorre ['OK', 'OK', 'ERROR', 'OK'] y usa break para detenerte al encontrar ERROR.
 
 [:material-language-python: Abrir ejercicio_28.py](ut3/ejercicio_28.py){ .md-button }
 
-## Ejercicio 29 · Trimestre
-Pide un mes de 1 a 12 e indica a qué trimestre pertenece.
+## Ejercicio 29 · Omitir temporal
+Recorre una lista de nombres de archivo y utiliza continue para no mostrar los que terminan en .tmp.
 
 [:material-language-python: Abrir ejercicio_29.py](ut3/ejercicio_29.py){ .md-button }
 
-## Ejercicio 30 · Estación aproximada
-Pide un mes y clasifícalo como invierno, primavera, verano u otoño por meses completos.
+## Ejercicio 30 · Buscar puerto con else
+Recorre [22, 53, 80, 443] buscando el puerto 3306. Usa for con else para indicar que no se encontró.
 
 [:material-language-python: Abrir ejercicio_30.py](ut3/ejercicio_30.py){ .md-button }
 
-## Ejercicio 31 · Días restantes de licencia
-Pide días restantes y muestra AGOTADA, PRÓXIMA A CADUCAR o ACTIVA según el valor.
+## Ejercicio 31 · Tabla de multiplicar
+Pide un número y muestra su tabla del 1 al 10 con for y range().
 
 [:material-language-python: Abrir ejercicio_31.py](ut3/ejercicio_31.py){ .md-button }
 
-## Ejercicio 32 · Nivel de batería
-Pide porcentaje de batería y clasifica CRÍTICA, BAJA, MEDIA o ALTA.
+## Ejercicio 32 · Coordenadas de rack
+Usa dos bucles for anidados para mostrar combinaciones de rack 1–3 y posición 1–4.
 
 [:material-language-python: Abrir ejercicio_32.py](ut3/ejercicio_32.py){ .md-button }
 
-## Ejercicio 33 · Latencia de red
-Pide milisegundos de latencia y clasifica EXCELENTE, ACEPTABLE o ALTA.
+## Ejercicio 33 · Localizar un ValueError
+Escribe un pequeño programa que intente convertir 'abc' con int(). Ejecútalo, identifica el tipo de error y corrige el dato para que funcione.
 
 [:material-language-python: Abrir ejercicio_33.py](ut3/ejercicio_33.py){ .md-button }
 
-## Ejercicio 34 · Pérdida de paquetes
-Pide porcentaje de pérdida y clasifica SIN PÉRDIDAS, LEVE o GRAVE.
+## Ejercicio 34 · Depurar con f-string
+Pide una edad como texto, muestra print(f'DEBUG: {edad=}') antes de convertirla a int() y comprueba qué ocurre con una entrada no numérica.
 
 [:material-language-python: Abrir ejercicio_34.py](ut3/ejercicio_34.py){ .md-button }
 
-## Ejercicio 35 · Velocidad de enlace
-Pide Mbps y clasifica la conexión como lenta, media o rápida.
+## Ejercicio 35 · Capturar conversión
+Pide un número y captura únicamente ValueError con try/except para mostrar un mensaje claro si la conversión falla.
 
 [:material-language-python: Abrir ejercicio_35.py](ut3/ejercicio_35.py){ .md-button }
 
-## Ejercicio 36 · Carga del servidor
-Pide un valor de carga y número de núcleos; avisa si la carga supera el número de núcleos.
+## Ejercicio 36 · Comprobar con assert
+Crea una variable edad con un valor negativo y usa assert para comprobar que sea mayor o igual que cero. Observa el error y después corrige el valor.
 
 [:material-language-python: Abrir ejercicio_36.py](ut3/ejercicio_36.py){ .md-button }
 
-## Ejercicio 37 · Reinicio necesario
-Pide s o n indicando si hay reinicio pendiente y muestra el mensaje correspondiente; rechaza otros valores.
+## Ejercicio 37 · Versión de Python
+Importa sys y muestra sys.version y sys.platform.
 
 [:material-language-python: Abrir ejercicio_37.py](ut3/ejercicio_37.py){ .md-button }
 
-## Ejercicio 38 · Servicio habilitado
-Pide active, inactive o failed y muestra un mensaje diferente para cada estado.
+## Ejercicio 38 · Argumento de usuario
+Importa sys. Si no existe sys.argv[1], muestra el uso del programa; si existe, saluda al nombre recibido.
 
 [:material-language-python: Abrir ejercicio_38.py](ut3/ejercicio_38.py){ .md-button }
 
-## Ejercicio 39 · Código de salida
-Pide el código de salida de un comando. Muestra ÉXITO si es 0 y ERROR en otro caso.
+## Ejercicio 39 · Variable PATH
+Importa os y muestra el valor de la variable de entorno PATH con os.getenv().
 
 [:material-language-python: Abrir ejercicio_39.py](ut3/ejercicio_39.py){ .md-button }
 
-## Ejercicio 40 · Intentos de login
-Pide número de intentos fallidos y muestra NORMAL, AVISO o BLOQUEO según tramos.
+## Ejercicio 40 · Fecha actual
+Importa datetime y muestra la fecha y hora actuales usando datetime.datetime.now().
 
 [:material-language-python: Abrir ejercicio_40.py](ut3/ejercicio_40.py){ .md-button }
 
-## Ejercicio 41 · Tamaño de log
-Pide tamaño de un log en MB y muestra ROTAR si supera 100 MB; si no, CONSERVAR.
+## Ejercicio 41 · Backup de ayer
+Importa datetime y genera un nombre backup_YYYY_MM_DD.zip correspondiente a ayer usando datetime.timedelta().
 
 [:material-language-python: Abrir ejercicio_41.py](ut3/ejercicio_41.py){ .md-button }
 
-## Ejercicio 42 · Antigüedad de copia
-Pide horas desde el último backup y avisa si son más de 24.
+## Ejercicio 42 · Información del sistema
+Importa platform y muestra sistema operativo, versión y procesador.
 
 [:material-language-python: Abrir ejercicio_42.py](ut3/ejercicio_42.py){ .md-button }
 
-## Ejercicio 43 · Dos copias disponibles
-Pide si existe copia local y remota mediante s/n e indica si hay al menos una disponible.
+## Ejercicio 43 · Directorio actual
+Importa pathlib y muestra el directorio actual con pathlib.Path.cwd().
 
 [:material-language-python: Abrir ejercicio_43.py](ut3/ejercicio_43.py){ .md-button }
 
-## Ejercicio 44 · Red privada simple
-Pide una IP y muestra PRIVADA si empieza por 192.168. o 10.; en otro caso, OTRA.
+## Ejercicio 44 · Crear carpeta logs
+Importa pathlib. Comprueba si existe la carpeta logs y créala si no existe.
 
 [:material-language-python: Abrir ejercicio_44.py](ut3/ejercicio_44.py){ .md-button }
 
-## Ejercicio 45 · URL segura
-Pide una URL y muestra SEGURA si empieza por https://; si no, REVISAR.
+## Ejercicio 45 · Listar archivos Python
+Importa pathlib y recorre la carpeta actual con iterdir(). Muestra solo los archivos cuya extensión sea .py.
 
 [:material-language-python: Abrir ejercicio_45.py](ut3/ejercicio_45.py){ .md-button }
 
-## Ejercicio 46 · Ruta absoluta Linux
-Pide una ruta y muestra ABSOLUTA si empieza por '/', RELATIVA en otro caso.
+## Ejercicio 46 · Tamaño de un archivo
+Importa pathlib, comprueba si existe informe.log y, si existe, muestra su tamaño con stat().st_size.
 
 [:material-language-python: Abrir ejercicio_46.py](ut3/ejercicio_46.py){ .md-button }
 
-## Ejercicio 47 · Comprobar directorio
-Pide una ruta por sys.argv y pathlib; indica si existe y además es un directorio.
+## Ejercicio 47 · Buscar logs recursivamente
+Importa pathlib y utiliza rglob('*.log') para mostrar archivos .log de la carpeta actual y sus subcarpetas.
 
 [:material-language-python: Abrir ejercicio_47.py](ut3/ejercicio_47.py){ .md-button }
 
-## Ejercicio 48 · Comprobar fichero
-Pide una ruta por sys.argv y pathlib; indica si existe y además es un fichero.
+## Ejercicio 48 · Uso de disco
+Importa shutil, consulta disk_usage('/') y muestra el porcentaje de espacio utilizado.
 
 [:material-language-python: Abrir ejercicio_48.py](ut3/ejercicio_48.py){ .md-button }
 
-## Ejercicio 49 · Crear carpeta backups
-Con pathlib, comprueba si existe una carpeta backups. Si no existe, créala; si existe, avisa.
+## Ejercicio 49 · Copiar backup
+Importa pathlib y shutil. Si existe backup.zip, crea la carpeta copias si hace falta y copia allí el archivo.
 
 [:material-language-python: Abrir ejercicio_49.py](ut3/ejercicio_49.py){ .md-button }
 
-## Ejercicio 50 · Elegir raíz según sistema
-Usa platform.system(): Windows muestra C:\, Linux /, Darwin /Users y otro sistema desconocido.
+## Ejercicio 50 · Inventario Python
+Importa datetime, pathlib y platform. Muestra sistema, fecha actual y cuántos archivos .py hay en la carpeta actual combinando for e if.
 
 [:material-language-python: Abrir ejercicio_50.py](ut3/ejercicio_50.py){ .md-button }

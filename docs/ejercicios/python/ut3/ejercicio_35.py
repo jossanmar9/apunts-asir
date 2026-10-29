@@ -1,7 +1,4 @@
-"""
-Ejercicio 35: Velocidad de enlace
+# Ejercicio 35 · Capturar conversión
+# Pide un número y captura únicamente ValueError con try/except para mostrar un mensaje claro si la conversión falla.
 
-Pide Mbps y clasifica la conexión como lenta, media o rápida.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

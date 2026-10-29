@@ -1,7 +1,4 @@
-"""
-Ejercicio 03: Número dentro de intervalo
+# Ejercicio 03 · Puerto web
+# Pide un puerto y muestra WEB si es 80 o 443, SSH si es 22 y OTRO en cualquier otro caso.
 
-Pide un número y comprueba si está entre 10 y 20, ambos incluidos.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

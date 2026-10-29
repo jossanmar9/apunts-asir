@@ -1,7 +1,4 @@
-"""
-Ejercicio 32: Nivel de batería
+# Ejercicio 32 · Coordenadas de rack
+# Usa dos bucles for anidados para mostrar combinaciones de rack 1–3 y posición 1–4.
 
-Pide porcentaje de batería y clasifica CRÍTICA, BAJA, MEDIA o ALTA.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.

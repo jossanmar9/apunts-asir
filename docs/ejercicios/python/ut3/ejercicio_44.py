@@ -1,7 +1,4 @@
-"""
-Ejercicio 44: Red privada simple
+# Ejercicio 44 · Crear carpeta logs
+# Importa pathlib. Comprueba si existe la carpeta logs y créala si no existe.
 
-Pide una IP y muestra PRIVADA si empieza por 192.168. o 10.; en otro caso, OTRA.
-"""
-
-# Escribe tu solución a partir de aquí:
+# Escribe aquí tu solución.
