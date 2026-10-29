@@ -1,6 +1,5 @@
 site_name: Apuntes ASIR
 site_description: "Apuntes desarrollados de IAW, ASO, Python, Sostenibilidad y Git y GitHub, con explicaciones desde cero y problemas fáciles paso a paso para estudiar ASIR"
-# Tu usuario de GitHub
 site_url: https://jossanmar9.github.io/apunts-asir/
 repo_url: https://github.com/jossanmar9/apunts-asir
 repo_name: apunts-asir
@@ -91,11 +90,18 @@ nav:
   - "ASO":
       - aso/index.md
       - "UT1 · Bash":
+          - "Guía de estudio y repaso": aso/01-guia-estudi-bash.md
           - "Scripts, variables y parámetros": aso/02-bash-dades.md
           - "Cálculos y decisiones": aso/03-bash-decisions.md
           - "Bucles y funciones": aso/04-bash-bucles.md
           - "Archivos, filtros y expresiones regulares": aso/05-bash-text.md
           - "Errores y scripts de administración": aso/06-bash-errors.md
+      - "UT2 · Procesos, servicios y automatización":
+          - "Procesos en Linux": aso/07-processos.md
+          - "Control, señales y prioridades": aso/08-control-processos.md
+          - "Servicios y systemd": aso/09-systemd.md
+          - "Automatización: cron y at": aso/10-automatitzacio.md
+          - "Monitorización, logs y diagnóstico": aso/11-monitoritzacio.md
   - "Python":
       - python-classe/index.md
       - "UT1 · Introducción, entorno y tipos de datos":
