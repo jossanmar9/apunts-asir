@@ -3,6 +3,7 @@
 Apuntes para estudiar y consultar mientras haces los trabajos, revisados tomando como referencia la teoría, guías y prácticas de clase.
 
 [:material-school: **Empezar por la guía de estudio UT1 + UT2**](00-guia-estudi.md){ .md-button .md-button--primary }
+[:material-calendar-check: **Preparación del examen (3 de diciembre)**](examen/index.md){ .md-button }
 
 ## UT1 · Entorno de implantación web
 

@@ -89,6 +89,9 @@ nav:
       - "Guía de estudio UT1 + UT2": iaw/00-guia-estudi.md
       - "UT1 · Entorno de implantación web": iaw/ut1.md
       - "UT2 · Programación web en servidor": iaw/ut2.md
+      - "Preparación del examen":
+          - iaw/examen/index.md
+          - "Preguntas tipo examen": iaw/examen/preguntas.md
   - "ASO":
       - aso/index.md
       - "UT1 · Bash": aso/ut1.md
